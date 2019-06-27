@@ -1,0 +1,447 @@
+<% 
+    let activePlans = 0, canceledPlans = 0, planMedium = 0, planAdvanced = 0, planPlus = 0
+    let janPlan = 0, fevPlan = 0, marPlan = 0, abrPlan = 0, maiPlan = 0, junPlan = 0, julPlan = 0, agoPlan = 0, setPlan = 0, outPlan = 0, novPlan = 0, dezPlan = 0
+    for(let i = 0; i < financial.planReport.length; i++) {
+        if(financial.planReport[i].status === 'ativo') {
+            activePlans++
+
+            if(financial.planReport[i].plan === 'Plano Medium') {
+                planMedium++
+            }
+            
+            if(financial.planReport[i].plan === 'Plano Advanced') {
+                planAdvanced++
+            }
+            
+            if(financial.planReport[i].plan === 'Plano Plus') {
+                planPlus++
+            }
+        } else if(financial.planReport[i].status === 'cancelado') {
+            canceledPlans++
+        }
+        
+        if(moment(financial.planReport[i].createdAtDay, 'DD/MM/YYYY').format('YYYY') === moment().format('YYYY') && financial.planReport[i].status !== 'pendente') {
+            if(moment(financial.planReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '1') {
+                janPlan += financial.planReport[i].amount
+            } else if(moment(financial.planReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '2') {
+                fevPlan += financial.planReport[i].amount
+            } else if(moment(financial.planReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '3') {
+                marPlan += financial.planReport[i].amount
+            } else if(moment(financial.planReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '4') {
+                abrPlan += financial.planReport[i].amount
+            } else if(moment(financial.planReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '5') {
+                maiPlan += financial.planReport[i].amount
+            } else if(moment(financial.planReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '6') {
+                junPlan += financial.planReport[i].amount
+            } else if(moment(financial.planReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '7') {
+                julPlan += financial.planReport[i].amount
+            } else if(moment(financial.planReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '8') {
+                agoPlan += financial.planReport[i].amount
+            } else if(moment(financial.planReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '9') {
+                setPlan += financial.planReport[i].amount
+            } else if(moment(financial.planReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '10') {
+                outPlan += financial.planReport[i].amount
+            } else if(moment(financial.planReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '11') {
+                novPlan += financial.planReport[i].amount
+            } else {
+                dezPlan += financial.planReport[i].amount
+            }
+        }
+    }
+
+    let purchaseCompleted = 0
+    let janProd = 0, fevProd = 0, marProd = 0, abrProd = 0, maiProd = 0, junProd = 0, julProd = 0, agoProd = 0, setProd = 0, outProd = 0, novProd = 0, dezProd = 0
+    for(let i = 0; i < financial.productReport.length; i++) {
+        if(financial.productReport[i].status === 'concluído' || financial.productReport[i].status === 'vencido') {
+            purchaseCompleted++
+
+            if(moment(financial.productReport[i].createdAtDay, 'DD/MM/YYYY').format('YYYY') === moment().format('YYYY')) {
+                if(moment(financial.productReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '1') {
+                    janProd += financial.productReport[i].total
+                } else if(moment(financial.productReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '2') {
+                    fevProd += financial.productReport[i].total
+                } else if(moment(financial.productReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '3') {
+                    marProd += financial.productReport[i].total
+                } else if(moment(financial.productReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '4') {
+                    abrProd += financial.productReport[i].total
+                } else if(moment(financial.productReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '5') {
+                    maiProd += financial.productReport[i].total
+                } else if(moment(financial.productReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '6') {
+                    junProd += financial.productReport[i].total
+                } else if(moment(financial.productReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '7') {
+                    julProd += financial.productReport[i].total
+                } else if(moment(financial.productReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '8') {
+                    agoProd += financial.productReport[i].total
+                } else if(moment(financial.productReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '9') {
+                    setProd += financial.productReport[i].total
+                } else if(moment(financial.productReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '10') {
+                    outProd += financial.productReport[i].total
+                } else if(moment(financial.productReport[i].createdAtDay, 'YYYY/MM/DD').format('M') === '11') {
+                    novProd += financial.productReport[i].total
+                } else {
+                    dezProd += financial.productReport[i].total
+                }
+            }
+        }        
+    }
+%>
+
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-calendar"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Última venda</span>
+                <span class="info-box-number">
+                    <%= financial.lastSale %></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-credit-card"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Total de vendas<br />planos</span>
+                <span class="info-box-number">R$
+                    <% if(financial.totalPerMonth) { %><%= financial.totalPerMonth.toFixed(2) %><% } %> / mês</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-shopping-bag"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Total de vendas<br />produtos</span>
+                <span class="info-box-number">R$
+                        <% if(financial.salesAmount) { %><%= financial.salesAmount.toFixed(2) %><% } %></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="ion ion-alert"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Planos cancelados</span>
+                <span class="info-box-number">
+                    <%= canceledPlans %></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Vendas
+                    <%= moment().format('YYYY') %>
+                </h3>
+            </div>
+            <div class="box-body">
+                <div class="chart">
+                    <canvas id="barChart" style="height: 356px; width: 178px;" width="808" height="364"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Produtos vendidos vs. Planos ativos</h3>
+            </div>
+            <div class="box-body">
+                <canvas id="pieChart" style="height: 89px; width: 178px;" width="356" height="178"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Planos ativos</h3>
+            </div>
+            <div class="box-body">
+                <canvas id="pieChartPlans" style="height: 89px; width: 178px;" width="356" height="178"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Histórico plano</h3>
+            </div>
+            <div class="box-body">
+                <table id="table-info" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Relatório Paypal</th>
+                            <th>Plano</th>
+                            <th>Status</th>
+                            <th>Usuário</th>
+                            <th>Total</th>
+                            <th>Registrado em</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i = 0; i < financial.planReport.length; i++) { %>
+                            <tr>
+                                <td><%= financial.planReport[i]._id %></td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-paypalPlan-<%= i %>">Clique aqui</a></td>
+                                <td><%= financial.planReport[i].plan %></td>
+                                <% if(financial.planReport[i].status === 'ativo') { %>
+                                    <td><span class="label label-success">Ativo</span></td>
+                                <% } else if(financial.planReport[i].status === 'pendente') { %>                                    
+                                    <td><span class="label label-warning">Pendente</span></td>
+                                <% } else if(financial.planReport[i].status === 'upgrade') { %>                                    
+                                    <td><span class="label label-info">Upgrade</span></td>
+                                <% } else { %>       
+                                    <td><span class="label label-danger">Cancelado</span></td>
+                                <% } %>
+                                <td><a target="_blank" href="/admin-detalhes/<%= financial.planReport[i]._idUser %>">Clique aqui</a></td>
+                                <td>R$ <%= financial.planReport[i].amount.toFixed(2) %> / mês</td>
+                                <td><%= financial.planReport[i].createdAtDay %> - <%= financial.planReport[i].createdAtMoment %></td>
+                            </tr>
+                            <div class="modal fade" id="modal-paypalPlan-<%= i %>">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Relatório Paypal</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <iframe src="/admin-paypalreport/<%= financial.planReport[i]._idPaypalReport %>"
+                                            width="100%" height="400px"></iframe>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Relatório Paypal</th>
+                            <th>Plano</th>
+                            <th>Status</th>
+                            <th>Usuário</th>
+                            <th>Total</th>
+                            <th>Registrado em</th>
+                        </tr>  
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Histórico produtos</h3>
+            </div>
+            <div class="box-body">
+                <table id="table-info-2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Relatório Paypal</th>
+                            <th>Produto</th>
+                            <th>Status</th>
+                            <th>Usuário</th>
+                            <th>Subtotal</th>
+                            <th>Qnt.</th>
+                            <th>Total</th>
+                            <th>Registrado em</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i = 0; i < financial.productReport.length; i++) { %>
+                            <tr>
+                                <td><%= financial.productReport[i]._id %></td>
+                                <td><a href="#" data-toggle="modal" data-target="#modal-paypalProduct-<%= i %>">Clique aqui</a></td>
+                                <td><%= financial.productReport[i].product %></td>
+                                <% if(financial.productReport[i].status === 'concluído') { %>
+                                    <td><span class="label label-success">Concluído</span></td>
+                                <% } else if(financial.productReport[i].status === 'pendente') { %>                                    
+                                    <td><span class="label label-warning">Pendente</span></td>
+                                <% } else if(financial.productReport[i].status === 'vencido') { %>       
+                                    <td><span class="label label-danger">Vencido</span></td>
+                                <% } else { %>    
+                                    <td><span class="label label-danger">Cancelado</span></td>
+                                <% } %>
+                                <td><a target="_blank" href="/admin-detalhes/<%= financial.productReport[i]._idUser %>">Clique aqui</a></td>
+                                <td>R$ <%= financial.productReport[i].amountPerProduct.toFixed(2) %></td>
+                                <td><%= financial.productReport[i].totalDays %></td>
+                                <td>R$ <%= financial.productReport[i].total.toFixed(2) %></td>
+                                <td><%= financial.productReport[i].createdAtDay %> - <%= financial.productReport[i].createdAtMoment %></td>
+                            </tr>
+                            <div class="modal fade" id="modal-paypalProduct-<%= i %>">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Relatório Paypal</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <iframe src="/admin-paypalreport/<%= financial.productReport[i]._idPaypalReport %>"
+                                            width="100%" height="400px"></iframe>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Relatório Paypal</th>
+                            <th>Produto</th>
+                            <th>Status</th>
+                            <th>Usuário</th>
+                            <th>Subtotal</th>
+                            <th>Qnt.</th>
+                            <th>Total</th>
+                            <th>Registrado em</th>
+                        </tr>  
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script>
+    var config = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    '<%= activePlans %>',
+                    '<%= purchaseCompleted %>'
+                ],
+                backgroundColor: [
+                    '#00a65a',
+                    '#f39c12'
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                'Planos ativos',
+                'Produtos'
+            ]
+        },
+        options: {
+            responsive: true,    
+            legend: {
+                position: 'top'
+            }
+        }
+    }
+
+    var config2 = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    '<%= planMedium %>',
+                    '<%= planAdvanced %>',
+                    '<%= planPlus %>'
+                ],
+                backgroundColor: [
+                    '#00a65a',
+                    '#f39c12',
+                    '#d2d6de'
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                'Plano Medium',
+                'Plano Advanced',
+                'Plano Plus'
+            ]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                position: 'top'
+            }
+        }
+    }
+
+    var barChartData = {
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
+            'Novembro', 'Dezembro'
+        ],
+        datasets: [{
+            label: 'Planos',
+            backgroundColor: '#00a65a',
+            borderColor: '#00a65a',
+            borderWidth: 1,
+            data: [
+                '<%= janPlan.toFixed(2) %>',
+                '<%= fevPlan.toFixed(2) %>',
+                '<%= marPlan.toFixed(2) %>',
+                '<%= abrPlan.toFixed(2) %>',
+                '<%= maiPlan.toFixed(2) %>',
+                '<%= junPlan.toFixed(2) %>',
+                '<%= julPlan.toFixed(2) %>',
+                '<%= agoPlan.toFixed(2) %>',
+                '<%= setPlan.toFixed(2) %>',
+                '<%= outPlan.toFixed(2) %>',
+                '<%= novPlan.toFixed(2) %>',
+                '<%= dezPlan.toFixed(2) %>'
+            ]
+        }, {
+            label: 'Produtos',
+            backgroundColor: '#d2d6de',
+            borderColor: '#d2d6de',
+            borderWidth: 1,
+            data: [
+                '<%= janProd.toFixed(2) %>',
+                '<%= fevProd.toFixed(2) %>',
+                '<%= marProd.toFixed(2) %>',
+                '<%= abrProd.toFixed(2) %>',
+                '<%= maiProd.toFixed(2) %>',
+                '<%= junProd.toFixed(2) %>',
+                '<%= julProd.toFixed(2) %>',
+                '<%= agoProd.toFixed(2) %>',
+                '<%= setProd.toFixed(2) %>',
+                '<%= outProd.toFixed(2) %>',
+                '<%= novProd.toFixed(2) %>',
+                '<%= dezProd.toFixed(2) %>'
+            ]
+        }]
+
+    }
+
+    window.onload = function () {
+        var ctx = document.getElementById('pieChart').getContext('2d')
+        var ctx2 = document.getElementById('pieChartPlans').getContext('2d')
+        var ctx3 = document.getElementById('barChart').getContext('2d')
+        window.myPie = new Chart(ctx, config)
+        window.myPie2 = new Chart(ctx2, config2)
+        window.myBar = new Chart(ctx3, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top'
+                },                
+                tooltips: {
+                    callbacks: {
+                        label: (item) => `R$ ${item.yLabel}`
+                    }
+                }
+            }
+        })
+    }
+</script>

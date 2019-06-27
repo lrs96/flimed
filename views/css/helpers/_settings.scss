@@ -1,0 +1,48 @@
+/////////////////////////////////////////////////////////
+// Variable Default Settings                           //
+/////////////////////////////////////////////////////////
+$url                    : '/';
+$time-transition        : 0.5s;
+$white                  : #FFF;
+$black                  : #000;
+$black-o                : rgba(0, 0, 0, 0.4);
+$blue                   : #45c8e3;
+$blue-o                 : rgba(69, 200, 227, 0.5);
+$blue-t                 : #4fc0f7;
+$blue-b                 : #4a89e2;
+$blue-deep              : #4b4e52;
+$green                  : #01e9b1;
+$green-o                : rgba(1, 233, 177, 0.5);
+$red                    : #f5646c;
+$red-t                  : #ff5e75;
+$red-b                  : #e94b63;
+
+// MODAL
+$romae_mask             : rgba(0, 0, 0, 0.6);
+$romae-bgclose          : turquoise;
+
+$content                : #4a4d51;
+$content-gray           : #a9aaad;
+$content-title          : #2aa2a9;
+$border                 : #e1e1e2;
+$gray-span              : #d8d8d8;
+$gray-bg                : #eaebeb;
+$gray-content           : #babcbd;
+$gray-span2             : #b7b8bb;
+$gray-deep              : #4a4d51;
+$body                   : #fafaff;
+$footer-black           : rgba(0, 0, 0, 0.2);
+$btn-blue               : #4a90e2;
+$bg-input               : #f4f5f5;
+
+//=====================================================//
+// Module loading                                      //
+//=====================================================//
+$use-all                :   true !default;
+$use-bootstrap-reboot   :   $use-all !default;
+$use-bootstrap-grid     :   $use-all !default;
+$use-carousel           :   $use-all !default;
+$use-fancybox           :   $use-all !default;
+$use-fonts              :   $use-all !default;
+$use-modal              :   $use-all !default;
+$use-calendar           :   $use-all !default;

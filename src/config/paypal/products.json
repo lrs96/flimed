@@ -1,0 +1,17 @@
+{
+    "products": 
+    [
+        {
+            "id": 1,
+            "title": "Destaque do perfil",
+            "description": "Aquisição de destaque de perfil no portal Flimed",
+            "price": 19.9
+        },        
+        {
+            "id": 2,
+            "title": "Propaganda em banner",
+            "description": "Aquisição de propaganda em banner no portal Flimed",
+            "price": 19.9
+        }
+    ]
+}

@@ -1,0 +1,143 @@
+<!doctype html>
+<html class="no-js" lang="pt-br">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Flimed</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link rel="manifest" href="/views/site.webmanifest">
+		    <!-- Favicons -->
+    	<link rel="apple-touch-icon" sizes="144x144" href="views/img/favicon.png" />
+    	<link rel="apple-touch-icon" sizes="114x114" href="views/img/favicon.png" />
+    	<link rel="apple-touch-icon" sizes="72x72" href="views/img/favicon.png" />
+    	<link rel="apple-touch-icon" href="views/img/favicon.png" />
+    	<link rel="shortcut icon" href="/views/img/favicon.png" />
+
+		<link rel="stylesheet" href="/views/css/style.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script>window.jQuery || document.write('<script src="/views/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+		
+		
+		<!-- CSS Alertify -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
+		<!-- Default theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
+		<!-- Semantic UI theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css"/>
+		<!-- Bootstrap theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css"/>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
+	</head>
+
+	<body class="bg-inner">
+		<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+<div class="mask mask-main" id="mask_main"></div>
+		<main class="main">
+			<div class="nav-mobile" id="nav_mobile">
+				<div class="nav-lines">
+					<div class="line-top"></div>
+					<div class="line-middle"></div>
+					<div class="line-bottom"></div>
+				</div>
+
+			</div>
+			<header class="header-painel">
+				<div class="inner">
+					<figure class="logo-painel">
+						<a href="#!"><img src="/views/img/logo-painel.png" alt="Logo Conexão Saúde"></a>
+					</figure>
+
+					<div class="">
+						<div class="mask mask-inner" id="mask"></div>
+						<figure class="main-profile__fig" id="notification">
+							<img alt="Dr. Guilherme Marques" src="views/img/medico.jpg">
+							<div class="notification">1</div>
+						</figure>
+						<div class="notification-box">
+							<div class="notification-close" id="notification_close">x</div>
+							<h5>Notifications</h5>
+							
+							<div class="notification-cart">
+								<figure class="notification-cart__fig">
+									<img src="img/logo-painel.png" alt="Logo Notification">
+								</figure>
+								<div class="notification-cart__content">
+									<h6>Notification 1</h6>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nisi, id fugiat ea earum facilis!</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<nav class="nav-vestical">
+						<ul class="menu row">
+							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
+								<a href="/cliente-painel" class="menu-item__target">
+									<div class="inner">
+										<i class="sprite-painel__home"></i>
+										<span class="menu-tooltip">Inicio</span>
+									</div>
+								</a>
+							</li>
+							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
+								<a href="/cliente-perfil" class="menu-item__target">
+									<div class="inner">
+										<i class="sprite-painel__perfil"></i>
+										<span class="menu-tooltip">Perfil</span>
+									</div>
+								</a>
+							</li>
+							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
+								<a href="/cliente-horarios" class="menu-item__target">
+									<div class="inner">
+									<i class="sprite-painel__agendamento"></i>
+										<span class="menu-tooltip">Agendamento</span>
+									</div>
+								</a>
+							</li>
+							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
+								<a href="/cliente-perguntas" class="menu-item__target">
+									<div class="inner">
+										<i class="sprite-painel__faq"></i>
+										<span class="menu-tooltip">Questões</span>
+									</div>
+								</a>
+							</li>
+								<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
+								<a href="/logout" class="menu-item__target">
+									<div class="inner">
+										<i class="sprite-painel__on"></i>
+										<span class="menu-tooltip">Sair</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<section class="section-main__painel">
+			
+				<section class="box__resultsearch">
+					<div class="breadcrumbs">
+						<div class="container">
+							<p id="breadcrumbs">
+								<span>
+									<span>
+										<a href="https://www.flimed.com/">Inicio</a> » <strong class="breadcrumb_last"></strong>
+									</span>
+								</span>
+							</p>                
+						</div>
+					</div>
+
+					<%- include msg-box.ejs %>
+					<%- include adbox.ejs %>

@@ -1,0 +1,11 @@
+<div class="ad">
+	<div class="container">
+		<div class="ad-box">
+			<% if(locals.banner) { %>
+				<a href="/medico-detalhe/<%= banner.userId %>"><img src="/banner/<%= banner.banner %>"></a>
+			<% } else { %>
+				<span>ad</span>
+			<% } %>
+		</div>
+	</div>
+</div>

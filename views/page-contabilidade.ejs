@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <!-- CSS Alertify -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-12">
+            <h2>Funcionários</h2>
+            <div class="col-12">
+                <div class="col align-self-center">
+                    <button data-toggle="modal" data-target="#add-employee" class="btn btn-primary">Adicionar
+                        funcionário</button>
+                    <div class="modal fade" id="add-employee" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <form action="/medico-contabilidade" method="POST" enctype="multipart/form-data">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalLabel">Adicionar funcionário</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><b>Informações</b></p>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="nome">Nome</label>
+                                                    <input type="text" class="form-control" id="nome" name="nome">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="RG">RG</label>
+                                                    <input type="text" class="form-control" id="RG" name="RG">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="CPF">CPF</label>
+                                                    <input type="text" class="form-control" id="CPF" name="CPF">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="salario">Salário</label>
+                                                    <input type="number" class="form-control" id="salario"
+                                                        name="salario">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="cargo">Cargo</label>
+                                                    <input type="text" class="form-control" id="cargo" name="cargo">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="contaCorrente">Conta Corrente</label>
+                                                    <input type="text" class="form-control" id="contaCorrente"
+                                                        name="contaCorrente">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="status">Situação</label>
+                                                    <input type="text" class="form-control" id="status" name="status">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <p><b>Cônjuge</b></p>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="CPFConjugue">CPF</label>
+                                                    <input type="text" class="form-control" id="CPFConjugue"
+                                                        name="CPFConjugue">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="RGConjugue">RG</label>
+                                                    <input type="text" class="form-control" id="RGConjugue"
+                                                        name="RGConjugue">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <p><b>Fotos</b></p>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="foto">Foto 3x4</label>
+                                                    <input type="file" name="foto" class="form-control-file" id="foto"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="CNH">CNH</label>
+                                                    <input type="file" name="CNH" class="form-control-file" id="CNH"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="certificadoEscolar">Certificado Escolar</label>
+                                                    <input type="file" name="certificadoEscolar"
+                                                        class="form-control-file" id="certificadoEscolar"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="cadernetaDeVacinacaoDosFilhos">Caderneta de vacinacao
+                                                        dos filhos</label>
+                                                    <input type="file" name="cadernetaDeVacinacaoDosFilhos"
+                                                        class="form-control-file" id="cadernetaDeVacinacaoDosFilhos"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="certidaoDeNascimentoDosFilhos">Certidão de nascimento
+                                                        dos filhos</label>
+                                                    <input type="file" name="certidaoDeNascimentoDosFilhos"
+                                                        class="form-control-file" id="certidaoDeNascimentoDosFilhos"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="certificadosDeCursosComplementares">Certificados de
+                                                        cursos complementares</label>
+                                                    <input type="file" name="certificadosDeCursosComplementares"
+                                                        class="form-control-file"
+                                                        id="certificadosDeCursosComplementares"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="comprovanteDeResidencia">Comprovante de
+                                                        residência</label>
+                                                    <input type="file" name="comprovanteDeResidencia"
+                                                        class="form-control-file" id="comprovanteDeResidencia"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="certidaoDeNascimento">Certidão de nascimento</label>
+                                                    <input type="file" name="certidaoDeNascimento"
+                                                        class="form-control-file" id="certidaoDeNascimento"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="certidaoDeCasamento">Certidão de casamento</label>
+                                                    <input type="file" name="certidaoDeCasamento"
+                                                        class="form-control-file" id="certidaoDeCasamento"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="certificadoDeReservista">Certificado de
+                                                        reservista</label>
+                                                    <input type="file" name="certificadoDeReservista"
+                                                        class="form-control-file" id="certificadoDeReservista"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="certificadoDeReservista">Certificado de
+                                                        reservista</label>
+                                                    <input type="file" name="certificadoDeReservista"
+                                                        class="form-control-file" id="certificadoDeReservista"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="atestadoDeSaudeOcupacional">Atestado de saúde
+                                                        ocupacional</label>
+                                                    <input type="file" name="atestadoDeSaudeOcupacional"
+                                                        class="form-control-file" id="atestadoDeSaudeOcupacional"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="tituloDeEleitor">Título de eleitor</label>
+                                                    <input type="file" name="tituloDeEleitor" class="form-control-file"
+                                                        id="tituloDeEleitor" accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Fechar</button>
+                                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Data de admissão</th>
+                            <th>Cargo</th>
+                            <th>Situação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i = 0; i < user.accounting.personalDepartment.length; i++) { %>
+                        <tr>
+                            <td><%= user.accounting.personalDepartment[i].nome %></td>
+                            <td><%= user.accounting.personalDepartment[i].CPF %></td>
+                            <td><%= user.accounting.personalDepartment[i].createdAt %></td>
+                            <td><%= user.accounting.personalDepartment[i].cargo %></td>
+                            <td><%= user.accounting.personalDepartment[i].status %></td>
+                            <td>
+                                <button type="button" data-toggle="modal" data-target="#view-employee-<%= i %>"
+                                    class="btn btn-primary">Ver detalhes</button>
+                                <div class="modal fade" id="view-employee-<%= i %>" tabindex="-1" role="dialog"
+                                    aria-labelledby="modalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <form action="/medico-horarios" method="POST">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalLabel">Funcionário</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p><b>Informações</b></p>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Nome</dt>
+                                                                <dd><%= user.accounting.personalDepartment[i].nome %>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>CPF</dt>
+                                                                <dd><%= user.accounting.personalDepartment[i].CPF %>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>RG</dt>
+                                                                <dd><%= user.accounting.personalDepartment[i].RG %></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Admissão</dt>
+                                                                <dd><%= user.accounting.personalDepartment[i].createdAt %>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Cargo</dt>
+                                                                <dd><%= user.accounting.personalDepartment[i].cargo %>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Situação</dt>
+                                                                <dd><%= user.accounting.personalDepartment[i].status %>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Salário</dt>
+                                                                <dd>R$
+                                                                    <%= user.accounting.personalDepartment[i].salario.toFixed(2) %>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Conta Corrente</dt>
+                                                                <dd><%= user.accounting.personalDepartment[i].contaCorrente %>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p><b>Cônjuge</b></p>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>CPF</dt>
+                                                                <dd><%= user.accounting.personalDepartment[i].conjugue.CPF %>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>RG</dt>
+                                                                <dd><%= user.accounting.personalDepartment[i].conjugue.RG %>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p><b>Fotos</b></p>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Foto 3x4</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].foto %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>CNH</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].CNH %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Certificado escolar</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].certificadoEscolar %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Caderneta de vacinacao dos filhos</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].cadernetaDeVacinacaoDosFilhos %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Certidao de nascimento dos filhos</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].certidaoDeNascimentoDosFilhos %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Certificados de cursos complementares</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].certificadosDeCursosComplementares %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Comprovante de residência</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].comprovanteDeResidencia %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Certidao de nascimento</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].certidaoDeNascimento %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Certidao de casamento</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].certidaoDeCasamento %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Certificado de reservista</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].certificadoDeReservista %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Atestado de saúde ocupacional</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].atestadoDeSaudeOcupacional %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt>Título de eleitor</dt>
+                                                                <dd><a target="_blank"
+                                                                        href="/employeeDetail/<%= user.accounting.personalDepartment[i].tituloDeEleitor %>">Clique
+                                                                        aqui</a></dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Fechar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="/medico-contabilidade/<%= user.accounting.personalDepartment[i]._id %>"
+                                    method="POST">
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <button type="submit" class="btn btn-danger">Remover</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12">
+            <h2>Adicionar conta bancária para saque</h2>
+            <div class="col align-self-center">
+                <button data-toggle="modal" data-target="#add-bank-account" class="btn btn-primary">Adicionar conta
+                    bancária</button>
+                <div class="modal fade" id="add-bank-account" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <form id="bankAccount">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabel">Adicionar conta bancária</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><b>Informações</b></p>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Nome do banco</label>
+                                                <input type="text" class="form-control" name="bankName" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Número da conta</label>
+                                                <input type="text" class="form-control" name="bankNumber" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Agência bancária</label>
+                                                <input type="text" class="form-control" name="bankAgency" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Tipo da conta</label>
+                                                <input type="text" class="form-control" name="bankAccountType" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                                </div>
+                            </form>
+                            <script>
+                                $(document).ready(function () {
+                                    $('#bankAccount').on('submit', function (e) {
+                                        e.preventDefault()
+
+                                        $.ajax({
+                                            type: 'PUT',
+                                            url: '/medico-contabilidade',
+                                            datatype: 'html',
+                                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                            data: $('#bankAccount').serialize(),
+                                            success: function (result) {
+                                                alertify.notify(result, 'success', 5)
+                                                setTimeout(function () {
+                                                    window.location.reload()
+                                                }, 500)
+                                            },
+                                            error: function (xhr, status, error) {
+                                                alertify.notify(JSON.parse(xhr
+                                                    .responseText), 'error', 5)
+                                            }
+                                        })
+                                    })
+                                })
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <h2>Adicionar valor da consulta</h2>
+            <div class="col align-self-center">
+                <button data-toggle="modal" data-target="#add-attendance-price" class="btn btn-primary">Adicionar valor
+                    da consulta</button>
+                <div class="modal fade" id="add-attendance-price" tabindex="-1" role="dialog"
+                    aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <form id="attendanceValue">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabel">Adicionar valor da consulta</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><b>Informações</b></p>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label>Valor da consulta</label>
+                                                <input id="value" type="number" min="10" step=".01" class="form-control"
+                                                    name="attendanceValue" required>
+                                                <p><b id="finalValue">Valor: R$</b></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                                </div>
+                            </form>
+                            <script>
+                                $(document).ready(function () {
+                                    $("#value").keyup(function() {
+                                        const value = Number(this.value)
+                                        if(value.toString() === 'NaN') return alert('Valor inválido')
+                                        if(value < 10) {
+                                            $("#finalValue").html('Valor: R$')
+                                            return
+                                        }
+
+                                        $("#finalValue").html('Valor: R$' + value.toFixed(2).replace('.', ','))
+                                    })
+
+                                    $('#attendanceValue').on('submit', function (e) {
+                                        e.preventDefault()
+
+                                        $.ajax({
+                                            type: 'PATCH',
+                                            url: '/medico-contabilidade',
+                                            datatype: 'html',
+                                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                            data: $('#attendanceValue').serialize(),
+                                            success: function (result) {
+                                                alertify.notify(result, 'success', 5)
+                                                setTimeout(function () {
+                                                    window.location.reload()
+                                                }, 500)
+                                            },
+                                            error: function (xhr, status, error) {
+                                                alertify.notify(JSON.parse(xhr
+                                                    .responseText), 'error', 5)
+                                            }
+                                        })
+                                    })
+                                })
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <h2>Adicionar convênio</h2>
+            <div class="col align-self-center">
+                <button data-toggle="modal" data-target="#add-agreement" class="btn btn-primary">Adicionar convênio</button>
+                <div class="modal fade" id="add-agreement" tabindex="-1" role="dialog"
+                    aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <form id="addAgreement">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabel">Adicionar convênio</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><b>Informações</b></p>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label>Nome do convênio</label>
+                                                <input type="text" class="form-control" name="agreement" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                                </div>
+                            </form>
+                            <script>
+                                $(document).ready(function () {
+                                    $('#addAgreement').on('submit', function (e) {
+                                        e.preventDefault()
+
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '/convenio',
+                                            datatype: 'html',
+                                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                            data: $('#addAgreement').serialize(),
+                                            success: function (result) {
+                                                alertify.notify(result, 'success', 5)
+                                                setTimeout(function () {
+                                                    window.location.reload()
+                                                }, 500)
+                                            },
+                                            error: function (xhr, status, error) {
+                                                alertify.notify(JSON.parse(xhr
+                                                    .responseText), 'error', 5)
+                                            }
+                                        })
+                                    })
+                                })
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="col-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i = 0; i < user.agreement.length; i++) { %>
+                            <tr>
+                                <td><%= user.agreement[i] %></td>
+                                <td>
+                                    <form id="remove-convenio-<%= i %>">
+                                        <input type="hidden" name="position" value="<%= i %>" />
+                                        <button type="submit" class="btn btn-danger">Remover</button>
+                                    </form>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('#remove-convenio-<%= i %>').on('submit', function (e) {
+                                                e.preventDefault()
+        
+                                                $.ajax({
+                                                    type: 'DELETE',
+                                                    url: '/convenio',
+                                                    datatype: 'html',
+                                                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                                    data: $('#remove-convenio-<%= i %>').serialize(),
+                                                    success: function (result) {
+                                                        alertify.notify(result, 'success', 5)
+                                                        setTimeout(function () {
+                                                            window.location.reload()
+                                                        }, 500)
+                                                    },
+                                                    error: function (xhr, status, error) {
+                                                        alertify.notify(JSON.parse(xhr
+                                                            .responseText), 'error', 5)
+                                                    }
+                                                })
+                                            })
+                                        })
+                                    </script>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <% if(message) { %>
+    <script>
+        const msg = JSON.parse('<%- message %>')
+        if (msg !== 'Sucesso!')
+            alertify.notify(msg, 'error', 5)
+        else
+            alertify.notify(msg, 'success', 5)
+    </script>
+    <% } %>
+</body>
+
+</html>

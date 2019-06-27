@@ -1,0 +1,128 @@
+<%- include includes/header-cliente.ejs %>
+
+<section class="box__panel">
+	<div class="container">
+		<div class="row mosaic">
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong>12</strong> Consultas Realizadas</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong>5</strong> Exames Realizados</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong>10</strong> Profissionais da Saúde</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong>0</strong> Faltas</p>
+				</div>
+			</div>
+			
+			<div class="col-md-6">
+				<div class="mosaic-item">
+					<h3>Indicar <strong>Profissionais</strong></h3>
+					<p>Ao indicar profissionais para o <strong>Conexão Saúde</strong> você ganha descontos nas consultas</p>
+					
+					<form id="form-referral" class="form">
+						<div class="row">
+							<div class="col-md-6">
+								<input type="text" name="name" placeholder="Nome completo">
+							</div>
+							<div class="col-md-6">
+								<div class="select">
+									<select name="speciality">
+										<option selected disabled>Especialidade</option>
+										<option>Gastrologist</option>
+										<option>Cardiologist</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<input type="email" name="email" placeholder="E-mail">
+							</div>
+							<div class="col-md-6">
+								<input type="tel" name="phone" placeholder="Telefone">
+							</div>
+							<div class="col-md-12">
+								<input type="submit" class="btn btn-gradient" value="Indicar Profissional">
+							</div>
+						</div>
+					</form>
+					<script>
+					$(document).ready(function() {
+						$('#form-referral').on('submit', function(e) {
+							e.preventDefault()
+							
+							$.ajax({
+								type: 'POST',
+								url: '/indicacao',
+								datatype: 'html',
+								contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+								data: $('#form-referral').serialize(),
+								success: function(result) {          
+									alertify.notify(result, 'success', 5)
+                					$('#form-referral')[0].reset()
+								},
+								error : function(xhr, status, error) {
+									alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+								},
+							})
+						})
+					})
+					</script>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="mosaic-item mh-form">
+					<h3>Marcar <strong>Consultas e Exames</strong></h3>
+					<p>Logo abaixo preencha os campos para marcar consultas ou exames</p>
+
+					<form action="/pesquisa" method="POST" class="form">
+						<div class="row">
+							<div class="col-md-6 ">
+								<label class="option-radio">
+									Marcar Consulta
+									<input type="radio" checked="checked" name="radio" value="MEDICO">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<label class="option-radio">
+									Marcar Exame
+									<input type="radio" name="radio" value="CLINICA">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<input type="text" name="location" placeholder="Localização">
+							</div>
+							<div class="col-md-6">
+								<div class="select">
+									<select name="speciality">
+										<option selected disabled>Especialidade</option>
+										<option>Gastrologist</option>
+										<option>Cardiologist</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<input type="submit" class="btn btn-gradient" value="Pesquisar">
+							</div>
+							<div class="col-md-6">
+								<a href="/pesquisa-avancada" class="btn btn-clean">Pesquisa Avançada</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>	
+</section>
+
+<%- include includes/footer.ejs %>

@@ -1,0 +1,56 @@
+<section class="content-header">
+    <% if (page === '/admin-painel') { %>
+        <h1>Dashboard <small>visão geral</small></h1> 
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Início</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    <% } else if(page === '/admin-perfil') { %>
+        <h1>Perfil</h1> 
+        <ol class="breadcrumb">
+            <li><a href="/admin-painel"><i class="fa fa-dashboard"></i> Início</a></li>
+            <li class="active">Perfil</li>
+        </ol>
+    <% } else if(page === '/admin-pacientes') { %>
+        <h1>Pacientes</h1> 
+        <ol class="breadcrumb">
+            <li><a href="/admin-painel"><i class="fa fa-dashboard"></i> Início</a></li>
+            <li>Usuários</li>
+            <li class="active">Pacientes</li>
+        </ol>
+    <% } else if(page === '/admin-medicos') { %>
+        <h1>Médicos</h1> 
+        <ol class="breadcrumb">
+            <li><a href="/admin-painel"><i class="fa fa-dashboard"></i> Início</a></li>
+            <li>Usuários</li>
+            <li class="active">Médicos</li>
+        </ol>
+    <% } else if(page === '/admin-clinicas') { %>
+        <h1>Clínicas</h1> 
+        <ol class="breadcrumb">
+            <li><a href="/admin-painel"><i class="fa fa-dashboard"></i> Início</a></li>
+            <li>Usuários</li>
+            <li class="active">Clínicas</li>
+        </ol>
+    <% } else if(page === '/admin-detalhes') { %>
+        <h1>Detalhes</h1> 
+        <ol class="breadcrumb">
+            <li><a href="/admin-painel"><i class="fa fa-dashboard"></i> Início</a></li>
+            <li>Usuários</li>
+            <li><a href="/admin-pacientes">Pacientes</a></li>
+            <li class="active">Detalhes</li>
+        </ol>
+    <% } else if(page === '/admin-logs') { %>
+        <h1>Logs do sistema</h1> 
+        <ol class="breadcrumb">
+            <li><a href="/admin-painel"><i class="fa fa-dashboard"></i> Início</a></li>
+            <li class="active">Logs</li>
+        </ol>
+    <% } else if(page === '/admin-financeiro') { %>
+        <h1>Financeiro</h1> 
+        <ol class="breadcrumb">
+            <li><a href="/admin-painel"><i class="fa fa-dashboard"></i> Início</a></li>
+            <li class="active">Financeiro</li>
+        </ol>
+    <% } %>
+</section>

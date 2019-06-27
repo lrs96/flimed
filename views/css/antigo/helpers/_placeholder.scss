@@ -1,0 +1,53 @@
+// Placeholder
+%transition {
+	-webkit-transition: all ease-in-out $time-transition; 
+	-moz-transition: all ease-in-out $time-transition; 
+	transition: all ease-in-out $time-transition;
+}
+
+%vertical-align {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+%clearfix {
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+%box {
+	background-color: $white;
+	padding: 30px 10px 10px 10px;
+	@extend %transition;
+
+	&:hover {
+		-webkit-box-shadow:0px 0px 50px rgba(0,0,0,0.3);
+		-moz-box-shadow:0px 0px 50px rgba(0,0,0,0.3);
+		box-shadow:0px 0px 50px rgba(0,0,0,0.3);
+
+		-webkit-transform:scale(1.02);
+		-moz-transform:scale(1.02);
+		-ms-transform:scale(1.02);
+		transform:scale(1.02);
+	}
+}
+
+%bg-img {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+%box-shadow {
+	box-shadow: 0 0 70px rgba(49, 94, 230, 0.06);
+}

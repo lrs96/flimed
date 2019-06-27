@@ -1,0 +1,45 @@
+<%- include includes/header-cliente.ejs %>
+
+<section class="box__questions">
+	<div class="container">
+		<div class="bg-white">
+			<h3>Perguntas feitas por você</h3>
+
+			<div class="questions-list">
+				<% if(question.length) { %>
+					<% for(let i = 0; i < question.length; i++) { %>
+					<div class="row questions-list__item">
+						<div class="col-md-10">
+							<div class="questions-list__content">
+								<div class="bg-white">
+									<p>
+										<%= question[i].question %>
+									</p>
+								</div>
+								<% if(question[i].answer) { %>
+								<figure class="questions__photo">
+									<img alt="<%= question[i].fromDoctor.name %>" src="<% if(question[i].fromDoctor.profilePicture) { %>/profilePicture/<%= question[i].fromDoctor._idDoctor %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+								</figure>
+
+								<p class="h4">
+									<a href="/medico-detalhe/<%= question[i].fromDoctor._idDoctor %>"><%= question[i].fromDoctor.name %></a>
+								</p>
+								<div class="questions__answer">
+									<p>
+										<%= question[i].answer %>
+									</p>
+								</div>
+								<% } %>
+							</div>
+						</div>
+					</div>
+					<% } %>
+				<% } else { %>
+					<p>Você ainda não fez nenhuma pergunta</p>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%- include includes/footer.ejs %>

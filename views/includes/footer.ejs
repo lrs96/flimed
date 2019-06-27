@@ -1,0 +1,39 @@
+	</section>
+	<footer class="footer">
+		<div class="footer-top">
+			<div class="container">
+				<figure class="footer-logo">
+					<a href=""><img src="/views/home/assets/images/logotipo.svg" alt="Logo Flimed"></a>
+				</figure>
+				<div class="footer-phones">
+					<a href="">(85) 99977.1436</a>
+					<a href="">(85) 98106.2111</a>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>© Flimed, Todos os Direitos Reservados</p>
+		</div>
+	</footer>
+</main>
+
+<script src="/views/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="/views/js/plugins.js"></script>
+<script src="/views/js/main.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+<% if(message) { %>
+<script>
+    const msg = JSON.parse('<%- message %>')
+    if (msg !== 'Sucesso!')
+        alertify.notify(msg, 'error', 5)
+    else
+        alertify.notify(msg, 'success', 5)
+</script>
+<% } %>
+
+<script>
+	window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+	ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>

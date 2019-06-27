@@ -1,0 +1,167 @@
+<%- include includes/header.ejs %>
+
+<section class="box__resultsearch">
+	<div class="breadcrumbs">
+		<div class="container">
+			<p id="breadcrumbs">
+				<span>
+					<span>
+						<a href="/">Home</a> » 
+						<a href="/medico-detalhe/<%= doctor._id %>">Página anterior</a> » 
+						<strong class="breadcrumb_last"><%= page %></strong>
+					</span>
+				</span>
+			</p>                
+		</div>
+	</div>
+
+	<%- include includes/adbox.ejs %>
+	
+	<section class="">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="inner bg-white">
+						<form id="form-app" class="form bg-inputs">
+							<input type="hidden" name="doctorId" value="<%= doctor._id %>" />
+							<input type="hidden" name="eventId" value="<%= event._id %>" />
+							<div class="row">
+								<div class="col-md-12">
+									<span class="label">This consultation is?</span>
+									<span class="io-toggler" data-io="0">
+										<span class="io-options">
+											<span class="myself">Para mim</span>
+											<span class="another-person">Para outra pessoa</span>
+										</span>
+									</span>
+								</div>
+								<div class="col-md-12">
+									<span class="label">É sua primeira visita?</span>
+									<span class="io-toggler" data-io="0">
+										<span class="io-options">
+											<span class="y">Sim</span>
+											<span class="n">Não</span>
+										</span>
+									</span>
+								</div>
+								<div class="col-md-12">
+									<div class="select">
+										<i class="sprite-form__specialty"></i>
+										<select name="agreement" class="select-icon">
+											<option disabled selected>Acordo médico</option>
+											<option>Privado</option>
+											<% if(event.type === 'presencial') { %>
+												<% for(let i = 0; i < doctor.agreement.length; i++) { %>
+													<option><%= doctor.agreement[i] %></option>
+												<% } %>
+											<% } %>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label for="" class="label">Escreva seu nome</label>
+									<input type="text" name="name" placeholder="Nome completo">
+								</div>
+								<div class="col-md-6">
+									<label for="" class="label">Escolha o gênero</label>
+									<select name="genre" class="select-icon">
+										<option selected disabled>Selecionar</option>
+										<option>Masculino</option>
+										<option>Feminino</option>
+									</select>
+								</div>
+								<div class="col-md-12">
+									<label for="" class="label">Escreva seu e-mail</label>
+									<input type="text" name="email" placeholder="E-mail">
+								</div>
+								<div class="col-md-12">
+									<label for="" class="label">Escreva seu telefone</label>
+									<input type="text" name="phone" placeholder="Telefone">
+								</div>
+								<div class="col-md-12">
+									<label for="" class="label">Propósito da visita</label>
+									<textarea name="comment" id="" cols="30" rows="10" placeholder="Comente"></textarea>
+								</div>
+							</div>
+							<input type="submit" class="btn-submitGrad" value="Confirme o agendamento">
+						</form>
+						<script>
+						$(document).ready(function() {
+							$('#form-app').on('submit', function(e) {
+								e.preventDefault()
+								
+								$.ajax({
+									type: 'POST',
+									url: '/marcar-consulta',
+									datatype: 'html',
+									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+									data: $('#form-app').serialize(),
+									success: function(result) {  
+										if(result.type === 'presencial') {
+											alertify.notify(result.msg, 'success', 5)
+											setTimeout(function() { 
+												window.location.href = '/cliente-horarios'
+											}, 500)
+										} else {
+											alertify.notify(result.msg, 'success', 5)
+											window.location.href = result.url
+										}     
+									},
+									error: function(xhr, status, error) {
+										alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+									}
+								})
+							})
+						})
+						</script>
+					</div>
+				</div>
+				<aside class="col-md-4">
+					<div class="perfil-doc aside-item">
+						<div class="consulta__title">
+							<p class="h2">Perfil do médico</p>
+						</div>
+						<div class="consulta__bg perfil-doc__content">
+							<figure class="perfil-doc__photo">
+								<img alt="<%= doctor.name %>" src="<% if(!doctor.profilePicture) { %>/views/img/medico.jpg<% } else { %>/profilePicture/<%= doctor._id %><% } %>">
+							</figure>
+							<div class="perfil-doc__dados">
+								<h3 class="name"><%= doctor.name %></h3>
+								<p class="speciality"><% if(doctor.speciality.lenght) { %><%= doctor.speciality[doctor.speciality.lenght - 1].title %><% } else { %>Sem especialidade<% } %></p>
+								<% if(event.type === 'presencial') { %>
+									<p class="address">
+										<%= event.locationInfo.address %>, <%= event.locationInfo.number %> -
+										<%= event.locationInfo.city %>/<%= event.locationInfo.state %>
+										<br/>
+										CEP <%= event.locationInfo.zipCode %>
+									</p>
+								<% } else { %>
+									<p class="address">
+										Telemedicina
+									</p>
+								<% } %>
+							</div>
+						</div>
+					</div>
+					<div class="consulta-dados">
+						<div class="consulta__title">
+							<p class="h2">Cronograma</p>
+						</div>
+						<div class="consulta__bg consulta__content">
+							<% const start = new Date(event.start) %>
+							<% const days = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'] %>
+							<% if(parseInt(start.getHours()) < 10) { start.hour = '0' + start.getHours() } else { start.hour = start.getHours() } %>
+							<% if(parseInt(start.getMinutes()) < 10) { start.minute = '0' + start.getMinutes() } else { start.minute = start.getMinutes() } %>
+							<p><strong><%= days[start.getDay()] %></strong>, <%= start.getDate() + '/' + (start.getMonth() + 1) + '/' + start.getFullYear() %></p>
+							<p>at <strong><%= start.hour + ':' + start.minute %></strong> hours</p>
+							<p><strong>Value</strong>: R$ <%= (event.value / 100).toFixed(2) %></p>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</section>
+
+</section>
+
+<%- include includes/footer.ejs %>

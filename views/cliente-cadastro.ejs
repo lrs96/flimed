@@ -1,0 +1,105 @@
+<%- include includes/header.ejs %>
+
+<!--<section class="box__advancedsearch">
+	<div class="breadcrumbs">
+		<div class="container">
+			<p id="breadcrumbs">
+				<span>
+					<span>
+						<a href="https://www.romae.com.br/">Home</a> » <strong class="breadcrumb_last">Page Name</strong>
+					</span>
+				</span>
+			</p>                
+		</div>
+	</div>-->
+
+<!--	<div class="ad">
+		<div class="container">
+			<div class="ad-box">
+				<span>ANÚNCIO</span>
+			</div>
+		</div>
+	</div>-->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7">
+				<div class="form-search form">
+					<p class="h3">Registro de Paciente</p>
+					<p>Preencha os campos corretamente</p>
+					<form id="cliente-cadastro">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="select">
+									<select name="genre">
+										<option selected disabled>Gênero</option>
+										<option>Masculino</option>
+										<option>Feminino</option>
+									</select>
+								</div>
+							</div>
+						
+							<div class="col-md-4">
+								<input type="text" name="city" placeholder="Cidade">
+							</div>
+						
+							<div class="col-md-4">
+								<input type="text" name="state" placeholder="Estado">
+							</div>
+							
+							<div class="col-md-7">
+								<input type="text" name="name" placeholder="Nome completo">
+							</div>
+							
+							<div class="col-md-5">
+								<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+								<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+								<input type="text" name="phone" class="phone" placeholder="Telefone">
+								<script>
+									jQuery("input.phone")
+									.mask("(99) 9999-9999?9")
+									.focusout(function (event) {  
+										var target, phone, element;  
+										target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+										phone = target.value.replace(/\D/g, '');
+										element = $(target);  
+										element.unmask();  
+										if(phone.length > 10) {  
+											element.mask("(99) 99999-999?9");  
+										} else {  
+											element.mask("(99) 9999-9999?9");  
+										}  
+								  })
+								</script>
+							</div>
+							
+							<div class="col-md-12">
+								<input type="email" name="email" placeholder="E-mail">
+							</div>
+							
+							<div class="col-md-6">
+								<input type="password" name="password" placeholder="Senha">
+							</div>
+							
+							<div class="col-md-6">
+								<input type="password" name="confirmPassword" placeholder="Confirmar senha">
+							</div>
+							
+							<div class="col-md-4">
+								<input type="submit" class="btn btn-gradient" value="Registre-se">
+							</div>
+						</div>
+					</form>
+					<script src="/views/js/ajax/cliente-cadastro.js"></script>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<figure class="fig-doctors">
+					<img src="/views/img/person-doctors_register.png" alt="Imagem Doutores">
+				</figure>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%- include includes/footer.ejs %>

@@ -1,0 +1,24 @@
+//////////////////////////////////////////////
+// Import everything to generate css module //
+//////////////////////////////////////////////
+@import "helpers/settings",
+        "helpers/mixins",
+        "helpers/placeholder";
+
+// BOOTSTRAP
+@import	"libs/bootstrap-reboot",
+        "libs/bootstrap-grid";
+
+// ASSETS
+@import	"assets/fonts",
+				"assets/layout",
+        "assets/main",
+        "assets/responsive",
+        "assets/modal";
+    
+// LIBS
+@import "libs/fancybox",
+        "libs/carousel",
+				"libs/dropzone",
+				"libs/smoothness",
+				"libs/selectize";

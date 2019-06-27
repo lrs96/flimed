@@ -1,0 +1,92 @@
+<%- include includes/header-planos-medico.ejs %>
+
+<section class="box__resultsearch page-planos">
+	<div class="welcome">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-sm-12">
+					<p>Seja bem vindo <strong><%= user.name %></strong>! Agora basta escolher um plano
+						para ter acesso a recursos exclusivos da nossa plataforma :).</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="price-plan">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="price-plan__item">
+						<h3>STANDARD</h3>
+						<div class="recursos">
+								<p class="mb-0">recursos inclusos</p>
+							</div>
+						<div class="list-recursos">
+							<ul class="list">
+								<li>Perfil</li>
+								<li>Fotos/Vídeos</li>
+								<li>Responder Pacientes</li>
+								<li>Ad</li>
+								<li>Telefone</li>
+							</ul>
+						</div>
+						<form id="product_1" method="POST" action="/subscription/p-1">
+							<a href="javascript:{}" class="btn-radius" onclick="document.getElementById('product_1').submit();">
+								INICIAR
+							</a>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-4 middle">
+					<div class="price-plan__item">
+						<h3>MEDIUM</h3>
+						<div class="recursos">
+							<p class="mb-0">recursos inclusos</p>
+						</div>
+						<div class="list-recursos">
+							<ul class="list">
+								<li>Perfil</li>
+								<li>Fotos/Videos</li>
+								<li>Responder Pacientes</li>
+								<li>Ad</li>
+								<li>Telefone</li>
+								<li>Consulta</li>
+							</ul>
+						</div>
+						<form id="product_2" method="POST" action="/subscription/p-2">
+							<a href="javascript:{}" class="btn-radius" onclick="document.getElementById('product_2').submit();">
+								INICIAR
+							</a>
+						</form>
+					</div>	
+				</div>
+				<div class="col-md-4">
+					<div class="price-plan__item">
+						<h3>PLUS</h3>
+						<div class="recursos">
+							<p class="mb-0">recursos inclusos</p>
+						</div>
+						<div class="list-recursos">
+							<ul class="list">
+								<li>Perfil</li>
+								<li>Fotos/Videos</li>
+								<li>Responder Pacientes</li>
+								<li>Ad</li>
+								<li>Telefone</li>
+								<li>Consulta</li>
+								<li>Questão</li>
+							</ul>
+						</div>
+						<form id="product_3" method="POST" action="/subscription/p-3">
+							<a href="javascript:{}" class="btn-radius" onclick="document.getElementById('product_3').submit();">
+								INICIAR
+							</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+
+<%- include includes/footer.ejs %>

@@ -1,0 +1,168 @@
+<%- include includes/header.ejs %>
+	
+	<div class="search-inner">
+		<div class="container">
+			<div class="form-search form">
+				<form action="/pesquisa" method="POST">
+					<div class="row">
+						<div class="col-md-5">
+							<div class="select">
+								<i class="fas fa-stethoscope"></i>
+								<select name="speciality" class="select-icon">
+									<option selected disabled>Especialidade</option>
+									<option>Gastrologista</option>
+									<option>Cardiologista</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<input type="text" name="city" placeholder="Cidade"  class="sprite-form__location">
+						</div>
+						<div class="col-md-2">
+							<input type="text" name="state" placeholder="Estado"  class="sprite-form__location">
+						</div>
+					</div>
+					
+					<div class="btn-searchInner">
+						<input type="submit" value="">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div class="btn-goSearch">
+		<div class="container">
+			<a href="/pesquisa-avancada">IR PARA <strong>PESQUISA AVANÇADA</strong></a>
+		</div>
+	</div>
+		
+	<div class="result-section">
+		<div class="container">
+			<div class="box-result">
+				<div class="inner">
+					<div class="form-filter">
+						<div class="select">
+							<i class="sprite-form__filter"></i>
+							<select name="" id="" class="select-icon">
+								<option value="">Por relevância</option>
+								<option value="">Por nome</option>
+								<option value="">Pela especialidade</option>
+							</select>
+						</div>
+					</div>
+					<div class="box-result__title">
+						<p class="h3">Procurar Resultados</p>
+					</div>
+					<% if(!result) { %>
+						<p style="color:red; text-align: center;">NÃO HÁ RESULTADOS <% if(location) { %>EM <%= location %><% } %></p>
+					<% } else {%>
+					<div class="result-list row">
+						<% for(let i = 0; i < result.length; i++) { %>
+							<% if(result[i].purchasesHistoric.product.length) { %>
+								<% for(let j = 0; j < result[i].purchasesHistoric.product.length; j++) { %>
+									<% if(result[i].purchasesHistoric.product[j].status === 'concluído' && result[i].purchasesHistoric.product[j].startAt >= moment().format('L')) { %>
+										<div class="result-list__item col-md-6">
+											<a href="/medico-detalhe/<%= result[i]._id %>">
+												<div class="inner">
+													<span class="featured">Destaque</span>
+													<figure class="result-list__photo">
+														<img alt="<%= result[i].name %>" src="<% if(!result[i].profilePicture) { %>/views/img/medico.jpg<% } else { %>/profilePicture/<%= result[i]._id %><% } %>">
+													</figure>
+													<div class="result-list__dados">
+														<h3 class="name"><%= result[i].name %></h3>
+														<% if(result[i].speciality.length) { %>
+															<% for(let k = 0; k < result[i].speciality.length; k++) { %>
+																<p class="speciality"><%= result[i].speciality[k].title %></p>
+															<% } %>
+														<% } %>
+														<% if(search.city) { %>
+															<% for(let k = 0; k < result[i].location.length; k++) { %>
+																<% if(result[i].location[k].city == search.city) { %>
+																	<p class="address"><%= result[i].location[k].city %>/<%= result[i].location[k].state %></p>
+																<% } %>
+															<% } %>
+														<% } else { %>
+															<p class="address"><%= result[i].location[0].city %>/<%= result[i].location[0].state %></p>
+														<% } %>
+														<% if(result[i].accounting && result[i].accounting.attendanceValue) { %><span class="price">R$ <%= (result[i].accounting.attendanceValue / 100).toFixed(2) %></span><% } %>
+													</div>
+												</div>
+											</a>
+										</div>
+									<% } %>
+								<% } %>
+							<% } %>
+						<% } %>
+						<% for(let i = 0; i < result.length; i++) { %>
+							<% if(!result[i].purchasesHistoric.product.length) { %>
+								<div class="result-list__item col-md-6">
+									<a href="/medico-detalhe/<%= result[i]._id %>">
+										<div class="inner">
+											<figure class="result-list__photo">
+												<img alt="<%= result[i].name %>" src="<% if(!result[i].profilePicture) { %>/views/img/medico.jpg<% } else { %>/profilePicture/<%= result[i]._id %><% } %>">
+											</figure>
+											<div class="result-list__dados">
+												<h3 class="name"><%= result[i].name %></h3>
+												<% if(result[i].speciality.length) { %>
+													<% for(let j = 0; j < result[i].speciality.length; j++) { %>
+														<p class="speciality"><%= result[i].speciality[j].title %></p>
+													<% } %>
+												<% } %>
+												<% if(search.city) { %>
+													<% for(let j = 0; j < result[i].location.length; j++) { %>
+														<% if(result[i].location[j].city == search.city) { %>
+															<p class="address"><%= result[i].location[j].city %>/<%= result[i].location[j].state %></p>
+														<% } %>
+													<% } %>
+												<% } else { %>
+													<p class="address"><%= result[i].location[0].city %>/<%= result[i].location[0].state %></p>
+												<% } %>
+												<% if(result[i].accounting && result[i].accounting.attendanceValue) { %><span class="price">R$ <%= (result[i].accounting.attendanceValue / 100).toFixed(2) %></span><% } %>
+											</div>
+										</div>
+									</a>
+								</div>
+							<% } else { %>
+								<% for(let j = 0; j < result[i].purchasesHistoric.product.length; j++) { %>
+									<% if(result[i].purchasesHistoric.product[j].status !== 'concluído') { %>
+										<div class="result-list__item col-md-6">
+											<a href="/medico-detalhe/<%= result[i]._id %>">
+												<div class="inner">
+													<figure class="result-list__photo">
+														<img alt="<%= result[i].name %>" src="<% if(!result[i].profilePicture) { %>/views/img/medico.jpg<% } else { %>/profilePicture/<%= result[i]._id %><% } %>">
+													</figure>
+													<div class="result-list__dados">
+														<h3 class="name"><%= result[i].name %></h3>
+														<% if(result[i].speciality.length) { %>
+															<% for(let k = 0; j < result[i].speciality.length; j++) { %>
+																<p class="speciality"><%= result[i].speciality[k].title %></p>
+															<% } %>
+														<% } %>
+														<% if(search.city) { %>
+															<% for(let k = 0; k < result[i].location.length; k++) { %>
+																<% if(result[i].location[k].city == search.city) { %>
+																	<p class="address"><%= result[i].location[k].city %>/<%= result[i].location[k].state %></p>
+																<% } %>
+															<% } %>
+														<% } else { %>
+															<p class="address"><%= result[i].location[0].city %>/<%= result[i].location[0].state %></p>
+														<% } %>
+														<% if(result[i].accounting && result[i].accounting.attendanceValue) { %><span class="price">R$ <%= (result[i].accounting.attendanceValue / 100).toFixed(2) %></span><% } %>
+													</div>
+												</div>
+											</a>
+										</div>
+									<% } %>
+								<% } %>
+							<% } %>
+						<% } %>
+					</div>
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%- include includes/footer.ejs %>

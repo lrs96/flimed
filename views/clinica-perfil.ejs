@@ -1,0 +1,197 @@
+<%- include includes/header-clinica.ejs %>
+
+<section class="box__panel">
+	<div class="container">
+		<div class="row mosaic">
+			<div class="col-md-4">
+				<div class="mosaic-item tam">
+					<h3>Foto do perfil</h3>
+
+					<div class="picture-profile">
+						<div class="picture-profile__content">
+							<figure class="picture-profile__fig">
+								<img alt="Dr. Guilherme Marques" src="/views/img/medico.jpg">
+								<div class="image-upload">
+									<label for="file_profile">
+										<img src="/views/img/cloud.png" alt="Icon Cloud" />
+									</label>
+
+									<input id="file_profile" type="file"/>
+								</div>
+							</figure>
+
+							<p><strong>Tamanho: </strong>1</p>
+							<p><strong>Dimensão: </strong>100X100</p>
+							<p><strong>Formatos: </strong>JPG, PNG</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="mosaic-item">
+					<h3>Mudar senha</h3>
+					<form action="" class="form">
+						<div class="row">
+							<div class="col-md-4">
+								<input type="password" name="" placeholder="Senha Antiga">
+							</div>
+							<div class="col-md-4">
+								<input type="password" name="" placeholder="Nova senha">
+							</div>
+							<div class="col-md-4">
+								<input type="password" name="" placeholder="Repita a nova senha">
+							</div>
+							<div class="col-md-12">
+								<input type="submit" class="btn btn-gradient" value="Mude a senha">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="mosaic-item">
+					<h3>Informação básica</h3>
+
+					<form action="" class="form">
+						<div class="row">
+							<div class="col-md-6">
+								<input type="text" name="" placeholder="Nome da Clínica">
+							</div>
+							<div class="col-md-6">
+								<input type="text" name="" placeholder="Número de registro">
+							</div>
+							<div class="col-md-12">
+								<input type="text" name="" placeholder="Endereço">
+							</div>
+							<div class="col-md-6">
+								<input type="text" name="" placeholder="Complemento">
+							</div>
+							<div class="col-md-6">
+								<input type="text" name="" placeholder="CNPJ">
+							</div>
+							<div class="col-md-6">
+								<input type="tel" name="" placeholder="Celu">
+							</div>
+							<div class="col-md-6">
+								<input type="tel" name="" placeholder="Telefone comercial">
+							</div>
+							<div class="col-md-6">
+								<input type="email" name="" placeholder="E-mail">
+							</div>
+							<div class="col-md-6">
+								<input type="text" name="" placeholder="CEP">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="mosaic-item">
+					<h3>Adicionar usuário</h3>
+					<form action="" class="form">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="select">
+									<select name="" id="">
+										<option value="">Tipo de usuário</option>
+										<option value="">Tipo 1</option>
+										<option value="">Tipo 2</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<input type="email" name="" placeholder="E-mail">
+							</div>
+							<div class="col-md-4">
+								<input type="text" name="" placeholder="Nome">
+							</div>
+							<div class="col-md-4">
+								<div class="select">
+									<select name="" id="">
+										<option value="">Gênero</option>
+										<option value="">Masculino</option>
+										<option value="">Femenino</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<input type="password" name="" placeholder="Senha">
+							</div>
+							<div class="col-md-4">
+								<input type="password" name="" placeholder="Repita a senha">
+							</div>
+							<div class="col-md-4">
+								<input type="submit" class="btn btn-gradient" value="Adicionar usuário">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="mosaic-item">
+					<form action="" class="form">
+						<div class="row">
+							<div class="col-md-9">
+								<h3>Especialidade</h3>
+							</div>
+							<div class="col-md-3">
+								<div class="select">
+									<select name="" id="">
+										<option value="">Especialidade 1</option>
+										<option value="">Especialidade 2</option>
+										<option value="">Especialidade 3</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<input type="text" name="" placeholder="Escreva sobre sua especialidade">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="mosaic-item">
+					<form action="" class="form">
+						<h3>Exames</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<input type="text" name="" placeholder="Nome do exame">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="mosaic-item">
+					<h3>Sobre o Centro Médico</h3>
+					<form action="" class="form">
+						<div class="row">
+							<div class="col-md-12">
+								<textarea name="" id="" cols="30" rows="10" placeholder="Escreva sobre o Centro Médico"></textarea>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="mosaic-item">
+					<h3>Tipos de serviço</h3>
+					<form action="" class="form">
+						<div class="row">
+							<div class="col-md-12">
+								<textarea name="" id="" cols="30" rows="10" placeholder="Escreva os tipos de consultas, como exames, cirurgias e consultas"></textarea>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="col-md-5 submit-box">
+				<input type="submit" class="btn btn-gradient" value="Salvar edições">
+			</div>
+		</div>
+	</div>	
+</section>
+
+<%- include includes/footer.ejs %>

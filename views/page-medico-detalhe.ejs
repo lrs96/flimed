@@ -1,0 +1,492 @@
+<%- include includes/header.ejs %>
+
+<% if(events.length) { %>
+<style>
+	#calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+	</style>
+<script>
+	$(document).ready(function () {
+			$('#calendar').fullCalendar({
+				header: {
+					left: 'prev,next today',
+					center: 'title',
+					right: 'agendaWeek'
+				},
+				defaultDate: Date(),
+				navLinks: true, // can click day/week names to navigate views
+				editable: false,
+				eventLimit: true, // allow "more" link when too many events
+				eventClick: function(event) {
+					document.getElementById('id-event').value = event.id
+                    $('#modal-event #modal-eventLabel').text('Agendar consulta (' + event.type + ')') 
+					$('#modal-event #start').text(event.start.format('dddd DD/MM/YYYY HH:mm'))    
+					$('#modal-event #end').text(event.end.format('dddd DD/MM/YYYY HH:mm'))    
+                    if(event.type === 'presencial') {
+                        $('#modal-event #address').text(event.locationInfo.address)  
+                        $('#modal-event #city').text(event.locationInfo.city) 
+                        $('#modal-event #state').text(event.locationInfo.state) 
+                        $('#modal-event #number').text(event.locationInfo.number) 
+                        $('#modal-event #zipCode').text(event.locationInfo.zipCode) 
+                        $('.addressInfo').show()
+                    } else {
+                        $('.addressInfo').hide()
+                    }     
+					$('#modal-event').modal('show')
+					return false
+				},
+				events: [
+					<% for(let i = 0; i < events.length; i++) { %>
+						<% if(events[i].title === 'Horário Livre') { %>
+							{
+								id: '<%= events[i]._id %>',
+								title: '<%= events[i].title %>',
+								color: '<%= events[i].color %>',
+								start: '<%= events[i].start %>',
+								end: '<%= events[i].end %>',
+                                type: '<%= events[i].type %>',
+                                <% if(events[i].type === 'presencial') { %>
+                                    locationInfo: {
+                                        city: '<%= events[i].locationInfo.city %>',
+                                        state: '<%= events[i].locationInfo.state %>',
+                                        address: '<%= events[i].locationInfo.address %>',
+                                        number: '<%= events[i].locationInfo.number %>',
+                                        zipCode: '<%= events[i].locationInfo.zipCode %>'
+                                    }
+                                <% } %>
+							},
+						<% } %>
+					<% } %>
+				]
+			})
+		})
+	</script>
+
+<div class="modal fade" id="modal-event" tabindex="-1" role="dialog" aria-labelledby="modal-eventLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modal-eventLabel"></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="/marcar-consulta" method="GET">
+				<input type="hidden" name="eventId" id="id-event" value="" />
+				<input type="hidden" name="doctorId" value="<%= doctor._id %>" />
+				<div class="modal-body">
+					<dl class="dl-horizontal">
+						<dt>Início</dt>
+						<dd id="start"></dd>
+					</dl>
+					<dl class="dl-horizontal">
+						<dt>Fim</dt>
+						<dd id="end"></dd>
+					</dl>
+					<hr class="addressInfo">
+					<div class="row addressInfo">
+						<div class="col-12">
+							<dl class="dl-horizontal">
+								<dt>Endereço</dt>
+								<dd id="address"></dd>
+							</dl>
+						</div>
+						<div class="col-3">
+							<dl class="dl-horizontal">
+								<dt>Cidade</dt>
+								<dd id="city"></dd>
+							</dl>
+						</div>
+						<div class="col-3">
+							<dl class="dl-horizontal">
+								<dt>Estado</dt>
+								<dd id="state"></dd>
+							</dl>
+						</div>
+						<div class="col-3">
+							<dl class="dl-horizontal">
+								<dt>Número</dt>
+								<dd id="number"></dd>
+							</dl>
+						</div>
+						<div class="col-3">
+							<dl class="dl-horizontal">
+								<dt>CEP</dt>
+								<dd id="zipCode"></dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Agendar</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<% } %>
+
+<div class="search-inner">
+	<div class="container">
+		<div class="form-search form">
+			<form action="/pesquisa" method="POST">
+				<div class="row">
+					<div class="col-md-5">
+						<div class="select">
+							<i class="sprite-form__specialty"></i>
+							<select name="speciality" class="select-icon">
+								<option selected disabled>Especialidade</option>
+								<option>Gastrologista</option>
+								<option>Cardiologista</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<input type="text" name="city" placeholder="Cidade" class="sprite-form__location">
+					</div>
+					<div class="col-md-2">
+						<input type="text" name="state" placeholder="Estado" class="sprite-form__location">
+					</div>
+				</div>
+
+				<div class="btn-searchInner">
+					<input type="submit" value="">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="btn-goSearch">
+	<div class="container">
+		<a href="/pesquisa-avancada">IR PARA <strong>PESQUISA AVANÇADA</strong></a>
+	</div>
+</div>
+
+<div class="detail__item doctor">
+	<div class="container">
+		<div class="detail__header">
+			<figure class="detail__photo">
+				<img alt="<%= doctor.name %>" src="<% if(!doctor.profilePicture) { %>/views/img/medico.jpg<% } else { %>/profilePicture/<%= doctor._id %><% } %>">
+			</figure>
+			<div class="detail__content">
+				<h3><strong>
+						<%= doctor.name %></strong></h3>
+				<p>Competence in:
+					<% if(doctor.speciality.length) { %>
+					<% for(let i = 0; i < doctor.speciality.length; i++) { %>
+					<%= doctor.speciality[i].title %>
+					<% } %>
+					<% } else { %>
+						Sem especialidades
+					<% } %>
+				</p>
+				<div class="local">
+					<strong>
+						<%= doctor.location[0].city %>/<%= doctor.location[0].state %></strong>
+					<a href="" class="btn btn-gradient">VER ACORDO MÉDICO</a>
+				</div>
+				<div class="infos">
+					
+					<span><strong><%= questions.length %></strong> respondeu às perguntas</span>
+					<span><strong><%= opinions.length %></strong> patient opinions</span>
+				</div>
+			</div>
+			<% if(doctor.accounting && doctor.accounting.attendanceValue) { %>
+				<div class="pricebox">
+					<p>Preço para consulta <strong>Privado</strong></p>
+					<div class="price">R$ <%= (doctor.accounting.attendanceValue / 100).toFixed(2) %></div>
+					<br>
+					<a href="" class="btn btn-clean">Review</a>
+				</div>
+			<% } %>
+		</div>
+		<div class="detail__wrapper">
+			<h3>Escolha o <strong>dia</strong> e a <strong>hora</strong> para sua consulta</h3>
+			<div class="day-choose">
+				<% if(!events.length) { %>
+				<p>O médico ainda não adicionou horários</p>
+				<% } else { %>
+				<div id='calendar'></div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="detail__item location">
+	<div class="container">
+		<div class="detail__title">
+			<h3>Localização</h3>
+		</div>
+		<div class="map-box">
+			<div class="map" id="map"></div>
+			<form method="get" action="javascript:;" id="form_route" class="form-mapa">
+				<input type="text" name="q" id="q" placeholder="Informe sua localização">
+				<input type="submit" value="Definir rota" class="btn-map" />
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="detail__item reviews">
+	<div class="container">
+		<div class="detail__title">
+			<h3>Opinião do paciente</h3>
+		</div>
+		<div class="detail__wrapper">
+			<% if(opinions.length) { %>
+				<% for(let i = 0; i < opinions.length; i++) { %>
+					<article class="type reviews-item">
+						<h3><%= opinions[i].patientName %></h3>
+						<p><%= opinions[i].opinion %></p>
+					</article>
+				<% } %>
+			<% } else { %>
+				<p>Ainda não há opiniões</p>
+			<% } %>
+			<div class="txt-center">
+				<a href="" class="target-btn btn-gradient">Ver Mais Avaliações</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="detail__item answers">
+	<div class="container">
+		<div class="detail__title">
+			<h3><strong>Respostas</strong></h3>
+		</div>
+		<div class="detail__wrapper">
+			<% if(questions.length) { %>
+			<div class="qa-combo">
+				<% for(let i = 0; i < questions.length; i++) { %>
+				<div class="question">
+					<p>
+						<%= questions[i].question %>
+					</p>
+				</div>
+				<% if(questions[i].answer) { %>
+				<div class="answer">
+					<div class="inner">
+						<div class="top">
+							<figure class="doctor-photo">
+								<img alt="<%= doctor.name %>" src="<% if(!doctor.profilePicture) { %>/views/img/medico.jpg<% } else { %>/profilePicture/<%= doctor._id %><% } %>">
+							</figure>
+							<div class="doctor-dados">
+								<h3 class="name">
+									<%= doctor.name %>
+								</h3>
+								<p class="speciality">
+									<% if(doctor.speciality) { %>
+									<%= doctor.speciality %>
+									<% } else { %>Sem especialidade
+									<% } %>
+								</p>
+							</div>
+						</div>
+						<div class="bottom">
+							<p class="text">
+								<%= questions[i].answer %>
+							</p>
+						</div>
+					</div>
+				</div>
+				<% } %>
+				<% } %>
+			</div>
+			<% } else { %>
+			<p>Ainda não fizeram nenhuma pergunta</p>
+			<% } %>
+			<div class="txt-center">
+				<% if(questions) { %><a href="" class="target-btn btn-gradient">Ver mais respostas</a>
+				<% } %>
+				<a href="#modal-question" data-fancybox="edit-pacient" class="target-btn btn-gradient">Enviar pergunta</a>
+
+				<div class="modal edit-pacient" id="modal-question">
+					<div class="modal-container">
+						<form id="form-question">
+							<input hidden name="doctorId" value="<%= doctor._id %>">
+							<div class="row">
+								<div class="col-md-12">
+									<textarea name="question" placeholder="Digite a pergunta"></textarea>
+								</div>
+								<div class="col-md-12">
+									<button type="submit" class="btn btn-gradient">ENVIAR</a>
+								</div>
+							</div>
+						</form>
+						<script>
+							$(document).ready(function () {
+								$('#form-question').on('submit', function (e) {
+									e.preventDefault()
+
+									$.ajax({
+										type: 'POST',
+										url: '/pergunta',
+										datatype: 'html',
+										contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+										data: $('#form-question').serialize(),
+										success: function (result) {
+											alertify.notify(result, 'success', 5)
+											setTimeout(function () {
+												window.location.reload()
+											}, 500)
+										},
+										error: function (xhr, status, error) {
+											alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+											if (xhr.responseText === JSON.stringify('Você deve estar logado para fazer uma pergunta')) {
+												setTimeout(function () {
+													window.location.href = '/login'
+												}, 1000)
+											}
+										},
+									})
+								})
+							})
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="detail__item gallery">
+	<div class="container">
+		<div class="detail__title">
+			<h3>Galeria de <strong>Fotos</strong> e <strong>Videos</strong></h3>
+		</div>
+		<div class="detail__wrapper">
+			<div class="gallery-photos">
+				<h4><strong>FOTOS</strong></h4>
+				<ul class="gallery-list row">
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="/views/img/medico.jpg" class="gallery-photos__pht" rel="gallery-photos"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="/views/img/medico.jpg" class="gallery-photos__pht" rel="gallery-photos"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="/views/img/medico.jpg" class="gallery-photos__pht" rel="gallery-photos"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="/views/img/medico.jpg" class="gallery-photos__pht" rel="gallery-photos"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="/views/img/medico.jpg" class="gallery-photos__pht" rel="gallery-photos"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="/views/img/medico.jpg" class="gallery-photos__pht" rel="gallery-photos"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+				</ul>
+			</div>
+			<div class="gallery-photos">
+				<h4><strong>VIDEOS</strong></h4>
+				<ul class="gallery-list row">
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="https://www.youtube.com/watch?v=SEbxwmjScr8" class="gallery-photos__vid" rel="gallery-vid"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="https://www.youtube.com/watch?v=SEbxwmjScr8" class="gallery-photos__vid" rel="gallery-vid"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="https://www.youtube.com/watch?v=SEbxwmjScr8" class="gallery-photos__vid" rel="gallery-vid"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="https://www.youtube.com/watch?v=SEbxwmjScr8" class="gallery-photos__vid" rel="gallery-vid"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="https://www.youtube.com/watch?v=SEbxwmjScr8" class="gallery-photos__vid" rel="gallery-vid"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+					<li class="gallery-list__item col-md-2">
+						<figure style="background-image: url(/views/img/medico.jpg);">
+							<a href="https://www.youtube.com/watch?v=SEbxwmjScr8" class="gallery-photos__vid" rel="gallery-vid"><img src="/views/img/medico.jpg"
+								 alt="Nome do Médico"></a>
+						</figure>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="detail__item experience">
+	<div class="container">
+		<div class="detail__title">
+			<h3>Experiência</h3>
+		</div>
+		<div class="detail__wrapper">
+			<article class="type experience-item">
+				<h3><strong>BIOGRAFIA</strong></h3>
+				<p><%= doctor.biography %></p>
+			</article>
+			<div class="experience-item">
+				<h3>Prêmios</h3>
+				<div class="accordion" id="accordion">
+					<% for(let i = 0; i < doctor.awards.length; i++) { %>
+						<div class="accordion--item">
+							<div class="accordion-toggle"><%= doctor.awards[i].title %></div>
+							<div class="accordion-content" style="display: block;">
+								<div class="accordion-content--item">
+									<p><%= doctor.awards[i].description %></p>
+								</div>
+							</div>
+						</div>
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</section>
+
+<%- include includes/footer.ejs %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+ crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+ crossorigin="anonymous"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMnYcBd8wfwxzJX9csVV56GdWqCJU66tU&callback=initMap"></script>
+<script src="/views/js/map.js" id="latlng" data-lat="-3.7631064" data-long="-38.6524462"></script>
+
+</body>
+
+</html>

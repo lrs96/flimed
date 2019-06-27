@@ -1,0 +1,40 @@
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MENU</li>
+            <li class="<% if(page === '/admin-painel') { %>active<% } %>">
+                <a href="/admin-painel">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="<% if(page === '/admin-financeiro') { %>active<% } %>">
+                <a href="/admin-financeiro">
+                    <i class="fa fa-pie-chart"></i> <span>Financeiro</span>
+                </a>
+            </li>
+            <li class="<% if(page === '/admin-pacientes' || page === '/admin-medicos' || page === '/admin-clinicas') { %>active treeview menu-open<% } else { %>treeview<% } %>">
+                <a href="#">
+                    <i class="fa fa-user"></i> <span>Usuários</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li <% if(page === '/admin-pacientes') { %>class="active"<% } %>><a href="/admin-pacientes"><i class="fa fa-circle-o"></i> Pacientes</a></li>
+                    <li <% if(page === '/admin-medicos') { %>class="active"<% } %>><a href="/admin-medicos"><i class="fa fa-circle-o"></i> Médicos</a></li>
+                    <li <% if(page === '/admin-clinicas') { %>class="active"<% } %>><a href="/admin-clinicas"><i class="fa fa-circle-o"></i> Clínicas</a></li>
+                </ul>
+            </li>
+            <!--<li class="<% if(page === '') { %>active<% } %>">
+                <a href="#">
+                    <i class="fa fa-medkit"></i> <span>Medicamentos</span>
+                </a>
+            </li>-->
+            <li class="<% if(page === '/admin-logs') { %>active<% } %>">
+                <a href="/admin-logs">
+                    <i class="fa fa-clipboard"></i> <span>Logs</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+</aside>

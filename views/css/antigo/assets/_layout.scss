@@ -1,0 +1,464 @@
+.bg-white {
+	padding: 15px;
+	background-color: $white;
+	border-radius: 4px;
+	@extend %box-shadow;
+}
+
+.txt-center {
+	text-align: center;
+}
+
+/* PAGE */
+.detail__title {
+	padding: 15px;
+	background-color: $white;
+	border-radius: 4px 4px 0 0;
+	
+	h3, .h3 {
+		font-weight: 300;
+		margin: 0;
+		
+		strong {
+			font-weight: bold;
+		}
+	}
+}
+
+/* FORMS */
+.form {
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"],
+	input[type="date"],
+	input[type="password"],
+	textarea {
+		margin-bottom: 15px;
+		width: 100%;
+		padding: 15px;
+		background-color: $white;
+		border: 1px solid $border;
+		border-radius: 4px;
+		font-size: 18px;
+	}
+	
+	textarea {
+		min-height: 130px;
+		height: 130px;
+	}
+
+	input[type="date"] {
+		&:before {
+			color: $content;
+			content: attr(placeholder) !important;
+			background-color: $white;
+			position: absolute;
+			width: 80%;
+		}
+
+		&:focus:before {
+			content: '' !important;
+		}
+	}
+	
+	.btn-submitGrad {
+		border: 0;
+		border-radius: 4px;
+		width: 100%;
+		color: $white;
+		font-size: 25px;
+		padding: 15px;
+		text-transform: uppercase;
+		cursor: pointer;
+		display: inline-block;
+		@include gradient($blue, $green, horizontal);
+		
+		&:hover {
+			@include gradient($green, $blue, horizontal);
+		}
+	}
+
+	.select {
+		position: relative;
+		width: 100%;
+		display: inline-block;
+		vertical-align: middle;
+		border: 1px solid $border;
+		border-radius: 4px;
+		background-color: #FFF;
+		margin-bottom: 20px;
+
+		&:before {
+			content: '';
+			right: 6px;
+			top: 4px;
+			width: 20px;
+			height: 26px;
+			position: absolute;
+			pointer-events: none;
+			display: block;
+		}
+
+		&:after {
+			content: '';
+			background-image: url(#{$url}/img/select_arrow.png);
+			background-repeat: no-repeat;
+			width: 18px;
+			height: 9px;
+			right: 10px;
+			top: 20px;
+			position: absolute;
+			pointer-events: none;
+		}
+
+		select {
+			width: 100%;
+			padding: 15px 30px 15px 15px;
+			font-size: 18px;
+			margin: 0;
+			border-radius: 0;
+			color: $content;
+			outline: none;
+			display: inline-block;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			cursor: pointer;
+			border: 0;
+			background: none;
+			
+			&.select-icon {
+				padding: 15px 30px 15px 45px;
+			}
+		}		
+	}
+	
+	.label {
+		display: block;
+		margin-top: 15px;
+		margin-bottom: 10px;
+		text-transform: uppercase;
+		font-size: 20px;
+		color: $black;
+	}
+
+	.btn {
+		text-transform: uppercase;
+		text-align: center;
+		padding: 15px;
+		font-size: 18px;
+		cursor: pointer;
+	}
+
+	.btn-gradient {
+		border: 0;
+		width: 100%;
+	}
+
+	.btn-clean {
+		width: 100%;
+		color: $content;
+	}
+
+	.option-radio{
+		display: block;
+		position: relative;
+		padding-left: 43px;
+		margin-top: 8px;
+		margin-bottom: 20px;
+		cursor: pointer;
+		font-size: 18px;
+		text-transform: uppercase;
+		font-weight: normal;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+
+		input {
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+		}
+
+		&:hover {
+			input ~ .checkmark {
+				background-color: #ccc;
+			}
+		}
+
+		input:checked ~ .checkmark {
+			background-color: #2196F3;
+		}
+
+		input:checked ~ .checkmark:after {
+			display: block;
+		}
+
+		.checkmark:after {
+			top: 6px;
+			left: 6px;
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			@include gradient($blue, $green, horizontal);
+		}
+	}
+
+	.checkmark {
+		position: absolute;
+		top: -6px;
+		left: 0;
+		height: 30px;
+		width: 30px;
+		@include gradient($blue, $green, horizontal);
+		border-radius: 50%;
+
+		&:after {
+			content: "";
+			position: absolute;
+			display: none;
+		}
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: 26px;
+			height: 26px;
+			border-radius: 50%;
+			background: white;
+		}
+	}
+	
+	&.bg-inputs {
+		.select,
+		input[type="text"],
+		input[type="email"],
+		input[type="tel"],
+		input[type="date"],
+		input[type="password"],
+		textarea {
+			border: 0;
+			background-color: $bg-input;	
+		}
+	}
+}
+
+.form-filter {
+	&.fin-r {
+		.select {
+			left: inherit;
+			right: 0;
+			top: 15px;
+		}
+	}
+	
+	.select {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: inline-block;
+		vertical-align: middle;
+		border: 0;
+		border-radius: 4px;
+		background-color: #FFF;
+		
+		select {
+			width: 100%;
+			padding: 10px 10px 10px 35px;
+			font-size: 14px;
+			margin: 0;
+			border-radius: 0;
+			color: $content;
+			outline: none;
+			display: inline-block;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			cursor: pointer;
+			border: 0;
+			background: none;
+		}		
+	}
+}
+
+/* BOTTON */
+.btn {
+	display: inline-block;
+	padding: 10px 13px;
+	border-radius: 4px;
+
+	@extend %box-shadow;
+}
+
+.btn-clean {
+	background-color: $white;
+	color: $green;
+
+	&:hover {
+		background-color: $green;
+		color: $white;
+	}
+}
+
+.btn-gradient {
+	@include gradient($blue, $green, horizontal);
+	color: $white;
+
+	&:hover {
+		@include gradient($green, $blue, horizontal);
+	}
+}
+
+.btn-blue {
+	color: $white;
+	background-color: $btn-blue;
+
+	&:hover {
+		background-color: $blue;
+	}
+}
+
+.btn-red {
+	color: $white;
+	@include gradient($red-t, $red-b, horizontal);
+
+	&:hover {
+		@include gradient($red-b, $red-t, horizontal);
+	}
+}
+
+.btn-border {
+	color: $content;
+	border: 3px solid $content;
+	font-weight: bold;
+	font-size: 20px;
+
+	&:hover {}
+}
+
+.target-btn {
+	text-transform: uppercase;
+	border-radius: 30px;
+	padding: 15px 25px;
+}
+
+.btn-forgotPass {
+	text-transform: uppercase;
+	color: $content-gray;
+	font-size: 14px;
+	display: inline-block;
+	margin-top: 30px;
+}
+
+.btn-msgBox {
+	font-size: 12px;
+	text-transform: uppercase;
+	background-color: $white;
+	color: $content;
+
+	&:hover {
+		background-color: $green;
+		color: $white;
+	}
+}
+
+/* ASIDE */
+.aside-item {
+	margin-bottom: 30px;
+}
+
+/* SPRITE PAINEL */
+[class^="sprite-painel__"], [class*="sprite-painel__"] {
+	background-image: url(#{$url}img/sprite-painel.png);
+	//width: auto;
+	width: 40px;
+	height: 33px;
+	display: block;
+	background-size: 63px auto;
+	background-position-x: 6px;
+	background-repeat: no-repeat;
+	margin: 0 auto;
+}
+
+$icon: ('home', 'perfil', 'agendamento', 'faq', 'on');
+$count: 0;
+
+@each $item in $icon {
+	.sprite-painel__#{$item} {
+		background-position-y: -#{$count}px;
+	}
+	$count: $count + 49;
+}
+
+/* SPRITE FORM */
+[class^="sprite-form__"], [class*="sprite-form__"] {
+	background-image: url(#{$url}img/sprite-form.png);
+	background-repeat: no-repeat;
+}
+
+.sprite-form__specialty {
+	display: inline-block;
+	width: 21px;
+	height: 20px;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
+
+.sprite-form__location {
+	padding: 15px 15px 15px 45px !important;
+	background-position: 15px -46px;
+}
+
+.sprite-form__specialist {
+	padding: 15px 15px 15px 45px !important;
+	background-position: 15px -116px;
+}
+
+.sprite-form__date {
+	padding: 15px 15px 15px 45px !important;
+	background-position: 15px -183px;
+}
+
+.sprite-form__filter {
+	background-position: 0 -270px;
+	width: 22px;
+	height: 17px;
+	position: absolute;
+	top: 10px;
+	left: 0;
+}
+
+/* SPRITE ATENDIMENTO */
+[class^="sprite-check__"], [class*="sprite-check__"] {
+	background-image: url(#{$url}img/sprite-check.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 35px;
+	margin-right: 15px;
+}
+
+.sprite-check__list {
+	height: 20px;
+	background-position: 0 0;
+}
+.sprite-check__note {
+	height: 40px;
+	background-position: 0 -68px;
+}
+.sprite-check__evo {
+	height: 38px;
+	background-position: 0 -158px;
+}
+.sprite-check__budget {
+	height: 34px;
+	background-position: 0 -246px;
+}
+.sprite-check__clock {
+	height: 40px;
+	background-position: 0 -330px;
+	vertical-align: middle;
+}

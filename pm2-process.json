@@ -1,0 +1,23 @@
+{
+    "script": "bin/www",
+    "watch": [
+        "src",
+        "views"
+    ],
+    "ignore_watch": [
+        "log",
+        "node_modules",
+        "public",
+        "public/upload",
+        "public/upload/employees",
+        "public/upload/imagesOrAttachments",
+        "public/upload/profile",
+        "public/upload/thumb",
+        "public/upload/banner",
+        "public/upload/resume"
+    ],
+    "watch_options": {
+        "followSymlinks": false
+    },
+    "name": "ConexaoSaude"
+}

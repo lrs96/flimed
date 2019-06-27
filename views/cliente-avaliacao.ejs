@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset='utf-8' />
+        <!-- CSS Alertify -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css" />
+        <!-- Default theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css" />
+        <!-- Semantic UI theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css" />
+        <!-- Bootstrap theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet" />
+    </head>
+    <body>
+        <form action="/cliente-avaliacao" method="POST">
+            <input type="hidden" name="eventId" value="<%= eventId %>">
+            Opinião:<br/>
+            <input type="radio" name="vote" value="positivo">Atendimento positivo<br>
+            <input type="radio" name="vote" value="negativo">Atendimento negativo<br>
+            <br/>Comentário:<br/>
+            <input type="text" name="opinion" placeholder="Digite seus comentários">
+            <br/><br/>
+            <button type="submit">Enviar</button>
+        </form>
+        
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <% if(message) { %>
+    <script>
+        const msg = JSON.parse('<%- message %>')
+        if (msg !== 'Sucesso!')
+            alertify.notify(msg, 'error', 5)
+        else
+            alertify.notify(msg, 'success', 5)
+    </script>
+    <% } %>
+    </body>
+</html>

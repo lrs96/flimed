@@ -1,0 +1,185 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Preço Destaque do Perfil</h3>
+            </div>
+            <form id="form-alterar-destaque">
+                <input type="hidden" name="type" value="profile">
+                <div class="box-body">
+                    <% if(system && system.priceAdvertisementProfile) { %><p style="color: red">Preço atual R$<%= (system.priceAdvertisementProfile / 100).toFixed(2).replace('.', ',') %>/dia</p><% } %>
+                    <div class="form-group">
+                        <label>Valor</label>
+                        <input type="number" id="profile" min="10" name="value" step=".01" class="form-control" placeholder="R$">
+                    </div>
+                    <p><b id="finalValue" style="display: none">Valor: R$</b></p>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Alterar preço</button>
+                </div>
+            </form>
+            <script>
+                $("#profile").keyup(function() {
+                    $("#finalValue").hide()
+                    const value = Number(this.value)
+                    if(value.toString() === 'NaN') return alert('Valor inválido')
+                    if(value < 10) return
+
+                    $("#finalValue").show()
+                    $("#finalValue").html('Valor: R$' + value.toFixed(2).replace('.', ','))
+                })
+
+                $(document).ready(function() {
+                    $('#form-alterar-destaque').on('submit', function(e) {
+                        e.preventDefault()
+                        
+                        $.ajax({
+                            type: 'POST',
+                            url: '/admin-painel',
+                            datatype: 'html',
+                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                            data: $('#form-alterar-destaque').serialize(),
+                            success: function(result) {          
+                                alertify.notify(result, 'success', 5)
+                                setTimeout(function() { 
+                                    window.location.reload()
+                                }, 500)
+                            },
+                            error : function(xhr, status, error) {
+                                alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+                            }
+                        })
+                    })
+                })
+            </script>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Preço Banner</h3>
+            </div>
+            <form id="form-alterar-banner">
+                <input type="hidden" name="type" value="banner">
+                <div class="box-body">
+                    <% if(system && system.priceAdvertisementBanner) { %><p style="color: red">Preço atual R$<%= (system.priceAdvertisementBanner / 100).toFixed(2).replace('.', ',') %>/dia</p><% } %>
+                    <div class="form-group">
+                        <label>Valor</label>
+                        <input type="number" id="profile1" min="10" name="value" step=".01" class="form-control" placeholder="R$">
+                    </div>
+                    <p><b id="finalValue1" style="display: none">Valor: R$</b></p>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Alterar preço</button>
+                </div>
+            </form>
+            <script>
+                $("#profile1").keyup(function() {
+                    $("#finalValue1").hide()
+                    const value = Number(this.value)
+                    if(value.toString() === 'NaN') return alert('Valor inválido')
+                    if(value < 10) return
+
+                    $("#finalValue1").show()
+                    $("#finalValue1").html('Valor: R$' + value.toFixed(2).replace('.', ','))
+                })
+
+                $(document).ready(function() {
+                    $('#form-alterar-banner').on('submit', function(e) {
+                        e.preventDefault()
+                        
+                        $.ajax({
+                            type: 'POST',
+                            url: '/admin-painel',
+                            datatype: 'html',
+                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                            data: $('#form-alterar-banner').serialize(),
+                            success: function(result) {          
+                                alertify.notify(result, 'success', 5)
+                                setTimeout(function() { 
+                                    window.location.reload()
+                                }, 500)
+                            },
+                            error : function(xhr, status, error) {
+                                alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+                            }
+                        })
+                    })
+                })
+            </script>
+        </div>
+    </div>
+    <% if(aguardandoLiberacao.length) { %>
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Banners aguardando aprovação</h3>
+                </div>
+                <div class="box-body">
+                    <table id="table-info" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Relatório Paypal</th>
+                                <th>Usuário</th>
+                                <th>Subtotal</th>
+                                <th>Qnt.</th>
+                                <th>Total</th>
+                                <th>Registrado em</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < aguardandoLiberacao.length; i++) { %>
+                                <tr>
+                                    <td><%= aguardandoLiberacao[i]._id %></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#modal-paypalProduct-<%= i %>">Clique aqui</a></td>
+                                    <td><a target="_blank" href="/admin-detalhes/<%= aguardandoLiberacao[i]._idUser %>">Clique aqui</a></td>
+                                    <td>R$ <%= aguardandoLiberacao[i].amountPerProduct.toFixed(2) %></td>
+                                    <td><%= aguardandoLiberacao[i].totalDays %></td>
+                                    <td>R$ <%= aguardandoLiberacao[i].total.toFixed(2) %></td>
+                                    <td><%= aguardandoLiberacao[i].createdAtDay %> - <%= aguardandoLiberacao[i].createdAtMoment %></td>
+                                    <td>
+                                        <span class="label label-info"><a style="color:#fff" target="_blank" href="/admin-banner/<%= aguardandoLiberacao[i].banner %>">Ver banner</a></span>
+                                        <span class="label label-success"><a style="color:#fff" href="/admin-banner/<%= aguardandoLiberacao[i]._id %>/aprovar">Aprovar</a></span>
+                                        <span class="label label-danger"><a style="color:#fff" href="/admin-banner/<%= aguardandoLiberacao[i]._id %>/recusar">Recusar</a></span>
+                                    </td>
+                                </tr>
+                                <div class="modal fade" id="modal-paypalProduct-<%= i %>">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">Relatório Paypal</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <iframe src="/admin-paypalreport/<%= aguardandoLiberacao[i]._idPaypalReport %>"
+                                                width="100%" height="400px"></iframe>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Relatório Paypal</th>
+                                <th>Usuário</th>
+                                <th>Subtotal</th>
+                                <th>Qnt.</th>
+                                <th>Total</th>
+                                <th>Registrado em</th>
+                                <th>Ação</th>
+                            </tr>  
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>

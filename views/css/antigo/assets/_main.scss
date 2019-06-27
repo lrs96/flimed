@@ -1,0 +1,1959 @@
+/* GERAL */
+* { 
+	margin: 0; padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; box-sizing: border-box;
+}
+
+*:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body { 
+	font-family: 'Soin Sans Neue'; 
+	background-color: $body; 
+	font-weight: normal; 
+	font-size: 16px; 
+	color: $content;
+	letter-spacing: 0;
+	
+	&.bg-inner {
+		background-image: url(#{$url}/img/bg_body.png);
+		background-repeat: no-repeat;
+		background-position: center 150px;
+	}
+}
+
+nav ul { list-style: none; }  
+a { text-decoration: none; color: $content; cursor: pointer; @extend %transition; }
+img { max-width: 100%; height: auto; }
+.main { }  
+
+.section-main {
+	width: 100%;
+	padding-top: 150px;
+}
+
+.section-main__painel {
+	width: 100%;
+	padding-top: 30px;
+}
+
+/* BREADCRUMBS */
+.breadcrumbs {
+	margin-bottom: 30px;
+	
+	p {
+		margin-bottom: 0;
+	}
+	
+	a {
+		color: $content;
+		font-weight: 300;
+	}
+}
+
+.ad {
+	margin-bottom: 30px;	
+}
+
+.ad-box {
+	border-radius: 4px;
+	@extend %box-shadow;
+	background-color: $white;
+	padding: 15px;
+	text-align: center;
+	min-height: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.msg-box {
+	margin-bottom: 30px;	
+}
+
+.msg-box__content {
+	@include gradient($blue, $green, horizontal);
+	border-radius: 4px;
+	padding: 15px;
+	position: relative;
+}
+
+.msg-box__content-inner {
+	color: $white;
+	padding: 0 0 0 65px;
+	
+	h2 {
+	}
+	strong {
+	}
+	p {
+	}
+}
+
+.btn-close {
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	background-color: $white;
+	color: $content;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.bell-notification {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	top: 15px;left: 15px;
+	border-radius: 100%;
+	background-color: $white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@extend %box-shadow;
+}
+
+/* HEADER */
+.header {
+	width: 100%;
+	position: absolute;
+	padding: 40px 0 0;
+	margin-bottom: 70px;
+	@extend %clearfix;
+	
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+.logo {
+	float: left;
+	
+	img {
+		width: auto;
+		max-height: 70px;
+	}
+}
+.header-visitor {
+	float: right;
+	
+	.btn {
+		margin-left: 15px;
+		font-size: 18px;
+	}
+}
+
+.header-visitor__isdoctor {
+	font-size: 18px;
+}
+
+/* HEADER PAINEL */
+.header-painel {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 15px;
+	background-color: $white;
+	@extend %box-shadow;
+	z-index: 99;
+}
+
+.logo-painel {}
+
+.nav-vestical {
+	margin-top: 80px;
+	
+	.menu-item {
+		margin-bottom: 15px;
+		position: relative;
+	}
+	
+	.menu-item__target {
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 15px 10px;
+		text-align: center;
+		background-color: #dee2e6;
+
+		&:hover{
+			@extend %box-shadow;
+
+			.menu-tooltip {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.menu-tooltip {
+	display: block;
+	color: $content;
+	margin-top: 15px;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: normal;
+	border-radius: 4px;
+	@extend %transition;
+}
+
+.close {
+	display: block;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	color: $white;
+	cursor: pointer;
+	padding: 8px 10px 6px;
+	font-size: 16px;
+	font-weight: normal;
+	border-radius: 100%; 
+	@include gradient($blue, $green, horizontal);
+}
+
+/* HOME */
+.home-box__search {
+	background-image: url(#{$url}img/bg_home.jpg);
+	background-position: bottom center;
+	padding-bottom: 200px;
+	
+	h1 {
+		font-size: 55px;
+		margin-bottom: 20px;
+	}
+	
+	.subtitle {
+		font-size: 30px;
+		font-weight: 300;
+	}
+}
+
+.form-search {
+	margin-top: 30px;
+	padding: 30px 25px;
+	background-color: $white;
+	border-radius: 4px;	
+}
+
+.home-services {
+	margin: 100px 0;
+}
+
+.home-services__item {
+	height: 100%;
+	background-color: $white;
+	padding: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border-radius: 4px;
+	@extend %box-shadow;
+	
+	.h3 {
+		color: $content-title;
+		text-transform: uppercase;
+		margin: 20px 0 15px;
+		font-size: 25px;
+		display: block;
+	}
+	
+	p {
+		color: $content-gray;
+		font-size: 20px;
+		font-weight: 300;
+	}
+}
+
+.bg-home__left {
+	width: 100%;
+	height: 720px;
+	background-image: url(#{$url}img/bg-home_left.jpg);
+	background-position: bottom center;
+	.row {
+		align-items: center;
+	}
+}
+
+.bg-home__right {
+	width: 100%;
+	height: 720px;
+	background-image: url(#{$url}img/bg-home_right.jpg);
+	background-position: bottom center;
+	.row {
+		align-items: center;
+	}
+}
+
+.bg_home__nobg {
+	width: 100%;
+	height: 700px;
+	display: flex;
+	align-items: center;
+	
+	.row {
+		align-items: center;
+	}
+}
+
+.home-doctors {
+	
+	.fig-doctors {
+		position: relative;
+		bottom: -129px;
+		left: -21px;
+	}
+}
+
+.home-sections__content {
+	color: $white;
+	text-align: right;
+	
+	p {
+		font-size: 30px;
+	}
+	
+	.btn-blue {
+		text-transform: uppercase;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+}
+
+.title-repeat {
+	z-index: 2;
+	font-size: 55px;
+	position: relative;
+	
+	&:before {
+		content: attr(data-title);
+		display: block;
+		color: $footer-black;
+		position: absolute;
+		top: -30px;
+		left: 15px;
+		z-index: -1;
+		font-size: 60px;
+		font-weight: bold;
+	}
+}
+
+div.owl-feed {
+	.owl-dots {
+		right: 0;
+		left: auto;
+	}
+	
+	.owl-dot {
+		span {
+			opacity: .5;
+		}
+	}
+}
+
+.dots {
+	.owl-dots {
+		display: block !important;
+		bottom: 0;
+		left: 0;
+		position: absolute;
+	}
+
+	.owl-dot {
+		display: inline-block;
+		z-index: 99;
+		text-align: center;
+
+		&.active {
+			span {
+				background: $blue-deep;
+			}
+		}
+
+		span {
+			width: 20px;
+			height: 20px;
+			margin: 5px 7px;
+			background: $gray-span;
+			display: block;
+			cursor: pointer;
+			-webkit-backface-visibility: visible;
+			transition: opacity .2s ease;
+			border-radius: 30px;
+		}
+	}
+}
+
+.home-questions {}
+
+.qa-combo {
+	position: relative;
+}
+
+.question {
+	width: 50%;
+	@include gradient($blue, $green, horizontal);
+	border-radius: 4px;
+	padding: 15px 76px 15px 15px;
+	position: relative;
+	
+	&:after {
+		border-right: 30px solid transparent;
+		border-top: 24px solid $blue;
+		bottom: -24px;
+		left: 30px;
+		position: absolute;
+		content: '';
+		display: block;
+	}
+	
+	p {
+		color: $white;
+		font-size: 20px;
+	}
+}
+
+.answer {
+	position: relative;
+	height: 360px;
+	.inner {
+		width: 55%;
+		position: absolute;
+		top: -50px;
+		right: 20px;
+		z-index: 99;
+		padding: 15px;
+		background-color: $white;
+		border-radius: 4px;
+		@extend %box-shadow;
+		
+		&:before {
+			border-left: 35px solid transparent;
+			border-right: 0px solid transparent;
+			border-top: 30px solid $white;
+			
+			bottom: -24px;
+			right: 30px;
+			position: absolute;
+			content: '';
+			display: block;
+		}
+	}
+}
+
+.doctor-photo {
+	border-radius: 100%;
+	overflow: hidden;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	width: 100px;
+	
+	img {
+		width: 100px;
+		height: 100px;
+		border: 5px solid $blue-deep;
+		border-radius: 100%;
+	}
+}
+
+.doctor-dados {
+	padding: 15px 15px 15px 125px;	
+}
+
+.name {
+	font-size: 30px;
+	font-weight: bold;
+	color: $blue-deep;
+}
+
+.speciality {
+	color: $blue-deep;
+	font-style: italic;
+}
+
+.home-feedback {
+	width: 100%;
+	padding: 100px 0;
+	background-color: $blue;
+	
+	.fig-doctores {
+		position: relative;
+		top: 40px;
+	}
+}
+
+.home-libary {
+	margin-bottom: 200px;
+	display: flex;
+	align-items: center;
+	
+	.home-sections__content {
+		text-align: left;
+	}
+	
+	.title-repeat {
+		padding: 0 0 40px 0;
+		margin-bottom: 30px;
+		
+		&:before {
+			top: 30px;
+			left: 50px;
+		}
+	}
+}
+
+.home-feedback {
+	.home-sections__content {
+		text-align: left;
+	}
+
+	.title-repeat {
+		padding: 0 0 40px 0;
+		margin-bottom: 30px;
+
+		&:before {
+			top: 30px;
+			left: 50px;
+		}
+	}
+	
+	.top {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+	
+	.doctor-photo {
+		width: 80px;
+		top: 0;
+		
+		img {
+			width: 80px;
+			height: 80px;
+		}
+	}
+	
+	.doctor-dados {
+		padding: 10px 0 0 105px;
+	}
+	
+	.name {
+		color: $white;
+		font-size: 25px;
+		margin-bottom: 0;
+	}
+	
+	.speciality {
+		font-size: 20px;
+		font-weight: 300;
+		color: $white;
+	}
+}
+
+.home-job__medical {
+	.home-sections__content {
+		color: $content;
+	}
+}
+
+/* FOOTER */
+.footer {
+	width: 100%;
+	@include gradient($blue, $green, horizontal);
+}
+
+.footer-top {
+	padding: 50px 0;
+	
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.footer-logo {
+	img {
+	}
+}
+
+.footer-phones {
+	text-align: right;
+	
+	a {
+		color: $white;
+		font-size: 20px;
+		display: block;
+		font-weight: normal;
+		margin-bottom: 15px;
+			
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.footer-bottom {
+	width: 100%;
+	padding: 15px 0;
+	color: $white;
+	text-align: center;
+	font-size: 22px;
+	background-color: $footer-black;
+	
+	p {
+		margin-bottom: 0;
+	}
+}
+
+/* PESQUISA AVANÇADA */
+.box__advancedsearch {
+	padding-bottom: 100px;
+}
+
+/* RESULTADO DAS PESQUISAS */
+.box__resultsearch {
+	padding-bottom: 100px;
+}
+
+.box-result {
+	border-radius: 4px;
+	@extend %box-shadow;
+	background-color: $white;
+	padding: 15px;
+	
+	.inner {
+		position: relative;
+	}
+}
+
+.box-result__title {
+	text-align: center;
+	padding-top: 15px;
+	margin-bottom: 30px;
+	
+	.h3 {
+		font-size: 28px;
+		font-weight: 300;
+	}
+}
+
+.result-list {
+	
+}
+
+.result-list__item {
+	margin-bottom: 30px;
+	
+	.inner {
+		display: flex;
+		align-items: center;
+		position: relative;
+		overflow: hidden;
+		min-height: 115px;
+		padding: 30px 15px;
+		border-radius: 4px;
+		@extend %box-shadow;
+	}
+	
+	.featured {
+		position: absolute;
+		top: 19px;
+		left: -28px;
+		font-size: 13px;
+		display: inline-block;
+		padding: 5px 25px;
+		transform: rotate(316deg);
+		color: $white;
+		text-transform: uppercase;
+		z-index: 999;
+		@include gradient($blue, $green, horizontal);
+	}
+}
+
+.result-list__photo {
+	position: absolute;
+	top: 20px;
+	left: 15px;
+	width: 90px;
+	height: 90px;
+	border-radius: 100%;
+	padding: 5px;
+	@include gradient($blue, $green, horizontal);
+	
+	img {
+		border-radius: 100%;
+	}
+}
+
+.result-list__dados {
+	padding: 0 0 0 105px;
+	
+	.name {
+		font-size: 20px;
+		font-weight: bold;
+		margin-bottom: 3px;
+	}
+	.speciality {
+		margin-bottom: 5px;
+		font-weight: bold;
+	}
+	.address {
+		font-weight: 300;
+		margin-bottom: 0;
+	}
+	
+	.price {
+		@include gradient($blue, $green, horizontal);
+		padding: 5px 5px 3px;
+		font-weight: normal;
+		font-size: 13px;
+		color: $white;
+		border-radius: 4px;
+		position: absolute;
+		bottom: 10px;
+		right: 15px;
+	}
+}
+
+/* SEARCH INNER */
+.search-inner {
+	margin-bottom: 30px;
+	
+	.form {
+		position: relative;
+		background-color: $white;
+		border-radius: 4px 100px 100px 4px;
+		@extend %box-shadow;
+	}
+}
+
+.btn-searchInner {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 114px;
+	height: 114px;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	@include gradient($blue, $green, horizontal);
+	
+	input[type="submit"] {
+		width: 32px;
+		height: 32px;
+		display: inline-block;
+		border: 0;
+		background: url(#{$url}img/result_lupa.png);
+		cursor: pointer;
+		
+		&:hover {
+			
+		}
+	}
+}
+
+.btn-goSearch {
+	margin-bottom: 30px;
+	
+	a {
+		display: inline-block;
+		padding: 15px;
+		border-radius: 4px;
+		text-transform: uppercase;
+		background-color: $white;
+		@extend %box-shadow;
+		
+		&:hover {
+			color: $white;
+			@include gradient($blue, $green, horizontal);
+		}
+	}
+}
+
+
+
+/* MARCAR CONSULTA */
+.perfil-doc {
+	
+}
+
+.consulta__title {
+	min-height: 80px;
+	border-radius: 4px 4px 0 0;
+	@include gradient($blue, $green, horizontal);
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	.h2 {
+		font-size: 25px;
+		font-weight: bold;
+		color: $white;
+		margin: 0;
+	}
+}
+
+.consulta__bg {
+	padding: 15px;
+	background-color: $white;
+	border-radius: 0 0 4px 4px;
+	position: relative;
+	min-height: 140px;
+}
+
+.consulta__content {
+	p {
+		text-transform: uppercase;
+	}
+}
+
+.perfil-doc__content {}
+
+.perfil-doc__photo {
+	width: 100px;
+	height: 100px;
+	border-radius: 100%;
+	padding: 5px;
+	@include gradient($blue, $green, horizontal);
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	@extend %box-shadow;
+	
+	img {
+		border-radius: 100%;
+	}
+	
+	/*figcaption {
+		border-radius: 30px;
+		background-color: $white;
+		@extend %box-shadow;
+		font-size: 14px;
+		text-transform: uppercase; 
+		padding: 3px;
+	}*/
+}
+
+.perfil-doc__dados {
+	padding-left: 115px;
+	
+	p {
+		margin-bottom: 5px;
+	}
+	
+	.name {
+		font-size: 20px;
+		color: $blue-deep;
+		text-transform: uppercase;
+	}
+	
+	.speciality {}
+	
+	.address {}
+}
+
+/* PAINEL CLIENTE */
+.mosaic-item {
+	border-radius: 4px;
+	background-color: $white;
+	padding: 15px;
+	margin-bottom: 30px;
+	
+	&.tam {
+		min-height: 192px;
+	}
+	
+	&.cards {
+		text-align: center;
+		
+		p {
+			margin-bottom: 0;
+			font-size: 18px;
+		}
+		
+		strong {
+			font-weight: bold;
+		}
+
+		.number {
+			font-weight: bold;
+			font-size: 23px;
+		}
+	}
+	
+	.form {
+		.option-radio {
+			font-size: 16px;
+		}
+		
+		.btn-clean {
+			padding: 3px 15px;
+		}
+	}
+	
+	&.mh-form {
+		min-height: 320px;
+	}
+	
+	&.title {
+		h3 {
+			font-weight: 300;
+		}
+		strong {
+			font-weight: bold;
+		}
+	}
+}
+
+/* PERGUNTAS CLIENTES */
+.box__questions {
+	margin-bottom: 100px;
+}
+
+/* DETAIL */
+.detail__item {
+	margin-bottom: 50px;
+}
+
+.detail__wrapper {
+	padding: 15px 15px 30px;
+	background-color: $white;
+	border-radius: 0 0 4px 4px;
+	//box-shadow: inset 0px 10px 30px 0px rgba(0,0,0,0.1);
+	box-shadow: inset 0px 10px 50px -20px rgba(0,0,0,0.1);
+}
+
+.detail__header {
+	padding: 15px;
+	background-color: $white;
+	border-radius: 4px 4px 0 0;
+	position: relative;
+}
+
+.detail__photo {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	width: 140px;
+	height: 140px;
+	border-radius: 100%;
+	padding: 5px;
+	@include gradient($blue, $green, horizontal);
+
+	img {
+		border-radius: 100%;
+	}
+}
+
+.detail__content {
+	padding: 0 150px 0 155px;
+	h3 {
+		strong {
+		}
+	}
+	p {
+	}
+}
+
+.local {
+	margin-bottom: 20px;
+	
+	strong {
+	}
+	
+	.btn {
+		padding: 7px 13px 3px;
+		display: inline-block;
+		margin-left: 10px;
+	}
+}
+
+.infos {
+	text-transform: uppercase;
+	font-size: 18px;
+	
+	span {
+		strong {
+		}
+	}
+}
+
+.pricebox {
+	width: 200px;
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	text-align: right;
+	
+	p {
+		font-size: 18px;
+	}
+	
+	.price {
+		display: inline-block;
+		width: 85px;
+		padding: 5px;
+		margin-bottom: 15px;
+		border-radius: 4px;
+		font-weight: 300;
+		font-size: 20px;
+		color: $white;
+		@include gradient($blue, $green, horizontal);
+	}
+	.btn {
+		font-weight: bold;
+		font-size: 18px;
+		color: $content;
+		
+		&:hover{
+		}
+		&.btn-clean{
+		}
+	}
+}
+
+.map-box {
+	position: relative;
+}
+
+.map {
+	height: 400px;
+	border-radius: 0 0 4px 4px;
+}
+
+.form-mapa {
+	position: absolute;
+	top: 15px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 55%;
+	
+	input[type="text"] {
+		border: 0;
+		width: 100%;
+		border-radius: 30px;
+		background-color: $white;
+		margin-bottom: 15px;
+		padding: 12px 130px 12px 20px;
+	}
+	
+	input[type="submit"] {
+		position: absolute;
+		right: 0;
+		top: 0;
+		border: 0;
+		border-radius: 30px;
+		color: $white;
+		padding: 12px 25px;
+		@include gradient($blue, $green, horizontal);
+	}
+}
+
+.reviews-item {
+	padding: 15px;
+	@extend %box-shadow;
+	margin-bottom: 30px;
+}
+
+.gallery-photos {
+	margin-top: 15px;
+}
+
+.gallery-list {
+	list-style: none;
+	margin-top: 15px;
+}
+
+.gallery-list__item {
+	margin-bottom: 30px;
+	
+	figure {
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		border-radius: 4px;
+		
+		img {
+			visibility: hidden; 
+		}
+	}
+}
+
+.gallery-photos__pht {
+	display: block;
+	&:hover{
+	}
+}
+
+.gallery-photos__vid {
+	display: block;
+}
+
+.experience-item {
+	margin-bottom: 30px;
+	padding: 15px;
+	border-radius: 4px;
+	background-color: $white;
+	@extend %box-shadow;
+}
+
+.accordion-toggle {
+	cursor: pointer;
+	width: 100%;
+	padding: 18px 15px;
+	background-color: $white;
+	//margin-bottom: 3px;
+	position: relative;
+	text-transform: uppercase;
+	font-weight: bold;
+	@extend %box-shadow;
+	border-radius: 4px;
+}
+
+.accordion--item {
+	//@extend %box-shadow;
+	margin-bottom: 15px;
+	border-radius: 4px;
+	&:first-child {
+		.accordion-content {
+			display: block;
+		}
+	}
+}
+
+.accordion-content--item {
+	width: 100%;
+	padding: 35px 15px 15px;
+	background-color: $white;
+	margin-bottom: 3px;
+	@extend %box-shadow;
+	border-radius: 4px;
+
+	p {
+		margin-bottom: 0;
+	}
+}
+
+.accordion-content {
+	display: none;
+
+	&.default {
+		display: block;
+	}
+}
+
+.accordion-icons {
+	i {
+		position: absolute;
+		top: 12px;
+		right: 10px;
+	}
+
+	.icon-plus {}
+
+	.icon-minus {
+		display: none;
+	}
+}
+
+/* CADASTRO */
+.cadastro-box {
+	position: relative;
+	min-height: 335px;
+}
+
+.form-cadastro  {
+	display: none;
+	
+	&.active {
+		display: block;
+	}
+	
+	&.centro-medico {
+		position: absolute;
+	}
+}
+
+.io-toggler{
+	cursor:pointer;
+	display:inline-block;
+	position:relative;
+	//font:20px/1.5 sans-serif;
+	//background:url(http://i.stack.imgur.com/XVCAQ.png);
+	background-color: $gray-bg;
+	color: $gray-content;
+	border-radius: 30px;
+	user-select: none;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+}
+
+.io-options{
+	border-radius:50px;
+	top:0;
+	left:0;
+	overflow:hidden;
+}
+
+.io-options span{
+	position:relative;
+	text-align:center;
+	display:inline-block;
+	padding: 15px 35px;
+}
+
+/* the jQ clone */
+.io-options + .io-options{
+	position:absolute;
+	//background:#fff;
+	@include gradient($blue, $green, horizontal);
+	width:50%;
+	height:100%;
+	white-space:nowrap;
+}
+.io-options + .io-options span{
+	color: $white;
+}
+
+/* PAINEL MEDICO */
+.today__box {
+	min-height: 315px;
+	
+	.btn {
+		width: 100%;
+		text-align: center;
+	}	
+}
+
+.today-list {
+	list-style: none;
+	margin-top: 20px;
+}
+
+.today-list__item {
+	position: relative;
+	padding: 0 82px 0 30px;
+	margin-bottom: 20px;
+	
+	p {
+		font-weight: bold;
+		margin: 0;
+		font-size: 18px;
+	}
+	
+	span {
+		font-weight: 300;
+		color: $gray-span2;
+	}
+	
+	.hora {
+		display: inline-block;
+		border-radius: 4px;
+		background-color: $gray-deep;
+		color: $white;
+		font-weight: normal;
+		padding: 5px 8px;
+		position: absolute;
+		top: 0;right: 0;
+	}
+	
+	&:before {
+		content: '';
+		position: absolute;
+		top: -35px;left: 5px;
+		width: 2px;height: 49px;
+		background-color: $border;
+		z-index: 1;
+	}
+	
+	&:after {
+		content: '';
+		position: absolute;
+		top: 13px;left: 0;
+		width: 12px;height: 12px;
+		background-color: $green;
+		border-radius: 100%;
+		z-index: 2;
+	}
+	
+	&:first-child:before {
+		display: none;
+	}
+}
+
+.evaluation__item {
+	text-align: center;
+	
+	img {
+		margin-bottom: 10px;
+	}
+	
+	p {
+		color: $gray-span2;
+	}
+}
+
+.percent-list {
+	list-style: none;
+}
+
+.percent-list__item {
+	position: relative;
+	font-weight: 300;
+	padding: 5px 0 5px 33px;
+	margin-bottom: 10px;
+
+	strong {
+		font-weight: bold;
+	}
+	
+	&:before {
+		content: '';
+		display: inline-block;
+		width: 25px;height: 25px;
+		border-radius: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	
+	&:nth-child(1):before {
+		background-color: $blue;
+	}
+	
+	&:nth-child(2):before {
+		background-color: $green;
+	}
+}
+
+.submit-box {
+	margin-bottom: 100px;
+	
+	.btn {
+		width: 100%;
+		text-transform: uppercase;
+		text-align: center;
+		padding: 15px;
+		font-size: 18px;
+		cursor: pointer;
+		border: 0;
+	}
+}
+
+/* LOGIN */
+.box__login {
+	min-height: 624px;
+	display: flex;
+	align-items: center;
+}
+
+.bg-gradient {
+	width: 50%;
+	height: 110%;
+	position: absolute;
+	top: 0;right: 0;bottom: 0;
+	z-index: -1;
+	@include gradient($blue, $green, horizontal);
+	
+	.bg-shadows {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 99;
+	}
+}
+
+/* PLAN/PRICE */
+.price-plan {
+	margin-top: 50px;
+}
+
+.price-plan__item {
+	position: relative;
+	margin-bottom: 30px;
+	background-color: $white;
+	border-radius: 30px;
+	text-align: center;
+	@extend %box-shadow;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin-top: 30px;
+	z-index: 1;
+	
+	&.middle {
+		z-index: 2;
+		margin-top: 0;
+	}
+	
+	h3 {
+		font-size: 30px;
+		font-weight: 300;
+		strong {
+			font-size: 45px;
+			font-weight: bold;
+		}
+	}
+	
+	.btn-radius {
+		@include gradient($blue, $green, horizontal);
+		color: $white;
+		text-transform: uppercase;
+		display: inline-block;
+		width: 90%;
+		border-radius: 30px;
+		padding: 10px;
+		font-size: 18px;
+		position: absolute;
+		bottom: -15px;
+		transform: translate(-50%);
+
+		&:hover {
+			@include gradient($green, $blue, horizontal);
+		}
+	}
+	
+	ul {
+		list-style: none;
+		
+		li {
+			border-radius: 30px;
+			font-size: 20px;
+			font-weight: bold;
+			@extend %box-shadow;
+			padding: 10px;
+			margin-bottom: 20px;
+		}
+	}
+	
+	.selo {
+		@include gradient($blue, $green, horizontal);
+		color: $white;
+		text-transform: uppercase;
+		border-radius: 4px;
+		padding: 10px 15px;
+		font-size: 14px;
+		position: absolute;
+		top: -20px;
+		transform: translate(-50%);
+	}
+}
+
+.msg-welcome {
+	width: 100%;
+	height: 420px;
+	background-image: url(#{$url}/img/bg_price.png);
+	background-repeat: no-repeat;
+	background-position: top center;
+	margin: 50px 0;
+	
+	.container {
+		position: relative;
+	}
+	
+	.row {
+		height: 420px;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	p {
+		color: $white;
+		font-size: 30px;
+	}
+}
+
+.fig-personPrice {
+	position: absolute;
+	top: -6px;
+	left: 0;
+	
+	img {
+		width: 200px;
+		height: auto;
+	}
+}
+
+/* FINANCEIRO */
+.financeiro__box {
+	background-color: $white;	
+	border-radius: 4px;
+	padding-bottom: 30px;
+	margin-bottom: 100px;
+}
+
+.financeiro__title {
+	position: relative;
+}
+
+.financeiro__title, .total {
+	padding: 15px;
+	h3 {
+	}
+}
+
+.table {
+	.btn-gradient {
+		padding: 5px 10px;
+		border-radius: 4px;
+	}
+	
+	th, td {
+		border-top: 1px dashed #dee2e6;
+	}
+	
+	thead {
+		th {
+			border-top: 0;
+			border-bottom: 1px dashed #dee2e6;
+		}
+	}
+	
+	&.table-dashed {
+		th, td {
+			border-right: 1px solid #dee2e6;
+			border-left: 1px solid #dee2e6;
+
+			&:first-child {
+				border-left: 0;
+			}
+			&:last-child {
+				border-right: 0;
+			}
+		}
+	}
+}
+
+/* CONSULTA MÉDICA */
+.consulta-medica__item {
+	width: 100%;
+	min-height: 100px;
+	padding: 15px;
+	background-color: $white;
+	border-radius: 4px;
+	@extend %box-shadow;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	//text-align: center;
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+
+.atendimento__box {
+	min-height: 110px;
+	border-radius: 4px;
+	background-color: $white;
+	padding: 15px;
+	margin-bottom: 30px;
+	@extend %box-shadow;
+	
+	.row {
+		display: flex;
+		align-items: center;
+	}
+	
+	.title {
+		color: $gray-span;
+		font-weight: 300;
+		font-size: 16px;
+		display: block;
+	}
+	.datas {
+		font-size: 22px;
+		font-weight: 300;
+		
+	}
+}
+
+.atendimento__photo {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	
+	img {
+		border-radius: 100%;
+		@extend %box-shadow;
+	}
+}
+
+.atendimento__paciente {
+	padding: 0 0 0 100px;
+	
+	h3 {
+		font-weight: bold;
+		font-size: 18px;
+	}
+	
+	.date {
+		color: $gray-span;
+		font-size: 20px;
+	}
+}
+
+.em-atendimento {
+	margin-bottom: 15px;
+}
+
+.oncount {
+	float: right;
+	
+	.clock {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 20px;
+		text-transform: uppercase;
+		margin-right: 15px;
+	}
+	
+	.btn-gradient {
+		display: inline-block;
+		text-transform: uppercase;
+		vertical-align: top;
+		cursor: pointer;
+	}
+}
+
+.timeline {
+	position: relative;
+	padding: 30px 0 0 0;
+	
+	&:before {
+		content: '';
+		position: absolute;
+		top: 40px;
+		bottom: 0;
+		width: 3px;
+		background-color: $border;
+		left: 50%;
+		margin-left: -4px;
+	}
+}
+
+.timeline-item {
+	position: relative;
+	margin: 0 0 30px 0;
+	@extend %clearfix;
+	
+	&.timeline-ltd {
+		.timeline-time {
+			left: inherit;
+			right: 0;
+			text-align: left;
+
+			&:before {
+				right: inherit;
+				left: -35px;
+			}
+		}
+
+		.timeline-content { 
+			float: none;
+		}
+	}
+}
+
+.timeline-time {
+	position: absolute;
+	left: 0;
+	width: 45%;
+	text-align: right;
+	font-size: 18px;
+	
+	&:before {
+		content: '•';
+		font-size: 20px;
+		font-weight: bold;
+		position: absolute;
+		top: 0;
+		right: -30px;
+		color: $content;
+	}
+}
+
+.timeline-content {
+	width: 48%;
+	float: right;
+	position: relative;
+	top: -30px;
+	padding: 15px;
+	@extend %box-shadow;
+	
+	p {
+		font-size: 18px;
+	}
+	
+	a {
+		text-transform: uppercase;
+		font-weight: 100;
+		
+		&:hover {
+			color: $green;
+		}
+	}
+}
+
+/* MODALS */
+.modal-box {
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 4px;
+}
+
+.modal-title {
+	text-align: center;
+	font-size: 25px;
+	font-weight: 300;
+	margin-bottom: 30px;
+}
+
+.modal-title__finish {
+	
+}
+
+.modal {
+	display: none;
+	
+	.btn {
+		&.m-top {
+			padding: 7px;
+			font-size: 35px;
+			font-weight: bold;
+			margin-top: 26px;
+		}
+	}
+}
+
+.finish {
+	.consulta-medica__item {
+		position: relative;
+		justify-content: end;
+	}
+	
+	.atendimento__paciente {
+		padding: 0 0 0 95px;
+	}
+	
+	.atendimento__photo {
+		left: 15px;
+	}
+	
+	.btn-red {
+		width: 100%;
+		text-transform: uppercase;
+		text-align: center;
+	}
+}
+
+.btn-finish {
+	display: none;
+	text-transform: uppercase;
+}
+
+/* Clinicas */
+[class^="circle-"], [class*="circle-"] {
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	border-radius: 100%;
+}
+
+.circle-presente {
+	@include gradient($blue, $green, horizontal);
+}
+
+.circle-faltou {
+	background-color: $red;
+}
+
+.list-legenda {
+	display: inline-block;
+	margin-left: 30px;
+	
+	li {
+		display: inline-block;
+		margin-right: 10px;
+	}
+	
+	[class^="circle-"], [class*="circle-"] {
+		width: 20px;
+		height: 20px;
+		position: relative;
+		top: 5px;
+	}
+}
+
+.footer-table {
+	@extend %clearfix;
+	padding: 15px;
+}
+
+.footer-table-l {
+	float: left;
+}
+
+.footer-table-r {
+	float: right;
+}
+
+.arrow {
+	display: inline-block;
+	
+	.arrow__item {
+		display: inline-block;
+	}
+}
+
+.number {
+	display: inline-block;
+	margin-right: 15px;
+}
+
+.add-ad {
+	text-align: center;
+	
+	.price {
+		text-align: center;
+		font-size: 25px;
+		line-height: 52px;
+		display: inline-block;
+	}
+}
+
+/* QUESTION */
+.questions-list__item {
+	margin-top: 15px;
+	margin-bottom: 30px;
+	
+	.btn-gradient {
+		width: 100%;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
+
+.questions__photo {
+	width: 70px;
+	height: 70px;
+	border-radius: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	@extend %box-shadow;
+	
+	img {
+		border-radius: 100%;
+	}
+}
+
+.questions-list__content {
+	position: relative;
+	padding-left: 85px;
+}
+
+.questions__answer {
+	@include gradient($green, $blue, horizontal);
+	color: $white;
+	padding: 15px;
+	border-radius: 4px;
+	margin-top: 15px;
+}
+
+/* PERFIL */
+.picture-profile {
+	
+}
+
+.picture-profile__content {
+	padding: 0 0 0 115px;
+	position: relative;
+	
+	p {
+		margin-bottom: 5px;
+	}
+}
+
+.picture-profile__fig {
+	@include gradient($green, $blue, horizontal);
+	padding: 3px;
+	border-radius: 100%;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	img {
+		border-radius: 100%;
+	}
+}
+
+.image-upload {
+	width: 26px;
+	height: 26px;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	@include gradient($green, $blue, horizontal);
+	
+	label {
+		margin-bottom: 0;
+	}
+
+	& > input {
+		display: none;
+	}
+	
+	img {
+		cursor: pointer;
+		margin-top: 5px;
+	}
+}
+
+.image-blog {
+	label {
+		margin-bottom: 0;
+		display: block;
+	}
+
+	& > input {
+		display: none;
+	}
+
+	img {
+		cursor: pointer;
+		margin-top: 5px;
+	}
+	
+	.btn-gradient {
+		width: 100%;
+	}
+}

@@ -1,0 +1,128 @@
+<%- include includes/header-cliente.ejs %>
+
+<section class="box__panel">
+	<div class="container">
+		<div class="row mosaic">
+			<div class="col-md-4">
+				<div class="mosaic-item tam">
+					<h3>Foto do perfil</h3>
+					
+					<div class="picture-profile">
+						<div class="picture-profile__content">
+							<figure class="picture-profile__fig">
+								<img alt="Dr. Guilherme Marques" src="/views/img/medico.jpg">
+								<div class="image-upload">
+									<label for="file_profile">
+										<img src="/views/img/cloud.png" alt="Icon Cloud" />
+									</label>
+
+									<input id="file_profile" type="file"/>
+								</div>
+							</figure>
+							
+							<p><strong>Tamanho: </strong>1</p>
+							<p><strong>Dimensão: </strong>100X100</p>
+							<p><strong>Formatos: </strong>JPG, PNG</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="mosaic-item">
+					<h3>Mudar senha</h3>
+					<form action="" class="form">
+						<div class="row">
+							<div class="col-md-4">
+								<input type="password" name="" placeholder="Senha Antiga">
+							</div>
+							<div class="col-md-4">
+								<input type="password" name="" placeholder="Nova senha">
+							</div>
+							<div class="col-md-4">
+								<input type="password" name="" placeholder="Repita a nova senha">
+							</div>
+							<div class="col-md-12">
+								<input type="submit" class="btn btn-gradient" value="Mude a senha">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="mosaic-item">
+					<h3>Informação básica</h3>
+					
+					<form action="" class="form">
+						<div class="row">
+							<div class="col-md-3">
+								<input type="text" name="" placeholder="Nome completo">
+							</div>
+							<div class="col-md-3">
+								<input type="date" name="" placeholder="Data de nascimento">
+							</div>
+							<div class="col-md-3">
+								<input type="email" name="" placeholder="E-mail">
+							</div>
+							<div class="col-md-3">
+								<div class="select">
+									<select name="" id="">
+										<option value="">Gênero</option>
+										<option value="">Masculino</option>
+										<option value="">Femenino</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="col-md-3">
+								<input type="text" name="" placeholder="Estado civil">
+							</div>
+							<div class="col-md-3">
+								<input type="tel" name="" placeholder="Cell">
+							</div>
+							<div class="col-md-3">
+								<input type="tel" name="" placeholder="Telefone">
+							</div>
+							<div class="col-md-3">
+								<input type="text" name="" placeholder="CPF">
+							</div>
+							
+							<div class="col-md-3">
+								<input type="text" name="" placeholder="SUS Card">
+							</div>
+							<div class="col-md-3">
+								<div class="select">
+									<select name="" id="">
+										<option value="">Cuidados de saúde</option>
+										<option value="">Plano 1</option>
+										<option value="">Plano 2</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<input type="text" name="" placeholder="Tipo sanguíneo">
+							</div>
+							<div class="col-md-3">
+								<input type="text" name="" placeholder="Endereço">
+							</div>
+							
+							<div class="col-md-3">
+								<input type="text" name="" placeholder="Bairro">
+							</div>
+							<div class="col-md-3">
+								<input type="text" name="" placeholder="Complemento">
+							</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<input type="submit" class="btn btn-gradient" value="Salvar Edição">
+								</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>	
+</section>
+
+<%- include includes/footer.ejs %>

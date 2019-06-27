@@ -1,0 +1,11 @@
+<% if (page === '/admin-perfil') { %>
+    <%- include dashboard/adminProfile.ejs %>
+<% } else if(page === '/admin-pacientes' || page === '/admin-medicos' || page === '/admin-clinicas') { %>
+    <%- include dashboard/adminViewUsers.ejs %>
+<% } else if(page === '/admin-detalhes') { %>
+    <%- include dashboard/adminDetails.ejs %>
+<% } else if(page === '/admin-logs') { %>
+    <%- include dashboard/adminLogs.ejs %>
+<% } else if(page === '/admin-financeiro') { %>
+    <%- include dashboard/adminFinancial.ejs %>
+<% } %>

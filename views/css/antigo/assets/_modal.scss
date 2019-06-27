@@ -1,0 +1,46 @@
+.romae-news {
+    display: none;
+}
+
+.romae-modal { 
+    display:flex;justify-content:center;align-items:center;
+    position: relative; 
+    z-index: 99999999; 
+    top: 30px;
+}
+
+.romae-modal--inner {
+    border: 10px solid $white;
+    background-color: $white;
+    min-width: 300px;
+    
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.romae-close { 
+    cursor: pointer; 
+    position: fixed; 
+    font-size: 25px; 
+    color: $black; 
+    padding: 10px 20px; 
+    right: 0; 
+    top: 0; 
+    z-index: 99999999; 
+    background-color: $white;
+}
+
+.romae-mask { 
+    position: fixed; 
+    opacity: .6;
+    z-index: 9999999; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

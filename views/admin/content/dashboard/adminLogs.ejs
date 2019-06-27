@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-12" style="height: 450px; overflow: auto;">
+        <style>p { color: #fff !important }</style>
+        <% if(errorLog.length) { %>
+            <div class="box-body" style="background-color: #222d32;">
+                <% for(let i = errorLog.length - 1; i >= 0; i--) { %>
+                    <p>{</p>
+                    <p style="padding-left:1.5em;">
+                        "_idUser": "<a target="_blank" href="/admin-detalhes/<%= errorLog[i]._idUser %>"><%= errorLog[i]._idUser %></a>",<br/>
+                        "createdAt": "<%= errorLog[i].createdAt %>",<br/>
+                        "errorLocation": "<%= errorLog[i].errorLocation %>",<br/>
+                        "errorDescription": "<%= errorLog[i].errorDescription %>",<br/>
+                        "errorStatus": "<%= errorLog[i].errorStatus %>",<br/>
+                        "errorMessage": "<%= errorLog[i].errorMessage %>",<br/>
+                        "level": <code>"<%= errorLog[i].level %>"</code><br/>
+                    </p>
+                    <p>}</p>
+                <% } %>
+            </div>
+        <% } else { %>
+            <div class="box-body" style="background-color: #222d32;">
+                <p>{</p>
+                <p style="padding-left:1.5em;">Sem logs</p>
+                <p>}</p>
+            </div>
+        <% } %>
+    </div>
+</div>

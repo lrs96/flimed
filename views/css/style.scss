@@ -1,0 +1,37 @@
+//////////////////////////////////////////////
+// Import everything to generate css module //
+//////////////////////////////////////////////
+@import "helpers/settings",
+        "helpers/mixins",
+        "helpers/placeholder";
+
+// BOOTSTRAP
+@import	"libs/bootstrap-reboot",
+        "libs/bootstrap-grid";
+
+// ASSETS
+@import	"assets/fonts",
+				"assets/layout",
+        "assets/main",
+        "assets/responsive",
+        "assets/modal";
+    
+// LIBS
+@import "libs/fancybox",
+        "libs/carousel",
+				"libs/dropzone",
+				"libs/smoothness",
+				"libs/vanillaCalendar",
+				"libs/selectize";
+
+                                .btndelete{
+background: #45c8e3;
+    background: -moz-linear-gradient(left, #45c8e3 0%, #01e9b1 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #45c8e3), color-stop(100%, #01e9b1));
+    background: -webkit-linear-gradient(left, #45c8e3 0%, #01e9b1 100%);
+    background: -o-linear-gradient(left, #45c8e3 0%, #01e9b1 100%);
+    background: -ms-linear-gradient(left, #45c8e3 0%, #01e9b1 100%);
+    background: linear-gradient(to right, #e94b63 0%, #e94b63 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="$first-color", endColorstr="$second-color",GradientType=1 );
+    color: #fff;
+}

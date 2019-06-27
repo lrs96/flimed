@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Lista de usuários</h3>
+                <p>Clique no usuário para obter mais informações</p>
+            </div>
+            <div class="box-body">
+                <table id="table-info" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Email</th>
+                            <th>Local</th>
+                            <th>Registrado em</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i = 0; i < users.length; i++) { %>
+                            <tr style="cursor:pointer" onclick="location.href='/admin-detalhes/<%= users[i]._id %>'">
+                                <td><%= users[i].name %></td>
+                                <td><%= users[i].phone %></td>
+                                <td><%= users[i].email %></td>
+                                <td><% if(users[i].location.length) { %><%= users[i].location[0].city %>/<%= users[i].location[0].state %></td><% } %>
+                                <td><%= users[i].createdAt %></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Email</th>
+                            <th>Local</th>
+                            <th>Registrado em</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

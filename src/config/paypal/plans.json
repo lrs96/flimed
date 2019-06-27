@@ -1,0 +1,29 @@
+{
+    "plans":
+    [
+        {
+            "id": "p-1",
+            "title": "Plano Medium",
+            "description": "Aquisição do plano mensal Medium no portal Flimed",
+            "price": 35,
+            "frequency": "MONTH",
+            "frequency_interval": "1"
+        },        
+        {
+            "id": "p-2",
+            "title": "Plano Advanced",
+            "description": "Aquisição do plano mensal Advanced no portal Flimed",
+            "price": 45,
+            "frequency": "MONTH",
+            "frequency_interval": "1"
+        },
+        {
+            "id": "p-3",
+            "title": "Plano Plus",
+            "description": "Aquisição do plano mensal Plus no portal Flimed",
+            "price": 65,
+            "frequency": "MONTH",
+            "frequency_interval": "1"
+        }
+    ]
+}

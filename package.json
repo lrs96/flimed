@@ -1,0 +1,59 @@
+{
+  "name": "conexaosaude",
+  "version": "1.0.0",
+  "description": "Back-end desenvolvido para o portal Conexão Saúde",
+  "scripts": {
+    "start": "nodemon index.js",
+    "production": "pm2 start index.js --name ConexaoSaude && pm2 start pm2-process.json && pm2 monit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/souzajr/conexaosaude.git"
+  },
+  "keywords": [
+    "Conexão Saúde",
+    "Node.Js",
+    "Back-end"
+  ],
+  "author": "PurpleTech - https://purpletech.com.br",
+  "license": "Private and Restricted Use",
+  "bugs": {
+    "url": "https://github.com/souzajr/conexaosaude/issues"
+  },
+  "homepage": "https://github.com/souzajr/conexaosaude#readme",
+  "devDependencies": {
+    "morgan": "1.9.1",
+    "nodemon": "1.18.10"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "1.18.3",
+    "cep-promise": "3.0.6",
+    "client-sessions": "0.8.0",
+    "consign": "0.1.6",
+    "cors": "2.8.5",
+    "cron": "1.6.0",
+    "dotenv": "6.2.0",
+    "ejs": "2.6.1",
+    "email-validator": "2.0.4",
+    "express": "4.16.4",
+    "generate-password": "1.4.1",
+    "gravatar": "1.8.0",
+    "helmet": "3.15.0",
+    "html-pdf": "^2.2.0",
+    "jwt-simple": "0.5.5",
+    "method-override": "3.0.0",
+    "moment": "2.24.0",
+    "mongoose": "5.4.10",
+    "multer": "1.4.1",
+    "nodemailer": "4.7.0",
+    "passport": "0.4.0",
+    "passport-jwt": "4.0.0",
+    "password-validator": "4.1.1",
+    "paypal-rest-sdk": "1.8.1",
+    "pm2": "^3.5.1",
+    "sharp": "0.21.3",
+    "unique-random-array": "^2.0.0",
+    "validar-cpf": "2.0.2"
+  }
+}

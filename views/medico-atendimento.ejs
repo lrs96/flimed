@@ -1,0 +1,1017 @@
+<%- include includes/header-medico.ejs %>
+
+<script src="/views/js/moment-with-locales.js"></script>
+<script>moment.locale('pt-br')</script>
+
+<%
+	let attendanceNow = null
+	if(attendance.length) {
+		for(let i = 0; i < attendance.length; i++) {
+			if(attendance[i]._idEvent == event._id) {
+				attendanceNow = attendance[i]
+				break
+			}
+		}
+	}
+%>
+
+<section class="box__panel">
+	<div class="em-atendimento">
+		<div class="container">
+			<span class="io-toggler" data-io="1">
+				<span class="io-options">
+					<a href="/medico-horarios"><span class="schedule">Cronograma</span></a>
+					<span class="attendance">Em atendimento</span>
+				</span>
+			</span>
+			
+			<% if(!attendanceNow) { %>
+				<div class="oncount">
+					<form id="form-start-attendance">
+						<input type="hidden" name="eventId" value="<%= event._id %>">
+						<input type="hidden" name="patientId" value="<%= patient._id %>">
+						<i class="sprite-check__clock"></i>
+						<div class="clock">Atendimento não iniciado</div>
+						<button type="submit" class="btn btn-gradient" id="btn_start">Começar</button>
+					</form>
+					<script>
+						$(document).ready(function() {
+							$('#form-start-attendance').on('submit', function(e) {
+								e.preventDefault()
+
+								$.ajax({
+									type: 'POST',
+									url: '/medico-atendimento',
+									datatype: 'html',
+									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+									data: $('#form-start-attendance').serialize(),
+									success: function(result) {          
+										alertify.notify(result, 'success', 5)
+										setTimeout(function() { 
+												window.location.reload()
+										}, 500)
+									},
+									error: function(xhr, status, error) {
+										alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+									},
+								})
+							})
+						})
+					</script>
+				</div>
+			<% } else { %>
+				<div class="oncount">
+					<i class="sprite-check__clock"></i>
+					<div class="clock" id="time_from_now"></div>
+					<a href="#finish" id="btn_finish" data-fancybox="finish">
+						<div class="btn btn-red">Finalizar</div>
+					</a>
+					<div class="modal finish" id="finish">
+						<div class="modal-box">
+							<div class="modal-title__finish">
+								<form id="form-end-attendance">
+									<input type="hidden" name="eventId" value="<%= event._id %>">
+									<input type="hidden" name="patientId" value="<%= patient._id %>">
+									<h3>Você quer terminar?</h3>
+									<p>Atendimento iniciado: <strong id="duration"></strong></p>
+									
+									<div class="consulta-medica__item">
+										<figure class="atendimento__photo">
+											<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+										</figure>
+										<div class="atendimento__paciente">
+											<h3><%= patient.name %></h3>
+											<span><%= event.patientInfo.patientAgreement %></span>
+										</div>
+									</div>
+									<button type="submit" class="btn btn-red">Finalizar serviço</button>
+								</form>
+								<script>
+									$(document).ready(function() {
+										const dateNow = '<%= attendanceNow.createdAt %>'
+										$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+										$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+										setInterval(function() {
+											$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+											$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+										}, 30 * 1000) // a cada 30s
+
+										$('#form-end-attendance').on('submit', function(e) {
+											e.preventDefault()
+
+											$.ajax({
+												type: 'PATCH',
+												url: '/medico-atendimento',
+												datatype: 'html',
+												contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+												data: $('#form-end-attendance').serialize(),
+												success: function(result) {          
+													alertify.notify(result, 'success', 5)
+													setTimeout(function() { 
+															window.location.href = '/atendimento/<%= attendanceNow._id %>'
+													}, 500)
+												},
+												error: function(xhr, status, error) {
+													alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+												},
+											})
+										})
+									})
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% } %>
+		</div>
+	</div>
+
+	<div class="atendimento__dados">
+		<div class="container">
+			<div class="atendimento__box">
+				<div class="row">
+					<div class="col-md-3">
+						<figure class="atendimento__photo">
+							<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+						</figure>
+						<div class="atendimento__paciente">
+							<h3><%= patient.name %></h3>
+							<span class="date"><script>document.write(moment().format('DD/MM/YYYY'))</script></span>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<span class="title">Era</span>
+						<span class="datas"><%= patient.dateOfBirth %></span>
+					</div>
+					<div class="col-md-3">
+						<span class="title">Gênero</span>
+						<span class="datas"><%= patient.genre %></span>
+					</div>
+					<div class="col-md-3">
+						<span class="title">Acordo Médico</span>
+						<span class="datas"><%= event.patientInfo.patientAgreement %></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<% if(attendanceNow) { %>
+		<div class="consulta-medica">
+			<div class="container">
+				<h2>Consulta médica</h2>
+				<div class="row">
+					<div class="col-md-3">
+						<a href="#summary" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__list"></i>
+								<span>RESUMO</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#anamnese" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__note"></i>
+								<span>ANAMNESIS</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#exame" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__note"></i>
+								<span>EXAME FÍSICO</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#diagnostico" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__note"></i>
+								<span>DIAGNÓSTICO</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#evolution" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__evo"></i>
+								<span>EVOLUÇÃO</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#orcamento" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__budget"></i>
+								<span>DESPESAS</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#exames_procedimentos" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__note"></i>
+								<span>EXAMES E <br>PROCEDIMENTOS</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#prescricoes" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__budget"></i>
+								<span>PRESCRIÇÕES</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#atestados" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__note"></i>
+								<span>TENTADA</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#anexos" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__note"></i>
+								<span>ANEXOS</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#compartilhar" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__note"></i>
+								<span>COMPARTILHAR DADOS</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="#anexos" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__note"></i>
+								<span>IMAGENS E <br>ANEXOS</span>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% } else { %>
+		<div class="consulta-medica">
+			<div class="container">
+				<h2>Consulta médica</h2>
+				<div class="row">
+					<div class="col-md-3">
+						<a href="#summary" class="" data-fancybox="atendimento">
+							<div class="consulta-medica__item">
+								<i class="sprite-check__list"></i>
+								<span>RESUMO</span>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% } %>
+</section>
+
+<section class="modals">
+	<div class="modal" id="summary">
+		<div class="modal-box">
+			<div class="modal-title">
+				<h2>Resumo do Paciente</h2>
+			</div>
+			<% if(!attendance.length) { %>
+				<p>Paciente sem consultas anteriores</p>
+			<% } else { %>
+				<div class="timeline">
+					<% for(let i = 0; i < attendance.length; i++) { %>
+						<% if(attendance[i].type === 'presencial') { %>
+							<% if(attendanceNow && attendance[i]._id != attendanceNow._id) { %>
+								<% if(i % 2 == 0) { %>
+									<div class="timeline-item">
+										<div class="timeline-time"><script>document.write(moment('<%= attendance[i].createdAt %>', 'DD/MM/YYYY h:mm:ss').format('L'))</script></div>
+										<div class="timeline-content">
+											<p><strong>Pontuário</strong></p>
+											<a href="/atendimento/<%= attendance[i]._id %>">Clique pra ver</a>
+										</div>
+									</div>
+								<% } else { %>
+									<div class="timeline-item timeline-ltd">
+										<div class="timeline-time"><script>document.write(moment('<%= attendance[i].createdAt %>', 'DD/MM/YYYY h:mm:ss').format('L'))</script></div>
+										<div class="timeline-content">
+											<p><strong>Pontuário</strong></p>
+											<a href="/atendimento/<%= attendance[i]._id %>">Clique pra ver</a>
+										</div>
+									</div>
+								<% } %>
+							<% } else { %>
+								<% if(i % 2 == 0) { %>
+									<div class="timeline-item">
+										<div class="timeline-time"><script>document.write(moment('<%= attendance[i].createdAt %>', 'DD/MM/YYYY h:mm:ss').format('L'))</script></div>
+										<div class="timeline-content">
+											<p><strong>Pontuário</strong></p>
+											<a href="/atendimento/<%= attendance[i]._id %>">Clique pra ver</a>
+										</div>
+									</div>
+								<% } else { %>
+									<div class="timeline-item timeline-ltd">
+										<div class="timeline-time"><script>document.write(moment('<%= attendance[i].createdAt %>', 'DD/MM/YYYY h:mm:ss').format('L'))</script></div>
+										<div class="timeline-content">
+											<p><strong>Pontuário</strong></p>
+											<a href="/atendimento/<%= attendance[i]._id %>">Clique pra ver</a>
+										</div>
+									</div>
+								<% } %>
+							<% } %>
+						<% } %>
+					<% } %>
+				</div>
+			<% } %>
+		</div>
+	</div>	
+
+	<div class="modal" id="anamnese">
+		<div class="modal-box">
+			<div class="modal-title">
+				<h2>Anamnese</h2>
+			</div>
+			<div class="form">
+				<form id="form-anamnese">
+					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="formType" value="anamnesis" />
+					<div class="row">
+						<div class="col-md-12">
+							<label for="">Reclamação Principal:</label>
+							<input type="text" name="complaint">
+						</div>
+						<div class="col-md-12">
+							<label for="">História:</label>
+							<input type="text" name="history">
+						</div>
+						<div class="col-md-12">
+							<label for="">Problemas Articulares ou Reumatismo:</label>
+							<input type="text" name="articularProblemsOrRheumatism">
+						</div>
+						<div class="col-md-6">
+							<label for="">Problemas Renais:</label>
+							<input type="text" name="kidneyProblems">
+						</div>
+						<div class="col-md-6">
+							<label for="">Problemas Cardíacos:</label>
+							<input type="text" name="heartProblems">
+						</div>
+						<div class="col-md-6">
+							<label for="">Problemas respiratórios:</label>
+							<input type="text" name="breathingProblems">
+						</div>
+						<div class="col-md-6">
+							<label for="">Problemas Gástricos:</label>
+							<input type="text" name="gastricProblems">
+						</div>
+						<div class="col-md-6">
+							<label for="">Alergias:</label>
+							<input type="text" name="allergies">
+						</div>
+						<div class="col-md-6">
+							<label for="">Uso de Medicamentos:</label>
+							<input type="text" name="useOfMedications">
+						</div>
+						<div class="col-md-6">
+							<label for="">Hepatite:</label>
+							<div class="row">
+								<div class="col-md-6">
+									<label class="option-radio">
+										Sim
+										<input type="radio" name="hepatitis" value="true">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="col-md-6">
+									<label class="option-radio">
+										Não
+										<input type="radio" name="hepatitis" value="false">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label for="">Gravidez:</label>
+							<div class="row">
+								<div class="col-md-6">
+									<label class="option-radio">
+										Sim
+										<input type="radio" name="pregnancy" value="true">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="col-md-6">
+									<label class="option-radio">
+										Não
+										<input type="radio" name="pregnancy" value="false">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label for="">Diabetes:</label>
+							<div class="row">
+								<div class="col-md-6">
+									<label class="option-radio">
+										Sim
+										<input type="radio" name="diabetes" value="true">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="col-md-6">
+									<label class="option-radio">
+										Não
+										<input type="radio" name="diabetes" value="false">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label for="">Problemas de Cura:</label>
+							<div class="row">
+								<div class="col-md-6">
+									<label class="option-radio">
+										Sim
+										<input type="radio" name="healingProblems" value="true">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="col-md-6">
+									<label class="option-radio">
+										Não
+										<input type="radio" name="healingProblems" value="false">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 offset-md-8">
+							<input type="submit" class="btn btn-gradient" value="SALVAR">
+						</div>
+					</div>
+				</form>
+				<script>
+				$(document).ready(function() {
+					$('#form-anamnese').on('submit', function(e) {
+						e.preventDefault()
+
+						$.ajax({
+							type: 'PUT',
+							url: '/medico-atendimento',
+							datatype: 'html',
+							contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+							data: $('#form-anamnese').serialize(),
+							success: function(result) {          
+								alertify.notify(result, 'success', 5)
+							},
+							error: function(xhr, status, error) {
+								alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+							},
+						})
+					})
+				})
+				</script>
+			</div>
+		</div>
+	</div>	
+	
+	<div class="modal" id="exame">
+		<div class="modal-box">
+			<div class="modal-title">
+				<h2>Exame Físico</h2>
+			</div>
+			<div class="form">
+				<form id="form-physicalExam">
+					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="formType" value="Exame físico" />
+					<div class="row">
+						<div class="col-md-12">
+							<label for="">Altura:</label>
+							<input type="text" name="height">
+						</div>
+						<div class="col-md-12">
+							<label for="">Palpação:</label>
+							<input type="text" name="palpation">
+						</div>
+						<div class="col-md-12">
+							<label for="">Lesões:</label>
+							<input type="text" name="injuries">
+						</div>
+						<div class="col-md-6">
+							<label for="">Peso (kg):</label>
+							<input type="text" name="weight">
+						</div>
+						<div class="col-md-6">
+							<label for="">Heart Rate(bpm):</label>
+							<input type="text" name="heartRate">
+						</div>
+						<div class="col-md-12">
+							<label for="">Systolic Blood Pressure(mmHg):</label>
+							<input type="text" name="systolicBloodPressure">
+						</div>
+						<div class="col-md-12">
+							<label for="">Diastolic Blood Pressure(mmHg):</label>
+							<input type="text" name="diastolicBloodPressure">
+						</div>
+						<div class="col-md-12">
+							<label for="">General observations:</label>
+							<textarea name="generalObservations" id="" cols="30" rows="10"></textarea>
+						</div>
+						<div class="col-md-4 offset-md-8">
+							<input type="submit" class="btn btn-gradient" value="SAVE">
+						</div>
+					</div>
+				</form>
+				<script>
+				$(document).ready(function() {
+					$('#form-physicalExam').on('submit', function(e) {
+						e.preventDefault()
+
+						$.ajax({
+							type: 'PUT',
+							url: '/medico-atendimento',
+							datatype: 'html',
+							contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+							data: $('#form-physicalExam').serialize(),
+							success: function(result) {          
+								alertify.notify(result, 'success', 5)
+							},
+							error: function(xhr, status, error) {
+								alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+							},
+						})
+					})
+				})
+				</script>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="diagnostico">
+		<div class="modal-box">
+			<div class="modal-title">
+				<h2>Diagnostic hypothesis</h2>
+			</div>
+			<div class="form">
+				<form id="form-diagnosticHypothesis">
+					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="formType" value="diagnosticHypothesis" />
+					<div class="row">
+						<div class="col-md-12">
+							<label for="">Diagnosis:</label>
+							<input type="text" name="diagnosis">
+						</div>
+						<div class="col-md-12">
+							<label for="">Comments:</label>
+							<textarea name="comments" id="" cols="30" rows="10"></textarea>
+						</div>
+						<div class="col-md-4 offset-md-8">
+							<input type="submit" class="btn btn-gradient" value="SAVE">
+						</div>
+					</div>
+				</form>
+				<script>
+				$(document).ready(function() {
+					$('#form-diagnosticHypothesis').on('submit', function(e) {
+						e.preventDefault()
+
+						$.ajax({
+							type: 'PUT',
+							url: '/medico-atendimento',
+							datatype: 'html',
+							contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+							data: $('#form-diagnosticHypothesis').serialize(),
+							success: function(result) {          
+								alertify.notify(result, 'success', 5)
+							},
+							error: function(xhr, status, error) {
+								alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+							},
+						})
+					})
+				})
+				</script>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="evolution">
+		<div class="modal-box">
+			<div class="modal-title">
+				<h2>Evolução</h2>
+			</div>
+			<div class="form">
+				<form id="form-evolution">
+					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="formType" value="evolucao" />
+					<div class="row">
+						<div class="col-md-12">
+							<label for="">Evolução:</label>
+							<textarea name="evolution" id="" cols="30" rows="10"></textarea>
+						</div>
+						<div class="col-md-4 offset-md-8">
+							<input type="submit" class="btn btn-gradient" value="SALVAR">
+						</div>
+					</div>
+				</form>
+				<script>
+				$(document).ready(function() {
+					$('#form-evolution').on('submit', function(e) {
+						e.preventDefault()
+
+						$.ajax({
+							type: 'PUT',
+							url: '/medico-atendimento',
+							datatype: 'html',
+							contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+							data: $('#form-evolution').serialize(),
+							success: function(result) {          
+								alertify.notify(result, 'success', 5)
+							},
+							error: function(xhr, status, error) {
+								alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+							},
+						})
+					})
+				})
+				</script>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="orcamento">
+		<div class="modal-box">
+			<div class="modal-title">
+				<h2>Despesas</h2>
+			</div>
+			<div class="form">
+				<form id="form-budget">
+					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="formType" value="budget" />
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-7">
+									<label for="">Procedimento:</label>
+									<input type="text" name="procedure">
+								</div>
+								<div class="col-md-3">
+									<label for="">Valor:</label>
+									<input type="text" name="value">
+								</div>
+								<div class="col-md-2">
+									<a href="" class="btn btn-gradient m-top">+</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<label for="">Comentários:</label>
+							<textarea name="comments" id="" cols="30" rows="10"></textarea>
+						</div>
+						<div class="col-md-4 offset-md-8">
+							<input type="submit" class="btn btn-gradient" value="SALVAR">
+						</div>
+					</div>
+				</form>
+				<script>
+				$(document).ready(function() {
+					$('#form-budget').on('submit', function(e) {
+						e.preventDefault()
+
+						$.ajax({
+							type: 'PUT',
+							url: '/medico-atendimento',
+							datatype: 'html',
+							contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+							data: $('#form-budget').serialize(),
+							success: function(result) {          
+								alertify.notify(result, 'success', 5)
+							},
+							error: function(xhr, status, error) {
+								alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+							},
+						})
+					})
+				})
+				</script>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="exames_procedimentos">
+		<div class="modal-box">
+			<div class="modal-title">
+				<h2>Exames e Procedimentos</h2>
+			</div>
+			<div class="form">
+				<form id="form-examsAndProcedures">
+					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="formType" value="exameseprocedimentos" />
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-5">
+									<label for="">DatA:</label>
+									<input type="date" name="date">
+								</div>
+								<div class="col-md-4">
+									<label for="">Modelo de Exames:</label>
+									<div class="select">
+										<select name="examsModel" id="">
+											<option selected disabled>Select model</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<a href="" class="btn btn-gradient m-top">+</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<label for="">Indicação Clínica:</label>
+							<input type="text" name="clinicalIndication">
+						</div>
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-9">
+									<label for="">Exames:</label>
+									<input type="text" name="exams">
+								</div>
+								<div class="col-md-3">
+									<label for="">Montante:</label>
+									<input type="text" name="amount">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 offset-md-8">
+							<input type="submit" class="btn btn-gradient" value="SALVAR">
+						</div>
+					</div>
+				</form>
+				<script>
+				$(document).ready(function() {
+					$('#form-examsAndProcedures').on('submit', function(e) {
+						e.preventDefault()
+
+						$.ajax({
+							type: 'PUT',
+							url: '/medico-atendimento',
+							datatype: 'html',
+							contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+							data: $('#form-examsAndProcedures').serialize(),
+							success: function(result) {          
+								alertify.notify(result, 'success', 5)
+							},
+							error: function(xhr, status, error) {
+								alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+							},
+						})
+					})
+				})
+				</script>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="prescricoes">
+		<div class="modal-box">
+			<div class="modal-title">
+				<h2>Prescrições</h2>
+			</div>
+			<div class="form">
+				<form id="form-prescriptions">
+					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="formType" value="prescriptions" />
+					<div class="row">
+						<div class="col-md-12">
+							<label class="option-radio">
+								Special Control Receipt
+								<input type="radio" name="specialControlReceipt" value="true">
+								<span class="checkmark"></span>
+							</label>
+						</div>
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-5">
+									<label for="">Data:</label>
+									<input type="date" name="date">
+								</div>
+								<div class="col-md-7">
+									<label for="">Modelos:</label>
+									<div class="select">
+										<select name="models" id="">
+											<option disabled selected>Selecione o modelo</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-9">
+									<label for="">Medicação:</label>
+									<input type="text" name="medication">
+								</div>
+								<div class="col-md-3">
+									<label for="">Montante:</label>
+									<input type="text" name="amount">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-9">
+									<label for="">Posologia:</label>
+									<input type="text" name="posology">
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+						</div>
+						<div class="col-md-4 offset-md-8">
+							<input type="submit" class="btn btn-gradient" value="SALVAR">
+						</div>
+					</div>
+				</form>
+				<script>
+				$(document).ready(function() {
+					$('#form-prescriptions').on('submit', function(e) {
+						e.preventDefault()
+
+						$.ajax({
+							type: 'PUT',
+							url: '/medico-atendimento',
+							datatype: 'html',
+							contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+							data: $('#form-prescriptions').serialize(),
+							success: function(result) {          
+								alertify.notify(result, 'success', 5)
+							},
+							error: function(xhr, status, error) {
+								alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+							},
+						})
+					})
+				})
+				</script>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="atestados">
+		<div class="modal-box">
+			<div class="modal-title">
+				<h2>Atestados</h2>
+			</div>
+			<div class="form">
+				<form id="form-attestations">
+					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="formType" value="atestados" />
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-5">
+									<label for="">Data:</label>
+									<input type="date" name="date">
+								</div>
+								<div class="col-md-7">
+									<label for="">Modelos:</label>
+									<div class="select">
+										<select name="models" id="">
+											<option selected disabled>Selecione o modelo</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<label for="">Atestado:</label>
+							<textarea name="attestation" id="" cols="30" rows="10"></textarea>
+						</div>
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-8">
+									<a href="" class="btn btn-gradient">SALVAR COMO UM MODELO</a>
+								</div>
+								<div class="col-md-4">
+									<input type="submit" class="btn btn-gradient" value="SALVAR">
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<script>
+				$(document).ready(function() {
+					$('#form-attestations').on('submit', function(e) {
+						e.preventDefault()
+
+						$.ajax({
+							type: 'PUT',
+							url: '/medico-atendimento',
+							datatype: 'html',
+							contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+							data: $('#form-attestations').serialize(),
+							success: function(result) {          
+								alertify.notify(result, 'success', 5)
+							},
+							error: function(xhr, status, error) {
+								alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+							},
+						})
+					})
+				})
+				</script>
+			</div>
+		</div>
+	</div>	
+	
+	<div class="modal" id="anexos">
+		<div class="modal-box">
+			<div class="modal-title">
+				<h2>Imagens ou anexos</h2>
+			</div>
+			<div class="form">
+				<form id="form-imagesOrAttachments">
+					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<div class="row">
+						<div class="col-md-12">
+							<input type="file" name="file" multiple>										
+						</div>
+						<div class="col-md-4 offset-md-8">
+							<input type="submit" class="btn btn-gradient" value="SAVE">
+						</div>
+					</div>
+				</form>
+				<script>
+				$(document).ready(function() {
+					$('#form-imagesOrAttachments').on('submit', function(e) {
+						e.preventDefault()
+
+						$.ajax({
+							type: 'POST',
+							enctype: 'multipart/form-data',
+							url: '/medico-atendimento-imagem',
+							data: new FormData($('#form-imagesOrAttachments')[0]),
+							contentType: false,
+							cache: false,
+							processData: false,
+							success: function(result) {          
+								alertify.notify(result, 'success', 5)
+							},
+							error: function(xhr, status, error) {
+								alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+							},
+						})
+					})
+				})
+                </script>
+			</div>
+		</div>
+	</div>	
+	
+	<div class="modal" id="compartilhar">
+		<div class="modal-box">
+			<div class="modal-title">
+				<h2>Compartilhar</h2>
+			</div>
+			<div class="form">
+				<form action="">
+					<div class="row">
+						<div class="col-md-12">
+							<label for="">Nome do médico:</label>
+							<input type="text" name="">
+						</div>
+						<div class="col-md-12">
+							<label for="">Especialidade:</label>
+							<input type="text" name="">
+						</div>
+						<div class="col-md-12">
+							<label for="">Endereço:</label>
+							<input type="text" name="">
+						</div>
+						<div class="col-md-12">
+							<label for="">Sua senha:</label>
+							<input type="password" name="">
+						</div>
+						<div class="col-md-6 offset-md-6">
+							<input type="submit" class="btn btn-gradient" value="COMPARTILHAR">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%- include includes/footer.ejs %>

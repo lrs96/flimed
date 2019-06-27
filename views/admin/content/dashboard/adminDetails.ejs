@@ -1,0 +1,370 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Informações</h3>
+            </div>
+            <div class="box-body">
+                <p class="text-center"><code><%= client.usertype %></code></p>
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item">
+                        <b>Nome</b> <a class="pull-right"><%= client.name %></a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Email</b> <a class="pull-right"><%= client.email %></a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Telefone</b> <a class="pull-right"><%= client.phone %></a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Registrado em</b> <a class="pull-right"><%= client.createdAt %></a>
+                    </li>
+                    <% if(client.deletedAt) { %>
+                        <li class="list-group-item">
+                            <b>Banido em</b> <a class="pull-right"><%= client.deletedAt %></a>
+                        </li>
+                    <% } %>
+                </ul>
+                <% if(!client.admin) { %>
+                <div align="center">
+                    <form action="/admin-detalhes/<%= client._id %>" method="POST">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        <button type="submit" class="btn btn-danger">
+                            <% if(!client.deletedAt) { %>Banir usuário
+                            <% } else { %>Desbanir usuário
+                            <% } %></button>
+                    </form>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Alterar informações</h3>
+            </div>
+            <div class="box-body">
+                <form id="form-change-profile" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Nome</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="newName" class="form-control" id="inputName" placeholder="Digite o nome">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" name="newEmail" class="form-control" id="inputEmail" placeholder="Digite o Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Telefone</label>
+                        <div class="col-sm-10">
+                            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+                            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+                            <input type="text" name="newPhone" class="phone form-control" id="inputName" placeholder="Digite o telefone">
+                            <script>
+                                jQuery("input.phone")
+                                    .mask("(99) 9999-9999?9")
+                                    .focusout(function (event) {  
+                                        var target, phone, element;  
+                                        target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+                                        phone = target.value.replace(/\D/g, '');
+                                        element = $(target);  
+                                        element.unmask();  
+                                        if(phone.length > 10) {  
+                                            element.mask("(99) 99999-999?9");  
+                                        } else {  
+                                            element.mask("(99) 9999-9999?9");  
+                                        }  
+                                    })
+                            </script>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+                <script>
+                    $(document).ready(function () {
+                        $('#form-change-profile').on('submit', function (e) {
+                            e.preventDefault()
+
+                            $.ajax({
+                                type: 'PUT',
+                                url: '/admin-change-user/<%= client._id %>',
+                                datatype: 'html',
+                                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                data: $('#form-change-profile').serialize(),
+                                success: function (result) {
+                                    alertify.notify(result, 'success', 5)
+                                    setTimeout(function () {
+                                        window.location.reload()
+                                    }, 500)
+                                },
+                                error: function (xhr, status, error) {
+                                    alertify.notify(JSON.parse(xhr.responseText), 'error',
+                                        5)
+                                },
+                            })
+                        })
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if(client.purchasesHistoric.plan.length) { %>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Histórico financeiro - Planos</h3>
+                </div>
+                <div class="box-body">
+                    <table id="table-info" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Plano</th>
+                                <th>Status</th>
+                                <th>Registrado em</th>
+                                <th>Finalizado em</th>
+                                <th>Próximo pagamento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < client.purchasesHistoric.plan.length; i++) { %>
+                                <tr>
+                                    <td><%= client.purchasesHistoric.plan[i]._idPayment %></td>
+                                    <td><%= client.purchasesHistoric.plan[i].title %></td>
+                                    <td><code><%= client.purchasesHistoric.plan[i].status %></code></td>
+                                    <td><%= client.purchasesHistoric.plan[i].startAt %></td>
+                                    <td><%= client.purchasesHistoric.plan[i].endAt %></td>
+                                    <td><%= client.purchasesHistoric.plan[i].payment.paymentDay %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Plano</th>
+                                <th>Status</th>
+                                <th>Registrado em</th>
+                                <th>Finalizado em</th>
+                                <th>Próximo pagamento</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } %>
+
+<% if(client.purchasesHistoric.product.length) { %>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Histórico financeiro - Produtos</h3>
+                </div>
+                <div class="box-body">
+                    <table id="table-info-2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Produto</th>
+                                <th>Status</th>
+                                <th>Cidade</th>
+                                <th>Especialidade</th>
+                                <th>Início em</th>
+                                <th>Finalizado em</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < client.purchasesHistoric.product.length; i++) { %>
+                                <tr>
+                                    <td><%= client.purchasesHistoric.product[i]._idPayment %></td>
+                                    <td><%= client.purchasesHistoric.product[i].title %></td>
+                                    <td><code><%= client.purchasesHistoric.product[i].status %></code></td>
+                                    <td><%= client.purchasesHistoric.product[i].city %></td>
+                                    <td><%= client.purchasesHistoric.product[i].specialty %></td>
+                                    <td><%= client.purchasesHistoric.product[i].startAt %></td>
+                                    <td><%= moment(client.purchasesHistoric.product[i].startAt, 'DD/MM/YYYY').add(client.purchasesHistoric.product[i].daysUntilPlanIsOver, 'days').format('L') %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Produto</th>
+                                <th>Status</th>
+                                <th>Cidade</th>
+                                <th>Especialidade</th>
+                                <th>Início em</th>
+                                <th>Finalizado em</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } %>
+
+<% if(attendance.length) { %>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Lista de consultas realizadas</h3>
+                    <p>Clique na consulta para obter mais informações</p>
+                </div>
+                <div class="box-body">
+                    <table id="table-info-3" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Médico</th>
+                                <th>Local de atendimento</th>
+                                <th>Status</th>
+                                <th>Registrado em</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < attendance.length; i++) { %>
+                                <tr style="cursor:pointer" data-toggle="modal" data-target="#modal-attendanceInfo-<%= i %>">
+                                    <td><%= attendance[i].event.patientInfo.patientName %></td>
+                                    <td><%= attendance[i].event.doctorName %></td>
+                                    <td><%= attendance[i].event.location.city %>/<%= attendance[i].event.location.state %></td>
+                                    <td><code><%= attendance[i].event.status %></code></td>
+                                    <td><%= attendance[i].attendanceInfo.createdAt %></td>
+                                </tr>
+                                <div class="modal fade" id="modal-attendanceInfo-<%= i %>">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title">Informações</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Consulta realizada em: <%= attendance[i].attendanceInfo.createdAt %></p>
+                                                <p>Status: <code><%= attendance[i].event.status %></code></p>
+                                                <p>Local: <%= attendance[i].event.location.city %>/<%= attendance[i].event.location.state %> - <%= attendance[i].event.location.address %>, nº <%= attendance[i].event.location.number %>. CEP <%= attendance[i].event.location.zipCode %></p>
+                                                <p>Perfil do médico: <a target="_blank" href="/admin-detalhes/<%= attendance[i].attendanceInfo._idDoctor %>">Clique aqui</a></p>
+                                                <p>Perfil do paciente: <a target="_blank" href="/admin-detalhes/<%= attendance[i].attendanceInfo._idPatient %>">Clique aqui</a></p>
+                                                <div class="nav-tabs-custom">
+                                                    <ul class="nav nav-tabs">
+                                                        <li><a href="#tab_1-<%= i %>" data-toggle="tab" aria-expanded="false">Opinião</a></li>
+                                                        <li><a href="#tab_2-<%= i %>" data-toggle="tab" aria-expanded="false">Anamnese</a></li>
+                                                        <li><a href="#tab_3-<%= i %>" data-toggle="tab" aria-expanded="false">Exame físico</a></li>
+                                                        <li><a href="#tab_4-<%= i %>" data-toggle="tab" aria-expanded="false">Diagnóstico</a></li>
+                                                        <li><a href="#tab_5-<%= i %>" data-toggle="tab" aria-expanded="false">Evolução</a></li>
+                                                        <li><a href="#tab_6-<%= i %>" data-toggle="tab" aria-expanded="false">Orçamento</a></li>
+                                                        <li><a href="#tab_7-<%= i %>" data-toggle="tab" aria-expanded="false">Exames</a></li>
+                                                        <li><a href="#tab_8-<%= i %>" data-toggle="tab" aria-expanded="false">Prescrição</a></li>
+                                                        <li><a href="#tab_9-<%= i %>" data-toggle="tab" aria-expanded="false">Atestado</a></li>
+                                                        <li><a href="#tab_10-<%= i %>" data-toggle="tab" aria-expanded="false">Imagens</a></li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane" id="tab_1-<%= i %>">
+                                                            <p>Voto: <%= attendance[i].attendanceInfo.patientOpinion.vote %></p>
+                                                            <p>Opinião: <%= attendance[i].attendanceInfo.patientOpinion.opinion %></p>
+                                                        </div>
+                                                        <div class="tab-pane" id="tab_2-<%= i %>">
+                                                            <p>Complaint: <%= attendance[i].attendanceInfo.anamnesis.complaint %></p>
+                                                            <p>History: <%= attendance[i].attendanceInfo.anamnesis.history %></p>
+                                                            <p>Articular Problems: <%= attendance[i].attendanceInfo.anamnesis.articularProblemsOrRheumatism %></p>
+                                                            <p>Kidney Problems: <%= attendance[i].attendanceInfo.anamnesis.kidneyProblems %></p>
+                                                            <p>Heart Problems: <%= attendance[i].attendanceInfo.anamnesis.heartProblems %></p>
+                                                            <p>Breathing Problems: <%= attendance[i].attendanceInfo.anamnesis.breathingProblems %></p>
+                                                            <p>Gastric Problems: <%= attendance[i].attendanceInfo.anamnesis.gastricProblems %></p>
+                                                            <p>Allergies: <%= attendance[i].attendanceInfo.anamnesis.allergies %></p>
+                                                            <p>Use Of Medications: <%= attendance[i].attendanceInfo.anamnesis.useOfMedications %></p>
+                                                            <p>Hepatitis: <%= attendance[i].attendanceInfo.anamnesis.hepatitis %></p>
+                                                            <p>Pregnancy: <%= attendance[i].attendanceInfo.anamnesis.pregnancy %></p>
+                                                            <p>Diabetes: <%= attendance[i].attendanceInfo.anamnesis.diabetes %></p>
+                                                            <p>Healing Problems: <%= attendance[i].attendanceInfo.anamnesis.healingProblems %></p>
+                                                        </div>
+                                                        <div class="tab-pane" id="tab_3-<%= i %>">
+                                                            <p>Height: <%= attendance[i].attendanceInfo.physicalExam.height %></p>
+                                                            <p>Palpation: <%= attendance[i].attendanceInfo.physicalExam.palpation %></p>
+                                                            <p>Injuries: <%= attendance[i].attendanceInfo.physicalExam.injuries %></p>
+                                                            <p>Weight: <%= attendance[i].attendanceInfo.physicalExam.weight %></p>
+                                                            <p>Heart Rate: <%= attendance[i].attendanceInfo.physicalExam.heartRate %></p>
+                                                            <p>Systolic Blood Pressure: <%= attendance[i].attendanceInfo.physicalExam.systolicBloodPressure %></p>
+                                                            <p>Diastolic Blood Pressure: <%= attendance[i].attendanceInfo.physicalExam.diastolicBloodPressure %></p>
+                                                            <p>General Observations: <%= attendance[i].attendanceInfo.physicalExam.generalObservations %></p>
+                                                        </div>
+                                                        <div class="tab-pane" id="tab_4-<%= i %>">
+                                                            <p>Diagnosis: <%= attendance[i].attendanceInfo.diagnosticHypothesis.diagnosis %></p>
+                                                            <p>Comments: <%= attendance[i].attendanceInfo.diagnosticHypothesis.comments %></p>
+                                                        </div>                                
+                                                        <div class="tab-pane" id="tab_5-<%= i %>">
+                                                            <p>Evolution: <%= attendance[i].attendanceInfo.evolution %></p>
+                                                        </div>                       
+                                                        <div class="tab-pane" id="tab_6-<%= i %>">
+                                                            <% for (let j = 0; j < attendance[i].attendanceInfo.budget.length; j++) { %>
+                                                                <p>Procedure: <%= attendance[i].attendanceInfo.budget[j].procedure %></p>
+                                                                <p>Value: <%= attendance[i].attendanceInfo.budget[j].value %></p>
+                                                                <p>Comments: <%= attendance[i].attendanceInfo.budget[j].comments %></p>
+                                                                <hr>
+                                                            <% } %>
+                                                        </div>                   
+                                                        <div class="tab-pane" id="tab_7-<%= i %>">
+                                                            <% for (let j = 0; j < attendance[i].attendanceInfo.examsAndProcedures.length; j++) { %>
+                                                                <p>Date: <%= attendance[i].attendanceInfo.examsAndProcedures[j].date %></p>
+                                                                <p>Clinical Indication: <%= attendance[i].attendanceInfo.examsAndProcedures[j].clinicalIndication %></p>
+                                                                <p>Exams: <%= attendance[i].attendanceInfo.examsAndProcedures[j].exams %></p>                                        
+                                                                <p>Amount: <%= attendance[i].attendanceInfo.examsAndProcedures[j].amount %></p>
+                                                                <hr>
+                                                            <% } %>
+                                                        </div>
+                                                        <div class="tab-pane" id="tab_8-<%= i %>">
+                                                            <p>Special Control Receipt: <%= attendance[i].attendanceInfo.prescriptions.specialControlReceipt %></p>
+                                                            <p>Date: <%= attendance[i].attendanceInfo.prescriptions.date %></p>
+                                                            <p>Medication: <%= attendance[i].attendanceInfo.prescriptions.medication %></p>                                    
+                                                            <p>Amount: <%= attendance[i].attendanceInfo.prescriptions.amount %></p>                                  
+                                                            <p>Posology: <%= attendance[i].attendanceInfo.prescriptions.posology %></p>
+                                                        </div>
+                                                        <div class="tab-pane" id="tab_9-<%= i %>">
+                                                            <p>Date: <%= attendance[i].attendanceInfo.attestations.date %></p>                                    
+                                                            <p>Attestation: <%= attendance[i].attendanceInfo.attestations.attestation %></p>
+                                                        </div>                                
+                                                        <div class="tab-pane" id="tab_10-<%= i %>">
+                                                            <% for (let j = 0; j < attendance[i].attendanceInfo.imagesOrAttachments.length; j++) { %>
+                                                                <p>Imagem <%= j + 1 %>: <a target="_blank" href="/get/<%= attendance[i].attendanceInfo._id %>/<%= attendance[i].attendanceInfo.imagesOrAttachments[j].fileName %>">Clique aqui</a></p>
+                                                            <% } %>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Nome do paciente</th>
+                                <th>Nome do médico</th>
+                                <th>Local de atendimento</th>
+                                <th>Status</th>
+                                <th>Registrado em</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } %>

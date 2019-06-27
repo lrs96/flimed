@@ -1,0 +1,78 @@
+<%- include includes/header.ejs %>
+
+<section class="box__advancedsearch">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="form-search form">
+					<p class="h3">SEARCH</p>
+					<form action="/pesquisa-avancada" method="POST">
+						<div class="row">
+							<div class="col-md-6">
+								<label class="option-radio">
+									Clinic
+									<input type="radio" checked="checked" name="usertype" value="CLINICA">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<label class="option-radio">
+									Doctor
+									<input type="radio" name="usertype" value="MÉDICO">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+							<div class="col-md-12">
+								<input type="text" name="name" placeholder="Nome do especialista" class="sprite-form__specialist">
+							</div>
+							<div class="col-md-6">
+								<input type="text" name="city" placeholder="Cidade" class="sprite-form__location">
+							</div>
+							<div class="col-md-6">
+								<input type="text" name="state" placeholder="Estado" class="sprite-form__location">
+							</div>
+							<div class="col-md-12">
+								<div class="select">
+									<i class="sprite-form__specialty"></i>
+									<select name="speciality" class="select-icon">
+										<option selected disabled>Especialidade</option>
+										<option>Gastrologista</option>
+										<option>Cardiologista</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<input type="date" name="date" placeholder="Data de preferência" class="sprite-form__date">
+							</div>
+							<div class="col-md-6">
+								<label class="option-radio">
+									Privado
+									<input type="radio" checked="checked" name="radio">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<label class="option-radio">
+									Acordo Médico
+									<input type="radio" name="radio">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+							<div class="col-md-12">
+								<input type="submit" class="btn btn-gradient" value="Buscar">
+							</div>
+						</div>
+					</form>
+					<script src="/views/js/ajax/pesquisa-avancada.js"></script>
+				</div>
+			</div>
+			<div class="col-md-5 offset-2">
+				<figure class="fig-doctors">
+					<img src="/views/img/person-doctors_home.png" alt="Imagem Doutores">
+				</figure>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%- include includes/footer.ejs %>
