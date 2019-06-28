@@ -40,7 +40,7 @@ module.exports = app => {
     })
 
     app.get('/precos-novos', function(req, res) {
-        res.status(200).render('page-preco-novo', { page: 'novo',  message: null })
+        res.status(200).render('page-preco-novos', { page: 'novo',  message: null })
     })
 
     /* ============= UPLOAD / VIEW USER PROFILE PIC ============= */
