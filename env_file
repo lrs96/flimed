@@ -8,7 +8,7 @@ SERVER CONFIG
 PORT=3000
 
 DB CONFIG
-DB_HOST=process.env.MONGODB_URI
+DB_HOST=mongodb://heroku_p6kr887w:htihdihjd1ip29qdlhj7rg0gqb@ds245387.mlab.com:45387/heroku_p6kr887w
 
 JWT/SESSION CONFIG
 AUTH_SECRET=L@&97;MfI?^+WhcI%]H)5<GOcd8<B3aMfG,E>AkF{f{M$SWsNdd)bj|3#81$c}{8
