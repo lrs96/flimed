@@ -36,7 +36,7 @@ module.exports = app => {
 
     /* ============= VIEW PLAN PAGE ============= */
     app.get('/planos', function(req, res) {
-        res.status(200).render('page-preco', { page: 'Planos', user: req.session.user, message: null })
+        res.status(200).render('page-preco', { page: 'Planos', user: req.session.user,  message: null })
     })
 
     /* ============= UPLOAD / VIEW USER PROFILE PIC ============= */
