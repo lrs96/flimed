@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "nodemon": "1.18.10",
+    "morgan": "1.9.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.18.3",
     "cep-promise": "3.0.6",
