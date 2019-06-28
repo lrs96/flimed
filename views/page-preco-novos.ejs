@@ -1,0 +1,114 @@
+<%- include includes/header-planos-medico.ejs %>
+<section class="logo-page-price">
+	<div class="row">
+		<div class="container justify-content-center d-flex">
+			<figure class="figure-logo">
+				<a href="/"><img src="views/img/icon-flimed.svg" alt="Logo Flimed"></a>
+			</figure>
+		</div>
+	</div>
+</section>
+<section class="box__resultsearch">
+	<div class="welcome">
+		<div class="container">
+			<div class="row">
+				<div class="col-12	">
+					<p>Olá <strong><%= user.name %></strong>, seja bem vindo ao <strong>Flimed</strong>! Agora basta escolher um plano
+						para ter acesso a recursos exclusivos da nossa plataforma :)</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="price-plan">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="price-plan__item">
+						<h3>STANDARD</h3>
+						<div class="recursos">
+							<p class="mb-0">recursos inclusos</p>
+						</div>
+						<div class="list-recursos">
+							<ul class="list">
+								<li>Tele-medicina</li>
+								<li>Responder perguntas</li>
+								<li>Prontuário Virtual</li>
+								<li>Medicamentos</li>
+								<li>Prescrição Virtual</li>
+							</ul>
+						</div>
+						<div class="price-planos">
+								<p class="price-item">Total: R$ 130,00</p>
+							</div>
+							<div class="form-product">
+								<form id="product_1" method="POST" action="/subscription/p-1">
+									<a href="javascript:{}" class="btn-radius" onclick="document.getElementById('product_1').submit();">
+										INICIAR
+									</a>
+								</form>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-4 middle">
+					<div class="price-plan__item">
+						<h3>MEDIUM</h3>
+						<div class="recursos">
+							<p class="mb-0">recursos inclusos</p>
+						</div>
+						<div class="list-recursos">
+								<ul class="list">
+										<li>Tele-medicina</li>
+										<li>Responder perguntas</li>
+										<li>Prontuário Virtual</li>
+										<li>Medicamentos</li>
+										<li>Prescrição Virtual</li>
+									</ul>
+						</div>
+						<div class="price-planos">
+								<p class="price-item">Total: R$ 130,00</p>
+							</div>
+							<div class="form-product">
+								<form id="product_2" method="POST" action="/subscription/p-2">
+									<a href="javascript:{}" class="btn-radius" onclick="document.getElementById('product_2').submit();">
+										INICIAR
+									</a>
+								</form>
+							</div>
+					</div>	
+				</div>
+				<div class="col-md-4">
+					<div class="price-plan__item">
+						<h3>PLUS</h3>
+						<div class="recursos">
+							<p class="mb-0">recursos inclusos</p>
+						</div>
+						<div class="list-recursos">
+							<ul class="list">
+								<li>Tele-medicina</li>
+								<li>Responder perguntas</li>
+								<li>Prontuário Virtual</li>
+								<li>Medicamentos</li>
+								<li>Prescrição Virtual</li>
+							</ul>
+						</div>
+						<div class="price-planos">
+							<p class="price-item">Total: R$ 130,00</p>
+						</div>
+						<div class="form-product">
+							<form id="product_3" method="POST" action="/subscription/p-3">
+								<a href="javascript:{}" class="btn-radius" onclick="document.getElementById('product_3').submit();">
+									INICIAR
+								</a>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+
+</section>
+</main>
+<!-- <%- include includes/footer.ejs %> -->
