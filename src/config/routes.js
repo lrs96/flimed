@@ -8,7 +8,7 @@ const clinic = require('./role/clinic')
 module.exports = app => {
     /* ============= INDEX ============= */
     app.get('/', function(req, res) {
-        if(!req.session || !req.session.user || req.session.user.usertype === 'PACIENTE') {
+         if(!req.session || !req.session.user || req.session.user.usertype === 'PACIENTE') {
             res.status(200).render('index')
         } else {
             if(req.session.user.usertype === 'MEDICO') {
@@ -18,7 +18,7 @@ module.exports = app => {
             } else if(req.session.user.usertype === 'ADMIN') {
                 res.redirect('/admin-painel')
             } else {
-                res.status(200).render('index')
+               res.status(200).render('index')
             }
         }        
     })
