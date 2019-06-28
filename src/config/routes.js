@@ -39,6 +39,10 @@ module.exports = app => {
         res.status(200).render('page-preco', { page: 'Planos', user: req.session.user,  message: null })
     })
 
+    app.get('/precos-novos', function(req, res) {
+        res.status(200).render('page-preco-novo', { page: 'Page Preço Novo',  message: null })
+    })
+
     /* ============= UPLOAD / VIEW USER PROFILE PIC ============= */
     app.get('/profilePicture/:id', app.src.api.user.viewProfilePicture)
     app.route('/addProfilePicture')
