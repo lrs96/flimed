@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Back-end desenvolvido para o portal Conexão Saúde",
   "engines": {
-    "node" : "10.5.0"
+    "node" : "10.x"
   },
+  
   "scripts": {
     "start": "nodemon index.js",
     "production": "pm2 start index.js --name ConexaoSaude && pm2 start pm2-process.json && pm2 monit"
