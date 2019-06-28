@@ -5,9 +5,9 @@
   "engines": {
     "node" : "10.x"
   },
-  
+
   "scripts": {
-    "start": "nodemon index.js",
+    "dev": "nodemon index.js",
     "production": "pm2 start index.js --name ConexaoSaude && pm2 start pm2-process.json && pm2 monit"
   },
   "repository": {
