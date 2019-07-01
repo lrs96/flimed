@@ -1,11 +1,11 @@
 <%- include includes/header-medico.ejs %>
-
+<form class="form" id="form-profile">
 <section class="box__panel">
 	<div class="container">
 		<div class="row mosaic">
 			<div class="col-md-4">
-				<div class="mosaic-item tam">
 					<h3>Foto do perfil</h3>
+				<div class="mosaic-item tam">
 					<div class="picture-profile">
 						<div class="picture-profile__content">
 							<figure class="picture-profile__fig">
@@ -28,67 +28,61 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-8">
-				<div class="mosaic-item">
-					<h3>Mudar senha</h3>
-					<form id="form-change-password" class="form">
-						<div class="row">
-							<div class="col-md-4">
-								<input type="password" name="currentPassword" placeholder="Senha Antiga">
-							</div>
-							<div class="col-md-4">
-								<input type="password" name="newPassword" placeholder="Nova senha">
-							</div>
-							<div class="col-md-4">
-								<input type="password" name="confirmNewPassword" placeholder="Repita a nova senha">
-							</div>
-							<div class="col-md-12">
-								<input type="submit" class="btn btn-gradient" value="Mude a senha">
-							</div>
-						</div>
-					</form>
-					<script>
-					$(document).ready(function() {
-						$('#form-change-password').on('submit', function(e) {
-							e.preventDefault()
-							
-							$.ajax({
-								type: 'PUT',
-								url: '/changePassword',
-								datatype: 'html',
-								contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-								data: $('#form-change-password').serialize(),
-								success: function(result) {          
-									alertify.notify(result, 'success', 5)
-									$('#form-change-password')[0].reset()
-								},
-								error: function(xhr, status, error) {
-									alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-								},
-							})
-						})
-					})
-					</script>
-				</div>
-			</div>
 		
 			<div class="col-md-12">
 				<div class="mosaic-item">
-					<h3>Informações Básicas</h3>
+					<h3>Informações</h3>
 					<form id="form-change-profile" class="form">
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<!-- para pegar os dados do usuário, faça como abaixo no campo "value" -->
 								<!-- em caso de dúvidas, consulte src/model/userModel.js para conferir os itens do perfil do usuário -->
 								<input type="text" name="name" value="<%= user.name %>" placeholder="Nome completo">
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-3">
+									<input type="email" name="email" placeholder="E-mail">
+								</div>
+							<div class="col-md-3">
 								<input type="text" name="crm" placeholder="Número de registro">
 							</div>
-							<div class="col-md-6">
-								<input type="text" name="cpf" placeholder="CPF">
-							</div>
-							<div class="col-md-6">
+							<div class="col-md-3">
+								<div class="foto-upload relative">
+										<label for="upload-image">
+											<img src="/views/img/cloud.png" alt="Icon Cloud">
+										</label>
+									<input type="file" id="upload-image" class="d-none">
+									<input type="text" name="crm" disabled placeholder="Foto do perfil" target="#upload-image">
+								</div>
+									<div class="image-upload">
+											<label for="file_profile">
+												<img src="/views/img/cloud.png" alt="Icon Cloud">
+											</label>
+											<input placeholder="Foto de perfil" id="file_profile" type="file" accept=".jpg, .jpeg, .png" name="file" onchange="this.form.submit();">										
+										</div>
+								</div>
+								
+							<div class="col-md-3">
+									<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+									<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+									<input type="text" id="input-phone" name="phone" class="phone" placeholder="Telefone">
+									<script>
+										jQuery("input.phone")
+										.mask("(99) 9999-9999?9")
+										.focusout(function (event) {  
+											var target, phone, element;  
+											target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+											phone = target.value.replace(/\D/g, '');
+											element = $(target);  
+											element.unmask();  
+											if(phone.length > 10) {  
+												element.mask("(99) 99999-999?9");  
+											} else {  
+												element.mask("(99) 9999-9999?9");  
+											}  
+										})
+									</script>
+								</div>
+							<div class="col-md-3">
 								<div class="select">
 									<select name="genre">
 										<option disabled>Gênero</option>
@@ -97,37 +91,16 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<input type="email" name="email" placeholder="E-mail">
-							</div>
-							<div class="col-md-6">
-								<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-								<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
-								<input type="text" id="input-phone" name="phone" class="phone" placeholder="Telephone">
-								<script>
-								  jQuery("input.phone")
-									.mask("(99) 9999-9999?9")
-									.focusout(function (event) {  
-										var target, phone, element;  
-										target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
-										phone = target.value.replace(/\D/g, '');
-										element = $(target);  
-										element.unmask();  
-										if(phone.length > 10) {  
-											element.mask("(99) 99999-999?9");  
-										} else {  
-											element.mask("(99) 9999-9999?9");  
-										}  
-								  })
-								</script>
-							</div>
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<input type="date" name="dateOfBirth" placeholder="Data de nascimento">
 							</div>
-							
-							<div class="col-md-4">
-								<input type="submit" class="btn btn-gradient" value="Salvar teste de edições">
-							</div>
+							<div class="col-md-3">
+									<input type="text" name="cpf" placeholder="CPF">
+								</div>
+	<!-- 							
+								<div class="col-md-4">
+									<input type="submit" class="btn btn-gradient" value="Salvar teste de edições">
+								</div> -->
 						</div>
 					</form>
 					<script>
@@ -158,7 +131,261 @@
 			</div>
 			<div class="col-md-12">
 				<div class="mosaic-item">
-					<!-- Lista de locais e form para remover locais -->
+					<h3>Biografia</h3>
+					<form id="form-add-biography" class="form">
+						<div class="row">
+							<div class="col-md-12">
+								<textarea name="biography" cols="30" rows="10" placeholder="Escreva sobre sua biografia"></textarea>
+							</div>
+							<div class="col-12 d-flex justify-content-center">
+								<button type="submit" class="btn btn-radius btn-gradient">+</button>
+							</div>
+						</div>
+					</form>
+					<script>
+						$(document).ready(function() {
+							$('#form-add-biography').on('submit', function(e) {
+								e.preventDefault()
+								
+								$.ajax({
+									type: 'POST',
+									url: '/add-biography',
+									datatype: 'html',
+									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+									data: $('#form-add-biography').serialize(),
+									success: function(result) {          
+										alertify.notify(result, 'success', 5)
+										setTimeout(function() { 
+											window.location.reload()
+										}, 500)
+									},
+									error: function(xhr, status, error) {
+										alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+									}
+								})
+							})
+						})
+					</script>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="mosaic-item">
+					<h3>Locais de atendimento</h3>
+					<div class="row">
+						<div class="col-12">
+							<input type="text" name="local-de-atendimento" placeholder="Endereço de local 1">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 d-flex justify-content-center">
+							<button class="btn btn-radius btn-gradient" id="addLocalAtendimento">+</button>
+						</div>
+					</div>
+
+					<!-- <form id="form-add-biography" class="form">
+						<div class="row">
+							<div class="col-md-12">
+								<textarea name="biography" cols="30" rows="10" placeholder="Escreva sobre sua biografia"></textarea>
+							</div>
+							<button type="submit" class="btn btn-gradient">Enviar</button>
+						</div>
+					</form>
+					<script>
+						$(document).ready(function() {
+							$('#form-add-biography').on('submit', function(e) {
+								e.preventDefault()
+								
+								$.ajax({
+									type: 'POST',
+									url: '/add-biography',
+									datatype: 'html',
+									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+									data: $('#form-add-biography').serialize(),
+									success: function(result) {          
+										alertify.notify(result, 'success', 5)
+										setTimeout(function() { 
+											window.location.reload()
+										}, 500)
+									},
+									error: function(xhr, status, error) {
+										alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+									}
+								})
+							})
+						})
+					</script> -->
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="mosaic-item">
+					<!-- Lista de especialidades e form para remover especialidades -->
+					<% for(i = 0; i < user.speciality.length; i++) { %>
+						<div class="col-md-12">
+							<form id="remove-speciality-<%= i %>">
+								<div class="col-md-8">
+									<%= user.speciality[i] %>
+								</div> 
+								<div class="col-md-4">
+									<input type="hidden" value="<%= i %>" name="position">
+									<button type="submit" class="btn btn-gradient">Remover</button>
+								</div>
+							</form>
+							<script>
+								$(document).ready(function() {
+									$('#remove-speciality-<%= i %>').on('submit', function(e) {
+										e.preventDefault()
+										
+										$.ajax({
+											type: 'DELETE',
+											url: '/add-speciality',
+											datatype: 'html',
+											contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+											data: $('#remove-speciality-<%= i %>').serialize(),
+											success: function(result) {          
+												alertify.notify(result, 'success', 5)
+												setTimeout(function() { 
+													window.location.reload()
+												}, 500)
+											},
+											error: function(xhr, status, error) {
+												alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+											},
+										})
+									})
+								})
+							</script>
+						</div>
+					<% } %>
+					<form id="form-add-speciality" class="form">
+						<div class="row">
+							<div class="col-md-12">
+								<h3>Especialidades</h3>
+							</div>
+							<!-- <div class="col-md-6">
+								<input type="text" name="title" placeholder="Nome da especialidade">
+							</div> -->
+							<div class="col-md-12">
+								<input type="text" name="description" placeholder="Especialidade 1">
+							</div>
+							<div class="col-12 d-flex justify-content-center">
+								<button type="submit" class="btn btn-radius btn-gradient">+</button>
+							</div>
+						</div>
+					</form>
+						<script>
+							$(document).ready(function() {
+								$('#form-add-speciality').on('submit', function(e) {
+									e.preventDefault()
+									
+									$.ajax({
+										type: 'POST',
+										url: '/add-speciality',
+										datatype: 'html',
+										contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+										data: $('#form-add-speciality').serialize(),
+										success: function(result) {          
+											alertify.notify(result, 'success', 5)
+											setTimeout(function() { 
+												window.location.reload()
+											}, 500)
+										},
+										error: function(xhr, status, error) {
+											alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+										}
+									})
+								})
+							})
+						</script>
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<div class="mosaic-item">
+						<!-- Lista de prêmios e form para remover prêmios -->
+						<% for(i = 0; i < user.awards.length; i++) { %>
+							<div class="col-md-12">
+								<form id="remove-awards-<%= i %>">
+									<div class="col-md-8">
+										<%= user.awards[i] %>
+									</div> 
+									<div class="col-md-4">
+										<input type="hidden" value="<%= i %>" name="position">
+										<button type="submit" class="btn btn-gradient">Remover</button>
+									</div>
+								</form>
+								<script>
+									$(document).ready(function() {
+										$('#remove-awards-<%= i %>').on('submit', function(e) {
+											e.preventDefault()
+											
+											$.ajax({
+												type: 'DELETE',
+												url: '/add-award',
+												datatype: 'html',
+												contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+												data: $('#remove-awards-<%= i %>').serialize(),
+												success: function(result) {          
+													alertify.notify(result, 'success', 5)
+													setTimeout(function() { 
+														window.location.reload()
+													}, 500)
+												},
+												error: function(xhr, status, error) {
+													alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+												},
+											})
+										})
+									})
+								</script>
+							</div>
+						<% } %>
+						<form id="form-add-award" class="form">
+							<div class="row">
+								<div class="col-md-12">
+									<h3>Honras e prêmios</h3>
+								</div>
+								<!-- <div class="col-md-6">
+									<input type="text" name="title" placeholder="Título">
+								</div> -->
+								<div class="col-md-12">
+									<input type="text" name="description" placeholder="Escreva sobre este prêmio">
+								</div>
+								<div class="col-12 d-flex justify-content-center">
+									<button type="submit" class="btn btn-radius btn-gradient">+</button>
+								</div>
+							</div>
+						</form>
+						<script>
+							$(document).ready(function() {
+								$('#form-add-award').on('submit', function(e) {
+									e.preventDefault()
+									
+									$.ajax({
+										type: 'POST',
+										url: '/add-award',
+										datatype: 'html',
+										contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+										data: $('#form-add-award').serialize(),
+										success: function(result) {          
+											alertify.notify(result, 'success', 5)
+											setTimeout(function() { 
+												window.location.reload()
+											}, 500)
+										},
+										error: function(xhr, status, error) {
+											alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+										}
+									})
+								})
+							})
+						</script>
+					</div>
+				</div>
+
+<!-- 				
+			<div class="col-md-12">
+				<div class="mosaic-item">
+
 					<% for(i = 0; i < user.location.length; i++) { %>
 						<div class="col-md-12">
 							<form id="remove-location-<%= i %>">
@@ -251,205 +478,9 @@
 					})
 					</script>
 				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="mosaic-item">
-					<!-- Lista de especialidades e form para remover especialidades -->
-					<% for(i = 0; i < user.speciality.length; i++) { %>
-						<div class="col-md-12">
-							<form id="remove-speciality-<%= i %>">
-								<div class="col-md-8">
-									<%= user.speciality[i] %>
-								</div> 
-								<div class="col-md-4">
-									<input type="hidden" value="<%= i %>" name="position">
-									<button type="submit" class="btn btn-gradient">Remover</button>
-								</div>
-							</form>
-							<script>
-								$(document).ready(function() {
-									$('#remove-speciality-<%= i %>').on('submit', function(e) {
-										e.preventDefault()
-										
-										$.ajax({
-											type: 'DELETE',
-											url: '/add-speciality',
-											datatype: 'html',
-											contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-											data: $('#remove-speciality-<%= i %>').serialize(),
-											success: function(result) {          
-												alertify.notify(result, 'success', 5)
-												setTimeout(function() { 
-													window.location.reload()
-												}, 500)
-											},
-											error: function(xhr, status, error) {
-												alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-											},
-										})
-									})
-								})
-							</script>
-						</div>
-					<% } %>
-					<form id="form-add-speciality" class="form">
-						<div class="row">
-							<div class="col-md-6">
-								<h3>Especialidades</h3>
-							</div>
-							<div class="col-md-6">
-								<input type="text" name="title" placeholder="Nome da especialidade">
-							</div>
-							<div class="col-md-12">
-								<input type="text" name="description" placeholder="Escreva sobre esta especialidade">
-							</div>
-							<button type="submit" class="btn btn-gradient">Enviar</button>
-						</div>
-					</form>
-					<script>
-						$(document).ready(function() {
-							$('#form-add-speciality').on('submit', function(e) {
-								e.preventDefault()
-								
-								$.ajax({
-									type: 'POST',
-									url: '/add-speciality',
-									datatype: 'html',
-									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-									data: $('#form-add-speciality').serialize(),
-									success: function(result) {          
-										alertify.notify(result, 'success', 5)
-										setTimeout(function() { 
-											window.location.reload()
-										}, 500)
-									},
-									error: function(xhr, status, error) {
-										alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-									}
-								})
-							})
-						})
-					</script>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="mosaic-item">
-					<!-- Lista de prêmios e form para remover prêmios -->
-					<% for(i = 0; i < user.awards.length; i++) { %>
-						<div class="col-md-12">
-							<form id="remove-awards-<%= i %>">
-								<div class="col-md-8">
-									<%= user.awards[i] %>
-								</div> 
-								<div class="col-md-4">
-									<input type="hidden" value="<%= i %>" name="position">
-									<button type="submit" class="btn btn-gradient">Remover</button>
-								</div>
-							</form>
-							<script>
-								$(document).ready(function() {
-									$('#remove-awards-<%= i %>').on('submit', function(e) {
-										e.preventDefault()
-										
-										$.ajax({
-											type: 'DELETE',
-											url: '/add-award',
-											datatype: 'html',
-											contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-											data: $('#remove-awards-<%= i %>').serialize(),
-											success: function(result) {          
-												alertify.notify(result, 'success', 5)
-												setTimeout(function() { 
-													window.location.reload()
-												}, 500)
-											},
-											error: function(xhr, status, error) {
-												alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-											},
-										})
-									})
-								})
-							</script>
-						</div>
-					<% } %>
-					<form id="form-add-award" class="form">
-						<div class="row">
-							<div class="col-md-6">
-								<h3>Honras e prêmios</h3>
-							</div>
-							<div class="col-md-6">
-								<input type="text" name="title" placeholder="Título">
-							</div>
-							<div class="col-md-12">
-								<input type="text" name="description" placeholder="Escreva sobre este prêmio">
-							</div>
-							<button type="submit" class="btn btn-gradient">Enviar</button>
-						</div>
-					</form>
-					<script>
-						$(document).ready(function() {
-							$('#form-add-award').on('submit', function(e) {
-								e.preventDefault()
-								
-								$.ajax({
-									type: 'POST',
-									url: '/add-award',
-									datatype: 'html',
-									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-									data: $('#form-add-award').serialize(),
-									success: function(result) {          
-										alertify.notify(result, 'success', 5)
-										setTimeout(function() { 
-											window.location.reload()
-										}, 500)
-									},
-									error: function(xhr, status, error) {
-										alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-									}
-								})
-							})
-						})
-					</script>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="mosaic-item">
-					<h3>Escreva sua biografia</h3>
-					<form id="form-add-biography" class="form">
-						<div class="row">
-							<div class="col-md-12">
-								<textarea name="biography" cols="30" rows="10" placeholder="Escreva sobre sua biografia"></textarea>
-							</div>
-							<button type="submit" class="btn btn-gradient">Enviar</button>
-						</div>
-					</form>
-					<script>
-						$(document).ready(function() {
-							$('#form-add-biography').on('submit', function(e) {
-								e.preventDefault()
-								
-								$.ajax({
-									type: 'POST',
-									url: '/add-biography',
-									datatype: 'html',
-									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-									data: $('#form-add-biography').serialize(),
-									success: function(result) {          
-										alertify.notify(result, 'success', 5)
-										setTimeout(function() { 
-											window.location.reload()
-										}, 500)
-									},
-									error: function(xhr, status, error) {
-										alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-									}
-								})
-							})
-						})
-					</script>
-				</div>
-			</div>
-			<div class="col-md-12">
+			</div> -->
+
+			<!-- <div class="col-md-12">
 				<div class="mosaic-item">
 					<h3>Adicionar usuário</h3>
 					<form action="" class="form">
@@ -490,8 +521,52 @@
 						</div>
 					</form>
 				</div>
-			</div>
-			<div class="col-md-12">
+			</div> -->
+
+			<div class="col-md-12 col-xs-12">
+					<div class="mosaic-item">
+						<h3>Alterar senha</h3>
+						<form id="form-change-password" class="form">
+							<div class="row">
+								<div class="col-md-6">
+									<input type="password" name="currentPassword" placeholder="Senha Antiga">
+								</div>
+								<div class="col-md-6">
+									<input type="password" name="newPassword" placeholder="Nova senha">
+								</div>
+								<!-- <div class="col-md-4">
+									<input type="password" name="confirmNewPassword" placeholder="Repita a nova senha">
+								</div> -->
+								<!-- <div class="col-md-12">
+									<input type="submit" class="btn btn-gradient" value="Mude a senha">
+								</div> -->
+							</div>
+						</form>
+						<script>
+						$(document).ready(function() {
+							$('#form-change-password').on('submit', function(e) {
+								e.preventDefault()
+								
+								$.ajax({
+									type: 'PUT',
+									url: '/changePassword',
+									datatype: 'html',
+									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+									data: $('#form-change-password').serialize(),
+									success: function(result) {          
+										alertify.notify(result, 'success', 5)
+										$('#form-change-password')[0].reset()
+									},
+									error: function(xhr, status, error) {
+										alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+									},
+								})
+							})
+						})
+						</script>
+					</div>
+				</div>
+			<!-- <div class="col-md-12">
 				<div class="mosaic-item">
 					<h3>Escreva um artigo para o Blog</h3>
 					<form action="" class="form">
@@ -517,12 +592,12 @@
 						</div>
 					</form>
 				</div>
-			</div>
-			<div class="col-md-5 submit-box">
-				<input type="submit" class="btn btn-gradient" value="Salvar edições">
+			</div> -->
+			<div class="col-md-12 submit-box">
+				<button type="submit" class="btn btn-gradient">Salvar todas as alterações</button>
 			</div>
 		</div>
 	</div>	
 </section>
-
+</form>
 <%- include includes/footer.ejs %>

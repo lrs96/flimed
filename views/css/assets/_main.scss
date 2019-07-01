@@ -96,7 +96,7 @@ img { max-width: 100%; height: auto; }
 }
 
 .msg-box__content {
-	@include gradient($blue, $green, horizontal);
+	@include gradient(#01e9b1, #01e9b1, horizontal);
 	border-radius: 4px;
 	padding: 45px 15px 15px;
 	position: relative;
@@ -306,12 +306,10 @@ img { max-width: 100%; height: auto; }
 		padding: 15px 10px;
 		text-align: center;
 		background-color: $body;
-		opacity: .4;
+		opacity: 1;
 		@extend %transition;
-
 		&:hover{
 			@extend %box-shadow;
-			opacity: 1;
 
 			.menu-tooltip {
 				opacity: 1;
@@ -319,6 +317,40 @@ img { max-width: 100%; height: auto; }
 		}
 	}
 }
+
+
+	.menu-item__target.painel {
+		border-radius: 30px;
+		background-color: #01E9B5 !important;
+		img[alt="Btn Home do painel"] {
+			filter: brightness(1000);
+		}
+	}
+
+	.menu-item__target.agendamento {
+		border-radius: 30px;
+		background-color: #01E9B5 !important;
+		img[alt="Btn Home do painel"] {
+			filter: brightness(1000);
+		}
+	}
+
+	.menu-item__target.horarios {
+		border-radius: 30px;
+		background-color: #01E9B5 !important;
+		img[alt="Btn Home do painel"] {
+			filter: brightness(1000);
+		}
+	}
+
+	.menu-item__target.questoes {
+		border-radius: 30px;
+		background-color: #01E9B5 !important;
+		img[alt="Btn Home do painel"] {
+			filter: brightness(1000);
+		}
+	}
+
 
 .menu-tooltip {
 	display: block;
@@ -961,11 +993,17 @@ div.owl-feed {
 .mosaic-item {
 	border-radius: 4px;
 	background-color: $white;
-	padding: 15px;
+	padding: 30px;
 	margin-bottom: 30px;
 	@extend %clearfix;
-	overflow-x: scroll;
+	// overflow-x: scroll;
 	
+		h3 {
+			padding-bottom: 20px;
+			margin-bottom: 0;
+			color: #4F627D;
+		}
+
 	&.tam {
 		min-height: 175px;
 	}
@@ -1017,6 +1055,14 @@ div.owl-feed {
 		}
 		strong {
 			font-weight: bold;
+		}
+	}
+
+	.d-flex {
+		button {
+			width: auto;
+			line-height: 12px;
+			box-shadow: 0 11px 33px rgba(65, 104, 136, 0.25);
 		}
 	}
 }
@@ -1524,6 +1570,7 @@ div.owl-feed {
 		padding: 5px 8px;
 		position: absolute;
 		top: 0;right: 0;
+		box-shadow: 0 11px 33px -4px rgba(65,104,136,0.4)
 	}
 	
 	&:before {
@@ -1547,6 +1594,26 @@ div.owl-feed {
 	
 	&:first-child:before {
 		display: none;
+	}
+}
+
+.foto-upload.relative {
+	position: relative;
+	label {
+		position: absolute;
+		left: 5px;
+		top: 20%;
+		width: 26px;
+		height: 26px;
+		background: linear-gradient(to right, #01e9b1 0%, #45c8e3 100%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		border-radius: 100%;
+	}
+	input {
+		cursor: pointer;
 	}
 }
 

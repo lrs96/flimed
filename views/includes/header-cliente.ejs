@@ -35,10 +35,12 @@
 
 	</head>
 
-	<body class="bg-inner">
+	<body class="bg-inner painel perfil agendamento questoes sair">
 		<!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
+
+
 <div class="mask mask-main" id="mask_main"></div>
 		<main class="main">
 			<div class="nav-mobile" id="nav_mobile">
@@ -52,74 +54,67 @@
 			<header class="header-painel">
 				<div class="inner">
 					<figure class="logo-painel">
-						<a href="#!"><img src="/views/img/logo-painel.png" alt="Logo Conexão Saúde"></a>
+						<a href="#!"><img src="/views/img/logo-painel-cliente.svg" alt="Logo Conexão Saúde"></a>
 					</figure>
-
-					<div class="">
-						<div class="mask mask-inner" id="mask"></div>
-						<figure class="main-profile__fig" id="notification">
-							<img alt="Dr. Guilherme Marques" src="views/img/medico.jpg">
-							<div class="notification">1</div>
-						</figure>
-						<div class="notification-box">
-							<div class="notification-close" id="notification_close">x</div>
-							<h5>Notifications</h5>
-							
-							<div class="notification-cart">
-								<figure class="notification-cart__fig">
-									<img src="img/logo-painel.png" alt="Logo Notification">
-								</figure>
-								<div class="notification-cart__content">
-									<h6>Notification 1</h6>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nisi, id fugiat ea earum facilis!</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
 
 					<nav class="nav-vestical">
 						<ul class="menu row">
-							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
-								<a href="/cliente-painel" class="menu-item__target">
+							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12 ">
+								<a href="/cliente-painel" class="menu-item__target painel">
 									<div class="inner">
-										<i class="sprite-painel__home"></i>
+										<i class="sprite-painel">
+											<img src="/views/img/btn-home-painel.svg" alt="Btn Home do painel">
+										</i>
 										<span class="menu-tooltip">Inicio</span>
 									</div>
 								</a>
 							</li>
-							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
+							<!-- <li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
 								<a href="/cliente-perfil" class="menu-item__target">
 									<div class="inner">
 										<i class="sprite-painel__perfil"></i>
 										<span class="menu-tooltip">Perfil</span>
 									</div>
 								</a>
-							</li>
+							</li> -->
 							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
-								<a href="/cliente-horarios" class="menu-item__target">
+								<a href="/cliente-horarios" class="menu-item__target agendamento">
 									<div class="inner">
-									<i class="sprite-painel__agendamento"></i>
+									<i class="sprite-painel__">
+										<img src="/views/img/btn-calendar-painel.svg" alt="">
+									</i>
 										<span class="menu-tooltip">Agendamento</span>
 									</div>
 								</a>
 							</li>
 							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
-								<a href="/cliente-perguntas" class="menu-item__target">
+								<a href="/cliente-horarios" class="menu-item__target horarios">
 									<div class="inner">
-										<i class="sprite-painel__faq"></i>
+									<i class="sprite-painel__agendamento">
+										<img src="/views/img/btn-horarios-painel.svg" alt="">
+									</i>
+										<span class="menu-tooltip">Horários</span>
+									</div>
+								</a>
+							</li>
+							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
+								<a href="/cliente-perguntas" class="menu-item__target questoes">
+									<div class="inner">
+										<i class="sprite-painel__faq">
+											<img src="/views/img/btn-mensagens-painel.svg" alt="">
+										</i>
 										<span class="menu-tooltip">Questões</span>
 									</div>
 								</a>
 							</li>
-								<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
+								<!-- <li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
 								<a href="/logout" class="menu-item__target">
 									<div class="inner">
 										<i class="sprite-painel__on"></i>
 										<span class="menu-tooltip">Sair</span>
 									</div>
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</nav>
 				</div>

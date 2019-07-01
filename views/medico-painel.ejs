@@ -33,32 +33,56 @@
 			</div>
 			<div class="col-md-3">
 				<div class="mosaic-item cards">
-					<p><strong class="number"><%= user.question.length %></strong> Contate-Nos</p>
+					<p><strong class="number"><%= user.question.length %></strong> Atendimento</p>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="mosaic-item cards">
-					<p><strong class="number"><%= countAbsence %></strong> Falta</p>
+					<p><strong class="number"><%= countAbsence %></strong> Faltaram</p>
 				</div>
 			</div>
 
 			<div class="col-md-6">
 				<div class="mosaic-item title today__box">
 					<h3>Para <strong>Hoje</strong></h3>
-					<% if(events.length) { %>
+					<!-- <% if(events.length) { %>
 						<% for(let i = 0; i < events.length; i++) { %>
-							<% if(moment(events[i].start).format('L') === moment().format('L') && events[i].status !== 'disponível') { %>
+							<% if(moment(events[i].start).format('L') === moment().format('L') && events[i].status !== 'disponível') { %> -->
 								<ul class="today-list">
-									<li class="today-list__item">
+									<!-- <li class="today-list__item">
 										<p><%= events[i].patientInfo.patientName %></p>
 										<span><%= events[i].patientInfo.patientAgreement %></span>
 										<span class="hora"><%= moment(events[i].start).format('LT') %></span>
+									</li> -->
+
+								   <li class="today-list__item">
+										<p>Luan Rodrigues da Silva</p>
+										<span>teste plano</span>
+										<span class="hora">10:00</span>
 									</li>
 								</ul>
-							<% } %>
+							<!-- <% } %>
 						<% } %>
 					<% } %>
-					
+					 -->
+
+					 <ul class="today-list">
+						<li class="today-list__item">
+								<p>Luan Rodrigues da Silva</p>
+								<span>teste plano</span>
+								<span class="hora">10:00</span>
+							</li>
+							<li class="today-list__item">
+									<p>Luan Rodrigues da Silva</p>
+									<span>teste plano</span>
+									<span class="hora">10:00</span>
+								</li>
+								<li class="today-list__item">
+										<p>Luan Rodrigues da Silva</p>
+										<span>teste plano</span>
+										<span class="hora">10:00</span>
+								</li>
+						</ul>
 					<a href="/medico-horarios" class="btn btn-gradient">VEJA TODOS OS PACIENTES DO DIA</a>
 				</div>
 			</div>
@@ -134,12 +158,19 @@
 			</div>
 			<div class="col-md-6">
 				<div class="mosaic-item title">
-					<h3>Gráfico por <strong>Serviços</strong></h3>
+					<h3>Gráfico por <strong>Atendimento</strong></h3>
 					<div class="row">
-						<div class="col-md-6 col-lg-4">
-							<canvas id="chartService" width="140" height="140"></canvas>
+						<div class="col-md-7 col-lg-4">
+							<canvas id="chartService"></canvas>
+							<script>
+									var canvas = document.getElementById('chartService');
+									var pincel = canvas.getContext('2d');
+									console.log(canvas + pincel)
+									pincel.arc(100, 80, 10, 0, Math.PI * 2);
+									pincel.stroke();
+							</script>
 						</div>
-						<div class="col-md-6 col-lg-8">
+						<div class="col-md-5 col-lg-8">
 							<ul class="percent-list">
 								<li class="percent-list__item">Percentagem de <strong>Privado</strong></li>
 								<li class="percent-list__item">Percentagem de <strong>Convênio médico</strong></li>

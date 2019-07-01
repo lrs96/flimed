@@ -439,7 +439,7 @@
 
 /* SPRITE PAINEL */
 [class^="sprite-painel__"], [class*="sprite-painel__"] {
-	background-image: url(#{$url}img/sprite-painel.png);
+	// background-image: url(/views/img/sprite-painel.png);
 	//width: auto;
 	width: 40px;
 	height: 33px;
@@ -591,6 +591,14 @@ section.h-100 {
 	}
 }
 
+.section-main__painel {
+	form {
+		input, textarea, select {
+			background-color: rgba(65, 104, 136, 0.05) !important;
+		}
+	}
+}
+
 section.box-login {
 	.row {
 		h2 {
@@ -615,13 +623,11 @@ section.box-login {
 					margin-top: 0;
 					padding-top: 30px;
 					color: #4F627D;
-					box-shadow: none;
 				}
 				.col-md-12:last-child {
 					a {
 						padding-top: 50px;
 						color: #4F627D;
-						box-shadow: none;
 					}
 				}
 			}
