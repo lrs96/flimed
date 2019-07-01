@@ -105,6 +105,7 @@ module.exports = app => {
     })
     app.post('/login', app.src.api.auth.login)
     
+    
     app.get('/novo-cadastro', function(req, res) {
         res.status(200).render('novo-cadastro', {message: null, page: 'novo-cadastro' })
     })
