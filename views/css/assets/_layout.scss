@@ -677,3 +677,14 @@ section.box-login {
 	position: relative;
 	left: 3px;
 }
+
+.row.mosaic {
+	.mosaic-item {
+		form#buy-banner {
+			.add-image-pop-up {
+				padding: 30px 15px;
+				border: 1px dashed #f9f9f9; 
+			}
+		}
+	}
+}
