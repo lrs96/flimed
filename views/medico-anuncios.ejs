@@ -20,11 +20,7 @@
 								</div>
 							</div>
 							<div class="col-md-3">
-									<div class="input-group">
-											<input class="form-control border-right-0 type="date" name="start" placeholder="Começar">
-											<span class="input-group-addon bg-white border-left-0"><i class="ion-search"></i></span>
-									</div>
-								
+								<input type="date" name="start" placeholder="Começar">
 							</div>
 							<div class="col-md-3">
 								<input type="date" name="end" placeholder="Finalizar">
@@ -57,7 +53,7 @@
 			</div>
 			<div class="col-md-12">
 				<div class="mosaic-item">
-					<h3>Adicionar listagem</h3>
+					<h3>Adicionar Anúncio</h3>
 					<form id="buy-banner" class="form">
 						<div class="row">
 							<div class="col-md-12">
@@ -70,9 +66,16 @@
 								<input type="text" name="title" placeholder="Título">
 							</div>
 							<div class="col-md-6">
+								<p>Adicionar anúncios no painel do cliente?</p>
+								<div class="custom-control custom-radio">
+										<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" value="MEDICO">
+										<label class="custom-control-label" for="customRadio1">MARCAR CONSULTA</label>
+									</div>
+							</div>
+							<div class="col-md-6">
 								<div class="select">
-									<select name="speciality" multiple>
-										<option disabled selected>Especialidade</option>
+									<select name="speciality">
+										<option disabled selected>Categorias</option>
 										<% for(let i = 0; i < user.speciality.length; i++) { %>
 											<option><%= user.speciality[i].title %></option>
 										<% } %>
@@ -89,7 +92,7 @@
 								<input type="text" name="city" id="input_tags2" placeholder="Cidade">
 							</div>
 							<div class="col-md-3">
-								<input type="text" name="age" placeholder="Era">
+								<input type="text" name="age" placeholder="Idade">
 							</div>
 							<div class="col-md-3">
 								<div class="select">

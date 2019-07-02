@@ -353,7 +353,7 @@
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	@include gradient($blue, $green, horizontal);
+	@include gradient(#01E9B5, #01E9B5, horizontal);
 	/*background-color: #1b9dec;
 	background-image: -moz-linear-gradient(top, #1da7ee, #178ee9);
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1da7ee), to(#178ee9));
