@@ -64,12 +64,14 @@
 						<div class="row">
 							<div class="col-md-6">
 								<input type="text" name="title" placeholder="Título">
-								<div class="col-md-6">
-										<input type="date" name="start" placeholder="Início">
-									</div>
+								<div class="row">
 									<div class="col-md-6">
-										<input type="date" name="end" placeholder="Fim">
-									</div>			
+											<input type="date" name="start" placeholder="Início">
+										</div>
+										<div class="col-md-6">
+											<input type="date" name="end" placeholder="Fim">
+										</div>	
+									</div>		
 							</div>
 							<div class="col-md-6">
 									<div class="select">
@@ -97,18 +99,26 @@
 						
 										
 							<div class="col-md-6">
-								<input type="text" name="city" id="input_tags2" placeholder="Cidade">
+								<input type="text" name="city" id="input_tags2" placeholder="Adicione as cidades">
 							</div>
-							<div class="col-md-3">
-								<input type="text" name="age" placeholder="Idade">
-							</div>
-							<div class="col-md-3">
-								<div class="select">
-									<select name="genre">
-										<option selected disabled>Gênero</option>
-										<option>Masculino</option>
-										<option>Femenino</option>
-									</select>
+							<div class="col-md-6">
+								<div class="col-md-3">
+										<input type="text" name="age" placeholder="Idade">
+								</div>
+								<div class="col-md-3">
+									<div class="select">
+										<select name="genre">
+											<option selected disabled>Gênero</option>
+											<option>Masculino</option>
+											<option>Femenino</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="custom-control custom-radio">
+											<input type="radio" id="posicionamento" name="posicionamento" class="custom-control-input" value="MEDICO">
+											<label class="custom-control-label" for="posicionamento">POSICIONAMENTO AUTOMÁTICO?</label>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -147,6 +157,34 @@
 							})
 						})
 					</script>
+						<div class="mosaic-item title">
+						<h3>Gráfico por <strong>Sexo</strong></h3>
+						<div class="row">
+							<div class="col-md-6 col-lg-4">
+								<canvas id="chartGenre" width="140" height="140"></canvas>
+							</div>
+							<div class="col-md-6 col-lg-8">
+								<ul class="percent-list">
+									<li class="percent-list__item">Percentagem de <strong>Mulheres</strong></li>
+									<li class="percent-list__item">Percentagem de <strong>Homens</strong></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="mosaic-item title">
+							<h3>Gráfico por <strong>Idade</strong></h3>
+							<div class="row">
+								<div class="col-md-6 col-lg-4">
+									<canvas id="chartGenre" width="140" height="140"></canvas>
+								</div>
+								<div class="col-md-6 col-lg-8">
+									<ul class="percent-list">
+										<li class="percent-list__item">Percentagem de <strong>Mulheres</strong></li>
+										<li class="percent-list__item">Percentagem de <strong>Homens</strong></li>
+									</ul>
+								</div>
+							</div>
+						</div>
 				</div>
 			</div>
 			
