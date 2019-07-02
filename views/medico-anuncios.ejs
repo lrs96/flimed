@@ -64,36 +64,38 @@
 						<div class="row">
 							<div class="col-md-6">
 								<input type="text" name="title" placeholder="Título">
+								<div class="col-md-6">
+										<input type="date" name="start" placeholder="Início">
+									</div>
+									<div class="col-md-6">
+										<input type="date" name="end" placeholder="Fim">
+									</div>			
 							</div>
 							<div class="col-md-6">
-								<p>Adicionar anúncios no painel do cliente?</p>
-								<div class="form-radio d-flex justify-content-between">
-									<div class="custom-control custom-radio">
-											<input type="radio" id="customRadioSim" name="customRadioSim" class="custom-control-input" value="MEDICO">
-											<label class="custom-control-label" for="customRadio1">SIM</label>
+									<div class="select">
+										<select name="speciality">
+											<option disabled selected>Categorias</option>
+											<% for(let i = 0; i < user.speciality.length; i++) { %>
+												<option><%= user.speciality[i].title %></option>
+											<% } %>
+										</select>
 									</div>
-									<div class="custom-control custom-radio">
-											<input type="radio" id="customRadioNao" name="customRadioNao" class="custom-control-input" value="MEDICO">
-											<label class="custom-control-label" for="customRadio1">NÃO</label>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="select">
-									<select name="speciality">
-										<option disabled selected>Categorias</option>
-										<% for(let i = 0; i < user.speciality.length; i++) { %>
-											<option><%= user.speciality[i].title %></option>
-										<% } %>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<input type="date" name="start" placeholder="Começar">
-							</div>
-							<div class="col-md-3">
-								<input type="date" name="end" placeholder="Finalizar">
-							</div>							
+									<div class="col-md-12">
+											<p>Adicionar anúncios no painel do cliente?</p>
+											<div class="form-radio d-flex justify-content-between">
+												<div class="custom-control custom-radio">
+														<input type="radio" id="customRadioSim" name="customRadioSim" class="custom-control-input" value="MEDICO">
+														<label class="custom-control-label" for="customRadio1">SIM</label>
+												</div>
+												<div class="custom-control custom-radio">
+														<input type="radio" id="customRadioNao" name="customRadioNao" class="custom-control-input" value="MEDICO">
+														<label class="custom-control-label" for="customRadio1">NÃO</label>
+												</div>
+											</div>
+										</div>
+								</div>	
+						
+										
 							<div class="col-md-6">
 								<input type="text" name="city" id="input_tags2" placeholder="Cidade">
 							</div>
