@@ -722,10 +722,13 @@ section.box-login {
 			.col-md-12 {
 				align-items: center;
 				padding: 15px;
-				margin-bottom: 15px;
+				margin-bottom: 20px;
 				box-shadow: 0 11px 33px -4px rgba(65,104,136,0.4);
 				.info-paciente {
 					align-items: center;
+					p {
+						margin-bottom: 0;
+					}
 				}
 				.horario-paciente {
 					p {
