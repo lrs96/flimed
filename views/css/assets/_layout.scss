@@ -712,7 +712,9 @@ section.box-login {
 			}
 		}
 	}
-
+	.row:first-child {
+		padding-bottom: 20px;
+	}
 	.row {
 		.paciente-item {
 			.col-md-12.d-flex {
