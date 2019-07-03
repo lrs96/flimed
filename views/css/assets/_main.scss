@@ -700,7 +700,8 @@ div.owl-feed {
 /* FOOTER */
 .footer {
 	width: 100%;
-	@include gradient($blue, $green, horizontal);
+	background: rgba(65, 104, 136, 6%);
+	// @include gradient($blue, $green, horizontal);
 }
 
 .footer-top {
