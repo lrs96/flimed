@@ -712,20 +712,20 @@ section.box-login {
 			}
 		}
 	}
-	
+
 	.row {
 		.paciente-item {
+			.col-md-12.flex {
+				align-items: center;
+				padding-bottom: 15px;
+				box-shadow: 0 11px 33px rgba(1,233,181,0.09); 
+			}
 			.horario-paciente {
-				.col-md-12.flex {
-					align-items: center;
-					padding-bottom: 15px;
-					box-shadow: 0 11px 33px rgba(1,233,181,0.09);
 					p {
 						margin-bottom: 0;
 						padding: 0.58em;
 						border-radius: 4px;
 					}
-				}
 			
 			}
 		}
