@@ -54,6 +54,7 @@
 			background-color: rgba(65,104,136,0.005) !important;
 			position: absolute;
 			width: 80%;
+			z-index: 1;
 		}
 
 		&:focus:before {
