@@ -52,7 +52,7 @@
 			color: $content;
 			content: attr(placeholder) !important;
 			background-color: rgba(65,104,136,0.005) !important;
-			position: absolute;
+			position: relative;
 			width: 80%;
 			z-index: 1;
 		}
