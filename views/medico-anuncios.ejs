@@ -61,10 +61,10 @@
 									<input type="text" name="title" placeholder="Título">
 									<div class="row">
 										<div class="col-md-6">
-												<input type="date" name="start" placeholder="Início">
+												<input type="date" name="start" value="" placeholder="Início">
 											</div>
 											<div class="col-md-6">
-												<input type="date" name="end" placeholder="Fim">
+												<input type="date" name="end" value="" placeholder="Fim">
 											</div>	
 										</div>		
 								</div>
@@ -184,6 +184,7 @@
 <script>
 		jQuery("input[type='date']").change('focus onfocus', () => {
 				jQuery("input[type='date']:before").remove();
+				console.log("Evento focus");
 		});
 
 		</script>

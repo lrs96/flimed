@@ -61,7 +61,7 @@
 		}
 
 		&:focus:before {
-			content: ' ' !important;
+			content: attr(value) !important;
 		}
 	}
 	
