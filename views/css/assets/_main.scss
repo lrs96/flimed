@@ -186,8 +186,7 @@ img { max-width: 100%; height: auto; }
 	background-color: $white;
 	@extend %box-shadow;
 	z-index: 99;
-	@extend %transition;
-	
+	@extend %transition;	
 	opacity: 0;
 	pointer-events: none;
 	.btn-logout {
