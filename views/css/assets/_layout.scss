@@ -51,7 +51,7 @@
 		&:before {
 			color: $content;
 			content: attr(placeholder) !important;
-			background-color: $white;
+			background-color: rgba(65,104,136,0.005) !important;
 			position: absolute;
 			width: 80%;
 		}
