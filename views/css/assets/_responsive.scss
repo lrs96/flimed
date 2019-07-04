@@ -472,6 +472,30 @@ Exclusive MENU
 	}
 }
 
+@media (max-width: 991px) {
+	.atendimento-paciente {
+		.row:first-child  {
+			flex-direction: column;
+			[class*="col"] {
+				width: 100% !important;
+			}
+		}
+
+		.row.paciente-item {
+			.col-md-12 {
+				flex-direction: column;
+				.info-paciente {
+					min-width: 100%;
+				}
+				.horario-paciente {
+					width: 100%;
+					padding-top: 15px;
+				}
+			}
+		}
+	}
+}
+
 @media (max-width: 991px) and (min-width: 767px) {
 	.col-res-7 {
 		flex: 0 0 60.666667% !important;
