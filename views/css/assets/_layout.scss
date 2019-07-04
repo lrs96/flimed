@@ -712,6 +712,17 @@ section.box-login {
 				border: 1px dashed #000; 
 				margin: 30px 15px;
 			}
+
+			.col-md-12 {
+				#file_ads {
+					display: flex;
+					justify-content: center;
+					flex-direction: column;
+					.dz-message {
+						margin: 0;
+					}
+				}
+			}
 		}
 	}
 }
