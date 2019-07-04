@@ -728,7 +728,7 @@ section.box-login {
 			}
 		}
 	}
-	
+
 	.row:first-child {
 		padding-bottom: 20px;
 		align-items: center;
@@ -775,5 +775,31 @@ section.box-login {
 				}
 			}
 
+	}
+}
+
+
+.ematendimento  {
+	padding-top: 50px;
+
+	.continuarAtendimento {
+		position: absolute;
+		right: 15px;
+		left: 15px;
+		width: 100%;
+		a {
+			width: 50%;
+			text-align: center;
+			padding: 15px 0;
+		}
+		#finalizarAtendimento {
+			background: #F56161;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+		#continuarAtendimento {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
 	}
 }
