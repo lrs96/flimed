@@ -188,7 +188,7 @@
 		}
 
 		input:checked ~ .checkmark {
-			background-color: #2196F3;
+			background-color: #01e9b1;
 		}
 
 		input:checked ~ .checkmark:after {
@@ -201,7 +201,7 @@
 			width: 18px;
 			height: 18px;
 			border-radius: 50%;
-			@include gradient($blue, $green, horizontal);
+			@include gradient($#01e9b1, $#01e9b1, horizontal);
 		}
 	}
 
@@ -681,6 +681,12 @@ section.box-login {
 .row.mosaic {
 	.mosaic-item {
 		form#buy-banner {
+
+			.form-radio {
+				.custom-radio {
+					padding-right: 20px;
+				}
+			}
 			.add-image-pop-up {
 				padding: 30px 15px;
 				border: 1px dashed #000; 
