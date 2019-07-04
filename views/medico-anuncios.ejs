@@ -99,6 +99,18 @@
 								<div class="dz-message">ANEXAR IMAGEM DE BANNER / VIDEO (resolução ideal 1110x120)</div> -->
 							
 							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<form action="/upload-target">
+										<div class="dropzone dz-clickable" id="file_ads">
+											<div class="dz-message">
+													ANEXAR IMAGEM DE BANNER / VIDEO
+												</div>
+										</div>
+									
+									</form>
+								</div>
+							</div>
 							<div class="col-md-12">
 									<div action="/upload-target" class="dropzone dz-clickable" id="file_ads">
 										<div class="dz-message">ANEXAR IMAGEM DE BANNER / VIDEO</div>
@@ -134,10 +146,6 @@
 							<div class="col-md-6">
 								<span><strong>30</strong> DIAS DE ANÚNCIO</span><br>
 								<span><strong>40</strong> VISUALIZAÇÃO</span>
-							</div>
-							<div class="col-md-4">
-								<button type="submit" class="btn btn-gradient">EDITAR</button>
-								<button type="submit" class="btn btn-gradient">DUPLICAR</button>
 							</div>
 							<div class="col-md-2 add-ad">
 								<span class="price"><strong>R$ <%= (bannerValue / 100).toFixed(2) %></strong></span>
@@ -213,6 +221,7 @@
 			</div>-->
 		</div>
 	</div>
+	
 	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 <script>
