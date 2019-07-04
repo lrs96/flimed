@@ -41,6 +41,138 @@
 					<p><strong class="number"><%= countAbsence %></strong> Faltaram</p>
 				</div>
 			</div>
+
+			<div class="col-md-6">
+				<div class="mosaic-item title today__box">
+					<h3>Para <strong>Hoje</strong></h3>
+					<!-- <% if(events.length) { %>
+						<% for(let i = 0; i < events.length; i++) { %>
+							<% if(moment(events[i].start).format('L') === moment().format('L') && events[i].status !== 'disponível') { %> -->
+								<ul class="today-list">
+									<!-- <li class="today-list__item">
+										<p><%= events[i].patientInfo.patientName %></p>
+										<span><%= events[i].patientInfo.patientAgreement %></span>
+										<span class="hora"><%= moment(events[i].start).format('LT') %></span>
+									</li> -->
+								</ul>
+							<!-- <% } %>
+						<% } %>
+					<% } %>
+					 -->
+
+					 <ul class="today-list">
+						<li class="today-list__item">
+								<p>Luan Rodrigues da Silva</p>
+								<span>teste plano</span>
+								<span class="hora">10:00</span>
+							</li>
+							<li class="today-list__item">
+									<p>Luan Rodrigues da Silva</p>
+									<span>teste plano</span>
+									<span class="hora">10:00</span>
+								</li>
+								<li class="today-list__item">
+										<p>Luan Rodrigues da Silva</p>
+										<span>teste plano</span>
+										<span class="hora">10:00</span>
+								</li>
+						</ul>
+					<a href="/medico-horarios" class="btn btn-gradient">VEJA TODOS OS PACIENTES DO DIA</a>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="mosaic-item title today__box">
+					<h3>Avaliação</h3>
+					<%
+						let countPositivo = 0, countNegativo = 0
+						for(let i = 0; i < opinions.length; i++) {
+							if(opinions.vote === 'positivo') countPositivo++
+							if(opinions.vote === 'negativo') countNegativo++
+						}
+					%>
+					<div class="row">
+						<div class="col-md-5 offset-1 evaluation__item">
+							<img src="/views/img/icon-sadFace.jpg" alt="Avaliações Negativas">
+							<p><%= countNegativo %> AVALIAÇÃO</p>
+						</div>
+						<div class="col-md-5 evaluation__item">
+							<img src="/views/img/icon-happyFace.jpg" alt="Avaliações Positivas">
+							<p><%= countPositivo %> AVALIAÇÃO</p>
+						</div>
+					</div>
+					<a href="#ver-mais" class="btn btn-gradient">VEJA TODA A CLASSIFICAÇÃO</a>
+					<div style="width: 70%; " class="modal" id="ver-mais">
+						<div style="width: 100%" class="modal-box">
+							<div class="modal-title">
+								<h2>Ver mais</h2>
+							</div>
+							<div class="form">
+								<%= opinions %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<%
+				let masculino = 0, feminino = 0
+				for(let i = 0; i < patientGender.length; i++) {
+					if(patientGender[i] === 'Masculino') {
+						masculino++
+					} else {
+						feminino++
+					}
+				}
+
+				let privado = 0, outros = 0
+				for(let i = 0; i < events.length; i++) {
+					if(events[i].status === 'pendente' || events[i].status === 'concluído') {
+						if(events[i].patientInfo.patientAgreement === 'Privado') {
+							privado++
+						} else {
+							outros++
+						}
+					}
+				}
+			%>
+			<div class="col-md-6">
+				<div class="mosaic-item title">
+					<h3>Gráfico por <strong>Sexo</strong></h3>
+					<div class="row">
+						<div class="col-md-6 col-lg-4">
+							<canvas id="chartGenre" width="140" height="140"></canvas>
+						</div>
+						<div class="col-md-6 col-lg-8">
+							<ul class="percent-list">
+								<li class="percent-list__item">Percentagem de <strong>Mulheres</strong></li>
+								<li class="percent-list__item">Percentagem de <strong>Homens</strong></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="mosaic-item title">
+					<h3>Gráfico por <strong>Atendimento</strong></h3>
+					<div class="row">
+						<div class="col-md-7 col-lg-4">
+							<canvas id="chartService"></canvas>
+							<script>
+									var canvas = document.getElementById('chartService');
+									var pincel = canvas.getContext('2d');
+									console.log(canvas + pincel)
+									pincel.arc(100, 80, 10, 0, Math.PI * 2);
+									pincel.stroke();
+							</script>
+						</div>
+						<div class="col-md-5 col-lg-8">
+							<ul class="percent-list">
+								<li class="percent-list__item">Percentagem de <strong>Privado</strong></li>
+								<li class="percent-list__item">Percentagem de <strong>Convênio médico</strong></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="col-md-12 atendimento-paciente">
 				<div class="mosaic-item">
 					<div class="row">
