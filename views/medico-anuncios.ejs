@@ -181,5 +181,10 @@
 		</div>
 	</div>	
 </section>
-
+<script>
+		jQuery("input[type='date']").change('onfocus', (e) => {
+				jQuery("input[type='date']:before").css("content", " ");
+		});
+		
+		</script>
 <%- include includes/footer.ejs %>
