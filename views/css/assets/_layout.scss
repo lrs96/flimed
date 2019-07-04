@@ -677,6 +677,11 @@ section.box-login {
 	position: relative;
 	left: 3px;
 }
+.form {
+	.selectize-input {
+		background-color: rgba(65,104,136,0.05) !important;
+	}
+}
 
 .row.mosaic {
 	.mosaic-item {
