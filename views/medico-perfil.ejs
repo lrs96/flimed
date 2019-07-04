@@ -1,4 +1,5 @@
 <%- include includes/header-medico.ejs %>
+
 <form class="form" id="form-profile">
 <section class="box__panel">
 	<div class="container">
@@ -27,7 +28,6 @@
 									<input type="file" id="upload-image" accept=".jpg, .jpeg, .png" onchange="this.form.submit();" class="d-none">
 								</div>
 								</div>
-								
 							<div class="col-md-3">
 									<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 									<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
@@ -62,12 +62,8 @@
 								<input type="date" name="dateOfBirth" placeholder="Data de nascimento">
 							</div>
 							<div class="col-md-3">
-									<input type="text" name="cpf" placeholder="CPF">
-								</div>
-	<!-- 							
-								<div class="col-md-4">
-									<input type="submit" class="btn btn-gradient" value="Salvar teste de edições">
-								</div> -->
+								<input type="text" name="cpf" placeholder="CPF">
+							</div>
 						</div>
 					</form>
 					<script>
@@ -104,9 +100,6 @@
 							<div class="col-md-12">
 								<textarea name="biography" cols="30" rows="10" placeholder="Escreva sobre sua biografia"></textarea>
 							</div>
-							<!-- <div class="col-12 d-flex justify-content-center">
-								<a class="btn btn-radius btn-gradient" id="addBiografia">+</a>
-							</div> -->
 						</div>
 					</form>
 					<script>
@@ -148,39 +141,6 @@
 							<a class="btn btn-radius btn-gradient" id="addLocalAtendimento">+</a>
 						</div>
 					</div>
-
-					<!-- <form id="form-add-biography" class="form">
-						<div class="row">
-							<div class="col-md-12">
-								<textarea name="biography" cols="30" rows="10" placeholder="Escreva sobre sua biografia"></textarea>
-							</div>
-							<button type="submit" class="btn btn-gradient">Enviar</button>
-						</div>
-					</form>
-					<script>
-						$(document).ready(function() {
-							$('#form-add-biography').on('submit', function(e) {
-								e.preventDefault()
-								
-								$.ajax({
-									type: 'POST',
-									url: '/add-biography',
-									datatype: 'html',
-									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-									data: $('#form-add-biography').serialize(),
-									success: function(result) {          
-										alertify.notify(result, 'success', 5)
-										setTimeout(function() { 
-											window.location.reload()
-										}, 500)
-									},
-									error: function(xhr, status, error) {
-										alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-									}
-								})
-							})
-						})
-					</script> -->
 				</div>
 			</div>
 			<div class="col-md-12">
@@ -228,9 +188,6 @@
 							<div class="col-md-12">
 								<h3>Especialidades</h3>
 							</div>
-							<!-- <div class="col-md-6">
-								<input type="text" name="title" placeholder="Nome da especialidade">
-							</div> -->
 							<div class="col-md-12">
 								<input type="text" name="description" placeholder="Especialidade 1">
 							</div>
@@ -311,9 +268,6 @@
 								<div class="col-md-12">
 									<h3>Honras e prêmios</h3>
 								</div>
-								<!-- <div class="col-md-6">
-									<input type="text" name="title" placeholder="Título">
-								</div> -->
 								<div class="col-md-12">
 									<input type="text" name="description" placeholder="Escreva sobre este prêmio">
 								</div>
@@ -349,147 +303,6 @@
 					</div>
 				</div>
 
-<!-- 				
-			<div class="col-md-12">
-				<div class="mosaic-item">
-
-					<% for(i = 0; i < user.location.length; i++) { %>
-						<div class="col-md-12">
-							<form id="remove-location-<%= i %>">
-								<div class="col-md-8">
-									<%= user.location[i] %>
-								</div> 
-								<div class="col-md-4">
-									<input type="hidden" value="<%= i %>" name="position">
-									<button type="submit" class="btn btn-gradient">Remover</button>
-								</div>
-							</form>
-							<script>
-								$(document).ready(function() {
-									$('#remove-location-<%= i %>').on('submit', function(e) {
-										e.preventDefault()
-										
-										$.ajax({
-											type: 'DELETE',
-											url: '/changeProfile',
-											datatype: 'html',
-											contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-											data: $('#remove-location-<%= i %>').serialize(),
-											success: function(result) {          
-												alertify.notify(result, 'success', 5)
-												setTimeout(function() { 
-													window.location.reload()
-												}, 500)
-											},
-											error: function(xhr, status, error) {
-												alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-											},
-										})
-									})
-								})
-							</script>
-						</div>
-					<% } %>
-					<form id="form-add-location" class="form">
-						<div class="row">
-							<div class="col-md-6">
-								<h3>Localização</h3>
-							</div>
-							<div class="col-md-12">
-								<div class="row">
-									<div class="col-md-12">
-										<input type="text" name="address" placeholder="Endereço">
-									</div>
-									<div class="col-md-3">
-										<input type="text" name="city" placeholder="Cidade">
-									</div>
-									<div class="col-md-3">
-										<input type="text" name="state" placeholder="Estado">
-									</div>
-									<div class="col-md-3">
-										<input type="text" name="number" placeholder="Número">
-									</div>
-									<div class="col-md-3">
-										<input type="text" name="zipCode" placeholder="CEP">
-									</div>
-								</div>
-							</div>
-							
-							<div class="col-md-4">
-								<input type="submit" class="btn btn-gradient" value="Salvar teste de edições">
-							</div>
-						</div>
-					</form>
-					<script>
-					$(document).ready(function() {
-						$('#form-add-location').on('submit', function(e) {
-							e.preventDefault()
-							
-							$.ajax({
-								type: 'POST',
-								url: '/changeProfile',
-								datatype: 'html',
-								contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-								data: $('#form-add-location').serialize(),
-								success: function(result) {          
-									alertify.notify(result, 'success', 5)
-                                    setTimeout(function() { 
-                                        window.location.reload()
-                                    }, 500)
-								},
-								error: function(xhr, status, error) {
-									alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-								},
-							})
-						})
-					})
-					</script>
-				</div>
-			</div> -->
-
-			<!-- <div class="col-md-12">
-				<div class="mosaic-item">
-					<h3>Adicionar usuário</h3>
-					<form action="" class="form">
-						<div class="row">
-							<div class="col-md-4">
-								<div class="select">
-									<select name="" id="">
-										<option value="">Tipo de usuário</option>
-										<option value="">Tipo 1</option>
-										<option value="">Tipo 2</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<input type="email" name="" placeholder="E-mail">
-							</div>
-							<div class="col-md-4">
-								<input type="text" name="" placeholder="Nome">
-							</div>
-							<div class="col-md-4">
-								<div class="select">
-									<select name="" id="">
-										<option value="">Gênero</option>
-										<option value="">Masculino</option>
-										<option value="">Femenino</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<input type="password" name="" placeholder="Senha">
-							</div>
-							<div class="col-md-4">
-								<input type="password" name="" placeholder="Repita a senha">
-							</div>
-							<div class="col-md-4">
-								<input type="submit" class="btn btn-gradient" value="Adicionar usuário">
-							</div>
-						</div>
-					</form>
-				</div>
-			</div> -->
-
 			<div class="col-md-12 col-xs-12">
 					<div class="mosaic-item">
 						<h3>Alterar senha</h3>
@@ -501,12 +314,6 @@
 								<div class="col-md-6">
 									<input type="password" name="newPassword" placeholder="Nova senha">
 								</div>
-								<!-- <div class="col-md-4">
-									<input type="password" name="confirmNewPassword" placeholder="Repita a nova senha">
-								</div> -->
-								<!-- <div class="col-md-12">
-									<input type="submit" class="btn btn-gradient" value="Mude a senha">
-								</div> -->
 							</div>
 						</form>
 						<script>
