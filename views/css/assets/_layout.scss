@@ -685,6 +685,16 @@ section.box-login {
 
 .row.mosaic {
 	.mosaic-item {
+
+		#gallery_media {
+			min-height: 150px;
+			border: 2px dashed #e1e1e2;
+			border-radius: 4px;
+			margin-bottom: 30px;
+			background: #fff;
+			padding: 20px 20px;
+		}
+		
 		form#buy-banner {
 
 			.form-radio {

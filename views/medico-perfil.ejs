@@ -2,33 +2,7 @@
 <form class="form" id="form-profile">
 <section class="box__panel">
 	<div class="container">
-		<div class="row mosaic">
-			<div class="col-md-4">
-					<h3>Foto do perfil</h3>
-				<div class="mosaic-item tam">
-					<div class="picture-profile">
-						<div class="picture-profile__content">
-							<figure class="picture-profile__fig">
-								<img alt="<%= user.name %>" src="<% if(!user.profilePicture) { %>/views/img/medico.jpg<% } else { %>/profilePicture/<%= user._id %><% } %>">
-								<form action="/addProfilePicture" method="POST" enctype="multipart/form-data">
-									<div class="image-upload">
-										<label for="file_profile">
-											<img src="/views/img/cloud.png" alt="Icon Cloud" />
-										</label>
-										<input id="file_profile" type="file" accept=".jpg, .jpeg, .png" name="file"
-										onchange="this.form.submit();" />										
-									</div>
-								</form>
-							</figure>
-
-							<p><strong>Tamanho: </strong>1</p>
-							<p><strong>Dimensão: </strong>100X100</p>
-							<p><strong>Formatos: </strong>JPG, PNG</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		
+		<div class="row mosaic">		
 			<div class="col-md-12">
 				<div class="mosaic-item">
 					<h3>Informações</h3>
