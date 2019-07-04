@@ -80,7 +80,54 @@
 					<a href="/medico-horarios" class="btn btn-gradient">VEJA TODOS OS PACIENTES DO DIA</a>
 				</div>
 			</div>
-			
+			<div class="col-md-6">
+				<div class="mosaic-item title today__box">
+					<h3>Avaliação</h3>
+					<div class="row">
+						<div class="col-md-5 offset-1 evaluation__item">
+							<img src="/views/img/icon-sadFace.jpg" alt="Avaliações Negativas">
+							<p> AVALIAÇÃO</p>
+						</div>
+						<div class="col-md-5 evaluation__item">
+							<img src="/views/img/icon-happyFace.jpg" alt="Avaliações Positivas">
+							<p> AVALIAÇÃO</p>
+						</div>
+					</div>
+					<a href="#ver-mais" class="btn btn-gradient">VEJA TODA A CLASSIFICAÇÃO</a>
+					<div style="width: 70%; " class="modal" id="ver-mais">
+						<div style="width: 100%" class="modal-box">
+							<div class="modal-title">
+								<h2>Ver mais</h2>
+							</div>
+							<div class="form">
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<%
+				let masculino = 0, feminino = 0
+				for(let i = 0; i < patientGender.length; i++) {
+					if(patientGender[i] === 'Masculino') {
+						masculino++
+					} else {
+						feminino++
+					}
+				}
+
+				let privado = 0, outros = 0
+				for(let i = 0; i < events.length; i++) {
+					if(events[i].status === 'pendente' || events[i].status === 'concluído') {
+						if(events[i].patientInfo.patientAgreement === 'Privado') {
+							privado++
+						} else {
+							outros++
+						}
+					}
+				}
+			%>
+
 			<div class="col-md-12 atendimento-paciente">
 				<div class="mosaic-item">
 					<div class="row">
@@ -92,7 +139,7 @@
 									<div class="form-group relative d-flex">
 										<input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
 										<div class="icons-search">
-											<span><i class="fa fa-search"></i></span>
+											<span><img src="/views/img/icone-form.png" alt="Icone form"></span>
 											<span><i class="fa fa-search"></i></span>
 										</div>
 									</div>
