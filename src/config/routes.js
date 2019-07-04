@@ -130,6 +130,10 @@ module.exports = app => {
     app.get('/esqueci-minha-senha/:token', app.src.api.user.recoverPassword)
     app.post('/esqueci-minha-senha/:token', app.src.api.user.resetPassword)
 
+    /* Routas de teste */
+
+
+
     /* ============= LOGOUT ============= */
     app.get('/logout', function(req, res) {
         req.session.reset()          

@@ -694,7 +694,7 @@ section.box-login {
 .atendimento-paciente {
 	.mosaic-item {
 		padding-bottom: 0 !important;
-
+		position: relative;
 		.col-md-9 {
 			form {
 				.form-group.relative {
@@ -713,17 +713,27 @@ section.box-login {
 				}
 			}
 		}
+		.row.addAtendimento {
+			position: absolute;
+			right: 15px;
+			left: 15px;
+			width: 100%;
+			a {
+				width: 100%;
+				text-align: center;
+			}
+		}
 	}
 	.row:first-child {
 		padding-bottom: 20px;
 	}
-	
+
 	.row.paciente-item {
 			.col-md-12 {
 				align-items: center;
 				padding: 15px;
 				margin-bottom: 20px;
-				box-shadow: 0 11px 33px -4px rgba(65,104,136,0.4);
+				box-shadow: 0 11px 33px -4px rgba(65,104,136,0.14);
 				.info-paciente {
 					align-items: center;
 					p {
