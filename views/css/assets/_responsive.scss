@@ -265,7 +265,13 @@
 			display: inherit;
 		}
 	}*/
-	
+	.nav-vestical {
+		ul {
+			li:last-child {
+				display: none;
+			}
+		}
+	}
 	.logo-painel {
 		text-align: left;
 	}
@@ -473,6 +479,10 @@ Exclusive MENU
 }
 
 @media (max-width: 991px) {
+
+	.btn-logout {
+		display: none;
+	}
 	.atendimento-paciente {
 		.row:first-child  {
 			flex-direction: column;
