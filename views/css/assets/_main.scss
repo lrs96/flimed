@@ -1616,13 +1616,16 @@ div.owl-feed {
 	border: 1px solid #e1e1e2;
 	font-size: 18px;
 	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	label {
 		position: absolute;
 		left: 5px;
 		top: 20%;
 		width: 26px;
 		height: 26px;
-		background: linear-gradient(to right, #01e9b1 0%, #45c8e3 100%);
+		background: linear-gradient(to right, #01e9b1 0%, #01e9b1 100%);
 		display: flex;
 		justify-content: center;
 		align-items: center;

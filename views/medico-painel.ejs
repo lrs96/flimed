@@ -134,45 +134,7 @@
 					}
 				}
 			%>
-			<div class="col-md-6">
-				<div class="mosaic-item title">
-					<h3>Gráfico por <strong>Sexo</strong></h3>
-					<div class="row">
-						<div class="col-md-6 col-lg-4">
-							<canvas id="chartGenre" width="140" height="140"></canvas>
-						</div>
-						<div class="col-md-6 col-lg-8">
-							<ul class="percent-list">
-								<li class="percent-list__item">Percentagem de <strong>Mulheres</strong></li>
-								<li class="percent-list__item">Percentagem de <strong>Homens</strong></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="mosaic-item title">
-					<h3>Gráfico por <strong>Atendimento</strong></h3>
-					<div class="row">
-						<div class="col-md-7 col-lg-4">
-							<canvas id="chartService"></canvas>
-							<script>
-									var canvas = document.getElementById('chartService');
-									var pincel = canvas.getContext('2d');
-									console.log(canvas + pincel)
-									pincel.arc(100, 80, 10, 0, Math.PI * 2);
-									pincel.stroke();
-							</script>
-						</div>
-						<div class="col-md-5 col-lg-8">
-							<ul class="percent-list">
-								<li class="percent-list__item">Percentagem de <strong>Privado</strong></li>
-								<li class="percent-list__item">Percentagem de <strong>Convênio médico</strong></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+
 			<div class="col-md-12 atendimento-paciente">
 				<div class="mosaic-item">
 					<div class="row">
