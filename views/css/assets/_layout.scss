@@ -56,9 +56,12 @@
 			width: 80%;
 			z-index: 1;
 		}
+		&:focus + &:before {
+			content: " " !important;
+		}
 
 		&:focus:before {
-			content: '' !important;
+			content: ' ' !important;
 		}
 	}
 	
