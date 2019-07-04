@@ -31,10 +31,10 @@ romae = {
 
 			if(windowWidth >= 992){
 				$(this).toggleClass('nav-active mobile-lg');
-				$(".header_painel").toggleClass('menu-active');
+				$("#header_painel").toggleClass('menu-active');
 			} else {
 				$(this).toggleClass('nav-active').removeClass('mobile-lg');
-				$(".header_painel").toggleClass('active').removeClass('menu-active');
+				$("#header_painel").toggleClass('active').removeClass('menu-active');
 			}
 		});
 	},
