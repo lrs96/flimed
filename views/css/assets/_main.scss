@@ -1532,7 +1532,7 @@ div.owl-feed {
 .io-options + .io-options{
 	position:absolute;
 	//background:#fff;
-	@include gradient($blue, $green, horizontal);
+	@include gradient(#01e9b1, #01e9b1, horizontal);
 	width:50%;
 	height:100%;
 	white-space:nowrap;
