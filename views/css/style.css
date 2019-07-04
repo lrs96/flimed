@@ -1,5 +1,5 @@
 /*
-Error: Invalid CSS after "...clude gradient(": expected ")", was "$#01e9b1, $#01e..."
+Error: Invalid CSS after "...dient(#01e9b1, ": expected ")", was "$#01e9b1, horiz..."
         on line 204 of assets/_layout.scss
         from line 14 of style.scss
 
@@ -8,7 +8,7 @@ Error: Invalid CSS after "...clude gradient(": expected ")", was "$#01e9b1, $#01
 201: 			width: 18px;
 202: 			height: 18px;
 203: 			border-radius: 50%;
-204: 			@include gradient($#01e9b1, $#01e9b1, horizontal);
+204: 			@include gradient(#01e9b1, $#01e9b1, horizontal);
 205: 		}
 206: 	}
 207: 
@@ -88,4 +88,4 @@ C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/interna
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"...clude gradient(\": expected \")\", was \"$#01e9b1, $#01e...\"\A         on line 204 of assets/_layout.scss\A         from line 14 of style.scss\A \A 199: 			top: 6px;\A 200: 			left: 6px;\A 201: 			width: 18px;\A 202: 			height: 18px;\A 203: 			border-radius: 50%;\A 204: 			@include gradient($#01e9b1, $#01e9b1, horizontal);\A 205: 		}\A 206: 	}\A 207: \A 208: 	.checkmark {\A 209: 		position: absolute;"; }
+  content: "Error: Invalid CSS after \"...dient(#01e9b1, \": expected \")\", was \"$#01e9b1, horiz...\"\A         on line 204 of assets/_layout.scss\A         from line 14 of style.scss\A \A 199: 			top: 6px;\A 200: 			left: 6px;\A 201: 			width: 18px;\A 202: 			height: 18px;\A 203: 			border-radius: 50%;\A 204: 			@include gradient(#01e9b1, $#01e9b1, horizontal);\A 205: 		}\A 206: 	}\A 207: \A 208: 	.checkmark {\A 209: 		position: absolute;"; }

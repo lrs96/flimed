@@ -201,7 +201,7 @@
 			width: 18px;
 			height: 18px;
 			border-radius: 50%;
-			@include gradient($#01e9b1, $#01e9b1, horizontal);
+			@include gradient(#01e9b1, $#01e9b1, horizontal);
 		}
 	}
 
