@@ -477,7 +477,12 @@ Exclusive MENU
 		.row:first-child  {
 			flex-direction: column;
 			[class*="col"] {
-				width: 100% !important;
+				min-width: 100%;
+				text-align: center;
+			}
+			.col-md-9 {
+				padding-left: 0 !important;
+				padding-right: 0 !important;
 			}
 		}
 

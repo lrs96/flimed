@@ -26,8 +26,8 @@
 								<input type="date" name="end" placeholder="Finalizar">
 							</div>
 							<div class="col-md-6">
-								<input type="text" name="city" placeholder="Cidade">
-							</div>
+									<input type="text" name="city" id="input_tags2" placeholder="Cidades">
+								</div>
 							<div class="col-md-6">
 								<div class="row">
 									<div class="col-md-12">
@@ -80,12 +80,16 @@
 										<p>Adicionar anúncios no painel do cliente?</p>
 										<div class="form-radio d-flex justify-content-between">
 											<div class="custom-control custom-radio">
-													<input type="radio" id="customRadioSim" name="customRadioSim" class="custom-control-input" value="MEDICO">
-													<label class="custom-control-label" for="customRadio1">SIM</label>
+													<label class="custom-control-label" for="customRadio1">SIM
+														<input type="radio" id="customRadioSim" name="customRadioSim" class="custom-control-input">
+														<span class="checkmark"></span>
+													</label>
 											</div>
 											<div class="custom-control custom-radio">
-													<input type="radio" id="customRadioNao" name="customRadioNao" class="custom-control-input" value="MEDICO">
-													<label class="custom-control-label" for="customRadio1">NÃO</label>
+													<label class="custom-control-label option-radio" for="customRadio1">NÃO
+														<input type="radio" id="customRadioNao" name="customRadioNao" class="custom-control-input">
+														<span class="checkmark"></span>
+													</label>
 											</div>
 										</div>
 									</div>
