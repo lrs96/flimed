@@ -695,6 +695,9 @@ section.box-login {
 	.mosaic-item {
 		padding-bottom: 0 !important;
 		position: relative;
+		h2 {
+			color: #416888;
+		}
 		.col-md-9 {
 			form {
 				.form-group.relative {
@@ -721,11 +724,18 @@ section.box-login {
 			a {
 				width: 100%;
 				text-align: center;
+				padding: 15px 0;
 			}
 		}
 	}
 	.row:first-child {
 		padding-bottom: 20px;
+		align-items: center;
+		form {
+			input {
+				background-color: #ECEFF3 !important;
+			}
+		}
 	}
 
 	.row.paciente-item {
@@ -736,9 +746,21 @@ section.box-login {
 				box-shadow: 0 11px 33px -4px rgba(65,104,136,0.14);
 				.info-paciente {
 					align-items: center;
+					justify-content: space-between;
+					flex-wrap: wrap;
 					p {
 						margin-bottom: 0;
 					}
+
+					.name-paciente {
+						color: #4F627D;
+					}
+
+					.name-convenio {
+						color: #8897AA;
+					}
+
+
 				}
 				.horario-paciente {
 					p {
