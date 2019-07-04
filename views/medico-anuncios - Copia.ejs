@@ -1,0 +1,228 @@
+<%- include includes/header-medico.ejs %>
+
+<section class="box__panel">
+	<div class="container">
+		<div class="row mosaic">
+			<div class="col-md-12">
+				<div class="mosaic-item">
+					<h3>Destaque o perfil</h3>
+
+					<form action="/buy-profile" method="POST" class="form">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="select">
+									<select name="specialty">
+										<option disabled selected>Categorias</option>
+										<% for(let i = 0; i < user.speciality.length; i++) { %>
+											<option><%= user.speciality[i].title %></option>
+										<% } %>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<input type="date" name="start" placeholder="Começar">
+							</div>
+							<div class="col-md-3">
+								<input type="date" name="end" placeholder="Finalizar">
+							</div>
+							<div class="col-md-6">
+									<input type="text" name="city" id="input_tags2" placeholder="Cidades">
+								</div>
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-md-12">
+										<p>
+											<span><strong>30</strong> DIAS DE ANÚNCIO</span><br>
+											<span><strong>40</strong> VISUALIZAÇÃO</span>
+										</p>
+									</div>
+									<div class="col-md-4">
+										<a href="" class="btn btn-gradient">EDITAR</a>
+									</div>
+									<div class="col-md-4 add-ad">
+										<span class="price"><strong>R$ <%= (profileValue / 100).toFixed(2) %></strong></span>
+									</div>
+									<div class="col-md-4">
+										<button type="submit" class="btn btn-gradient">PAGAR</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="mosaic-item">
+					<h3>Adicionar Anúncio</h3>
+					<form id="buy-banner" class="form">
+						<div class="row">
+							<div class="col-md-6">
+								<input type="text" name="title" placeholder="Título">
+								<div class="row">
+									<div class="col-md-6">
+											<input type="date" name="start" placeholder="Início">
+										</div>
+										<div class="col-md-6">
+											<input type="date" name="end" placeholder="Fim">
+										</div>	
+									</div>		
+							</div>
+							<div class="col-md-6">
+									<div class="select">
+										<select name="speciality">
+											<option disabled selected>Categorias</option>
+											<% for(let i = 0; i < user.speciality.length; i++) { %>
+												<option><%= user.speciality[i].title %></option>
+											<% } %>
+										</select>
+									</div>
+									<div class="col-md-12">
+										<p>Adicionar anúncios no painel do cliente?</p>
+										<div class="form-radio d-flex">
+											<div class="custom-control custom-radio col-md-3">
+													<label class="custom-control-label option-radio" for="customRadio1">SIM
+														<input type="radio" id="customRadioSim" name="radio" class="custom-control-input">
+														<span class="checkmark"></span>
+														</label>
+											</div>
+											<div class="custom-control custom-radio col-md-3">
+												<label class="custom-control-label option-radio" for="customRadio1">NÃO
+													<input type="radio" id="customRadioNao" name="radio" class="custom-control-input">
+													<span class="checkmark"></span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>	
+							<div class="row">
+								<div class="col-md-12">
+									<form action="/upload-target">
+										<div class="dropzone dz-clickable" id="file_ads">
+											<div class="dz-message">
+													ANEXAR IMAGEM DE BANNER / VIDEO
+												</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="col-md-12">
+									<div action="/upload-target" class="dropzone dz-clickable" id="file_ads">
+										<div class="dz-message">ANEXAR IMAGEM DE BANNER / VIDEO</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<input type="text" name="city" id="input_tags2" placeholder="Adicione as cidades">
+							</div>
+							<div class="col-md-6">
+								<div class="row">
+										<div class="col-md-6">
+												<input type="text" name="age" placeholder="Idade">
+										</div>
+										<div class="col-md-6">
+											<div class="select">
+												<select name="genre">
+													<option selected disabled>Gênero</option>
+													<option>Masculino</option>
+													<option>Femenino</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								<div class="col-md-12">
+									<div class="custom-control custom-radio">
+										<label class="custom-control-label option-radio" for="posicionamento">POSICIONAMENTO AUTOMÁTICO?
+											<input type="radio" id="posicionamento" name="posicionamento" class="custom-control-input">
+											<span class="checkmark"></span>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<span><strong>30</strong> DIAS DE ANÚNCIO</span><br>
+								<span><strong>40</strong> VISUALIZAÇÃO</span>
+							</div>
+							<div class="col-md-4">
+								<div class="col-md-2">
+									<button type="submit" class="btn btn-gradient">EDITAR</button>
+								</div>
+								<div class="col-md-2">
+										<button type="submit" class="btn btn-gradient">DUPLICAR</button>
+									</div>
+							</div>
+							<div class="col-md-2 add-ad">
+								<span class="price"><strong>R$ <%= (bannerValue / 100).toFixed(2) %></strong></span>
+							</div>
+							<div class="col-md-2">
+								<button type="submit" class="btn btn-gradient">PAGAR</button>
+							</div>
+						</div>
+					</form>
+					<script>
+						$(document).ready(function() {
+							$('#buy-banner').on('submit', function(e) {              
+								e.preventDefault()
+								
+								$.ajax({
+									type: 'POST',
+									url: '/buy-banner',
+									enctype: 'multipart/form-data',
+									cache: false,
+									contentType: false,
+									processData: false,
+									data: new FormData($('#buy-banner')[0]),
+									success: function(result) {          
+										alertify.notify(result.msg, 'success', 5)
+										window.location.href = result.url
+									},
+									error: function(xhr, status, error) {
+										alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+									}
+								})
+							})
+						})
+					</script>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script>
+	var dataGenre = [
+		{
+			value: '<%= feminino %>',
+			color:"#45c8e3",
+			label: "Mulheres"
+		},
+		{
+			value: '<%= masculino %>',
+			color: "#01e9b1",
+			label: "Homens"
+		}
+	];	
+	
+	var dataService = [
+		{
+			value: '<%= privado %>',
+			color:"#45c8e3",
+			label: "Privado"
+		},
+		{
+			value: '<%= outros %>',
+			color: "#01e9b1",
+			label: "Convênio"
+		}
+	];
+
+	var ctxGenre = document.getElementById("chartGenre").getContext("2d");
+	new Chart(ctxGenre).Pie(dataGenre);
+	
+	var ctxService = document.getElementById("chartAge").getContext("2d");
+	new Chart(ctxService).Pie(dataService);
+</script> -->
+
+</section>
+
+<%- include includes/footer.ejs %>

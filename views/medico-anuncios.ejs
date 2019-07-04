@@ -12,7 +12,7 @@
 							<div class="col-md-6">
 								<div class="select">
 									<select name="specialty">
-										<option disabled selected>Especialidade</option>
+										<option disabled selected>Categorias</option>
 										<% for(let i = 0; i < user.speciality.length; i++) { %>
 											<option><%= user.speciality[i].title %></option>
 										<% } %>
@@ -26,8 +26,8 @@
 								<input type="date" name="end" placeholder="Finalizar">
 							</div>
 							<div class="col-md-6">
-								<input type="text" name="city" placeholder="Cidade">
-							</div>
+									<input type="text" name="city" id="input_tags2" placeholder="Cidades">
+								</div>
 							<div class="col-md-6">
 								<div class="row">
 									<div class="col-md-12">
@@ -136,9 +136,6 @@
 				</div>
 			</div>
 			
-			<!--<div class="col-md-5 submit-box">
-				<input type="submit" class="btn btn-gradient" value="Salvar alterações">
-			</div>-->
 		</div>
 	</div>	
 </section>
