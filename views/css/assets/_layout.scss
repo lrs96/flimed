@@ -689,11 +689,9 @@ section.box-login {
 		}
 	}
 }
-
-
 .atendimento-paciente {
 	.mosaic-item {
-		padding-bottom: 0 !important;
+		// padding-bottom: 0 !important;
 		position: relative;
 		h2 {
 			color: #416888;
@@ -712,6 +710,9 @@ section.box-login {
 						align-items: center;
 						justify-content: center;
 						height: 100%;
+						i {
+							color: #8897AA;
+						}
 					}
 				}
 			}
@@ -720,6 +721,7 @@ section.box-login {
 			position: absolute;
 			right: 15px;
 			left: 15px;
+			bottom: -30px;
 			width: 100%;
 			a {
 				width: 100%;
@@ -786,6 +788,7 @@ section.box-login {
 		position: absolute;
 		right: 15px;
 		left: 15px;
+		bottom: -30px;
 		width: 100%;
 		a {
 			width: 50%;
