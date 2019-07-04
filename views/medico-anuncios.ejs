@@ -201,7 +201,7 @@
 									<h3>Gráfico por <strong>Idade</strong></h3>
 									<div class="row">
 										<div class="col-md-6 col-lg-4">
-											<canvas id="chartGenre" width="140" height="140"></canvas>
+											<canvas id="chartAge" width="140" height="140"></canvas>
 										</div>
 										<div class="col-md-6 col-lg-8">
 											<ul class="percent-list">
@@ -220,7 +220,44 @@
 				<input type="submit" class="btn btn-gradient" value="Salvar alterações">
 			</div>-->
 		</div>
-	</div>	
+	</div>
+	
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script>
+	var dataGenre = [
+		{
+			value: '<%= feminino %>',
+			color:"#45c8e3",
+			label: "Mulheres"
+		},
+		{
+			value: '<%= masculino %>',
+			color: "#01e9b1",
+			label: "Homens"
+		}
+	];	
+	
+	var dataService = [
+		{
+			value: '<%= privado %>',
+			color:"#45c8e3",
+			label: "Privado"
+		},
+		{
+			value: '<%= outros %>',
+			color: "#01e9b1",
+			label: "Convênio"
+		}
+	];
+
+	var ctxGenre = document.getElementById("chartGenre").getContext("2d");
+	new Chart(ctxGenre).Pie(dataGenre);
+	
+	var ctxService = document.getElementById("chartAge").getContext("2d");
+	new Chart(ctxService).Pie(dataService);
+</script>
+
 </section>
 
 <%- include includes/footer.ejs %>
