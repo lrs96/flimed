@@ -244,7 +244,7 @@ romae = {
 			new cbpScroller( document.getElementById( 'cbp-so-scroller' ) ); 
 		}
 	},
-	menu: () => {
+	menuItem: () => {
 		$(document).ready( () => {
 			if($("section").hasClass("medico-perfil") ) {
 				$("ul.menu a[href='/medico-perfil']").addClass("active");
@@ -266,6 +266,7 @@ romae = {
 
 }
 
+
 $(function() {
 	romae.menu();
 	romae.owl_qa();
@@ -276,6 +277,7 @@ $(function() {
 	romae.atendimento();
 	romae.scrollItens();
 	romae.iobtn();
+	romae.menuItem();
 });
 
 $( window ).resize(function() {
