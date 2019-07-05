@@ -450,6 +450,26 @@ Exclusive MENU
 				min-width: 50% !important;
 			}
 		}
+		.col-md-6.col-sm-12:not(.row) {
+			padding: 30px 15px;
+			[class*="col"]:first-child {
+				padding-bottom: 30px;
+			}
+		}
+		> .col-sm-12.row {
+			padding-top: 15px;
+			padding-right: 0 !important;
+			[class*="col"] {
+				padding-right: 0 !important;
+			}
+			.add-dd {
+				padding: 30px 0;
+			}
+		}
+	}
+
+	.selectize-control {
+		padding-bottom: 15px;
 	}
 }
 
