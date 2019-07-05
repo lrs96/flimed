@@ -433,6 +433,12 @@ Exclusive MENU
 			}
 		}
 	}
+
+	form#buy-banner {
+		[class*="col"] {
+			min-width: 100%;
+		}
+	}
 }
 
 @media (max-width: 768px) {
