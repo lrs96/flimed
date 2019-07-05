@@ -289,7 +289,7 @@ romae = {
 	// 	console.log("Clicado");
 	// })
 	$('.input-premios:first-child').append(inputPremios);
-	console.log("Clicou")
+	console.log("Clicou 1")
 
 	}
 
@@ -311,6 +311,8 @@ $(function() {
 	romae.addMaisEspecialidade();
 	romae.addMaisPremio();
 });
+
+romae.addMaisPremio();
 
 $( window ).resize(function() {
 	romae.iobtn();
