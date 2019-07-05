@@ -262,6 +262,14 @@ romae = {
 				$("ul.menu a[href='/medico-contabilidade]").addClass("active")
 			}
 		});
+	},
+	addLocaldeAtendimento: () => {
+		const inputAtendimento = `<div class="col-md-12 input-especialidasdes">
+																<input type="text" name="description" placeholder="Especialidade 1">
+															</div>`;
+		$("#addEspecialidade").on("click", () => {
+			$(".input-especialidades").append(inputAtendimento);
+		})
 	}
 
 }
@@ -278,6 +286,7 @@ $(function() {
 	romae.scrollItens();
 	romae.iobtn();
 	romae.menuItem();
+	romae.addLocaldeAtendimento();
 });
 
 $( window ).resize(function() {
