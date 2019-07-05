@@ -439,6 +439,14 @@ Exclusive MENU
 			min-width: 100%;
 		}
 	}
+
+	form {
+		.form-radio {
+			.custom-control {
+				min-width: 50%;
+			}
+		}
+	}
 }
 
 @media (max-width: 768px) {
