@@ -247,9 +247,19 @@ romae = {
 	menu: () => {
 		$(document).ready( () => {
 			if($("section").hasClass("medico-perfil") ) {
-				$("ul.menu a").addClass("active");
+				$("ul.menu a[href='/medico-perfil']").addClass("active");
 			} else if ($("section").hasClass("medico-anuncios")) {
-				$("ul.menu a").addClass("active")
+				$("ul.menu a[href='/medico-anuncios']").addClass("active")
+			} else if ($("section").hasClass("medico-painel")) {
+				$("ul.menu a[href='/medico-painel']").addClass("active")
+			} else if ($(".container.ad-box").hasClass("medico-horarios")) {
+				$("ul.menu a[href='/medico-horarios']").addClass("active")
+			}	else if ($("section").hasClass("medico-perguntas")) {
+				$("ul.menu a[href='/medico-perguntas']").addClass("active")
+			} else if ($("section").hasClass("medico-financeiro")) {
+				$("ul.menu a[href='/medico-financeiro']").addClass("active")
+			} else if ($(".row").hasClass("medico-contabilidade")) {
+				$("ul.menu a[href='/medico-contabilidade]").addClass("active")
 			}
 		});
 	}
