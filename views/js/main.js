@@ -243,7 +243,17 @@ romae = {
 		if(document.getElementById( 'cbp-so-scroller' ) != null){
 			new cbpScroller( document.getElementById( 'cbp-so-scroller' ) ); 
 		}
+	},
+	menu: () => {
+		$(document).ready( () => {
+			if($("section").hasClass(".medico-perfil") ) {
+				$("ul.menu a").addClass("active")
+			} else if ($("section").hasClass(".medico-anuncios")) {
+				$("ul.menu a").addClass("active")
+			}
+		});
 	}
+
 }
 
 $(function() {
