@@ -439,11 +439,15 @@ Exclusive MENU
 			min-width: 100%;
 		}
 	}
-
+	.form {
+		[class*="col"] {
+			min-width: 100%;
+		}
+	}
 	form {
 		.form-radio {
 			.custom-control {
-				min-width: 50%;
+				min-width: 50% !important;
 			}
 		}
 	}

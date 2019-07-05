@@ -180,9 +180,9 @@
 			
 		</div>
 	</div>	
-</section>
+</section>	
 <script>
-		jQuery("input[type='date']").change('focus onfocus', () => {
+		jQuery("input[type='date']").on('focus onfocus', () => {
 				jQuery("input[type='date']:before").remove();
 				console.log("Evento focus");
 		});
