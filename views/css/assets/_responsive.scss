@@ -423,7 +423,20 @@ Exclusive MENU
 	}
 }
 
+
 @media (max-width: 991px) {
+	.nav-vestical {
+		.menu-item  {
+			a.active {
+				background-color: #fafaff;
+				border-radius: 4px;
+				img {
+					filter: none;
+				}
+			}
+		}
+	}
+
 	.page-planos {
 		.welcome {
 			.row {
