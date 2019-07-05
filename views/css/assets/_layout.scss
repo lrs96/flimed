@@ -805,6 +805,7 @@ section.box-login {
 				padding: 15px;
 				margin-bottom: 20px;
 				box-shadow: 0 11px 33px -4px rgba(65,104,136,0.14);
+				border-radius: 4px;
 				.info-paciente {
 					align-items: center;
 					justify-content: space-between;
@@ -815,12 +816,14 @@ section.box-login {
 
 					.name-paciente {
 						color: #4F627D;
-						font-weight: 800;
+						font-weight: 700;
 						letter-spacing: 0.4px;
+						font-size: 18px;
 					}
 
 					.name-convenio {
 						color: #8897AA;
+						font-size: 14px;
 					}
 
 
@@ -833,6 +836,7 @@ section.box-login {
 						background-color: #01e9b1;
 						color: #fff;
 						text-align: center;
+						font-size: 18px;
 					}
 			
 				}

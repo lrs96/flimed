@@ -12,7 +12,7 @@
 }
 
 body { 
-	font-family: 'UniviaPro', sans-serif; 
+	font-family: 'Univia Pro', sans-serif !important; 
 	background-color: #F6F9FE; 
 	font-weight: normal; 
 	font-size: 16px; 
@@ -1004,7 +1004,7 @@ div.owl-feed {
 .mosaic-item {
 	border-radius: 4px;
 	background-color: $white;
-	padding: 30px;
+	padding: 15px 30px;
 	margin-bottom: 30px;
 	@extend %clearfix;
 	// overflow-x: scroll;
