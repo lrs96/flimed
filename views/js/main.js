@@ -266,7 +266,7 @@ romae = {
 	addMaisEspecialidade: () => {
 		const inputEspecialidade = `<input type="text" name="especialidade" style="padding-top: 15px;" placeholder="Especialidade 1">`;
 		$("#addEspecialidade").click( () => {
-			$(".input-especialidades:nth-child(1)").append(inputEspecialidade);
+			$("#input-especialidades").append(inputEspecialidade);
 			console.log("Clicado");
 		})
 	},
