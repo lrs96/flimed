@@ -30,18 +30,18 @@
 					<h3>Informações</h3>
 					<form id="form-change-profile" class="form">
 						<div class="row">
-							<div class="col-md-3">
+							<div class="col-md-3 col-sm-12">
 								<!-- para pegar os dados do usuário, faça como abaixo no campo "value" -->
 								<!-- em caso de dúvidas, consulte src/model/userModel.js para conferir os itens do perfil do usuário -->
 								<input type="text" name="name" value="<%= user.name %>" placeholder="Nome completo">
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-3 col-sm-12">
 									<input type="email" name="email" placeholder="E-mail">
 								</div>
-							<div class="col-md-3">
+							<div class="col-md-3 col-sm-12">
 								<input type="text" name="crm" placeholder="Número de registro">
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-3 col-sm-12">
 								<div class="foto-upload relative">
 									<label for="upload-image">
 										<img src="/views/img/cloud.png" alt="Icon Cloud">
@@ -50,7 +50,7 @@
 									<input type="file" id="upload-image" accept=".jpg, .jpeg, .png" onchange="this.form.submit();" class="d-none">
 								</div>
 								</div>
-							<div class="col-md-3">
+							<div class="col-md-3 col-sm-12">
 									<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 									<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 									<input type="text" id="input-phone" name="phone" class="phone" placeholder="Telefone">
@@ -71,7 +71,7 @@
 										})
 									</script>
 								</div>
-							<div class="col-md-3">
+							<div class="col-md-3 col-sm-12">
 								<div class="select">
 									<select name="genre">
 										<option disabled>Gênero</option>
@@ -80,10 +80,10 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-3 col-sm-12">
 								<input type="date" name="dateOfBirth" placeholder="Data de nascimento">
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-3 col-sm-12">
 								<input type="text" name="cpf" placeholder="CPF">
 							</div>
 						</div>
