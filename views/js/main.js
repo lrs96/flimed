@@ -285,7 +285,7 @@ romae = {
 																<input type="text" name="description" placeholder="Escreva sobre este premio">
 															</div>`;
 	$("#addPremios").click( () => {
-		$(".input-premios:nth-child(1)").append(inputPremios);
+		$(".input-premios:first-child").append(inputPremios);
 		console.log("Clicado");
 	})
 	}
