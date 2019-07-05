@@ -1632,18 +1632,19 @@ div.owl-feed {
 	flex-direction: column;
 	justify-content: center;
 	label {
-		position: absolute;
-		left: 5px;
-		top: 20%;
-		width: 26px;
-		height: 26px;
-		background: linear-gradient(to right, #01e9b1 0%, #01e9b1 100%);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		cursor: pointer;
-		border-radius: 100%;
-	
+		span {
+			position: absolute;
+			left: 5px;
+			top: 20%;
+			width: 26px;
+			height: 26px;
+			background: linear-gradient(to right, #01e9b1 0%, #01e9b1 100%);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			border-radius: 100%;
+		}
 	}
 	span {
 		padding-left: 50px;
