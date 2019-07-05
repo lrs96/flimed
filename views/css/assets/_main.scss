@@ -1636,7 +1636,7 @@ div.owl-feed {
     cursor: pointer;
     width: 100%;
     position: relative;
-		span {
+		span.img {
 			position: absolute;
 			left: 5px;
 			top: 20%;
@@ -1649,10 +1649,6 @@ div.owl-feed {
 			cursor: pointer;
 			border-radius: 100%;
 		}
-	}
-
-	span {
-		padding-left: 50px;
 	}
 	input {
 		cursor: pointer;
