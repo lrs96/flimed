@@ -264,7 +264,7 @@ romae = {
 		});
 	},
 	addMaisEspecialidade: () => {
-		const inputEspecialidade = `<input type="text" name="especialidade" style="padding-top: 15px;" placeholder="Especialidade 1">`;
+		const inputEspecialidade = `<input type="text" name="especialidade" style="padding-top: 15px;" placeholder="Outra especialidade">`;
 		$("#addEspecialidade").click( () => {
 			$("#input-especialidades").append(inputEspecialidade);
 			console.log("Clicado");
