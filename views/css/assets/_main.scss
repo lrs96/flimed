@@ -1,25 +1,4 @@
-﻿@font-face {
-	font-family: 'UniviaPro';
-	src: url('#{$url}/css/fonts/UniviaPro-Regular.otf') format('opentype'),
-		url('#{$url}/css/fonts/UniviaPro-Regular.otf') format('opentype');
-	font-weight: normal;
-	font-style: italic;
-}
-
-@font-face {
-	font-family: 'UniviaPro';
-	src: url('#{$url}/css/fonts/UniviaPro-Light.otf') format('opentype'),
-		url('#{$url}/css/fonts/UniviaPro-Light.otf') format('opentype');
-	font-weight: 300;
-}
-
-@font-face {
-	font-family: 'UniviaPro';
-	src: url('#{$url}/css/fonts/UniviaPro-Bold.otf') format('opentype'),
-		url('#{$url}/css/fonts/UniviaPro-Bold.otf') format('opentype');
-	font-weight: bold;
-	font-style: italic;
-}
+﻿
 
 /* GERAL */
 * { 
@@ -34,10 +13,8 @@
 	box-sizing: border-box;
 }
 
-
-
 body { 
-	font-family: 'UniviaPro', sans-serif !important; 
+	font-family: 'UniviaPro', sans-serif; 
 	background-color: #F6F9FE; 
 	font-weight: normal; 
 	font-size: 16px; 
