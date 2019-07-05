@@ -765,10 +765,15 @@ section.box-login {
 							border: 0;
 							background-color: #ECEFF3;
 							cursor: pointer;
+							box-shadow: none;
+						}
+						a {
+							box-shadow: none;
 						}
 						span {
 							img {
 								padding-right: 15px;
+								box-shadow: none;
 							}
 						}
 					}
