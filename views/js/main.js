@@ -303,7 +303,6 @@ $(function() {
 	romae.addMaisPremio();
 });
 
-romae.addMaisPremio();
 
 $( window ).resize(function() {
 	romae.iobtn();
