@@ -983,7 +983,6 @@ div.owl-feed {
 		padding: 3px;
 	}*/
 }
-
 .perfil-doc__dados {
 	padding-left: 115px;
 	
@@ -1006,7 +1005,7 @@ div.owl-feed {
 .mosaic-item {
 	border-radius: 4px;
 	background-color: $white;
-	padding: 15px 30px;
+	padding: 30px;
 	margin-bottom: 30px;
 	@extend %clearfix;
 	// overflow-x: scroll;
@@ -1023,7 +1022,7 @@ div.owl-feed {
 	
 	&.cards {
 		text-align: center;
-		
+		padding: 15px 30px;
 		p {
 			margin-bottom: 0;
 			font-size: 18px;
