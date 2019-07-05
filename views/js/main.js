@@ -269,6 +269,7 @@ romae = {
 																</div>`;
 		$("#addEspecialidade").on("click", () => {
 			$(".input-especialidades:nth-child(1)").append(inputEspecialidade);
+			console.log("Clicado");
 		})
 	},
 	addLocaldeAtendimento: () => {
@@ -285,6 +286,7 @@ romae = {
 															</div>`;
 	$("#addPremios").on("click", () => {
 		$(".input-premios:nth-child(1)").append(inputPremios);
+		console.log("Clicado");
 	})
 	}
 
