@@ -246,9 +246,9 @@ romae = {
 	},
 	menu: () => {
 		$(document).ready( () => {
-			if($("section").hasClass(".medico-perfil") ) {
-				$("ul.menu a").addClass("active")
-			} else if ($("section").hasClass(".medico-anuncios")) {
+			if($("section").hasClass("medico-perfil") ) {
+				$("ul.menu a").addClass("active");
+			} else if ($("section").hasClass("medico-anuncios")) {
 				$("ul.menu a").addClass("active")
 			}
 		});
