@@ -263,14 +263,29 @@ romae = {
 			}
 		});
 	},
-	addLocaldeAtendimento: () => {
-		const inputAtendimento = `<div class="col-md-12 input-especialidades">
-																<input type="text" name="description" placeholder="Especialidade 1">
+	addEspecialidade: () => {
+		const inputEspecialidade = `<div class="col-md-12 input-especialidades">
+																<input type="text" name="description" placeholder="Outra especialidade">
 															</div>`;
 		$("#addEspecialidade").on("click", () => {
-			$(".input-especialidades").append(inputAtendimento);
-			console.log("clicado");
+			$(".input-especialidades:nth-child(1)").append(inputEspecialidade);
 		})
+	},
+	addLocaldeAtendimento: () => {
+		const inputAtendimento = `<div class="col-md-12 input-local-de-atendimento">
+																<input type="text" name="description" placeholder="Outro local de atendimento">
+															</div>`;
+		$("#addLocalAtendimento").on("click", () => {
+			$(".input-local-de-atendimento:nth-child(1)").append(inputAtendimento);
+		})
+	},
+	addPremio: () => {
+		const inputPremios = `<div class="col-md-12 input-premios">
+																<input type="text" name="description" placeholder="Escreva sobre este premio">
+															</div>`;
+	$("#addLocalAtendimento").on("click", () => {
+		$(".input-premios:nth-child(1)").append(inputPremios);
+	})
 	}
 
 }
@@ -288,6 +303,8 @@ $(function() {
 	romae.iobtn();
 	romae.menuItem();
 	romae.addLocaldeAtendimento();
+	romae.addEspecialidade();
+	romae.addPremio();
 });
 
 $( window ).resize(function() {
