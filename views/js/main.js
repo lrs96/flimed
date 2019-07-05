@@ -264,9 +264,7 @@ romae = {
 		});
 	},
 	addMaisEspecialidade: () => {
-		const inputEspecialidade = `<div class="col-md-12">
-																	<input type="text" name="especialidade" placeholder="Especialidade 1">
-																</div>`;
+		const inputEspecialidade = `<input type="text" name="especialidade" style="padding-top: 15px;" placeholder="Especialidade 1">`;
 		$("#addEspecialidade").click( () => {
 			$(".input-especialidades:nth-child(1)").append(inputEspecialidade);
 			console.log("Clicado");
@@ -279,13 +277,11 @@ romae = {
 		})
 	},
 	addMaisPremio: () => {
-		const inputPremios = `<div class="col-md-12 input-premios">
-																<input type="text" name="description" placeholder="Escreva sobre este premio">
-															</div>`;
-	$("#addPremios").click( () => {
-		$("#input-premios:first-child").append(inputPremios);
-		console.log("Clicado");
-	});
+		const inputPremios = `<input type="text" name="description" style="padding-top: 15px;" placeholder="Escreva sobre este premio">`;
+		$("#addPremios").click( () => {
+			$("#input-premios").append(inputPremios);
+			console.log("Clicado");
+		});
 	}
 
 }
