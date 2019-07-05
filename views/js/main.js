@@ -284,10 +284,13 @@ romae = {
 		const inputPremios = `<div class="col-md-12 input-premios">
 																<input type="text" name="description" placeholder="Escreva sobre este premio">
 															</div>`;
-	$("#addPremios").click( () => {
-		$(".input-premios:first-child").append(inputPremios);
-		console.log("Clicado");
-	})
+	// $("#addPremios").click( () => {
+	// 	$(".input-premios:first-child").append(inputPremios);
+	// 	console.log("Clicado");
+	// })
+	$('.input-premios:first-child').append(inputPremios);
+	console.log("Clicou")
+
 	}
 
 }
