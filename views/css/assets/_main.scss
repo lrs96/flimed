@@ -245,6 +245,8 @@ img { max-width: 100%; height: auto; }
 			opacity: 0;
 		}
 	}
+
+	
 }
 
 .nav-lines {
@@ -301,6 +303,15 @@ img { max-width: 100%; height: auto; }
 	.menu-item {
 		margin-bottom: 15px;
 		position: relative;
+
+
+		a.active {
+			background-color: #01E9B5;
+			border-radius: 100%;	
+			img {
+				filter: brightness(10000);
+			}
+		}
 	}
 	
 	.page-current {
@@ -327,6 +338,8 @@ img { max-width: 100%; height: auto; }
 				opacity: 1;
 			}
 		}
+
+
 	}
 }
 
