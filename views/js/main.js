@@ -267,7 +267,7 @@ romae = {
 		const inputEspecialidade = `<div class="col-md-12">
 																	<input type="text" name="especialidade" placeholder="Especialidade 1">
 																</div>`;
-		$("#addEspecialidade").on("click", () => {
+		$("#addEspecialidade").click( () => {
 			$(".input-especialidades:nth-child(1)").append(inputEspecialidade);
 			console.log("Clicado");
 		})
@@ -284,7 +284,7 @@ romae = {
 		const inputPremios = `<div class="col-md-12 input-premios">
 																<input type="text" name="description" placeholder="Escreva sobre este premio">
 															</div>`;
-	$("#addPremios").on("click", () => {
+	$("#addPremios").click( () => {
 		$(".input-premios:nth-child(1)").append(inputPremios);
 		console.log("Clicado");
 	})
