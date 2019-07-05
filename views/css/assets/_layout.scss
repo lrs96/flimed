@@ -39,7 +39,7 @@
 		background-color: $white;
 		border: 1px solid $border;
 		border-radius: 4px;
-		font-size: 18px;
+		font-size: 17px;
 	}
 	
 	textarea {
@@ -745,6 +745,12 @@ section.box-login {
 					input {
 						margin-bottom: 0;
 					}
+					::-webkit-input-placeholder,
+					:-moz-placeholder,
+					::-moz-placeholder,
+					:-ms-input-placeholder  {
+							color: #8897AA;
+					}
 					.icons-search {
 						position: absolute;
 						right: 15px;
@@ -754,6 +760,11 @@ section.box-login {
 						height: 100%;
 						i {
 							color: #8897AA;
+						}
+						button {
+							border: 0;
+							background-color: #ECEFF3;
+							cursor: pointer;
 						}
 						span {
 							img {
@@ -804,6 +815,8 @@ section.box-login {
 
 					.name-paciente {
 						color: #4F627D;
+						font-weight: 800;
+						letter-spacing: 0.4px;
 					}
 
 					.name-convenio {
@@ -815,7 +828,7 @@ section.box-login {
 				.horario-paciente {
 					p {
 						margin-bottom: 0;
-						padding: 0.58em;
+						padding: 0.3em 1em;
 						border-radius: 4px;
 						background-color: #01e9b1;
 						color: #fff;
@@ -830,7 +843,7 @@ section.box-login {
 
 
 .ematendimento  {
-	padding-top: 50px;
+	padding-top: 30px;
 
 	.continuarAtendimento {
 		position: absolute;
