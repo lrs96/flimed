@@ -18,6 +18,14 @@
 
 @font-face {
 	font-family: 'UniviaPro';
+	src: url('/views/css/fonts/UniviaPro-Medium.otf') format('opentype'), 
+		url('#{$url}/css/fonts/UniviaPro-Light.otf') format('opentype'),
+		url('#{$url}/css/fonts/UniviaPro-Light.otf') format('opentype');
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: 'UniviaPro';
 	src: url('/views/css/fonts/UniviaPro-Black.otf') format('opentype'), 
 		url('#{$url}/css/fonts/UniviaPro-Light.otf') format('opentype'),
 		url('#{$url}/css/fonts/UniviaPro-Light.otf') format('opentype');
