@@ -264,9 +264,9 @@ romae = {
 		});
 	},
 	addEspecialidade: () => {
-		const inputEspecialidade = `<div class="col-md-12 input-especialidades">
-																<input type="text" name="description" placeholder="Outra especialidade">
-															</div>`;
+		const inputEspecialidade = `<div class="col-md-12">
+																	<input type="text" name="especialidade" placeholder="Especialidade 1">
+																</div>`;
 		$("#addEspecialidade").on("click", () => {
 			$(".input-especialidades:nth-child(1)").append(inputEspecialidade);
 		})
@@ -283,7 +283,7 @@ romae = {
 		const inputPremios = `<div class="col-md-12 input-premios">
 																<input type="text" name="description" placeholder="Escreva sobre este premio">
 															</div>`;
-	$("#addLocalAtendimento").on("click", () => {
+	$("#addPremios").on("click", () => {
 		$(".input-premios:nth-child(1)").append(inputPremios);
 	})
 	}
