@@ -42,29 +42,10 @@
 							<p><strong class="number"><%= countAbsence %></strong> Faltaram</p>
 						</div>
 					</div>
-		
-					<%
-						let masculino = 0, feminino = 0
-						for(let i = 0; i < patientGender.length; i++) {
-							if(patientGender[i] === 'Masculino') {
-								masculino++
-							} else {
-								feminino++
-							}
-						}
-		
-						let privado = 0, outros = 0
-						for(let i = 0; i < events.length; i++) {
-							if(events[i].status === 'pendente' || events[i].status === 'concluído') {
-								if(events[i].patientInfo.patientAgreement === 'Privado') {
-									privado++
-								} else {
-									outros++
-								}
-							}
-						}
-					%>	
 			<div class="col-md-12">
+				<div class="col-12">
+					<h2>Perfil</h2>
+				</div>
 				<div class="mosaic-item">
 					<h3>Informações</h3>
 					<form id="form-change-profile" class="form">
