@@ -264,7 +264,7 @@ romae = {
 		});
 	},
 	addLocaldeAtendimento: () => {
-		const inputAtendimento = `<div class="col-md-12 input-especialidasdes">
+		const inputAtendimento = `<div class="col-md-12 input-especialidades">
 																<input type="text" name="description" placeholder="Especialidade 1">
 															</div>`;
 		$("#addEspecialidade").on("click", () => {
