@@ -309,25 +309,12 @@
 								<div class="col-md-12">
 									<h3>Honras e prêmios</h3>
 								</div>
-								<div class="col-md-12 input-premios">
+								<div class="col-md-12" id="input-premios">
 									<input type="text" name="description" placeholder="Escreva sobre este prêmio">
 								</div>
 								<div class="col-12 d-flex justify-content-center">
-									<a id="addPremios" onclick="addMaisPremio()" class="btn btn-radius btn-gradient">+</a>
+									<a id="addPremios" class="btn btn-radius btn-gradient">+</a>
 								</div>
-								<script>
-								function addMaisPremio() {
-								const premio = `<div class="col-md-12 input-premios">
-																						<input type="text" name="description" placeholder="Escreva sobre este premio">
-																					</div>`;
-													// $("#addPremios").click( () => {
-													// 	$(".input-premios:first-child").append(inputPremios);
-													// 	console.log("Clicado");
-													// })
-													$('.input-premios:first-child').append(premio);
-													console.log("Clicou 2")
-													}
-							</script>
 							</div>
 						</form>
 						<script>

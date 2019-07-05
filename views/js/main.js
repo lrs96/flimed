@@ -273,9 +273,7 @@ romae = {
 		})
 	},
 	addLocaldeAtendimento: () => {
-		const inputAtendimento = `<div class="col-md-12 input-local-de-atendimento">
-																<input type="text" name="description" placeholder="Outro local de atendimento">
-															</div>`;
+		const inputAtendimento = `<input type="text" name="description" style="padding-top: 15px" placeholder="Outro local de atendimento">`;
 		$("#addLocalAtendimento").on("click", () => {
 			$(".input-local-de-atendimento:nth-child(1)").append(inputAtendimento);
 		})
@@ -284,13 +282,10 @@ romae = {
 		const inputPremios = `<div class="col-md-12 input-premios">
 																<input type="text" name="description" placeholder="Escreva sobre este premio">
 															</div>`;
-	// $("#addPremios").click( () => {
-	// 	$(".input-premios:first-child").append(inputPremios);
-	// 	console.log("Clicado");
-	// })
-	$('.input-premios:first-child').append(inputPremios);
-	console.log("Clicou 1")
-
+	$("#addPremios").click( () => {
+		$("#input-premios:first-child").append(inputPremios);
+		console.log("Clicado");
+	});
 	}
 
 }
