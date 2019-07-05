@@ -1632,6 +1632,10 @@ div.owl-feed {
 	flex-direction: column;
 	justify-content: center;
 	label {
+		height: 100%;
+    cursor: pointer;
+    width: 100%;
+    position: relative;
 		span {
 			position: absolute;
 			left: 5px;
@@ -1646,7 +1650,7 @@ div.owl-feed {
 			border-radius: 100%;
 		}
 	}
-	
+
 	span {
 		padding-left: 50px;
 	}
