@@ -263,7 +263,7 @@ romae = {
 			}
 		});
 	},
-	addEspecialidade: () => {
+	addMaisEspecialidade: () => {
 		const inputEspecialidade = `<div class="col-md-12">
 																	<input type="text" name="especialidade" placeholder="Especialidade 1">
 																</div>`;
@@ -280,7 +280,7 @@ romae = {
 			$(".input-local-de-atendimento:nth-child(1)").append(inputAtendimento);
 		})
 	},
-	addPremio: () => {
+	addMaisPremio: () => {
 		const inputPremios = `<div class="col-md-12 input-premios">
 																<input type="text" name="description" placeholder="Escreva sobre este premio">
 															</div>`;
@@ -305,8 +305,8 @@ $(function() {
 	romae.iobtn();
 	romae.menuItem();
 	romae.addLocaldeAtendimento();
-	romae.addEspecialidade();
-	romae.addPremio();
+	romae.addMaisEspecialidade();
+	romae.addMaisPremio();
 });
 
 $( window ).resize(function() {
