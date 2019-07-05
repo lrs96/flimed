@@ -269,6 +269,7 @@ romae = {
 															</div>`;
 		$("#addEspecialidade").on("click", () => {
 			$(".input-especialidades").append(inputAtendimento);
+			console.log("clicado");
 		})
 	}
 
