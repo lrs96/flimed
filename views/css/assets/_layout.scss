@@ -898,5 +898,9 @@ section.box-login {
 			border-bottom: none;
 			border-left: none;
 		}
+		td {
+			border: none;
+			border-right: 1px dashed rgba(65, 104, 136, 0.2);
+		}
 	}
 }
