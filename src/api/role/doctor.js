@@ -67,6 +67,13 @@ module.exports = app => {
             message: null
         })
     }
+    const viewPatientHistory = (req, res ) => {
+        res.status(200).render("medico-historico", {
+            page: 'medico-historico',
+            uer: req.session.user,
+            message: null
+        })
+    }
 
     const doctorRegister = async (req, res) => {
         const user = { ...req.body }
@@ -685,6 +692,7 @@ module.exports = app => {
     return { 
         viewDoctorRegister,
         doctorRegister,
+        viewPatientHistory,
         viewDoctorProfileFromUser,
         viewDoctorPanel,
         viewDoctorProfile,

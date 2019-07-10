@@ -131,10 +131,7 @@ module.exports = app => {
     app.post('/esqueci-minha-senha/:token', app.src.api.user.resetPassword)
 
     /* Routas de teste */
-    app.get("/medico-atendimento-novo", (req, res) => {
-        res.render("medico-atendimento-novo", {page: "medico-atendimento-novo" })
-    })
-
+ 
 
     /* ============= LOGOUT ============= */
     app.get('/logout', function(req, res) {
@@ -180,10 +177,6 @@ module.exports = app => {
         .all(app.src.config.passport.authenticate())
         .get(patient(app.src.api.role.patient.viewPatientPanel))
 
-    app.get("/medico-historico")
-    .all(app.src.config.passport.authenticate())
-    .get(patient(app.src.api.role.patient.viewPatientHistory))
-
     app.route('/cliente-perfil')
         .all(app.src.config.passport.authenticate())
         .get(patient(app.src.api.role.patient.viewPatientProfile))
@@ -213,11 +206,14 @@ module.exports = app => {
         .get(app.src.api.role.doctor.viewDoctorRegister)
         .post(app.src.api.role.doctor.doctorRegister)
 
-   
+    app.get("/medico-historico")
+    .all(app.src.config.passport.authenticate())
+    .get(app.src.api.role.doctor.viewPatientHistory)
+    
 
     app.route('/medico-painel')
-        .all(app.src.config.passport.authenticate())
-        .get(doctor(app.src.api.role.doctor.viewDoctorPanel))
+    .all(app.src.config.passport.authenticate())
+    .get(doctor(app.src.api.role.doctor.viewDoctorPanel))
 
     app.route('/medico-perfil')
         .all(app.src.config.passport.authenticate())
