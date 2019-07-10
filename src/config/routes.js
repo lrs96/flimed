@@ -131,8 +131,9 @@ module.exports = app => {
     app.post('/esqueci-minha-senha/:token', app.src.api.user.resetPassword)
 
     /* Routas de teste */
-
-
+    app.get("/medico-atendimento-novo", (req, res) => {
+        res.status(200).render("medico-atendimento-novo", {page: "medico-atendimento-novo", message: null})
+    })
 
     /* ============= LOGOUT ============= */
     app.get('/logout', function(req, res) {
