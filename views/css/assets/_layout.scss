@@ -897,11 +897,19 @@ section.box-login {
 			border-top: none;
 			border-bottom: none;
 			border-left: none;
-			font-weight: 400;
 		}
 		td {
 			border: none;
 			border-right: 1px dashed rgba(65, 104, 136, 0.2);
+		}
+
+		thead {
+			tr {
+				th {
+					color: #416888;
+					font-size: 20px;
+				}
+			}
 		}
 
 		tbody {
