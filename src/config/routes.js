@@ -132,7 +132,7 @@ module.exports = app => {
 
     /* Routas de teste */
     app.get("/medico-atendimento-novo", (req, res) => {
-        res.status(200).render("medico-atendimento-novo", {page: "medico-atendimento-novo", message: null})
+        res.render("medico-atendimento-novo", {page: "medico-atendimento-novo" })
     })
 
     /* ============= LOGOUT ============= */
