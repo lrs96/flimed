@@ -135,9 +135,6 @@ module.exports = app => {
         res.render("medico-atendimento-novo", {page: "medico-atendimento-novo" })
     })
 
-    app.get("/historico", function(req, res) {
-        res.status(200).render("medico-historico", { message: null, page: "medico-historico" })
-    })
 
     /* ============= LOGOUT ============= */
     app.get('/logout', function(req, res) {
@@ -182,6 +179,10 @@ module.exports = app => {
     app.route('/cliente-painel')
         .all(app.src.config.passport.authenticate())
         .get(patient(app.src.api.role.patient.viewPatientPanel))
+
+    app.get("/medico-historico")
+    .all(app.src.config.passport.authenticate())
+    .get(patient(app.src.api.role.patient.viewPatientHistory))
 
     app.route('/cliente-perfil')
         .all(app.src.config.passport.authenticate())
