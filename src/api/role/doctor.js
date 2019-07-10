@@ -68,8 +68,8 @@ module.exports = app => {
         })
     }
     const viewDoctorHistory = (req, res ) => {
-        res.status(200).render("Historico", {
-            page: 'medico-historico',
+        res.status(200).render("medico-historico", {
+            page: 'Histórico',
             uer: req.session.user,
             message: null
         })
