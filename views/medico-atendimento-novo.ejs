@@ -3,18 +3,6 @@
 <script src="/views/js/moment-with-locales.js"></script>
 <script>moment.locale('pt-br')</script>
 
-<%
-	let attendanceNow = null
-	if(attendance.length) {
-		for(let i = 0; i < attendance.length; i++) {
-			if(attendance[i]._idEvent == event._id) {
-				attendanceNow = attendance[i]
-				break
-			}
-		}
-	}
-%>
-
 <section class="box__panel">
 	<div class="em-atendimento">
 		<div class="container">
@@ -25,11 +13,10 @@
 				</span>
 			</span>
 			
-			<% if(!attendanceNow) { %>
 				<div class="oncount">
 					<form id="form-start-attendance">
-						<input type="hidden" name="eventId" value="<%= event._id %>">
-						<input type="hidden" name="patientId" value="<%= patient._id %>">
+						<input type="hidden" name="eventId" value="">
+						<input type="hidden" name="patientId" value="">
 						<i class="sprite-check__clock"></i>
 						<div class="clock">Atendimento não iniciado</div>
 						<button type="submit" class="btn btn-gradient" id="btn_start">Começar</button>
@@ -58,7 +45,6 @@
 						})
 					</script>
 				</div>
-			<% } else { %>
 				<div class="oncount">
 					<i class="sprite-check__clock"></i>
 					<div class="clock" id="time_from_now"></div>
@@ -69,8 +55,8 @@
 						<div class="modal-box">
 							<div class="modal-title__finish">
 								<form id="form-end-attendance">
-									<input type="hidden" name="eventId" value="<%= event._id %>">
-									<input type="hidden" name="patientId" value="<%= patient._id %>">
+									<input type="hidden" name="eventId" value="">
+									<input type="hidden" name="patientId" value="">
 									<h3>Você quer terminar?</h3>
 									<p>Atendimento iniciado: <strong id="duration"></strong></p>
 									
@@ -79,8 +65,8 @@
 											<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
 										</figure>
 										<div class="atendimento__paciente">
-											<h3><%= patient.name %></h3>
-											<span><%= event.patientInfo.patientAgreement %></span>
+											<h3>Nome do paciente</h3>
+											<span>Informação do paciente</span>
 										</div>
 									</div>
 									<button type="submit" class="btn btn-red">Finalizar serviço</button>
@@ -131,7 +117,7 @@
 				<div class="row">
 					<div class="col-md-3">
 						<figure class="atendimento__photo">
-							<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+							<img alt="Alt" src="#">
 						</figure>
 						<div class="atendimento__paciente">
 							<h3><%= patient.name %></h3>
@@ -140,22 +126,22 @@
 					</div>
 					<div class="col-md-3">
 						<span class="title">Era</span>
-						<span class="datas"><%= patient.dateOfBirth %></span>
+						<span class="datas">Data de nascimento</span>
 					</div>
 					<div class="col-md-3">
 						<span class="title">Gênero</span>
-						<span class="datas"><%= patient.genre %></span>
+						<span class="datas">Gênero</span>
 					</div>
 					<div class="col-md-3">
 						<span class="title">Acordo Médico</span>
-						<span class="datas"><%= event.patientInfo.patientAgreement %></span>
+						<span class="datas">Informação</span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<% if(attendanceNow) { %>
+
 		<div class="consulta-medica">
 			<div class="container">
 				<h2>Consulta médica</h2>
@@ -259,7 +245,6 @@
 				</div>
 			</div>
 		</div>
-	<% } else { %>
 		<div class="consulta-medica">
 			<div class="container">
 				<h2>Consulta médica</h2>
@@ -275,7 +260,6 @@
 				</div>
 			</div>
 		</div>
-	<% } %>
 </section>
 
 <section class="modals">
@@ -284,53 +268,38 @@
 			<div class="modal-title">
 				<h2>Resumo do Paciente</h2>
 			</div>
-			<% if(!attendance.length) { %>
+
 				<p>Paciente sem consultas anteriores</p>
-			<% } else { %>
 				<div class="timeline">
-					<% for(let i = 0; i < attendance.length; i++) { %>
-						<% if(attendance[i].type === 'presencial') { %>
-							<% if(attendanceNow && attendance[i]._id != attendanceNow._id) { %>
-								<% if(i % 2 == 0) { %>
 									<div class="timeline-item">
-										<div class="timeline-time"><script>document.write(moment('<%= attendance[i].createdAt %>', 'DD/MM/YYYY h:mm:ss').format('L'))</script></div>
+										<div class="timeline-time">Data format</div>
 										<div class="timeline-content">
 											<p><strong>Pontuário</strong></p>
-											<a href="/atendimento/<%= attendance[i]._id %>">Clique pra ver</a>
+											<a href="/atendimento/">Clique pra ver</a>
 										</div>
 									</div>
-								<% } else { %>
 									<div class="timeline-item timeline-ltd">
-										<div class="timeline-time"><script>document.write(moment('<%= attendance[i].createdAt %>', 'DD/MM/YYYY h:mm:ss').format('L'))</script></div>
+										<div class="timeline-time">Data format</div>
 										<div class="timeline-content">
 											<p><strong>Pontuário</strong></p>
-											<a href="/atendimento/<%= attendance[i]._id %>">Clique pra ver</a>
+											<a href="/atendimento/">Clique pra ver</a>
 										</div>
 									</div>
-								<% } %>
-							<% } else { %>
-								<% if(i % 2 == 0) { %>
 									<div class="timeline-item">
-										<div class="timeline-time"><script>document.write(moment('<%= attendance[i].createdAt %>', 'DD/MM/YYYY h:mm:ss').format('L'))</script></div>
+										<div class="timeline-time">Data format</div>
 										<div class="timeline-content">
 											<p><strong>Pontuário</strong></p>
-											<a href="/atendimento/<%= attendance[i]._id %>">Clique pra ver</a>
+											<a href="/atendimento/">Clique pra ver</a>
 										</div>
 									</div>
-								<% } else { %>
 									<div class="timeline-item timeline-ltd">
-										<div class="timeline-time"><script>document.write(moment('<%= attendance[i].createdAt %>', 'DD/MM/YYYY h:mm:ss').format('L'))</script></div>
+										<div class="timeline-time">Data format</div>
 										<div class="timeline-content">
 											<p><strong>Pontuário</strong></p>
-											<a href="/atendimento/<%= attendance[i]._id %>">Clique pra ver</a>
+											<a href="/atendimento/">Clique pra ver</a>
 										</div>
 									</div>
-								<% } %>
-							<% } %>
-						<% } %>
-					<% } %>
 				</div>
-			<% } %>
 		</div>
 	</div>	
 
@@ -341,7 +310,7 @@
 			</div>
 			<div class="form">
 				<form id="form-anamnese">
-					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="eventId" value="" />
 					<input type="hidden" name="formType" value="anamnesis" />
 					<div class="row">
 						<div class="col-md-12">
@@ -493,7 +462,7 @@
 			</div>
 			<div class="form">
 				<form id="form-physicalExam">
-					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="eventId" value="" />
 					<input type="hidden" name="formType" value="Exame físico" />
 					<div class="row">
 						<div class="col-md-12">
@@ -565,7 +534,7 @@
 			</div>
 			<div class="form">
 				<form id="form-diagnosticHypothesis">
-					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="eventId" value="" />
 					<input type="hidden" name="formType" value="diagnosticHypothesis" />
 					<div class="row">
 						<div class="col-md-12">
@@ -613,7 +582,7 @@
 			</div>
 			<div class="form">
 				<form id="form-evolution">
-					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="eventId" value="" />
 					<input type="hidden" name="formType" value="evolucao" />
 					<div class="row">
 						<div class="col-md-12">
@@ -657,7 +626,7 @@
 			</div>
 			<div class="form">
 				<form id="form-budget">
-					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="eventId" value="" />
 					<input type="hidden" name="formType" value="budget" />
 					<div class="row">
 						<div class="col-md-12">
@@ -716,7 +685,7 @@
 			</div>
 			<div class="form">
 				<form id="form-examsAndProcedures">
-					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="eventId" value="" />
 					<input type="hidden" name="formType" value="exameseprocedimentos" />
 					<div class="row">
 						<div class="col-md-12">
@@ -791,7 +760,7 @@
 			</div>
 			<div class="form">
 				<form id="form-prescriptions">
-					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="eventId" value="" />
 					<input type="hidden" name="formType" value="prescriptions" />
 					<div class="row">
 						<div class="col-md-12">
@@ -875,7 +844,7 @@
 			</div>
 			<div class="form">
 				<form id="form-attestations">
-					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="eventId" value="" />
 					<input type="hidden" name="formType" value="atestados" />
 					<div class="row">
 						<div class="col-md-12">
@@ -942,7 +911,7 @@
 			</div>
 			<div class="form">
 				<form id="form-imagesOrAttachments">
-					<input type="hidden" name="eventId" value="<%= event._id %>" />
+					<input type="hidden" name="eventId" value="" />
 					<div class="row">
 						<div class="col-md-12">
 							<input type="file" name="file" multiple>										
