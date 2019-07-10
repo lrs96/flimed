@@ -33,66 +33,26 @@
 <section class="box__panel medico-financeiro">
 	<div class="container">
 		<div class="row mosaic">
-				<div class="col-md-3">
-						<div class="mosaic-item cards">
-							<% 
-								let countDay = 0, countMonth = 0, countAbsence = 0
-								if(events.length) {
-									for(let i = 0; i < events.length; i++) {
-										if(moment(events[i].start).format('L') === moment().format('L') && events[i].status !== 'disponível') {
-											countDay++
-										}
-		
-										if(moment(events[i].start).format('MM/YYYY') === moment().format('MM/YYYY') && events[i].status !== 'disponível') {
-											countMonth++
-										}
-		
-										if(events[i].status === 'falta') {
-											countAbsence++
-										}
-									}	
-								}
-							%>
-							<p><strong class="number"><%= countDay %></strong> Pacientes do Dia</p>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="mosaic-item cards">
-							<p><strong class="number"><%= countMonth %></strong> Pacientes do Mês</p>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="mosaic-item cards">
-							<p><strong class="number"><%= user.question.length %></strong> Atendimento</p>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="mosaic-item cards">
-							<p><strong class="number"><%= countAbsence %></strong> Faltaram</p>
-						</div>
-					</div>
-		
-					<%
-						let masculino = 0, feminino = 0
-						for(let i = 0; i < patientGender.length; i++) {
-							if(patientGender[i] === 'Masculino') {
-								masculino++
-							} else {
-								feminino++
-							}
-						}
-		
-						let privado = 0, outros = 0
-						for(let i = 0; i < events.length; i++) {
-							if(events[i].status === 'pendente' || events[i].status === 'concluído') {
-								if(events[i].patientInfo.patientAgreement === 'Privado') {
-									privado++
-								} else {
-									outros++
-								}
-							}
-						}
-					%>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong class="number">0</strong> Pacientes do Dia</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong class="number">0</strong> Pacientes do Mês</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong class="number">0</strong> Atendimento</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong class="number">0</strong> Faltaram</p>
+				</div>
+			</div>
 			<div class="col-md-12 atendimento-paciente">
 					<div class="mosaic-item">
 						<div class="row">
