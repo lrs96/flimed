@@ -885,3 +885,18 @@ section.box-login {
 		color: #416888;
 	}
 }
+
+.financeiro.receita {
+	table {
+		border: none;
+		thead, tbody {
+			text-align: center;
+		}
+		th {
+			border-right: 1px dashed rgba(65, 104, 136, 0.2);
+			border-top: none;
+			border-bottom: none;
+			border-left: none;
+		}
+	}
+}
