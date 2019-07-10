@@ -897,6 +897,7 @@ section.box-login {
 			border-top: none;
 			border-bottom: none;
 			border-left: none;
+			font-weight: 400;
 		}
 		td {
 			border: none;
@@ -905,6 +906,8 @@ section.box-login {
 
 		tbody {
 			td {
+				color: #8897AA;
+				font-weight: 400;
 				a {
 					margin-bottom: 0;
 					padding: 0.3em 1em;
@@ -914,6 +917,9 @@ section.box-login {
 					text-align: center;
 					font-size: 16px;
 					font-weight: 500;
+					&:hover {
+						color: #fff;
+					}
 				}
 			}
 		}
