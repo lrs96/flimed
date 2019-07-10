@@ -62,7 +62,7 @@
 									
 									<div class="consulta-medica__item">
 										<figure class="atendimento__photo">
-											<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+											<img alt="">
 										</figure>
 										<div class="atendimento__paciente">
 											<h3>Nome do paciente</h3>
@@ -73,7 +73,7 @@
 								</form>
 								<script>
 									$(document).ready(function() {
-										const dateNow = '<%= attendanceNow.createdAt %>'
+										const dateNow = ''
 										$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
 										$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
 										setInterval(function() {
@@ -93,7 +93,7 @@
 												success: function(result) {          
 													alertify.notify(result, 'success', 5)
 													setTimeout(function() { 
-															window.location.href = '/atendimento/<%= attendanceNow._id %>'
+															window.location.href = '/atendimento/>'
 													}, 500)
 												},
 												error: function(xhr, status, error) {
@@ -107,7 +107,6 @@
 						</div>
 					</div>
 				</div>
-			<% } %>
 		</div>
 	</div>
 
@@ -120,7 +119,7 @@
 							<img alt="Alt" src="#">
 						</figure>
 						<div class="atendimento__paciente">
-							<h3><%= patient.name %></h3>
+							<h3>Nome do paciente</h3>
 							<span class="date"><script>document.write(moment().format('DD/MM/YYYY'))</script></span>
 						</div>
 					</div>
