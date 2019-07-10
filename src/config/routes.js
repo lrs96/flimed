@@ -136,7 +136,7 @@ module.exports = app => {
     })
 
     app.get("/medico-historico", (req, res) => {
-        res.render("medico-historico", { page: "medico-historico" })
+        res.render("medico-historico.ejs", { page: "medico-historico" })
     })
 
     /* ============= LOGOUT ============= */
