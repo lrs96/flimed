@@ -135,6 +135,10 @@ module.exports = app => {
         res.render("medico-atendimento-novo", {page: "medico-atendimento-novo" })
     })
 
+    app.get("/medico-historico", (req, res) => {
+        res.render("medico-historico", { page: "medico-historico" })
+    })
+
     /* ============= LOGOUT ============= */
     app.get('/logout', function(req, res) {
         req.session.reset()          

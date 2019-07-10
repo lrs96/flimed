@@ -1,0 +1,191 @@
+<%- include includes/header-medico.ejs %>
+
+<section class="box__panel medico-painel">
+	<div class="container">
+		<div class="row mosaic">
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<% 
+						let countDay = 0, countMonth = 0, countAbsence = 0
+						if(events.length) {
+							for(let i = 0; i < events.length; i++) {
+								if(moment(events[i].start).format('L') === moment().format('L') && events[i].status !== 'disponível') {
+									countDay++
+								}
+
+								if(moment(events[i].start).format('MM/YYYY') === moment().format('MM/YYYY') && events[i].status !== 'disponível') {
+									countMonth++
+								}
+
+								if(events[i].status === 'falta') {
+									countAbsence++
+								}
+							}	
+						}
+					%>
+					<p><strong class="number"><%= countDay %></strong> Pacientes do Dia</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong class="number"><%= countMonth %></strong> Pacientes do Mês</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong class="number"><%= user.question.length %></strong> Atendimento</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong class="number"><%= countAbsence %></strong> Faltaram</p>
+				</div>
+			</div>
+
+			<%
+				let masculino = 0, feminino = 0
+				for(let i = 0; i < patientGender.length; i++) {
+					if(patientGender[i] === 'Masculino') {
+						masculino++
+					} else {
+						feminino++
+					}
+				}
+
+				let privado = 0, outros = 0
+				for(let i = 0; i < events.length; i++) {
+					if(events[i].status === 'pendente' || events[i].status === 'concluído') {
+						if(events[i].patientInfo.patientAgreement === 'Privado') {
+							privado++
+						} else {
+							outros++
+						}
+					}
+				}
+			%>
+
+			<div class="col-md-12 atendimento-paciente">
+				<div class="mosaic-item">
+					<div class="row">
+						<div class="col-md-4">
+						<h2 class="title-mosaic"><strong>Pacientes</strong> do dia</h2>
+						</div>
+						<div class="col-md-8">
+							<form action="/" method="GET" id="pesquisa" class="form">
+									<div class="form-group relative d-flex">
+										<input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+										<div class="icons-search">
+											<a id="filterInput" href="#"><span><img src="/views/img/icone-form.png" alt="Icone form"></span></a>
+											<button type="submit"> <span><i class="fa fa-search"></i></span></button>
+										</div>
+									</div>
+							</form>
+						</div>
+					</div>
+					<div class="row paciente-item">
+						<div class="col-md-12 d-flex justify-content-between">
+							<div class=" col-md-4 info-paciente d-flex">
+								<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+								<p class="name-paciente">Andre Ribeiro</p>
+								<p class="name-convenio">Particular</p>
+							</div>
+							<div class="horario-paciente">
+								<p class="horario-item">08:00 hrs</p>
+							</div>
+						</div>
+						<div class="col-md-12 d-flex justify-content-between">
+							<div class="col-md-4 info-paciente d-flex">
+								<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+								<p class="name-paciente">Andre Ribeiro</p>
+								<p class="name-convenio">Particular</p>
+							</div>
+							<div class=" horario-paciente">
+								<p class="horario-item">08:00 hrs</p>
+							</div>
+						</div>
+						<div class="col-md-12 d-flex justify-content-between">
+							<div class="col-md-4 info-paciente d-flex">
+								<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+								<p class="name-paciente">Andre Ribeiro</p>
+								<p class="name-convenio">Particular</p>
+							</div>
+							<div class="horario-paciente">
+								<p class="horario-item">08:00 hrs</p>
+							</div>
+						</div>
+					
+					</div>
+					<div class="row addAtendimento">
+						<a href="#" class="btn btn-gradient" id="addAtendimento">Adicionar um novo atendimento </a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 atendimento-paciente ematendimento">
+					<div class="mosaic-item">
+						<div class="row">
+							<div class="col-md-4">
+							<h2 class="title-mosaic">Em <strong>atendimento</strong></h2>
+							</div>
+						</div>
+						<div class="row paciente-item">
+							<div class="col-md-12 d-flex justify-content-between">
+								<div class=" col-md-4 info-paciente d-flex">
+									<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+									<p class="name-paciente">Andre Ribeiro</p>
+									<p class="name-convenio">Particular</p>
+								</div>
+								<div class="horario-paciente">
+									<p class="horario-item">08:00 hrs</p>
+								</div>
+							</div>
+						</div>
+						<div class="row continuarAtendimento">
+							<a href="#" class="btn btn-gradient" id="continuarAtendimento">Continuar Atendimento </a>
+							<a href="#" class="btn btn-gradient btn-danger" id="finalizarAtendimento">Finalizar Atendimento</a>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>	
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script>
+	var dataGenre = [
+		{
+			value: '<%= feminino %>',
+			color:"#45c8e3",
+			label: "Mulheres"
+		},
+		{
+			value: '<%= masculino %>',
+			color: "#01e9b1",
+			label: "Homens"
+		}
+	];	
+	
+	var dataService = [
+		{
+			value: '<%= privado %>',
+			color:"#45c8e3",
+			label: "Privado"
+		},
+		{
+			value: '<%= outros %>',
+			color: "#01e9b1",
+			label: "Convênio"
+		}
+	];
+
+	var ctxGenre = document.getElementById("chartGenre").getContext("2d");
+	new Chart(ctxGenre).Pie(dataGenre);
+	
+	var ctxService = document.getElementById("chartService").getContext("2d");
+	new Chart(ctxService).Pie(dataService);
+</script>
+
+		</div>
+	</div>	
+</section>
+
+<%- include includes/footer.ejs %>
