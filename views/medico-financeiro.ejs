@@ -33,56 +33,125 @@
 <section class="box__panel medico-financeiro">
 	<div class="container">
 		<div class="row mosaic">
-			<div class="col-md-12">
+				<div class="col-md-3">
+						<div class="mosaic-item cards">
+							<% 
+								let countDay = 0, countMonth = 0, countAbsence = 0
+								if(events.length) {
+									for(let i = 0; i < events.length; i++) {
+										if(moment(events[i].start).format('L') === moment().format('L') && events[i].status !== 'disponível') {
+											countDay++
+										}
+		
+										if(moment(events[i].start).format('MM/YYYY') === moment().format('MM/YYYY') && events[i].status !== 'disponível') {
+											countMonth++
+										}
+		
+										if(events[i].status === 'falta') {
+											countAbsence++
+										}
+									}	
+								}
+							%>
+							<p><strong class="number"><%= countDay %></strong> Pacientes do Dia</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="mosaic-item cards">
+							<p><strong class="number"><%= countMonth %></strong> Pacientes do Mês</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="mosaic-item cards">
+							<p><strong class="number"><%= user.question.length %></strong> Atendimento</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="mosaic-item cards">
+							<p><strong class="number"><%= countAbsence %></strong> Faltaram</p>
+						</div>
+					</div>
+		
+					<%
+						let masculino = 0, feminino = 0
+						for(let i = 0; i < patientGender.length; i++) {
+							if(patientGender[i] === 'Masculino') {
+								masculino++
+							} else {
+								feminino++
+							}
+						}
+		
+						let privado = 0, outros = 0
+						for(let i = 0; i < events.length; i++) {
+							if(events[i].status === 'pendente' || events[i].status === 'concluído') {
+								if(events[i].patientInfo.patientAgreement === 'Privado') {
+									privado++
+								} else {
+									outros++
+								}
+							}
+						}
+					%>
+			<div class="col-md-12 atendimento-paciente">
 					<div class="mosaic-item">
-						<h3>Destaque o perfil</h3>
-	
-						<form action="/buy-profile" method="POST" class="form">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="select">
-										<select name="specialty">
-											<option disabled selected>Categorias</option>
-											<% for(let i = 0; i < user.speciality.length; i++) { %>
-												<option><%= user.speciality[i].title %></option>
-											<% } %>
-										</select>
-									</div>
+						<div class="row">
+							<div class="col-md-4">
+							<h2 class="title-mosaic"><strong>Pacientes</strong> do dia</h2>
+							</div>
+							<div class="col-md-8">
+								<form action="/" method="GET" id="pesquisa" class="form">
+										<div class="form-group relative d-flex">
+											<input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+											<div class="icons-search">
+												<a id="filterInput" href="#"><span><img src="/views/img/icone-form.png" alt="Icone form"></span></a>
+												<button type="submit"> <span><i class="fa fa-search"></i></span></button>
+											</div>
+										</div>
+								</form>
+							</div>
+						</div>
+						<div class="row paciente-item">
+							<div class="col-md-12 d-flex justify-content-between">
+								<div class=" col-md-4 info-paciente d-flex">
+									<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+									<p class="name-paciente">Andre Ribeiro</p>
+									<p class="name-convenio">Particular</p>
 								</div>
-								<div class="col-md-3">
-									<input type="text" onfocus="(this.type='date')" onblur="(this.type='date')" id="date" name="start" placeholder="Começar">
-								</div>
-								<div class="col-md-3">
-									<input type="text" name="end" placeholder="Finalizar" onfocus="(this.type='date')" onblur="(this.type='date')" id="date">
-								</div>
-								<div class="col-md-6">
-										<input type="text" name="city" id="input_tags2" placeholder="Cidades">
-									</div>
-								<div class="col-md-6 dias-anuncios">
-									<div class="row">
-										<div class="col-md-6 col-sm-12">
-											<p>
-												<span><strong>30</strong> DIAS DE ANÚNCIO</span><br>
-											</p>
-										</div>
-										<div class="col-md-6 col-sm-12">
-											<p>	<span><strong>40</strong> VISUALIZAÇÃO</span></p>
-										</div>
-										<div class="col-md-4 pt-3">
-											<a href="" class="btn btn-gradient">EDITAR</a>
-										</div>
-										<div class="col-md-4 add-ad pt-3">
-											<span class="price"><strong>R$ <%= (profileValue / 100).toFixed(2) %></strong></span>
-										</div>
-										<div class="col-md-4 pt-3">
-											<button type="submit" class="btn btn-gradient">PAGAR</button>
-										</div>
-									</div>
+								<div class="horario-paciente">
+									<p class="horario-item">08:00 hrs</p>
 								</div>
 							</div>
-						</form>
+							<div class="col-md-12 d-flex justify-content-between">
+								<div class="col-md-4 info-paciente d-flex">
+									<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+									<p class="name-paciente">Andre Ribeiro</p>
+									<p class="name-convenio">Particular</p>
+								</div>
+								<div class=" horario-paciente">
+									<p class="horario-item">08:00 hrs</p>
+								</div>
+							</div>
+							<div class="col-md-12 d-flex justify-content-between">
+								<div class="col-md-4 info-paciente d-flex">
+									<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+									<p class="name-paciente">Andre Ribeiro</p>
+									<p class="name-convenio">Particular</p>
+								</div>
+								<div class="horario-paciente">
+									<p class="horario-item">08:00 hrs</p>
+								</div>
+							</div>
+						
+						</div>
+						<div class="row addAtendimento">
+							<a href="#" class="btn btn-gradient" id="addAtendimento">Adicionar um novo atendimento </a>
+						</div>
 					</div>
 				</div>
+
+
+
 			<div class="col-md-12">
 				<div class="mosaic-item cards">
 					<div class="selectresumo">
