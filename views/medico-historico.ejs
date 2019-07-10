@@ -109,41 +109,6 @@
 	</div>	
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-<script>
-	var dataGenre = [
-		{
-			value: '<%= feminino %>',
-			color:"#45c8e3",
-			label: "Mulheres"
-		},
-		{
-			value: '<%= masculino %>',
-			color: "#01e9b1",
-			label: "Homens"
-		}
-	];	
-	
-	var dataService = [
-		{
-			value: '<%= privado %>',
-			color:"#45c8e3",
-			label: "Privado"
-		},
-		{
-			value: '<%= outros %>',
-			color: "#01e9b1",
-			label: "Convênio"
-		}
-	];
-
-	var ctxGenre = document.getElementById("chartGenre").getContext("2d");
-	new Chart(ctxGenre).Pie(dataGenre);
-	
-	var ctxService = document.getElementById("chartService").getContext("2d");
-	new Chart(ctxService).Pie(dataService);
-</script>
-
 		</div>
 	</div>	
 </section>

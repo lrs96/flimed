@@ -208,7 +208,7 @@ module.exports = app => {
 
     app.route("/medico-historico")
     .all(app.src.config.passport.authenticate())
-    .get(doctor(app.src.api.role.doctor.viewHistoricPatient))
+    .get(doctor(app.src.api.role.doctor.viewDoctorHistory))
 
     app.route('/medico-painel')
     .all(app.src.config.passport.authenticate())
