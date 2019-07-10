@@ -20,10 +20,6 @@ module.exports = app => {
         res.status(200).render('cliente-perfil', { message: null, user: req.session.user })
     }
 
-    const viewPatientHistory = (req, res) => {
-        res.status(200).render('medico-historico', { message: null, user: req.session.user })
-    }
-
     const viewPatientQuestions = async (req, res) => {
         await Question.find({ _idWhoAsked: req.session.user._id }).then(async questions => {
             let question = []
@@ -133,7 +129,6 @@ module.exports = app => {
 
     return {
         viewPatientPanel,
-        viewPatientHistory,
         viewPatientProfile,
         viewPatientQuestions,
         viewPatientScheduling,
