@@ -110,8 +110,8 @@ module.exports = app => {
         res.status(200).render('novo-cadastro', {message: null, page: 'novo-cadastro' })
     })
 
-    app.get('/medico-cadastro', function(req, res) {
-        res.status(200).render('medico-cadastro', {message: null, page: 'medico-cadastro' })
+    app.get('/medico-historico', function(req, res) {
+        res.status(200).render('medico-historico', {message: null, page: 'medico-historico' })
     })
     /* ============= VALIDATE USER ============= */
     app.route('/validate')
