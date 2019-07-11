@@ -495,6 +495,20 @@ Exclusive MENU
 			padding: 10px 15px !important;
 		}
 	}
+	.perguntas-medico-paciente {
+		.paciente-item {
+			[class*="col"].d-flex {
+				border-bottom: 1px dashed #416888;
+				[class*="col"] {
+					min-width: 100%;
+					padding: 0;
+					&.mensagem {
+						padding: 15px 0;
+					}
+				}
+			}
+		}
+	}
 }
 
 @media (max-width: 768px) {
