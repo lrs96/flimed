@@ -498,7 +498,7 @@ Exclusive MENU
 	.perguntas-medico-paciente {
 		.paciente-item {
 			[class*="col"].d-flex.justify-content-between {
-				border-bottom: 1px dashed #416888;
+				border-bottom: 1px dashed rgba(65, 104, 136, 0.2);
 				[class*="col"] {
 					min-width: 100%;
 					padding: 0;
