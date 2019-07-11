@@ -943,7 +943,9 @@ section.box-login {
 	.paciente-item {
 		[class*="col"].d-flex {
 			box-shadow: none;
+			border-radius: 0;
 			align-items: center;
+			padding: 30px 15px;
 			.info-paciente {
 				justify-content: flex-start;
 				p {
