@@ -943,7 +943,13 @@ section.box-login {
 	.row.name-perguntas {
 			[class*="col"]:first-child {
 				text-align: center;
-				border-right: 1px dashed rgba(65, 104, 136, 0.2);
+				&::before {
+					content: "";
+					border-right: 1px dashed rgba(65, 104, 136, 0.2);
+					height: 100%;
+					position: absolute;
+					left: 25%;
+				}
 			}
 			[class*="col"] {
 				p {
@@ -968,7 +974,8 @@ section.box-login {
 				max-width: 25%;
 				border-right: 1px dashed rgba(65, 104, 136, 0.2);;
 				height: 100%;
-				margin-left: auto;
+				position: absolute;
+				left: 25%;
 			}
 			.info-paciente {
 				justify-content: flex-start;
