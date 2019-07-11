@@ -1022,5 +1022,15 @@ section.box-login {
 			max-width: 25%;
 			border-right: 1px dashed rgba(21, 23, 24, 0.2);;
 		}
+
+		.separator {
+			p {
+				margin-bottom: 0;
+				color: #416888;
+				font-weight: 600;
+				letter-spacing: .5px;
+				font-size: 1.2em;
+			}
+		}
 	}
 }
