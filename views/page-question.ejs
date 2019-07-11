@@ -2,80 +2,27 @@
 
 <section class="box__questions medico-perguntas">
 	<div class="container">
-		<div class="bg-white">
-			<h3>Perguntas feitas por pacientes</h3>
-
-			<div class="questions-list">
-				<% if(questions) { %>
-					<% for(let i = 0; i < questions.length; i++) { %>
-					<div class="row questions-list__item">
-						<div class="col-md-10">
-							<div class="questions-list__content">
-								<figure class="questions__photo">
-									<img alt="<%= questions[i].fromUser.name %>" src="<% if(questions[i].fromUser.profilePicture) { %>/profilePicture/<%= questions[i].fromUser._idUser %><% } else { %>/views/img/hitchcock.jpg<% } %>">
-								</figure>
-								
-								<p class="h4"><%= questions[i].fromUser.name %></p>
-								<div class="bg-white">
-									<p><%= questions[i].question %></p>
-								</div>
-								<% if(questions[i].answer) { %>
-								<div class="questions__answer">
-									<p><%= questions[i].answer %></p>
-								</div>
-								<% } %>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<a href="#modal-question-<%= i %>" data-fancybox="edit-pacient" class="btn btn-gradient">
-								<% if(!questions[i].answer) { %>Responder<% } else { %>Alterar resposta<% } %>
-							</a>
-							<div class="modal edit-pacient" id="modal-question-<%= i %>">
-								<div class="modal-container">
-									<form id="form-answer-<%= i %>">
-										<input hidden name="questionId" value="<%= questions[i]._idQuestion %>">
-										<div class="row">
-											<div class="col-md-12">
-												<textarea name="answer" placeholder="Digite a resposta"></textarea>
-											</div>
-											<div class="col-md-12">
-												<button type="submit" class="btn btn-gradient">ENVIAR</a>
-											</div>
-										</div>
-									</form>
-									<script>
-									$(document).ready(function() {
-										$('#form-answer-<%= i %>').on('submit', function(e) {
-											e.preventDefault()
-											
-											$.ajax({
-												type: 'PUT',
-												url: '/resposta',
-												datatype: 'html',
-												contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-												data: $('#form-answer-<%= i %>').serialize(),
-												success: function(result) {          
-													alertify.notify(result, 'success', 5)
-													setTimeout(function() { 
-														window.location.href = '/medico-perguntas'
-													}, 500)
-												},
-												error: function(xhr, status, error) {
-													alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-												},
-											})
-										})
-									})
-									</script>
-								</div>
-							</div>
-						</div>	
-					</div>
-					<% } %>
-				<% } else { %>
-					<p>Ainda não fizeram nenhuma pergunta para você</p>
-				<% } %>
-			</div>		
+		<div class="row mosaic">
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong class="number">0</strong> Pacientes do Dia</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong class="number">0</strong> Pacientes do Mês</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong class="number">0</strong> Atendimento</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="mosaic-item cards">
+					<p><strong class="number">0</strong> Faltaram</p>
+				</div>
+			</div>
 		</div>
 		<div class="atendimento-paciente perguntas-medico-paciente">
 			<div class="mosaic-item">
