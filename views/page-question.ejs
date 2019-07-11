@@ -73,69 +73,64 @@
 					</div>
 					<% } %>
 				<% } else { %>
-					<<div class="row questions-list__item">
-						<div class="col-md-10">
-							<div class="questions-list__content">
-								<figure class="questions__photo">
-									<img alt="<%= questions[i].fromUser.name %>" src="<% if(questions[i].fromUser.profilePicture) { %>/profilePicture/<%= questions[i].fromUser._idUser %><% } else { %>/views/img/hitchcock.jpg<% } %>">
-								</figure>
-								
-								<p class="h4">Question Name</p>
-								<div class="bg-white">
-									<p>question</p>
-								</div>
-								<div class="questions__answer">
-									<p>answer</p>
-								</div>
-
+					<p>Ainda não fizeram nenhuma pergunta para você</p>
+				<% } %>
+			</div>
+			<div class="col-md-12 atendimento-paciente">
+				<div class="mosaic-item">
+					<div class="row">
+						<div class="col-md-4">
+						<h2 class="title-mosaic"><strong>Pacientes</strong> do dia</h2>
+						</div>
+						<div class="col-md-8">
+							<form action="/" method="GET" id="pesquisa" class="form">
+									<div class="form-group relative d-flex">
+										<input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+										<div class="icons-search">
+											<a id="filterInput" href="#"><span><img src="/views/img/icone-form.png" alt="Icone form"></span></a>
+											<button type="submit"> <span><i class="fa fa-search"></i></span></button>
+										</div>
+									</div>
+							</form>
+						</div>
+					</div>
+					<div class="row paciente-item">
+						<div class="col-md-12 d-flex justify-content-between">
+							<div class=" col-md-4 info-paciente d-flex">
+								<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+								<p class="name-paciente">Andre Ribeiro</p>
+								<p class="name-convenio">Particular</p>
+							</div>
+							<div class="horario-paciente">
+								<p class="horario-item">08:00 hrs</p>
 							</div>
 						</div>
-						<div class="col-md-2">
-							<a href="" data-fancybox="edit-pacient" class="btn btn-gradient">
-							resposta
-							</a>
-							<div class="modal edit-pacient" id="modal-question">
-								<div class="modal-container">
-									<form id="">
-										<input hidden name="questionId" value="">
-										<div class="row">
-											<div class="col-md-12">
-												<textarea name="answer" placeholder="Digite a resposta"></textarea>
-											</div>
-											<div class="col-md-12">
-												<button type="submit" class="btn btn-gradient">ENVIAR</a>
-											</div>
-										</div>
-									</form>
-									<script>
-									$(document).ready(function() {
-										$('').on('submit', function(e) {
-											e.preventDefault()
-											
-											$.ajax({
-												type: 'PUT',
-												url: '/resposta',
-												datatype: 'html',
-												contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-												data: $('').serialize(),
-												success: function(result) {          
-													alertify.notify(result, 'success', 5)
-													setTimeout(function() { 
-														window.location.href = '/medico-perguntas'
-													}, 500)
-												},
-												error: function(xhr, status, error) {
-													alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-												},
-											})
-										})
-									})
-									</script>
-								</div>
+						<div class="col-md-12 d-flex justify-content-between">
+							<div class="col-md-4 info-paciente d-flex">
+								<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+								<p class="name-paciente">Andre Ribeiro</p>
+								<p class="name-convenio">Particular</p>
 							</div>
-						</div>	
+							<div class=" horario-paciente">
+								<p class="horario-item">08:00 hrs</p>
+							</div>
+						</div>
+						<div class="col-md-12 d-flex justify-content-between">
+							<div class="col-md-4 info-paciente d-flex">
+								<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+								<p class="name-paciente">Andre Ribeiro</p>
+								<p class="name-convenio">Particular</p>
+							</div>
+							<div class="horario-paciente">
+								<p class="horario-item">08:00 hrs</p>
+							</div>
+						</div>
+					
 					</div>
-				<% } %>
+					<div class="row addAtendimento">
+						<a href="#" class="btn btn-gradient" id="addAtendimento">Adicionar um novo atendimento </a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
