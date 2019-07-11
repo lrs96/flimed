@@ -942,7 +942,14 @@ section.box-login {
 
 	.paciente-item {
 		[class*="col"].d-flex {
+			box-shadow: none;
 			align-items: center;
+			.info-paciente {
+				justify-content: none;
+				p {
+					padding-left: 15px;
+				}
+			}
 			.mensagem {
 				p {
 					margin-bottom: 0;
@@ -954,7 +961,7 @@ section.box-login {
 				justify-content: flex-end;
 				a {
 					margin-bottom: 0;
-					padding: 0.3em 1em;
+					padding: 0.5em 1em;
 					border-radius: 4px;
 					background-color: #01e9b1;
 					color: #fff;
