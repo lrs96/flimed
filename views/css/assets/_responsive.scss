@@ -496,9 +496,19 @@ Exclusive MENU
 		}
 	}
 	.perguntas-medico-paciente {
+		.row.name-perguntas {
+			[class*="col"]:first-child {
+				&::before {
+					content: none;
+				}
+			}
+		}
 		.paciente-item {
 			[class*="col"].d-flex.justify-content-between {
 				border-bottom: 1px dashed rgba(65, 104, 136, 0.2);
+				&::before {
+					content: none;
+				}
 				[class*="col"] {
 					min-width: 100%;
 					padding: 0;
