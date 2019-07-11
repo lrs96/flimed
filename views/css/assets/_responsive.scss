@@ -497,11 +497,7 @@ Exclusive MENU
 	}
 	.perguntas-medico-paciente {
 		.row.name-perguntas {
-			[class*="col"]:first-child {
-				&::before {
-					content: none;
-				}
-			}
+			display: none;
 		}
 		.paciente-item {
 			[class*="col"].d-flex.justify-content-between {
