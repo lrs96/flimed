@@ -67,15 +67,6 @@ module.exports = app => {
             message: null
         })
     }
-    const viewDoctorHistory = (req, res ) => {
-        await User.findOne({ _id: req.session.user._id }).then(user => {
-            res.status(200).render('medico-historico',{
-                page: 'Histórico',
-                user,
-                message: null
-            })
-        }).catch(_ => res.status(500).render('500'))
-    }
 
     const doctorRegister = async (req, res) => {
         const user = { ...req.body }
@@ -694,7 +685,6 @@ module.exports = app => {
     return { 
         viewDoctorRegister,
         doctorRegister,
-        viewDoctorHistory,
         viewDoctorProfileFromUser,
         viewDoctorPanel,
         viewDoctorProfile,
