@@ -936,7 +936,7 @@ section.box-login {
 .perguntas-medico-paciente {
 	.row {
 		h2 {
-			font-size: 1.7em;
+			font-size: 1.6em;
 		}
 	}
 
@@ -945,7 +945,7 @@ section.box-login {
 			box-shadow: none;
 			align-items: center;
 			.info-paciente {
-				justify-content: none;
+				justify-content: flex-start;
 				p {
 					padding-left: 15px;
 				}
