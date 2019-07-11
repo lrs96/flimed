@@ -110,7 +110,9 @@ module.exports = app => {
         res.status(200).render('novo-cadastro', {message: null, page: 'novo-cadastro' })
     })
 
-
+    app.get('/medico-cadastro', function(req, res) {
+        res.status(200).render('medico-cadastro', {message: null, page: 'medico-cadastro' })
+    })
     /* ============= VALIDATE USER ============= */
     app.route('/validate')
         .all(app.src.config.passport.authenticate())
