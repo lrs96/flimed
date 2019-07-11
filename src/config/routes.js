@@ -109,10 +109,6 @@ module.exports = app => {
     app.get('/novo-cadastro', function(req, res) {
         res.status(200).render('novo-cadastro', {message: null, page: 'novo-cadastro' })
     })
-
-    app.get('/medico-historico', function(req, res) {
-        res.status(200).render('medico-historico', {message: null, page: 'medico-historico' })
-    })
     /* ============= VALIDATE USER ============= */
     app.route('/validate')
         .all(app.src.config.passport.authenticate())
@@ -215,6 +211,11 @@ module.exports = app => {
     app.route('/medico-perfil')
         .all(app.src.config.passport.authenticate())
         .get(doctor(app.src.api.role.doctor.viewDoctorProfile))
+
+    app.route('/medico-historico')
+    .all(app.src.config.passport.authenticate())
+    .get(doctor(app.src.api.role.doctor.viewDoctorHistory))
+
 
     app.route('/medico-horarios')
         .all(app.src.config.passport.authenticate())

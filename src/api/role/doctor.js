@@ -68,6 +68,14 @@ module.exports = app => {
         })
     }
 
+    const viewDoctorHistory = (req, res) => {
+        res.status(200).render('medico-historico',{
+            page: 'Histórico',
+            user: req.session.user,
+            message: null
+        })
+    }
+
     const doctorRegister = async (req, res) => {
         const user = { ...req.body }
 
@@ -693,6 +701,7 @@ module.exports = app => {
         viewDoctorAdverts,
         viewDoctorScheduling,
         addDoctorSchedule,
+        viewDoctorHistory,
         removeDoctorSchedule
     }
 }
