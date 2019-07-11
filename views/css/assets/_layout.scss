@@ -963,8 +963,14 @@ section.box-login {
 			align-items: center;
 			padding: 15px 15px;
 			margin-bottom: 0;
-			.info-paciente {
+			&::before {
+				content: "";
+				max-width: 25%;
 				border-right: 1px dashed rgba(65, 104, 136, 0.2);;
+				height: 100%;
+				margin-left: auto;
+			}
+			.info-paciente {
 				justify-content: flex-start;
 				p {
 					padding-left: 15px;
