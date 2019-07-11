@@ -104,7 +104,8 @@ module.exports = app => {
         '/admin-logs',
         '/admin-banner',
         '/ver-lista-de-pacientes',
-        '/historico-paciente'
+        '/historico-paciente',
+        '/medico-historico'
     ], function (req, res, next) {
         if (!req.session || !req.session.user) {
             res.status(401).render('page-login', {

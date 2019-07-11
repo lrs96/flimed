@@ -932,3 +932,17 @@ section.box-login {
 		}
 	}
 }
+
+.perguntas-medico-paciente {
+	.row {
+		h2 {
+			font-size: 1.7em;
+		}
+	}
+
+	.paciente-item {
+		[class*="col"].d-flex {
+			align-items: center;
+		}
+	}
+}
