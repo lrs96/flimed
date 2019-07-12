@@ -597,6 +597,26 @@ Exclusive MENU
 			}
 		}
 	}
+	.financeiro.receita {
+		.tab-content {
+			.indices {
+				display: none !important;
+			}
+			.info {
+				justify-content: flex-start !important;
+				flex-direction: column;
+				min-width: 100%;
+				border-bottom: 1px dashed rgba(21, 23, 24, 0.2);
+				margin-bottom: 20px;
+				padding-bottom: 20px;
+				div {
+					justify-content: flex-start;
+					min-width: 100%;
+					max-width: 100%;
+				}
+			}
+		}
+	}
 }
 
 @media (max-width: 991px) {
