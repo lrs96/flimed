@@ -943,9 +943,13 @@ section.box-login {
 				letter-spacing: .5px;
 				text-align: center;
 				box-shadow: none;
+				color: #727374;
+				text-transform: uppercase;
+				padding: 15px;
 			}
 			a.active {
 				border-radius: 30px;
+				color: #fff;
 			}
 
 		}
