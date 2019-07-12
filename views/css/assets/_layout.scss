@@ -1209,7 +1209,7 @@ section.box-login {
 				box-shadow: none;
 			}
 		}
-		
+
 		.nome {
 			color: #8897AA;
 			p {
@@ -1218,4 +1218,35 @@ section.box-login {
 		}
 	}	
 
+}
+
+.contabilidade.valor-consulta {
+	.indices, .info {
+		justify-content: flex-start;
+	}
+}
+
+.contabilidade.convenios {
+	.indices, .info {
+		justify-content: flex-start;
+	}
+}
+
+
+.contabilidade.documentos,
+.contabilidade.guia {
+	.info {
+		.baixar {
+			a {
+				padding: 0.3em 1em;
+				border-radius: 4px;
+				background-color: #01e9b1;
+				color: #fff;
+				text-align: center;
+				font-size: 18px;
+				font-weight: 500;
+				box-shadow: none;
+			}
+		}
+	}
 }
