@@ -623,6 +623,9 @@ Exclusive MENU
 		}
 	}
 	.contabilidade {
+		form {
+			margin-top: 20px;
+		}
 		.indices {
 			display: none !important;
 		}
@@ -650,6 +653,21 @@ Exclusive MENU
 						font-weight: 600;
 						padding-right: 10px;
 					}
+				}
+			}
+		}
+	}
+	.contabilidade.documentos,
+	.contabilidade.guia {
+		.info {
+			.baixar {
+				display: flex;
+				span { 
+					display: flex;
+					letter-spacing: .5px;
+					color: #416888;
+					font-weight: 600;
+					padding-right: 10px;
 				}
 			}
 		}

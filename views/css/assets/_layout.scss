@@ -1240,6 +1240,9 @@ section.box-login {
 .contabilidade.guia {
 	.info {
 		.baixar {
+			span {
+				display: none;
+			}
 			a {
 				padding: 0.3em 1em;
 				border-radius: 4px;
