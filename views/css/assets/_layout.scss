@@ -931,6 +931,28 @@ section.box-login {
 			}
 		}
 	}
+	.indices {
+		justify-content: space-between;
+		.item {
+			p {
+				margin-bottom: 0;
+				color: #416888;
+				font-weight: 600;
+				letter-spacing: .5px;
+				font-size: 1.2em;
+				text-align: center;
+			}
+		}
+	}
+
+	.info {
+		.nome {
+			color: #8897AA;
+			p {
+				padding-left: 0;
+			}
+		}
+	}
 }
 
 .perguntas-medico-paciente {
