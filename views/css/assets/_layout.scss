@@ -1055,12 +1055,13 @@ section.box-login {
 		.nome {
 			display: flex;
 			align-items: center;
+			justify-content: center;
 			p {
 				margin-bottom: 0;
 				padding-left: 15px;
 			}
 		}
-		.acao {
+		.action {
 			a {
 				padding: 0.3em 1em;
 				border-radius: 4px;
