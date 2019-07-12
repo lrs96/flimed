@@ -1016,6 +1016,11 @@ section.box-login {
 }
 
 .historico {
+	.row {
+		h2 {
+			font-size: 1.7em;
+		}
+	}
 	.col-12.d-flex {
 		justify-content: space-between;
 		div {
@@ -1024,40 +1029,40 @@ section.box-login {
 			border-right: 1px dashed rgba(21, 23, 24, 0.2);
 			text-align: center;
 		}
-		.separator {
+	}
+	.separator {
+		p {
+			margin-bottom: 0;
+			color: #416888;
+			font-weight: 600;
+			letter-spacing: .5px;
+			font-size: 1.2em;
+			text-align: center;
+		}
+	}
+	.info {
+		.convenio,
+		.data,
+		.horario  {
+			color: #8897AA;
+		}
+		.nome {
+			display: flex;
 			p {
 				margin-bottom: 0;
-				color: #416888;
-				font-weight: 600;
-				letter-spacing: .5px;
-				font-size: 1.2em;
-				text-align: center;
+				padding-left: 15px;
 			}
 		}
-		.info {
-			.convenio,
-			.data,
-			.horario  {
-				color: #8897AA;
-			}
-			.nome {
-				display: flex;
-				p {
-					margin-bottom: 0;
-					padding-left: 15px;
-				}
-			}
-			.acao {
-				a {
-					padding: 0.3em 1em;
-					border-radius: 4px;
-					background-color: #01e9b1;
-					color: #fff;
-					text-align: center;
-					font-size: 18px;
-					font-weight: 500;
-					box-shadow: none;
-				}
+		.acao {
+			a {
+				padding: 0.3em 1em;
+				border-radius: 4px;
+				background-color: #01e9b1;
+				color: #fff;
+				text-align: center;
+				font-size: 18px;
+				font-weight: 500;
+				box-shadow: none;
 			}
 		}
 	}
