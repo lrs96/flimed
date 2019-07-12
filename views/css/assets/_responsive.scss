@@ -575,7 +575,7 @@ Exclusive MENU
 	.historico {
 		.row {
 			.separator {
-				display: none;
+				display: none !important;
 			}
 			.info {
 				flex-direction: column;
@@ -583,14 +583,16 @@ Exclusive MENU
 				padding-bottom: 20px;
 				margin-bottom: 20px;
 				border-bottom: 1px dashed rgba(21, 23, 24, 0.2);
+				
+				.nome {
+					justify-content: flex-start;
+				}
+
 				div {
 					width: 100%;
 					max-width: 100%;
 					border-right: 0;
 					text-align: left;
-					.nome {
-						justify-content: flex-start;
-					}
 				}
 			}
 		}
