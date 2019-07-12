@@ -622,6 +622,36 @@ Exclusive MENU
 			}
 		}
 	}
+	.contabilidade {
+		.indices {
+			display: none !important;
+		}
+		.info {
+			justify-content: flex-start;
+			flex-direction: column;
+			min-width: 100%;
+			border-bottom: 1px dashed rgba(21, 23, 24, 0.2);
+			margin-bottom: 20px;
+			padding-bottom: 20px;
+			div {
+				justify-content: flex-start;
+				min-width: 100%;
+				max-width: 100%;
+				border-right: none !important;
+				text-align: left !important;
+				p {
+					
+					text-align: left;
+					span {
+						display: flex;
+						letter-spacing: .5px;
+						color: #416888;
+						font-weight: 600;
+					}
+				}
+			}
+		}
+	}
 }
 
 @media (max-width: 991px) {

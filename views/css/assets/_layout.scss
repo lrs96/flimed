@@ -1194,6 +1194,9 @@ section.box-login {
 			padding: 10px 0;
 			height: 100%;
 			p {
+				span {
+					display: none;
+				}
 				color: #8897AA;
 			}
 		}
