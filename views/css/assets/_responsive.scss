@@ -613,9 +613,11 @@ Exclusive MENU
 					justify-content: flex-start;
 					min-width: 100%;
 					max-width: 100%;
-					border-right: none;
-					text-align: left;
-					
+					border-right: none !important;
+					text-align: left !important;
+					p {
+						text-align: left;
+					}
 				}
 			}
 		}
