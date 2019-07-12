@@ -1158,12 +1158,10 @@ section.box-login {
 	}
 }
 
+
 .contabilidade {
-	&:not(:first-child) {
+	&:not(:first-of-type) {
 		margin-top: 40px;
-	}
-	&.convenio {
-		margin-top: 0;
 	}
 	h2 {
 		margin-bottom: 0;
@@ -1250,6 +1248,7 @@ section.box-login {
 }
 
 .contabilidade.convenios {
+	margin-top: 0;
 	.indices, .info {
 		justify-content: flex-start;
 	}
