@@ -940,10 +940,14 @@ section.box-login {
 		li {
 			width: 100%;
 			a {
-				border-radius: 30px;
-				text-align: center;
 				letter-spacing: .5px;
+				text-align: center;
+				box-shadow: none;
 			}
+			a.active {
+				border-radius: 30px;
+			}
+
 		}
 	}
 	.indices {
