@@ -1168,7 +1168,7 @@ section.box-login {
 	}
 	.indices {
 		justify-content: space-between;
-		
+
 		.item {
 			max-width: 25%;
 			width: 100%;
@@ -1227,7 +1227,7 @@ section.box-login {
 		}
 	}	
 
-	.addFuncionario {
+	[class*="add"] {
 		position: absolute;
     left: 15px;
     bottom: -40px;
@@ -1238,7 +1238,6 @@ section.box-login {
 			text-align: center;
 		}
 	}
-
 }
 
 .contabilidade.valor-consulta {
