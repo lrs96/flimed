@@ -1160,8 +1160,11 @@ section.box-login {
 
 
 .contabilidade {
-	&:not(:nth-child(1)) {
+	&:not(:first-child) {
 		margin-top: 40px;
+	}
+	&:first-child {
+		margin-top: 0;
 	}
 	h2 {
 		margin-bottom: 0;
