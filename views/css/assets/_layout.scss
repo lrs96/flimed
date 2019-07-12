@@ -890,6 +890,9 @@ section.box-login {
 	.mosaic-item {
 		margin-bottom: 0;
 	}
+	h2 {
+		margin-bottom: 0;
+	}
 	table {
 		border: none;
 		thead, tbody {
@@ -980,6 +983,16 @@ section.box-login {
 				}
 			}
 			.info {
+				justify-content: space-between;
+				align-items: center;
+				div {
+					max-width: 25%;
+					width: 100%;
+					border-right: 1px dashed rgba(21,23,24,0.2);
+					text-align: center;
+					padding: 10px 0;
+					height: 100%;
+				}
 				.nome {
 					color: #8897AA;
 					p {
@@ -996,6 +1009,8 @@ section.box-login {
 	a {
 		width: 100%;
 		text-align: center;
+		padding: 15px;
+		font-size: 1.13em;
 	}
 }
 
