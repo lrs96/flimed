@@ -1,35 +1,5 @@
 <%- include includes/header-medico.ejs %>
 
-<%
-	const labels = [], data = []
-	for(let i = 0; i < earnings.length; i++) {
-		if(moment(earnings[i].createdAt, 'DD/MM/YYYY').format('MM/YYYY') === moment().format('MM/YYYY')) {
-			labels.push(earnings[i].createdAt)
-			data.push(earnings[i].value)
-		}
-	}
-
-	for(let i = 0; i < data.length; i++) data[i] = (data[i] / 100).toFixed(2)
-	
-	let totalConvenio = 0, totalPresencial = 0, totalTelemedicina = 0
-	for(let i = 0; i < earnings.length; i++) {
-		totalConvenio += earnings[i].value
-
-		if(earnings.type === 'presencial') {
-			totalPresencial += earnings[i].value
-		} else {
-			totalTelemedicina += earnings[i].value
-		}
-	}
-
-	let totalReceita = 0
-  	if(bankStatement.length) {
-		for(let i = 0; i < bankStatement.length; i++) {
-			totalReceita += bankStatement[i].value
-		}
-	}
-%>
-
 <section class="box__panel medico-financeiro">
 	<div class="container">
 		<div class="row mosaic">
