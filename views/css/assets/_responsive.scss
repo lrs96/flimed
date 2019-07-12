@@ -640,13 +640,15 @@ Exclusive MENU
 				border-right: none !important;
 				text-align: left !important;
 				p {
-					
 					text-align: left;
+					display: flex;
+					margin-bottom: 0;
 					span {
 						display: flex;
 						letter-spacing: .5px;
 						color: #416888;
 						font-weight: 600;
+						padding-right: 10px;
 					}
 				}
 			}
