@@ -292,74 +292,12 @@
 						<a href="#" class="btn btn-gradient" id="addNovaReceita">Adicionar uma nova receita</a>
 					</div>
 				</div>
-
-			<div class="col-md-12">
-				<div class="mosaic-item cards">
-					<div class="selectresumo">
-						<h1 class="tituloresumo">Período</h1>
-						<select class="periodoresumo" name="" id="">
-							<option value="">Hoje</option>
-							<option value="">Esta semana</option>
-							<option value="">Este mês</option>
-							<option value="">Últimos 30 dias</option>
-							<option value="" type="date">Periodo</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="mosaic-item cards transta">
-					<h1 class="tituloresumo">Transações</h1>
-					<a class="btn-receitaresumo" id="corbtn"><i class="fas fa-arrow-up"></i> RECEITA</a>
-					<a class="btn-despesasresumo" id="corbtn"><i class="fas fa-arrow-down"></i> DESPESA</a>
-					<a class="btn btn-transresumo"><i class="fas fa-exchange-alt"></i> TRANSFERÊNCIA</a>
-					<div class="saldo">
-						<hr>
-						<h1 class="tituloresumo">Saldo Geral</h1>
-						<p id="colorsalgeral">R$ 0,00</p>
-						<hr>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="mosaic-item cards">
-					<h1 class="tituloresumo">Receitas x Convênio</h1>
-
-					<canvas id="myDoughnut" width="200" height="200"></canvas>
-					<h4><%= ((totalReceita + totalConvenio) / 100).toFixed(2) %><br><span>Total</span></h4>
-
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="mosaic-item cards">
-					<h1 class="tituloresumo">Receitas x Procedimento</h1>
-
-					<canvas id="receitasDoughnut" width="200" height="200"></canvas>
-					<h4><%= ((totalTelemedicina + totalPresencial) / 100).toFixed(2) %><br><span>Total</span></h4>
-
-				</div>
-			</div>
-
 			<div class="col-md-12">
 				<div class="mosaic-item">
 					<h1 class="tituloresumo">Balanço</h1>
 
 					<canvas id="myChart" width="100" height="100"></canvas>
 
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="mosaic-item">
-					<h1 class="tituloresumo">Receitas pendentes no período</h1>
-					<p id="colorsalgeral"><i class="fas fa-arrow-down"></i> R$ 0,00</p>
-					<a href="" class="btn btn-gradient">VER MAIS</a>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="mosaic-item ">
-					<h1 class="tituloresumo">Despesas pendentes no período</h1>
-					<p id="colorsalgeral"><i class="fas fa-arrow-up"></i> R$ 0,00</p>
-					<a href="" class="btn btn-gradient">VER MAIS</a>
 				</div>
 			</div>
 		</div>
