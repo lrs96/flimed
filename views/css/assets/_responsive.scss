@@ -580,9 +580,17 @@ Exclusive MENU
 			.info {
 				flex-direction: column;
 				min-width: 100%;
+				padding-bottom: 20px;
+				margin-bottom: 20px;
+				border-bottom: 1px dashed rgba(21, 23, 24, 0.2);
 				div {
 					width: 100%;
+					max-width: 100%;
 					border-right: 0;
+					text-align: left;
+					.nome {
+						justify-content: flex-start;
+					}
 				}
 			}
 		}
