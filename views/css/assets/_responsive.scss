@@ -571,6 +571,22 @@ Exclusive MENU
 	.mosaic-item {
 		padding: 15px 30px 30px;
 	}
+
+	.historico {
+		.row {
+			.separator {
+				display: none;
+			}
+			.info {
+				flex-direction: column;
+				min-width: 100%;
+				div {
+					width: 100%;
+					border-right: 0;
+				}
+			}
+		}
+	}
 }
 
 @media (max-width: 991px) {
