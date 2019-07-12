@@ -642,6 +642,17 @@ Exclusive MENU
 				max-width: 100%;
 				border-right: none !important;
 				text-align: left !important;
+				
+				.action {
+					display: flex;
+					span {
+						display: flex;
+						letter-spacing: .5px;
+						color: #416888;
+						font-weight: 600;
+						padding-right: 10px;
+					}
+				}
 				p {
 					text-align: left;
 					display: flex;
@@ -660,7 +671,7 @@ Exclusive MENU
 	.contabilidade.documentos,
 	.contabilidade.guia {
 		.info {
-			.baixar {
+			.baixar, .action {
 				display: flex;
 				span { 
 					display: flex;
