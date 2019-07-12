@@ -1157,3 +1157,49 @@ section.box-login {
 		}
 	}
 }
+
+.contabilidade {
+	h2 {
+		margin-bottom: 0;
+		font-size: 1.7em;
+	}
+	
+	.indices {
+		justify-content: space-between;
+		.item {
+			max-width: 25%;
+			width: 100%;
+			border-right: 1px dashed rgba(21,23,24,0.2);
+			text-align: center;
+			padding: 10px 0;
+			height: 100%;
+			p {
+				margin-bottom: 0;
+				color: #416888;
+				font-weight: 600;
+				letter-spacing: .5px;
+				font-size: 1.2em;
+				text-align: center;
+			}
+		}
+	}
+	.info {
+		justify-content: space-between;
+		align-items: center;
+		div {
+			max-width: 25%;
+			width: 100%;
+			border-right: 1px dashed rgba(21,23,24,0.2);
+			text-align: center;
+			padding: 10px 0;
+			height: 100%;
+		}
+		.nome {
+			color: #8897AA;
+			p {
+				padding-left: 0;
+			}
+		}
+	}	
+
+}
