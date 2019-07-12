@@ -583,7 +583,7 @@ Exclusive MENU
 				padding-bottom: 20px;
 				margin-bottom: 20px;
 				border-bottom: 1px dashed rgba(21, 23, 24, 0.2);
-				
+
 				.nome {
 					justify-content: flex-start;
 				}
@@ -630,6 +630,11 @@ Exclusive MENU
 			}
 		}
 	}
+	.financeiro.receita {
+		ul.nav {
+			margin: 15px 0;
+		}
+	} 
 }
 
 @media (max-width: 991px) and (min-width: 767px) {
