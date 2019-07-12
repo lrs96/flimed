@@ -931,6 +931,21 @@ section.box-login {
 			}
 		}
 	}
+
+	ul.nav {
+		box-shadow: 0 11px 33px rgba(65,104,136,0.25);
+    padding: 2px;
+		border-radius: 30px;
+		flex-wrap: nowrap;
+		li {
+			width: 100%;
+			a {
+				border-radius: 30px;
+				text-align: center;
+				letter-spacing: .5px;
+			}
+		}
+	}
 	.indices {
 		justify-content: space-between;
 		.item {
