@@ -385,6 +385,8 @@
 	for(let i = 0; i < labels.split(',').length; i++) backgroundColor.push(getRandomColor())
 	
 	var ctx = document.getElementById('myChart').getContext('2d');
+	const colorGreen = '#01E9B5';
+	const colorBlue = '#416888';
 	var myChart = new Chart(ctx, {
 		type: 'line',
 		data: { //A Data vai ser do periodo de 30 dias
@@ -392,9 +394,10 @@
 			datasets: [{
 				label: 'Balanço Financeiro',
 				data: data.split(','), //Passar os valores de ganhos em cada periodo
-				backgroundColor,
-				borderColor: backgroundColor,
-				borderWidth: 2
+				colorBlue,
+				borderColor: colorBlue,
+				borderWidth: 2,
+				pointBackgroundColor: colorGreen
 			}]
 		},
 		options: {
