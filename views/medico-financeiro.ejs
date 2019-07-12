@@ -390,12 +390,18 @@
 	var myChart = new Chart(ctx, {
 		type: 'line',
 		data: { //A Data vai ser do periodo de 30 dias
-			labels: labels.split(','),
+			labels: [{ 
+				x: 10,
+   			y: 20
+			},{
+				x: 10,
+   			y: 20
+			}],
 			datasets: [{
 				label: 'Balanço Financeiro',
 				data: data.split(','), //Passar os valores de ganhos em cada periodo
 				colorBlue,
-				borderColor: colorBlue,
+				borderColor: colorGreen,
 				borderWidth: 2,
 				pointBackgroundColor: colorGreen
 			}]
