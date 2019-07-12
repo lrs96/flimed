@@ -331,22 +331,22 @@
 			labels: labels.split(','),
 			datasets: [{
 				label: 'Balanço Financeiro',
-				data: [ 5, 20, 35, 55, 120], //Passar os valores de ganhos em cada periodo
+				data: [ 5, 20, 35], //Passar os valores de ganhos em cada periodo
 				colorBlue,
 				borderColor: colorGreen,
 				borderWidth: 3,
 				pointBackgroundColor: colorGreen
 			}]
-		},
-		options: {
-			scales: {
-				yAxes: [{
-					ticks: {
-						beginAtZero: true
-					}
-				}]
-			}
 		}
+		// options: {
+		// 	scales: {
+		// 		yAxes: [{
+		// 			ticks: {
+		// 				beginAtZero: true
+		// 			}
+		// 		}]
+		// 	}
+		// }
 	});
 </script>
 
