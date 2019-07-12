@@ -1159,8 +1159,11 @@ section.box-login {
 }
 
 .contabilidade {
-	&:not(:first-child) {
+	&:not(first-child) {
 		margin-top: 40px;
+	}
+	&.conveio {
+		margin-top: 0;
 	}
 	h2 {
 		margin-bottom: 0;
