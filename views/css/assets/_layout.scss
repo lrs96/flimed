@@ -934,6 +934,12 @@ section.box-login {
 	.indices {
 		justify-content: space-between;
 		.item {
+			max-width: 25%;
+			width: 100%;
+			border-right: 1px dashed rgba(21,23,24,0.2);
+			text-align: center;
+			padding: 10px 0;
+			height: 100%;
 			p {
 				margin-bottom: 0;
 				color: #416888;
