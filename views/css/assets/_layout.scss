@@ -1163,9 +1163,6 @@ section.box-login {
 	&:not(:first-child) {
 		margin-top: 40px;
 	}
-	&:first-child {
-		margin-top: 0;
-	}
 	h2 {
 		margin-bottom: 0;
 		font-size: 1.7em;
@@ -1242,6 +1239,10 @@ section.box-login {
 			text-align: center;
 		}
 	}
+}
+
+.contabilidade:first-child {
+		margin-top: 0;
 }
 
 .contabilidade.valor-consulta {
