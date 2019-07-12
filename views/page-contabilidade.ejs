@@ -56,7 +56,7 @@
                             <p>Cargo</p>
                         </div>
                         <div class="situacao item">
-                            <p>Situcação</p>
+                            <p>Situação</p>
                         </div>
                         <div class="acao item">
                             <p>Ações</p>
@@ -84,8 +84,299 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 addNovaReceita">
-                <a href="#" class="btn btn-gradient" id="addNovaReceita">Adicionar uma nova receita</a>
+            <div class="col-md-12 atendimento-paciente contabilidade">
+                <div class="mosaic-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2 class="title-mosaic"><strong>Contas</strong> Bancárias</h2>
+                        </div>
+                        <div class="col-md-8">
+                            <form action="/" method="GET" id="pesquisa" class="form">
+                                <div class="form-group relative d-flex">
+                                    <input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+                                    <div class="icons-search">
+                                        <a id="filterInput" href="#"><span><img src="/views/img/icone-form.png"
+                                                    alt="Icone form"></span></a>
+                                        <button type="submit"> <span><i class="fa fa-search"></i></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="indices d-flex align-items-center">
+                        <div class="nome item">
+                            <p>Nome do banco</p>
+                        </div>
+                        <div class="account item">
+                            <p>Número da conta</p>
+                        </div>
+                        <div class="agency item">
+                            <p>Agência Bancária</p>
+                        </div>
+                        <div class="cargo item">
+                            <p>Tipo de conta</p>
+                        </div>
+                        <div class="acao item">
+                            <p>Ação</p>
+                        </div>
+                    </div>
+                    <div class="info d-flex">
+                        <div class="nome">
+                            <p>Caixa</p>
+                        </div>
+                        <div class="convenio cpf">
+                            <p>0000</p>
+                        </div>
+                        <div class="data">
+                            <p>0000</p>
+                        </div>
+                        <div class="cargo">
+                            <p>Corrent</p>
+                        </div>
+                        <div class="action">
+                            <a class="ver-mais" id="VerMaisFuncionarios">Ver mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 atendimento-paciente contabilidade">
+                <div class="mosaic-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2 class="title-mosaic"><strong>Valor</strong> da consulta</h2>
+                        </div>
+                        <!-- <div class="col-md-8">
+                            <form action="/" method="GET" id="pesquisa" class="form">
+                                <div class="form-group relative d-flex">
+                                    <input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+                                    <div class="icons-search">
+                                        <a id="filterInput" href="#"><span><img src="/views/img/icone-form.png"
+                                                    alt="Icone form"></span></a>
+                                        <button type="submit"> <span><i class="fa fa-search"></i></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div> -->
+                    </div>
+                    <div class="indices d-flex align-items-center">
+                        <div class="nome item">
+                            <p>Valor</p>
+                        </div>
+                        <div class="acao item">
+                            <p>Ação</p>
+                        </div>
+                    </div>
+                    <div class="info d-flex">
+                        <div class="nome">
+                            <p>R$ 200,00</p>
+                        </div>
+                        <div class="action">
+                            <a class="ver-mais" id="VerMaisFuncionarios">EDITAR</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 atendimento-paciente contabilidade">
+                <div class="mosaic-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2 class="title-mosaic"><strong>Convênios</strong></h2>
+                        </div>
+                        <div class="col-md-8">
+                            <form action="/" method="GET" id="pesquisa" class="form">
+                                <div class="form-group relative d-flex">
+                                    <input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+                                    <div class="icons-search">
+                                        <a id="filterInput" href="#"><span><img src="/views/img/icone-form.png"
+                                                    alt="Icone form"></span></a>
+                                        <button type="submit"> <span><i class="fa fa-search"></i></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="indices d-flex align-items-center">
+                        <div class="nome item">
+                            <p>Nome</p>
+                        </div>
+                        <div class="acao item">
+                            <p>Ação</p>
+                        </div>
+                    </div>
+                    <div class="info d-flex">
+                        <div class="nome">
+                            <p>Unimed</p>
+                        </div>
+                        <div class="action">
+                            <a class="ver-mais" id="VerMaisFuncionarios">EDITAR</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 atendimento-paciente contabilidade">
+                <div class="mosaic-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2 class="title-mosaic"><strong>Fornecedores</strong></h2>
+                        </div>
+                        <div class="col-md-8">
+                            <form action="/" method="GET" id="pesquisa" class="form">
+                                <div class="form-group relative d-flex">
+                                    <input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+                                    <div class="icons-search">
+                                        <a id="filterInput" href="#"><span><img src="/views/img/icone-form.png"
+                                                    alt="Icone form"></span></a>
+                                        <button type="submit"> <span><i class="fa fa-search"></i></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="indices d-flex align-items-center">
+                        <div class="nome item">
+                            <p>Nome</p>
+                        </div>
+                        <div class="telefone item">
+                            <p>Telefone</p>
+                        </div>
+                        <div class="data item">
+                            <p>Descrição</p>
+                        </div>
+                        <div class="cargo item">
+                            <p>Plano de Contas</p>
+                        </div>
+                        <div class="acao item">
+                            <p>Ação</p>
+                        </div>
+                    </div>
+                    <div class="info d-flex">
+                        <div class="nome">
+                            <p>Fornecedor</p>
+                        </div>
+                        <div class="data">
+                            <p>0000-0000</p>
+                        </div>
+                        <div class="cargo">
+                            <p>Equipamento</p>
+                        </div>
+                        <div class="situacao">
+                            <p>Plano</p>
+                        </div>
+                        <div class="action">
+                            <a class="ver-mais" id="VerMaisFuncionarios">Ver mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 atendimento-paciente contabilidade">
+                <div class="mosaic-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2 class="title-mosaic"><strong>Lista</strong> de documentos</h2>
+                        </div>
+                        <div class="col-md-8">
+                            <form action="/" method="GET" id="pesquisa" class="form">
+                                <div class="form-group relative d-flex">
+                                    <input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+                                    <div class="icons-search">
+                                        <a id="filterInput" href="#"><span><img src="/views/img/icone-form.png"
+                                                    alt="Icone form"></span></a>
+                                        <button type="submit"> <span><i class="fa fa-search"></i></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="indices d-flex align-items-center">
+                        <div class="nome item">
+                            <p>Título</p>
+                        </div>
+                        <div class="type item">
+                            <p>Tipo</p>
+                        </div>
+                        <div class="cargo item">
+                            <p>Data de envio</p>
+                        </div>
+                        <div class="download item">
+                            <p>Download</p>
+                        </div>
+                        <div class="acao item">
+                            <p>Ação</p>
+                        </div>
+                    </div>
+                    <div class="info d-flex">
+                        <div class="nome">
+                            <p>Serviços</p>
+                        </div>
+                        <div class="convenio cpf">
+                            <p>XML</p>
+                        </div>
+                        <div class="cargo">
+                            <p>12/04/2019</p>
+                        </div>
+                        <div class="baixar">
+                            <a class="baixar" id="baixarDownload">BAIXAR</a>
+                        </div>
+                        <div class="action">
+                            <a class="ver-mais" id="VerMaisFuncionarios">Ver mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 atendimento-paciente contabilidade">
+                <div class="mosaic-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2 class="title-mosaic"><strong>Guia</strong> de recolhimento</h2>
+                        </div>
+                        <div class="col-md-8">
+                            <form action="/" method="GET" id="pesquisa" class="form">
+                                <div class="form-group relative d-flex">
+                                    <input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+                                    <div class="icons-search">
+                                        <a id="filterInput" href="#"><span><img src="/views/img/icone-form.png"
+                                                    alt="Icone form"></span></a>
+                                        <button type="submit"> <span><i class="fa fa-search"></i></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="indices d-flex align-items-center">
+                        <div class="nome item">
+                            <p>Descrição</p>
+                        </div>
+                        <div class="cpf item">
+                            <p>Vencimento</p>
+                        </div>
+                        <div class="data item">
+                            <p>Valor total</p>
+                        </div>
+                        <div class="cargo item">
+                            <p>Guia</p>
+                        </div>
+                        <div class="acao item">
+                            <p>Declaração</p>
+                        </div>
+                    </div>
+                    <div class="info d-flex">
+                        <div class="nome">
+                            <p>DAS</p>
+                        </div>
+                        <div class="data">
+                            <p>12/04/2019</p>
+                        </div>
+                        <div class="cargo">
+                            <p>R$ 47,99</p>
+                        </div>
+                        <div class="situacao">
+                            <a class="baixar" id="baixarGuia">BAIXAR</a>
+                        </div>
+                        <div class="action">
+                            <a class="ver-mais" id="VerMaisFuncionarios">Ver mais</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
