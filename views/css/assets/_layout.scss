@@ -887,6 +887,9 @@ section.box-login {
 }
 
 .financeiro.receita {
+	.mosaic-item {
+		margin-bottom: 0;
+	}
 	table {
 		border: none;
 		thead, tbody {
@@ -986,7 +989,14 @@ section.box-login {
 			}	
 		}
 	}
-
+}
+.col-md-12.addNovaReceita {
+	width: 100%;
+	margin-bottom: 30px;
+	a {
+		width: 100%;
+		text-align: center;
+	}
 }
 
 .perguntas-medico-paciente {
