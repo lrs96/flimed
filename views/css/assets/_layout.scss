@@ -1029,6 +1029,7 @@ section.box-login {
 			width: 100%;
 			border-right: 1px dashed rgba(21, 23, 24, 0.2);
 			text-align: center;
+			padding: 10px 0;
 		}
 	}
 	.separator {
@@ -1041,15 +1042,19 @@ section.box-login {
 			text-align: center;
 		}
 	}
-	
+
 	.info {
 		.convenio,
 		.data,
 		.horario  {
 			color: #8897AA;
+			p {
+				margin-bottom: 0;
+			}
 		}
 		.nome {
 			display: flex;
+			align-items: center;
 			p {
 				margin-bottom: 0;
 				padding-left: 15px;
