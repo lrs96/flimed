@@ -292,12 +292,12 @@
 						<a href="#" class="btn btn-gradient" id="addNovaReceita">Adicionar uma nova receita</a>
 					</div>
 				</div>
-			<div class="col-md-12">
-				<div class="mosaic-item">
-					<h1 class="tituloresumo">Balanço</h1>
-
-					<canvas id="myChart" width="100" height="100"></canvas>
-
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mosaic-item">
+						<h1 class="tituloresumo">Balanço</h1>
+						<canvas id="myChart" width="100" height="100"></canvas>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -328,16 +328,13 @@
 	var myChart = new Chart(ctx, {
 		type: 'line',
 		data: { //A Data vai ser do periodo de 30 dias
-			labels: [{ 
-				x: 10,
-   			y: 20
-			}],
+			labels: labels.split(','),
 			datasets: [{
 				label: 'Balanço Financeiro',
-				data: data.split(','), //Passar os valores de ganhos em cada periodo
+				data: [ 5, 20, 35, 55, 120], //Passar os valores de ganhos em cada periodo
 				colorBlue,
 				borderColor: colorGreen,
-				borderWidth: 2,
+				borderWidth: 3,
 				pointBackgroundColor: colorGreen
 			}]
 		},
@@ -388,7 +385,7 @@
 	});
 </script>
 
-<section class="box__panel">
+<!-- <section class="box__panel">
 	<div class="container">
 		<div class="row mosaic">
 			<div class="col-md-12">
@@ -643,7 +640,7 @@
 		</div>
 	</div>
 	</div>
-</section>
+</section> -->
 
 <!-- Modal transferência  -->
 <div style="width: 70%; " class="modal" id="transferencia">
