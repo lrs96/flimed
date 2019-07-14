@@ -2090,7 +2090,17 @@ div.owl-feed {
 	justify-content: center;
 	//text-align: center;
 	margin-bottom: 30px;
-	font-weight: bold;
+	font-weight: normal;
+	color: #416888;
+
+	.col-md-12 {
+		a#btn_finish {
+			text-align: center;
+			div {
+				width: 100%;
+			}
+		}
+	}
 }
 
 .atendimento__box {
@@ -2105,17 +2115,19 @@ div.owl-feed {
 		display: flex;
 		align-items: center;
 	}
-	
+
+
 	.title {
-		color: $gray-span;
-		font-weight: 300;
-		font-size: 16px;
+		color: #416888;
+		font-weight: 600;
+		font-size: 22px;
+		letter-spacing: .5px;
 		display: block;
 	}
 	.datas {
-		font-size: 22px;
+		font-size: 16px;
 		font-weight: 300;
-		
+		color: #416888;
 	}
 }
 
@@ -2131,16 +2143,17 @@ div.owl-feed {
 }
 
 .atendimento__paciente {
-	padding: 0 0 0 100px;
+	padding: 15px 0 0 100px;
 	min-height: 95px;
 	
 	h3 {
 		font-weight: bold;
 		font-size: 18px;
+		color: #416888;
 	}
 	
 	.date {
-		color: $gray-span;
+		color: #416888;
 		font-size: 20px;
 	}
 }

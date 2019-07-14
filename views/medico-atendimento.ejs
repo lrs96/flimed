@@ -158,102 +158,117 @@
 	<% if(attendanceNow) { %>
 		<div class="consulta-medica">
 			<div class="container">
-				<h2>Consulta médica</h2>
+					<div class="row atendimento-consulta">
+							<div class="col-md-3">
+									<h2>Consulta médica</h2>
+							</div>
+							<div class="col-md-9">
+								<div class="oncount">
+									<i class="sprite-check__clock"></i>
+									<div class="clock" id="time_from_now"></div>
+								</div>
+							</div>
+						</div>
 				<div class="row">
 					<div class="col-md-3">
 						<a href="#summary" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__list"></i>
-								<span>RESUMO</span>
+								<img src="/views/img/resumo-icon.svg" alt="Resumo do Exame">
+								<span>Resumo</span>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-3">
 						<a href="#anamnese" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__note"></i>
-								<span>ANAMNESIS</span>
+								<img src="/views/img/resumo-icon.svg" alt="Anamnese">
+								<span>Anamnese</span>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-3">
 						<a href="#exame" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__note"></i>
-								<span>EXAME FÍSICO</span>
+								<img src="/views/img/resumo-icon.svg" alt="Exame físico">
+								<span>Exame Físico</span>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-3">
 						<a href="#diagnostico" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__note"></i>
-								<span>DIAGNÓSTICO</span>
+								<img src="/views/img/resumo-icon.svg" alt="Diagnóstico">
+								<span>Diagnóstico</span>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-3">
 						<a href="#evolution" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__evo"></i>
-								<span>EVOLUÇÃO</span>
+								<img src="/views/img/evolucao-icon.svg" alt="Evolução">
+								<span>Evolução</span>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-3">
 						<a href="#orcamento" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__budget"></i>
-								<span>DESPESAS</span>
+								<img src="/views/img/orcamento-icon.svg" alt="Orçamento">
+								<span>Orçamento</span>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-3">
 						<a href="#exames_procedimentos" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__note"></i>
-								<span>EXAMES E <br>PROCEDIMENTOS</span>
+								<img src="/views/img/exames-icon.svg" alt="Evolução">
+								<span>Exames e <br>Procedimentos</span>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-3">
 						<a href="#prescricoes" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__budget"></i>
-								<span>PRESCRIÇÕES</span>
+								<img src="/views/img/exames-icon.svg" alt="Prescrições">
+								<span>Prescrições</span>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-3">
 						<a href="#atestados" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__note"></i>
-								<span>TENTADA</span>
+								<img src="/views/img/exames-icon.svg" alt="Atestados">
+								<span>Atestados</span>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-3">
 						<a href="#anexos" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__note"></i>
-								<span>ANEXOS</span>
+								<img src="/views/img/anexos-icon.svg" alt="Anexos">
+								<span>Anexos</span>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-3">
 						<a href="#compartilhar" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__note"></i>
-								<span>COMPARTILHAR DADOS</span>
+								<img src="/views/img/exames-icon.svg" alt="Compartilhar Dados">
+								<span>Compartilhar Dados</span>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-3">
 						<a href="#anexos" class="" data-fancybox="atendimento">
 							<div class="consulta-medica__item">
-								<i class="sprite-check__note"></i>
-								<span>IMAGENS E <br>ANEXOS</span>
+								<img src="/views/img/exames-icon.svg" alt="Imagens e Anexos">
+								<span>Imagens e <br>Anexos</span>
 							</div>
+						</a>
+					</div>
+					<div class="col-md-12">
+						<a href="#finish" id="btn_finish" data-fancybox="finish"></a>
+							<div class="btn btn-red">Finalizar atendimento</div>
 						</a>
 					</div>
 				</div>
