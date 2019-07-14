@@ -2092,12 +2092,41 @@ div.owl-feed {
 	margin-bottom: 30px;
 	font-weight: normal;
 	color: #416888;
+	position: relative;
+	img {
+		position: absolute;
+		left: 15px;
+		top: 15px;
+	}
 
-	.col-md-12 {
-		a#btn_finish {
-			text-align: center;
-			div {
-				width: 100%;
+}
+
+.consulta-medica {
+	.row {
+		.col-md-12 {
+			a#btn_finish {
+				text-align: center;
+				div {
+					width: 100%;
+				}
+			}
+		}
+	}
+	.atendimento-consulta {
+		padding-bottom: 20px;
+		[class*="col"] {
+			h2 {
+				color:#416888;
+				font-size: 1.8em;
+			}
+			.oncount {
+				p {
+					color: #416888;
+					font-size: 18px;
+					strong {
+						font-size: 22px;
+					}
+				}
 			}
 		}
 	}
@@ -2114,6 +2143,9 @@ div.owl-feed {
 	.row {
 		display: flex;
 		align-items: center;
+		.col-md-3 {
+			border-right: 1px dashed rgba(21,23,24,0.2);
+		}
 	}
 
 
@@ -2155,6 +2187,7 @@ div.owl-feed {
 	.date {
 		color: #416888;
 		font-size: 20px;
+		font-weight: 300;
 	}
 }
 
