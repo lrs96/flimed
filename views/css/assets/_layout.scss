@@ -1433,3 +1433,20 @@ section.box-login {
 		}	
 	}
 }
+
+.cliente-perguntas {
+	.atendimento-paciente {
+		.row-perguntas {
+			padding-top: 30px;
+			.row {
+				h3 {
+					text-align: center;
+					font-size: 1.3em;
+				}
+				p {
+					color: #8897AA;
+				}
+			}
+		}
+	}
+}
