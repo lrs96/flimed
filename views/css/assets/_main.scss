@@ -2104,7 +2104,7 @@ div.owl-feed {
 .consulta-medica {
 	.row {
 		.col-md-12 {
-			a#btn_finish {
+			#btn_finish {
 				text-align: center;
 				div {
 					width: 100%;
@@ -2145,6 +2145,23 @@ div.owl-feed {
 		align-items: center;
 		.col-md-3 {
 			border-right: 1px dashed rgba(21,23,24,0.2);
+			display: flex;
+			min-height: 6em;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			&:last-child {
+				border-right: none;
+			}
+			&:first-child {
+				flex-direction: row;
+			}
+			.atendimento__photo {
+				position: relative;
+			}
+			.atendimento__paciente {
+				padding: 15px 0 0 30px;
+			}
 		}
 	}
 
@@ -2155,6 +2172,7 @@ div.owl-feed {
 		font-size: 22px;
 		letter-spacing: .5px;
 		display: block;
+		padding-bottom: 10px;
 	}
 	.datas {
 		font-size: 16px;
@@ -2166,8 +2184,7 @@ div.owl-feed {
 .atendimento__photo {
 	width: 80px;
 	height: 80px;
-	position: absolute;
-	
+	position: relative;
 	img {
 		border-radius: 100%;
 		@extend %box-shadow;
@@ -2175,7 +2192,7 @@ div.owl-feed {
 }
 
 .atendimento__paciente {
-	padding: 15px 0 0 100px;
+	padding: 15px 0 0 30px;
 	min-height: 95px;
 	
 	h3 {
