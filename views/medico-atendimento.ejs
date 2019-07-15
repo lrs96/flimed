@@ -271,7 +271,7 @@
 					</a>
 				</div>
 				<a id="prontuario" href="#prontuario">Modal prontuário</a>
-				<a id="compartilharprontuario" href="#compartilharprontuario">COMPARTILHAR PRONTUÁRIO</a>
+				<a id="compartilharprontuario" href="#compartilharprontuario" data-fancybox="compartilharprontuario">COMPARTILHAR PRONTUÁRIO</a>
 				<a id="popupaciente" href="#popupaciente">POPUP PACIENTE</a>
 				<div class="col-md-12">
 					<a href="#finish" id="btn_finish" data-fancybox="finish">
@@ -1202,7 +1202,7 @@
 								src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
 							<div class="d-flex flex-column">
 								<h3 class="name-paciente">Compartilhar prontuário</h3>
-								<span class="info-paciente">Info <%= event.patientInfo.patientAgreement %></span>
+								<span class="info-convenio">Info <%= event.patientInfo.patientAgreement %></span>
 							</div>
 						</div>
 						<div class="tempo-de-atendimento d-flex flex-column align-items-center">
@@ -1211,7 +1211,7 @@
 						</div>
 						<div class="finalizar-atendimento d-flex justify-content-between">
 							<a class="btn btn-gradient" id="remarcarConsulta">Remarcar uma consulta (retorno)</a>
-							<button type="submit" class="btn btn-red">Finalizar serviço</button>
+							<button type="submit" class="btn btn-red">Encerrar</button>
 						</div>
 						<!-- <div class="consulta-medica__item">
 								<figure class="atendimento__photo">
