@@ -1303,10 +1303,14 @@ section.box-login {
 		}
 		a.btn {
 			color: #fff;
+			&:hover {
+				color: #fff;
+			}
 		}
 
 
 		.row-add-diagnosticos {
+			
 			margin: 15px 0;
 			.btn-red {
 				padding: 15px 20px;
