@@ -1280,3 +1280,35 @@ section.box-login {
 		}
 	}
 }
+
+
+.modal {
+	form {
+		input, select, textarea {
+			background-color: #ECEFF3;
+		}
+		input[type="submit"] {
+			letter-spacing: .5px;
+		}
+	}
+}
+
+.fancybox-infobar {
+	button[title="Previous"] {
+		height: 50vh;
+		left: -25vw;
+	}
+	button[title="Next"] {
+		height: 50vh;
+		right: -25vw;
+	}
+	button {
+		background-color: #01E9B5;
+		border-radius: 100%;
+		color: #fff;
+		&:hover {
+			background-color: #01E9B5;
+			color: #fff;
+		}
+	}
+}
