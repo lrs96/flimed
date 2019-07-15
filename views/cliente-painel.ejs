@@ -23,16 +23,75 @@
 					<p><strong>0</strong> Faltas</p>
 				</div>
 			</div>
-
+			<div class="col-md-6">
+				<div class="mosaic-item mh-form">
+					<h3><strong>Marcar</strong> Consulta ou exame</h3>
+					<p>Logo abaixo preencha os campos para marcar consultas ou exames</p>
+					<form action="/pesquisa" method="POST" class="form">
+						<div class="row">
+							<div class="col-md-6 ">
+								<label class="option-radio">
+									Consulta	
+									<input type="radio" checked="checked" name="radio" value="MEDICO">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<label class="option-radio">
+									Exame
+									<input type="radio" name="radio" value="CLINICA">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<input type="text" name="location" placeholder="Localização">
+							</div>
+							<div class="col-md-6">
+								<div class="select">
+									<select name="speciality">
+										<option selected disabled>Especialidade</option>
+										<option>Gastrologista</option>
+										<option>Cardiologista</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class=	"form-radio d-flex">
+										<div class="custom-control custom-radio">
+											<p for="compartilhar-com-paciente">Atendimento com <span class="tele">telemedicina</span> (vídeo-chat)</p>
+												<label class="custom-control-label option-radio" for="atendimento-com-telemedicina">
+													<input type="radio" id="atendimento-com-telemedicina" name="atendimento-com-telemedicina" class="custom-control-input">
+													<span class="checkmark"></span>
+													</label>
+										</div>
+									</div>
+							</div>
+							<div class="col-md-12">
+								<input type="submit" class="btn btn-gradient" value="Pesquisar">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 			<div class="col-md-6">
 				<div class="mosaic-item">
-					<h3>Indicar <strong>Profissionais</strong></h3>
-					<p>Ao indicar profissionais para o <strong>Conexão Saúde</strong> você ganha descontos nas consultas</p>
-
+					<h3><strong>Indicar</strong> um médico</h3>
 					<form id="form-referral" class="form">
 						<div class="row">
 							<div class="col-md-6">
-								<input type="text" name="name" placeholder="Nome completo">
+								<input type="text" name="name" placeholder="Nome">
+							</div>
+							<div class="col-md-6">
+								<input type="email" name="email" placeholder="E-mail">
+							</div>
+							<div class="col-md-6">
+								<div class="select">
+									<select name="sexo">
+										<option selected disabled>Sexo</option>
+										<option>Masculino</option>
+										<option>Feminino</option>
+									</select>
+								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="select">
@@ -43,14 +102,11 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<input type="email" name="email" placeholder="E-mail">
-							</div>
-							<div class="col-md-6">
-								<input type="tel" name="phone" placeholder="Telefone">
+							<div class="col-md-12">
+								<p class="obs">*Se o médico indicado aceitar o convite você ganhará desconto nas suas consultas e exames</p>
 							</div>
 							<div class="col-md-12">
-								<input type="submit" class="btn btn-gradient" value="Indicar Profissional">
+								<input type="submit" class="btn btn-gradient" value="Enviar">
 							</div>
 						</div>
 					</form>
@@ -76,49 +132,6 @@
 							})
 						})
 					</script>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="mosaic-item mh-form">
-					<h3>Marcar <strong>Consultas e Exames</strong></h3>
-					<p>Logo abaixo preencha os campos para marcar consultas ou exames</p>
-
-					<form action="/pesquisa" method="POST" class="form">
-						<div class="row">
-							<div class="col-md-6 ">
-								<label class="option-radio">
-									Marcar Consulta
-									<input type="radio" checked="checked" name="radio" value="MEDICO">
-									<span class="checkmark"></span>
-								</label>
-							</div>
-							<div class="col-md-6">
-								<label class="option-radio">
-									Marcar Exame
-									<input type="radio" name="radio" value="CLINICA">
-									<span class="checkmark"></span>
-								</label>
-							</div>
-							<div class="col-md-6">
-								<input type="text" name="location" placeholder="Localização">
-							</div>
-							<div class="col-md-6">
-								<div class="select">
-									<select name="speciality">
-										<option selected disabled>Especialidade</option>
-										<option>Gastrologist</option>
-										<option>Cardiologist</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<input type="submit" class="btn btn-gradient" value="Pesquisar">
-							</div>
-							<div class="col-md-6">
-								<a href="/pesquisa-avancada" class="btn btn-clean">Pesquisa Avançada</a>
-							</div>
-						</div>
-					</form>
 				</div>
 			</div>
 			<div class="col-md-12 atendimento-paciente contabilidade">
