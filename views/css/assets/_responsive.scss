@@ -725,10 +725,19 @@ Exclusive MENU
 			form {
 				.row-add-diagnosticos {
 					.row {
+						align-items: center;
 						flex-wrap: nowrap;
 						[class*="col"] {
 							min-width: 50%;
+							p {
+								margin-bottom: 0;
+							}							
 						}
+						.col-md-3 {
+							display: flex;
+							justify-content: flex-end;
+						}
+
 					}
 				}
 			}
