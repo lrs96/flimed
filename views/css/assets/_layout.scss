@@ -1734,6 +1734,10 @@ input:checked + .slider:before {
 			.btn {
 				font-size: 14px;
 				border-radius: 6px;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 			.btn-red {
 				border: none;
@@ -1747,16 +1751,19 @@ input:checked + .slider:before {
 	
 	.row {
 		[class*="col-md"].d-flex {
-			margin:20px 0;
+			margin: 30px 0;
 			text-transform: uppercase;
 			font-size: 18px;
 			.indice {
 				color: #8897AA;
 				margin-bottom: 5px;
+				font-weight: 300;
+   			letter-spacing: .5px;
 			}
 			.info {
 					font-weight: bold;
 					color: #4F627D;
+					margin-bottom: 0;
 			}
 		}
 	}
