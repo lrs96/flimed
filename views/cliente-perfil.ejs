@@ -3,10 +3,10 @@
 <section class="box__panel perfil-cliente">
 	<div class="container">
 		<div class="row mosaic">
-			<div class="col-md-12 title-perfil">
+			<div class="col-md-12 title-perfil form-relative">
+				<form id="form-change-profile" class="form"></form>
 				<div class="mosaic-item">
 					<h3>Informações</h3>
-					<form id="form-change-profile" class="form">
 						<div class="row">
 							<div class="col-md-3 col-sm-12">
 								<!-- para pegar os dados do usuário, faça como abaixo no campo "value" -->
@@ -101,12 +101,13 @@
 								<div class="col-md-3 col-sm-12">
 										<input type="text" id="plano-de-saude" name="plano-de-saude" placeholder="Plano de saúde">
 									</div>
-								<div class="col-md-12">
-										<input type="submit" class="btn btn-gradient" value="Salvar alterações">
-									</div>
 						</div>
-					</form>
-					<script>
+						<div class="col-md-12 row-submit">
+							<input type="submit" class="btn btn-gradient" value="Salvar alterações">
+						</div>
+				</div>
+			</form>
+			<script>
 					$(document).ready(function() {
 						$('#form-change-profile').on('submit', function(e) {
 							e.preventDefault()
@@ -130,9 +131,8 @@
 						})
 					})
 					</script>
-				</div>
 			</div>
-			<div class="col-md-12">
+			<div class="col-md-12 form-relative">
 				<form action="" class="form">
 					<div class="mosaic-item">
 						<h3>Indiciar um paciente(indique amigos)</h3>
@@ -147,7 +147,7 @@
 									<input type="tel" name="phone-indicacao" placeholder="Telefone">
 								</div>
 							</div>
-							<div class="col-md-12">
+							<div class="col-md-12 row-submit">
 								<input type="submit" class="btn btn-gradient" value="Enviar">
 							</div>
 					</div>
