@@ -1547,13 +1547,12 @@ section.box-login {
 					}
 				}
 			}
-
 			.row-submit {
 				position: absolute;
 				bottom: 0;
 				left: 0;
 				width: 100%;
-				a {
+				input {
 					text-transform: normal;
 				}
 			}
@@ -1568,7 +1567,7 @@ section.box-login {
 			}
 		}
 	}
-	
+
 }
 
 .switch {
