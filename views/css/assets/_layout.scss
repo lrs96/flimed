@@ -1292,23 +1292,28 @@ section.box-login {
 		}
 	}
 }
-
-.fancybox-infobar {
-	button[title="Previous"] {
-		height: 50vh;
-		left: -25vw;
-	}
-	button[title="Next"] {
-		height: 50vh;
-		right: -25vw;
-	}
-	button {
-		background-color: #01E9B5;
-		border-radius: 100%;
-		color: #fff;
-		&:hover {
-			background-color: #01E9B5;
-			color: #fff;
+.fancybox-container  {
+	background-color: rgba(0, 0, 0, 0.6);
+	.fancybox-infobar {
+		button[title="Previous"] {
+			top: 50vh;
+			left: -25vw;
 		}
-	}
+		button[title="Next"] {
+			top: 50vh;
+			right: -25vw;
+		}
+		button {
+			background-color: #01E9B5;
+			border-radius: 100%;
+			color: #fff;
+			&:hover {
+				background-color: #01E9B5;
+				color: #fff;
+			}
+		}
+		.fancybox-infobar__body {
+			display: none;
+		}
+	}	
 }
