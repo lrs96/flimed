@@ -1291,6 +1291,40 @@ section.box-login {
 			letter-spacing: .5px;
 		}
 	}
+	.today-list {
+		.today-list__item {
+			padding: 0 30px;
+			color: #4F627D;
+			p {
+				font-weight: 400;
+				font-size: 16px;
+				color: #8897AA;
+			}
+			.content {
+				align-items: center;
+				.data {
+					font-weight: 600;
+					font-size: 2em;
+				}
+				.doctor {
+					padding-left: 15px;
+				}
+			}
+			.infos {
+				padding: 15px 0;
+				border-bottom: 1px solid rgba(79, 98, 125, 0.2);
+				.d-flex.flex-column {
+					padding-right: 30px;
+					.desc {
+						
+					}
+				}
+				a.btn {
+					display: table;
+				}
+			}
+		}
+	}
 }
 .fancybox-container  {
 	background-color: rgba(0, 0, 0, 0.6);
