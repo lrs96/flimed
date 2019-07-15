@@ -303,7 +303,7 @@
 			<div class="modal-title">
 				<h2>Resumo do Paciente</h2>
 			</div>
-			<% if(!attendance.length) { %>
+			<!-- <% if(!attendance.length) { %>
 			<p>Paciente sem consultas anteriores</p>
 			<% } else { %>
 			<div class="timeline">
@@ -357,7 +357,7 @@
 				<% } %>
 				<% } %>
 			</div>
-			<% } %>
+			<% } %> -->
 			<ul class="today-list">
 				<li class="today-list__item">
 					<div class="content d-flex">
@@ -567,6 +567,17 @@
 							<textarea name="observacoes-diagnostico" cols="30" rows="10" placeholder="Observações:"></textarea>
 						</div>
 						<div class="col-md-12">
+							<div class=	"form-radio d-flex">
+									<div class="custom-control custom-radio">
+										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+											<label class="custom-control-label option-radio" for="compartilhar-com-paciente">
+												<input type="radio" id="compartilhar-com-paciente" name="compartilhar-com-paciente" class="custom-control-input">
+												<span class="checkmark"></span>
+												</label>
+									</div>
+								</div>
+						</div>
+						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar Documento">
 						</div>
 					</div>
@@ -608,6 +619,17 @@
 					<div class="row">
 						<div class="col-md-12">
 							<textarea name="evolution" id="" cols="30" rows="10" placeholder="Evolução:"></textarea>
+						</div>
+						<div class="col-md-12">
+							<div class=	"form-radio d-flex">
+									<div class="custom-control custom-radio">
+										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+											<label class="custom-control-label option-radio" for="compartilhar-com-paciente">
+												<input type="radio" id="compartilhar-com-paciente" name="compartilhar-com-paciente" class="custom-control-input">
+												<span class="checkmark"></span>
+												</label>
+									</div>
+								</div>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar Documento">
@@ -663,10 +685,21 @@
 							</div>
 						</div>
 						<div class="col-md-12 row-add">
-								<a href="" id="addOrcamentoModal" class="btn btn-gradient btn-radius">+</a>
+							<a href="" id="addOrcamentoModal" class="btn btn-gradient btn-radius">+</a>
+						</div>
+						<div class="col-md-12">
+								<div class=	"form-radio d-flex">
+										<div class="custom-control custom-radio">
+											<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+												<label class="custom-control-label option-radio" for="compartilhar-com-paciente">
+													<input type="radio" id="compartilhar-com-paciente" name="compartilhar-com-paciente" class="custom-control-input">
+													<span class="checkmark"></span>
+													</label>
+										</div>
+									</div>
 							</div>
-						<div class="col-md-4 offset-md-8">
-							<input type="submit" class="btn btn-gradient" value="SALVAR">
+						<div class="col-md-12">
+							<input type="submit" class="btn btn-gradient" value="Salvar documento">
 						</div>
 					</div>
 				</form>
@@ -739,6 +772,17 @@
 							<a href="" id="addExamesEProcedimento" class="btn btn-gradient btn-radius">+</a>
 						</div>
 						<div class="col-md-12">
+							<div class=	"form-radio d-flex">
+									<div class="custom-control custom-radio">
+										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+											<label class="custom-control-label option-radio" for="compartilhar-com-paciente">
+												<input type="radio" id="compartilhar-com-paciente" name="compartilhar-com-paciente" class="custom-control-input">
+												<span class="checkmark"></span>
+												</label>
+									</div>
+								</div>
+						</div>
+						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar documento">
 						</div>
 					</div>
@@ -795,11 +839,15 @@
 							<a id="addMedicamentoPrescricao" class="btn btn-gradient btn-radius">+</a>
 						</div>
 						<div class="col-md-12">
-							<label class="option-radio">
-								Compartilhar com o paciente
-								<input type="radio" name="specialControlReceipt" value="true">
-								<span class="checkmark"></span>
-							</label>
+							<div class=	"form-radio d-flex">
+									<div class="custom-control custom-radio">
+										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+											<label class="custom-control-label option-radio" for="compartilhar-com-paciente">
+												<input type="radio" id="compartilhar-com-paciente" name="compartilhar-com-paciente" class="custom-control-input">
+												<span class="checkmark"></span>
+												</label>
+									</div>
+								</div>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar Documento">
@@ -844,11 +892,9 @@
 						<div class="col-md-12">
 							<div class="row">
 								<div class="col-md-6">
-									<label for="">Data:</label>
 									<input type="date" name="date">
 								</div>
 								<div class="col-md-6">
-									<label for="">Modelos:</label>
 									<div class="select">
 										<select name="models" id="">
 											<option selected disabled>Atestado Padrão</option>
@@ -857,14 +903,23 @@
 								</div>
 							</div>
 						</div>
+						<div class="col-md-12">
+							<textarea name="attestation" id="" cols="30" rows="10"></textarea>
+						</div>
 						<div class="col-md-12 row-add">
 							<a id="addAtestadoModal" class="btn btn-radius btn-gradient">+</a>
 						</div>
 						<div class="col-md-12">
-							<label for="">Atestado:</label>
-							<textarea name="attestation" id="" cols="30" rows="10"></textarea>
+							<div class=	"form-radio d-flex">
+									<div class="custom-control custom-radio">
+										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+											<label class="custom-control-label option-radio" for="compartilhar-com-paciente">
+												<input type="radio" id="compartilhar-com-paciente" name="compartilhar-com-paciente" class="custom-control-input">
+												<span class="checkmark"></span>
+												</label>
+									</div>
+								</div>
 						</div>
-						
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar documento">
 						</div>
@@ -909,6 +964,17 @@
 								<div action="/upload-target" class="dropzone dz-clickable" id="file_ads">
 									<div class="dz-message">ANEXAR IMAGEM DE BANNER / VIDEO</div>
 							</div>
+						</div>
+						<div class="col-md-12">
+							<div class=	"form-radio d-flex">
+									<div class="custom-control custom-radio">
+										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+											<label class="custom-control-label option-radio" for="compartilhar-com-paciente">
+												<input type="radio" id="compartilhar-com-paciente" name="compartilhar-com-paciente" class="custom-control-input">
+												<span class="checkmark"></span>
+												</label>
+									</div>
+								</div>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar Documento">

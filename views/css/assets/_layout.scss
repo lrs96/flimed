@@ -1283,6 +1283,14 @@ section.box-login {
 
 
 .modal {
+	.modal-title {
+		h2 {
+			text-align: left;
+			color: #4F627D;
+			margin-bottom: 0;
+		}
+	}
+
 	form {
 		input, select, textarea {
 			background-color: #ECEFF3 !important;
@@ -1290,10 +1298,24 @@ section.box-login {
 		input[type="submit"] {
 			letter-spacing: .5px;
 		}
-
+		.col-md-12 {
+			.form-radio {
+				padding-bottom: 15px;
+				.custom-radio {
+					display: flex;
+					justify-content: space-around;
+					width: 100%;
+					p {
+						font-size: 1.4em;
+						color: #8897AA;
+					}
+				}
+			}
+		}
 		.row-add {
 			display: flex;
 			justify-content: center;
+			padding-bottom: 20px;
 			a {
 				width: auto;
 				border-radius: 100%;
@@ -1439,7 +1461,7 @@ section.box-login {
 	.col-md-12 {
 		padding-left: 0;
 		padding-right: 0;
-		
+
 		.row-perguntas {
 			padding-top: 30px;
 			.row {
