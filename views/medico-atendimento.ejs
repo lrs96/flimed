@@ -271,9 +271,62 @@
 					</a>
 				</div>
 				<div class="col-md-12">
-					<a href="#finish" id="btn_finish" data-fancybox="finish"></a>
+					<a href="#finish" id="btn_finish" data-fancybox="finish">
 					<div class="btn btn-red">Finalizar atendimento</div>
 					</a>
+					<div class="modal finish" id="finish">
+						<div class="modal-box">
+							<div class="modal-title__finish">
+								<form id="form-end-attendance">
+									<input type="hidden" name="eventId" value="<%= event._id %>">
+									<input type="hidden" name="patientId" value="<%= patient._id %>">
+									<h3>Você quer terminar?</h3>
+									<p>Atendimento iniciado: <strong id="duration"></strong></p>
+									
+									<div class="consulta-medica__item">
+										<figure class="atendimento__photo">
+											<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+										</figure>
+										<div class="atendimento__paciente">
+											<h3><%= patient.name %></h3>
+											<span><%= event.patientInfo.patientAgreement %></span>
+										</div>
+									</div>
+									<button type="submit" class="btn btn-red">Finalizar serviço</button>
+								</form>
+								<script>
+									$(document).ready(function() {
+										const dateNow = '<%= attendanceNow.createdAt %>'
+										$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+										$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+										setInterval(function() {
+											$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+											$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+										}, 30 * 1000) // a cada 30s
+										$('#form-end-attendance').on('submit', function(e) {
+											e.preventDefault()
+											$.ajax({
+												type: 'PATCH',
+												url: '/medico-atendimento',
+												datatype: 'html',
+												contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+												data: $('#form-end-attendance').serialize(),
+												success: function(result) {          
+													alertify.notify(result, 'success', 5)
+													setTimeout(function() { 
+															window.location.href = '/atendimento/<%= attendanceNow._id %>'
+													}, 500)
+												},
+												error: function(xhr, status, error) {
+													alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+												},
+											})
+										})
+									})
+								</script>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
