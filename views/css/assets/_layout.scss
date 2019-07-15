@@ -1436,9 +1436,14 @@ section.box-login {
 
 .cliente-perguntas {
 	.atendimento-paciente {
+		padding-left: 0;
+		padding-right: 0;
 		.row-perguntas {
 			padding-top: 30px;
 			.row {
+				.col-md-6:first-child {
+					border-right: 1px dashed rgba(65, 104, 136, 0.2);
+				}
 				h3 {
 					text-align: center;
 					font-size: 1.3em;
