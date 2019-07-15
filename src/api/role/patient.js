@@ -16,6 +16,10 @@ module.exports = app => {
         res.status(200).render('cliente-painel', { message: null, user: req.session.user })
     }
 
+    const viewPatientHistory = (req, res) => {
+        res.status(200).render('cliente-historico', { page: 'Histórico', message: null, user: req.session.user })
+    }
+
     const viewPatientProfile = (req, res) => {
         res.status(200).render('cliente-perfil', { message: null, user: req.session.user })
     }
@@ -131,6 +135,7 @@ module.exports = app => {
         viewPatientPanel,
         viewPatientProfile,
         viewPatientQuestions,
+        viewPatientHistory,
         viewPatientScheduling,
         viewPatientEvaluation,
         postPatientEvaluation

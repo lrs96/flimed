@@ -179,6 +179,10 @@ module.exports = app => {
         .all(app.src.config.passport.authenticate())
         .get(patient(app.src.api.role.patient.viewPatientProfile))
 
+    app.route('/cliente-historico')
+    .all(app.src.config.passport.authenticate())
+    .get(patient(app.src.api.role.patient.viewPatientHistory))
+
     app.route('/cliente-horarios')
         .all(app.src.config.passport.authenticate())
         .get(patient(app.src.api.role.patient.viewPatientScheduling))
