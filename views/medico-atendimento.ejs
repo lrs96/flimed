@@ -525,56 +525,6 @@
 					})
 				</script>
 			</div>
-			<div class="modal finish pop-do-paciente popups">
-				<div class="d-flex info-paciente">
-					<img alt="<%= patient.name %>"
-						src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
-					<div class="d-flex flex-column">
-						<h3 class="name-paciente">Nome paciente<%= patient.name %></h3>
-						<span class="info-convenio">Info <%= event.patientInfo.patientAgreement %></span>
-					</div>
-				</div>
-				<div class="row tags">
-					<div class="col-md-3 d-flex flex-column align-items-center">
-						<p class="indice">Idade</p>
-						<p class="info idade">25 anos</p>
-					</div>
-					<div class="col-md-6 d-flex flex-column align-items-center">
-						<p class="indice">Atendimento</p>
-						<p class="info consulta">Primeira consulta</p>
-					</div>
-					<div class="col-md-3 d-flex flex-column align-items-center">
-						<p class="indice">Horário</p>
-						<p class="info horario">25 anos</p>
-					</div>
-					<div class="col-md-12 content">
-						<h3>Tags do paciente</h3>
-						<div class="tags-item">
-							<span>NÃO FUMANTE</span>
-							<span>HIPERTENSÃO</span>
-							<span>65 KG</span>
-							<span>CONSOME ÁLCOOL</span>
-							<span>1,70 METROS</span>
-							<span>DIABÉTICO</span>
-							<span>SANGUE B+</span>
-							<span>21 ANOS</span>
-						</div>
-					</div>
-				</div>
-				<form action="" class="form">
-					<div class="row">
-						<div class="col-md-4">
-							<a class="btn btn-blue">VER PRONTUÁRIO COMPLETO</a>
-						</div>
-						<div class="col-md-4">
-							<button class="btn btn-gradient" type="submit">INICIAR</button>
-						</div>
-						<div class="col-md-4">
-							<a class="btn btn-red">CANCELAR</a>
-						</div>
-					</div>
-				</form>
-			</div>
 			<div class="modal finish prontuario popups">
 				<div class="d-flex info-paciente">
 					<img alt="<%= patient.name %>"
@@ -1328,47 +1278,12 @@
 		</div>
 	</div>
 
-	<!-- <div class="modal" id="compartilhar">
-		<div class="modal-box">
-			<div class="modal-title">
-				<h2>Compartilhar</h2>
-			</div>
-			<div class="form">
-				<form action="">
-					<div class="row">
-						<div class="col-md-12">
-							<label for="">Nome do médico:</label>
-							<input type="text" name="">
-						</div>
-						<div class="col-md-12">
-							<label for="">Especialidade:</label>
-							<input type="text" name="">
-						</div>
-						<div class="col-md-12">
-							<label for="">Endereço:</label>
-							<input type="text" name="">
-						</div>
-						<div class="col-md-12">
-							<label for="">Sua senha:</label>
-							<input type="password" name="">
-						</div>
-						<div class="col-md-6 offset-md-6">
-							<input type="submit" class="btn btn-gradient" value="COMPARTILHAR">
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div> -->
-
 	<div class="modal prontuario" id="prontuario">
 		<div class="modal-box">
 			<div class="modal-title__finish">
 				<form id="form-end-attendance">
 					<input type="hidden" name="eventId" value="<%= event._id %>">
 					<input type="hidden" name="patientId" value="<%= patient._id %>">
-					<!-- <h3>Você quer terminar?</h3>
-						<p>Atendimento iniciado: <strong id="duration"></strong></p> -->
 					<div class="d-flex info-paciente">
 						<img alt="<%= patient.name %>"
 							src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
@@ -1382,19 +1297,9 @@
 						<strong id="duration"></strong>
 					</div>
 					<div class="finalizar-atendimento d-flex justify-content-between">
-						<a class="btn btn-gradient" id="remarcarConsulta">Remarcar uma consulta (retorno)</a>
+						<a class="btn btn-gradient" href="/medico-horarios" id="remarcarConsulta">Remarcar uma consulta (retorno)</a>
 						<button type="submit" class="btn btn-red">Finalizar serviço</button>
 					</div>
-					<!-- <div class="consulta-medica__item">
-							<figure class="atendimento__photo">
-								<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
-							</figure>
-							<div class="atendimento__paciente">
-								<h3><%= patient.name %></h3>
-								<span><%= event.patientInfo.patientAgreement %></span>
-							</div>
-						</div>
-						<button type="	submit" class="btn btn-red">Finalizar serviço</button> -->
 				</form>
 				<script>
 					$(document).ready(function () {
@@ -1499,74 +1404,6 @@
 		</div>
 	</div>
 
-	<div class="modal finish popupaciente" id="popupaciente">
-		<div class="modal-box">
-			<div class="modal-title__finish">
-				<form id="form-end-attendance">
-					<input type="hidden" name="eventId" value="<%= event._id %>">
-					<input type="hidden" name="patientId" value="<%= patient._id %>">
-					<!-- <h3>Você quer terminar?</h3>
-								<p>Atendimento iniciado: <strong id="duration"></strong></p> -->
-					<div class="d-flex info-paciente">
-						<img alt="<%= patient.name %>"
-							src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
-						<div class="d-flex flex-column">
-							<h3 class="name-paciente">Pop up paciente<%= patient.name %></h3>
-							<span class="info-paciente">Info <%= event.patientInfo.patientAgreement %></span>
-						</div>
-					</div>
-					<div class="tempo-de-atendimento d-flex flex-column align-items-center">
-						<p>Tempo de atendimento</p>
-						<strong id="duration"></strong>
-					</div>
-					<div class="finalizar-atendimento d-flex justify-content-between">
-						<a class="btn btn-gradient" id="remarcarConsulta">Remarcar uma consulta (retorno)</a>
-						<button type="submit" class="btn btn-red">Finalizar serviço</button>
-					</div>
-					<!-- <div class="consulta-medica__item">
-									<figure class="atendimento__photo">
-										<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
-									</figure>
-									<div class="atendimento__paciente">
-										<h3><%= patient.name %></h3>
-										<span><%= event.patientInfo.patientAgreement %></span>
-									</div>
-								</div>
-								<button type="	submit" class="btn btn-red">Finalizar serviço</button> -->
-				</form>
-				<script>
-					$(document).ready(function () {
-						const dateNow = '<%= attendanceNow.createdAt %>'
-						$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
-						$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
-						setInterval(function () {
-							$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
-							$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
-						}, 30 * 1000) // a cada 30s
-						$('#form-end-attendance').on('submit', function (e) {
-							e.preventDefault()
-							$.ajax({
-								type: 'PATCH',
-								url: '/medico-atendimento',
-								datatype: 'html',
-								contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-								data: $('#form-end-attendance').serialize(),
-								success: function (result) {
-									alertify.notify(result, 'success', 5)
-									setTimeout(function () {
-										window.location.href = '/atendimento/<%= attendanceNow._id %>'
-									}, 500)
-								},
-								error: function (xhr, status, error) {
-									alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-								},
-							})
-						})
-					})
-				</script>
-			</div>
-		</div>
-	</div>
 </section>
 
 <%- include includes/footer.ejs %>
