@@ -600,9 +600,6 @@
 				</div>
 				<form action="" class="form">
 					<div class="row">
-						<div class="col-md-12">
-							<input type="text" name="nome-medico" placeholder="Nome do Médico">
-						</div>
 						<div class="col-md-4">
 							<a class="btn btn-blue">VER PRONTUÁRIO COMPLETO</a>
 						</div>
@@ -615,7 +612,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="modal finish pop-do-paciente popups">
+			<div class="modal finish prontuario popups">
 				<div class="d-flex info-paciente">
 					<img alt="<%= patient.name %>"
 						src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
@@ -760,16 +757,10 @@
 				</div>
 				<form action="" class="form">
 					<div class="row">
-						<div class="col-md-12">
-							<input type="text" name="nome-medico" placeholder="Nome do Médico">
+						<div class="col-md-6">
+							<button class="btn btn-gradient" type="submit">EDITAR</button>
 						</div>
-						<div class="col-md-4">
-							<a class="btn btn-blue">VER PRONTUÁRIO COMPLETO</a>
-						</div>
-						<div class="col-md-4">
-							<button class="btn btn-gradient" type="submit">INICIAR</button>
-						</div>
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<a class="btn btn-red">CANCELAR</a>
 						</div>
 					</div>
