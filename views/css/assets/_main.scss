@@ -2106,9 +2106,10 @@ div.owl-feed {
 		.col-md-12 {
 			#btn_finish {
 				text-align: center;
-				div {
-					width: 100%;
-				}
+			}
+			div {
+				width: 100%;
+				cursor: pointer;
 			}
 		}
 	}
