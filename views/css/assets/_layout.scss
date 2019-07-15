@@ -1789,4 +1789,42 @@ input:checked + .slider:before {
 			}
 		}
 	}
+
+	.ficha {
+		h3 {
+			color: #4F627D;
+			margin-bottom: 0;
+			padding-bottom: 20px;
+		}
+		.row {
+			[class*="col"] {
+				.content {
+					padding: 15px;
+					background-color: #8897AA;
+					box-shadow:0 11px 33px rgba(0,1,0,0.05);
+					color: #fff;
+					border-radius: 8px;
+					.d-flex.img {
+						.border {
+							background-color: #6F7B8B;
+							padding: 8px;
+							border-radius: 100%;
+						}
+						.data {
+							font-size: 14px;
+						}
+					}
+					.title {
+						font-weight: bold;
+						margin-bottom: 0;
+					}
+
+					.desc {
+						font-size: 14px;
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
 }
