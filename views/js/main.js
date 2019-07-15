@@ -260,7 +260,21 @@ romae = {
 				$("ul.menu a[href='/medico-financeiro']").addClass("active")
 			} else if ($(".row").hasClass("medico-contabilidade")) {
 				$("ul.menu a[href='/medico-contabilidade]").addClass("active")
+			} else if ($(".row").hasClass("medico-historico")) {
+				$("ul.menu a[href='/medico-historico]").addClass("active")
+			} else if ($(".row").hasClass("cliente-painel")) {
+				$("ul.menu a[href='/cliente-painel]").addClass("active")
+			} else if ($(".row").hasClass("perfil-cliente")) {
+				$("ul.menu a[href='/cliente-perfil]").addClass("active")
+			} else if ($(".row").hasClass("cliente-historico")) {
+				$("ul.menu a[href='/cliente-historico]").addClass("active")
+			} else if ($(".row").hasClass("cliente-perguntas")) {
+				$("ul.menu a[href='/cliente-perguntas]").addClass("active")
+			} else if ($(".row").hasClass("cliente-horarios")) {
+				$("ul.menu a[href='/cliente-horarios]").addClass("active")
 			}
+
+
 		});
 	},
 	addMaisEspecialidade: () => {
