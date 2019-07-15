@@ -1510,3 +1510,35 @@ section.box-login {
 		margin-top: 80px;
 	}
 }
+
+.cliente-painel {
+	.mosaic {
+		.mosaic-item {
+
+			.col-md-12 {
+				.obs {
+					color: #8897AA;
+					font-size: 18px;
+				}
+			}
+			
+			.form-radio {
+				margin-bottom: 20px;
+				.custom-radio {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					width: 100%;
+					p {
+						margin-bottom: 0;
+						color: #8897AA;
+						font-size: 18px;
+						span {
+							font-weight: bold;
+						}
+					}
+				}
+			}
+		}
+	}
+}
