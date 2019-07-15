@@ -1778,7 +1778,7 @@ input:checked + .slider:before {
 				display: flex;
 				flex-wrap: wrap;
 				span {
-					padding: 8px 15px;
+					padding: 8px 20px;
 					font-size: 14px;
 					background-color: #EBEEF4;
 					color: #4F627D;
@@ -1791,6 +1791,9 @@ input:checked + .slider:before {
 	}
 
 	.ficha {
+		.col-md-12 {
+			margin-bottom: 30px;
+		}
 		h3 {
 			color: #4F627D;
 			margin-bottom: 0;
@@ -1809,7 +1812,7 @@ input:checked + .slider:before {
 						padding-bottom: 10px;
 						.border {
 							background-color: #6F7B8B;
-							padding: 8px;
+							padding: 5px 10px;
 							border-radius: 100%;
 						}
 						.data {
