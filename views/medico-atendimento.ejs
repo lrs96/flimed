@@ -16,7 +16,7 @@
 %>
 
 <section class="box__panel">
-	<div class="em-atendimento d-none">
+	<div class="em-atendimento">
 		<div class="container">
 			<span class="io-toggler" data-io="1">
 				<span class="io-options">
@@ -62,10 +62,10 @@
 			<div class="oncount">
 				<i class="sprite-check__clock"></i>
 				<div class="clock" id="time_from_now"></div>
-				<a href="#finish" id="btn_finish" data-fancybox="finish">
+				<!-- <a href="#finish" id="btn_finish" data-fancybox="finish">
 					<div class="btn btn-red">Finalizar</div>
-				</a>
-				<div class="modal finish" id="finish">
+				</a> -->
+				<!-- <div class="modal finish" id="finish">
 					<div class="modal-box">
 						<div class="modal-title__finish">
 							<form id="form-end-attendance">
@@ -120,7 +120,7 @@
 							</script>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<% } %>
 		</div>
@@ -270,9 +270,12 @@
 						</div>
 					</a>
 				</div>
+				<a id="prontuario" href="#prontuario">Modal prontuário</a>
+				<a id="compartilharprontuario" href="#compartilharprontuario">COMPARTILHAR PRONTUÁRIO</a>
+				<a id="popupaciente" href="#popupaciente">POPUP PACIENTE</a>
 				<div class="col-md-12">
 					<a href="#finish" id="btn_finish" data-fancybox="finish">
-					<div class="btn btn-red">Finalizar atendimento</div>
+						<div class="btn btn-red">Finalizar atendimento</div>
 					</a>
 					<div class="modal finish" id="finish">
 						<div class="modal-box">
@@ -283,7 +286,8 @@
 									<!-- <h3>Você quer terminar?</h3>
 									<p>Atendimento iniciado: <strong id="duration"></strong></p> -->
 									<div class="d-flex info-paciente">
-										<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+										<img alt="<%= patient.name %>"
+											src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
 										<div class="d-flex flex-column">
 											<h3 class="name-paciente">Nome paciente<%= patient.name %></h3>
 											<span class="info-paciente">Info <%= event.patientInfo.patientAgreement %></span>
@@ -306,18 +310,18 @@
 											<span><%= event.patientInfo.patientAgreement %></span>
 										</div>
 									</div>
-									<button type="submit" class="btn btn-red">Finalizar serviço</button> -->
+									<button type="	submit" class="btn btn-red">Finalizar serviço</button> -->
 								</form>
 								<script>
-									$(document).ready(function() {
+									$(document).ready(function () {
 										const dateNow = '<%= attendanceNow.createdAt %>'
 										$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
 										$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
-										setInterval(function() {
+										setInterval(function () {
 											$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
 											$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
 										}, 30 * 1000) // a cada 30s
-										$('#form-end-attendance').on('submit', function(e) {
+										$('#form-end-attendance').on('submit', function (e) {
 											e.preventDefault()
 											$.ajax({
 												type: 'PATCH',
@@ -325,13 +329,13 @@
 												datatype: 'html',
 												contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 												data: $('#form-end-attendance').serialize(),
-												success: function(result) {          
+												success: function (result) {
 													alertify.notify(result, 'success', 5)
-													setTimeout(function() { 
-															window.location.href = '/atendimento/<%= attendanceNow._id %>'
+													setTimeout(function () {
+														window.location.href = '/atendimento/<%= attendanceNow._id %>'
 													}, 500)
 												},
-												error: function(xhr, status, error) {
+												error: function (xhr, status, error) {
 													alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
 												},
 											})
@@ -353,7 +357,7 @@
 				<div class="col-md-3">
 					<a href="#summary" class="" data-fancybox="atendimento">
 						<div class="consulta-medica__item">
-							<i class="sprite-check__list"></i>
+							<img src="/views/img/resumo-icon.svg" alt="Resumo do Exame">
 							<span>RESUMO</span>
 						</div>
 					</a>
@@ -445,8 +449,10 @@
 						<div class="d-flex flex-column">
 							<div class="desc">
 								<h3 class="title">Atestado</h3>
-								<p class="motivo">Atesto para os devidos fins a pedido do interessado que #nome_paciente, portador do documento de identidade #rg_paciente, foi submetido à consulta médica nesta data.</p>
-								<p class="motivo">Em decorrência, deverá permanecer afastado de suas atividades laborativas por um período de _______ dias a partir desta data.</p>
+								<p class="motivo">Atesto para os devidos fins a pedido do interessado que #nome_paciente, portador do
+									documento de identidade #rg_paciente, foi submetido à consulta médica nesta data.</p>
+								<p class="motivo">Em decorrência, deverá permanecer afastado de suas atividades laborativas por um
+									período de _______ dias a partir desta data.</p>
 							</div>
 						</div>
 						<a class="btn btn-gradient">Imprimir</a>
@@ -483,7 +489,8 @@
 							<textarea name="molestia" cols="30" rows="10" placeholder="História da moléstia atual:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<textarea name="investigacao" cols="30" rows="10" placeholder="Investigação dos diversos aparelhos:"></textarea>
+							<textarea name="investigacao" cols="30" rows="10"
+								placeholder="Investigação dos diversos aparelhos:"></textarea>
 						</div>
 						<div class="col-md-12">
 							<textarea name="medicacaoemuso" cols="30" rows="10" placeholder="Medicações em uso:"></textarea>
@@ -550,15 +557,15 @@
 							<textarea name="observacoes-exame-fisico" cols="30" rows="10" placeholder="Observações:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<div class=	"form-radio d-flex">
-									<div class="custom-control custom-radio">
-										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
-										<label class="switch">
-												<input type="checkbox" checked name="compartilhar-com-paciente">
-												<span class="slider round"></span>
-											</label>
-									</div>
+							<div class="form-radio d-flex">
+								<div class="custom-control custom-radio">
+									<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+									<label class="switch">
+										<input type="checkbox" checked name="compartilhar-com-paciente">
+										<span class="slider round"></span>
+									</label>
 								</div>
+							</div>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar Documento">
@@ -603,7 +610,7 @@
 						<div class="col-md-12">
 							<div class="row">
 								<div class="col-md-9">
-										<input type="text" name="diagnosis" placeholder="Diagnóstico">
+									<input type="text" name="diagnosis" placeholder="Diagnóstico">
 								</div>
 								<div class="col-md-3">
 									<a id="addDiagnostico" class="btn btn-gradient">Adicionar</a>
@@ -634,15 +641,15 @@
 							<textarea name="observacoes-diagnostico" cols="30" rows="10" placeholder="Observações:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<div class=	"form-radio d-flex">
-									<div class="custom-control custom-radio">
-										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
-										<label class="switch">
-												<input type="checkbox" checked name="compartilhar-com-paciente">
-												<span class="slider round"></span>
-											</label>
-									</div>
+							<div class="form-radio d-flex">
+								<div class="custom-control custom-radio">
+									<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+									<label class="switch">
+										<input type="checkbox" checked name="compartilhar-com-paciente">
+										<span class="slider round"></span>
+									</label>
 								</div>
+							</div>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar Documento">
@@ -688,15 +695,15 @@
 							<textarea name="evolution" id="" cols="30" rows="10" placeholder="Evolução:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<div class=	"form-radio d-flex">
-									<div class="custom-control custom-radio">
-										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
-										<label class="switch">
-												<input type="checkbox" checked name="compartilhar-com-paciente">
-												<span class="slider round"></span>
-											</label>
-									</div>
+							<div class="form-radio d-flex">
+								<div class="custom-control custom-radio">
+									<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+									<label class="switch">
+										<input type="checkbox" checked name="compartilhar-com-paciente">
+										<span class="slider round"></span>
+									</label>
 								</div>
+							</div>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar Documento">
@@ -755,16 +762,16 @@
 							<a href="" id="addOrcamentoModal" class="btn btn-gradient btn-radius">+</a>
 						</div>
 						<div class="col-md-12">
-								<div class=	"form-radio d-flex">
-										<div class="custom-control custom-radio">
-											<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
-											<label class="switch">
-													<input type="checkbox" checked name="compartilhar-com-paciente">
-													<span class="slider round"></span>
-												</label>
-										</div>
-									</div>
+							<div class="form-radio d-flex">
+								<div class="custom-control custom-radio">
+									<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+									<label class="switch">
+										<input type="checkbox" checked name="compartilhar-com-paciente">
+										<span class="slider round"></span>
+									</label>
+								</div>
 							</div>
+						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar documento">
 						</div>
@@ -808,16 +815,19 @@
 						<div class="col-md-12">
 							<div class="row">
 								<div class="col-md-6">
-									<input type="text" name="data-exame" placeholder="Data" onfocus="(this.type='date')" onblur="(this.type='date')" id="date">
+									<input type="text" name="data-exame" placeholder="Data" onfocus="(this.type='date')"
+										onblur="(this.type='date')" id="date">
 								</div>
 								<div class="col-md-6">
 									<ul class="nav nav-pills d-flex justify-content-between" id="pills-tab" role="tablist">
-											<li class="nav-item">
-												<a class="nav-link active" id="pills-sadt-tab" data-toggle="pill" href="#pills-sadt" role="tab" aria-controls="pills-sadt" aria-selected="true">SADT</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" id="pills-particular-tab" data-toggle="pill" href="#pills-particular" role="tab" aria-controls="pills-particular" aria-selected="true">Particular</a>
-											</li>
+										<li class="nav-item">
+											<a class="nav-link active" id="pills-sadt-tab" data-toggle="pill" href="#pills-sadt" role="tab"
+												aria-controls="pills-sadt" aria-selected="true">SADT</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" id="pills-particular-tab" data-toggle="pill" href="#pills-particular"
+												role="tab" aria-controls="pills-particular" aria-selected="true">Particular</a>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -839,15 +849,15 @@
 							<a href="" id="addExamesEProcedimento" class="btn btn-gradient btn-radius">+</a>
 						</div>
 						<div class="col-md-12">
-							<div class=	"form-radio d-flex">
-									<div class="custom-control custom-radio">
-										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
-										<label class="switch">
-												<input type="checkbox" checked name="compartilhar-com-paciente">
-												<span class="slider round"></span>
-											</label>
-									</div>
+							<div class="form-radio d-flex">
+								<div class="custom-control custom-radio">
+									<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+									<label class="switch">
+										<input type="checkbox" checked name="compartilhar-com-paciente">
+										<span class="slider round"></span>
+									</label>
 								</div>
+							</div>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar documento">
@@ -890,7 +900,8 @@
 					<input type="hidden" name="formType" value="prescriptions" />
 					<div class="row">
 						<div class="col-md-12">
-								<input type="text" name="data-prescricoes" placeholder="Data" onfocus="(this.type='date')" onblur="(this.type='date')" id="data-prescricoes">
+							<input type="text" name="data-prescricoes" placeholder="Data" onfocus="(this.type='date')"
+								onblur="(this.type='date')" id="data-prescricoes">
 						</div>
 						<div class="col-md-12 addmedication">
 							<div class="row">
@@ -906,15 +917,15 @@
 							<a id="addMedicamentoPrescricao" class="btn btn-gradient btn-radius">+</a>
 						</div>
 						<div class="col-md-12">
-							<div class=	"form-radio d-flex">
-									<div class="custom-control custom-radio">
-										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
-										<label class="switch">
-												<input type="checkbox" checked name="compartilhar-com-paciente">
-												<span class="slider round"></span>
-											</label>
-									</div>
+							<div class="form-radio d-flex">
+								<div class="custom-control custom-radio">
+									<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+									<label class="switch">
+										<input type="checkbox" checked name="compartilhar-com-paciente">
+										<span class="slider round"></span>
+									</label>
 								</div>
+							</div>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar Documento">
@@ -959,7 +970,8 @@
 						<div class="col-md-12">
 							<div class="row">
 								<div class="col-md-6">
-									<input type="text" name="data-documentos" placeholder="Data" onfocus="(this.type='date')" onblur="(this.type='date')" id="data-documentos">
+									<input type="text" name="data-documentos" placeholder="Data" onfocus="(this.type='date')"
+										onblur="(this.type='date')" id="data-documentos">
 								</div>
 								<div class="col-md-6">
 									<div class="select">
@@ -977,45 +989,45 @@
 							<a id="addAtestadoModal" class="btn btn-radius btn-gradient">+</a>
 						</div>
 						<div class="col-md-12">
-							<div class=	"form-radio d-flex">
-									<div class="custom-control custom-radio">
-										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
-										<label class="switch">
-												<input type="checkbox" checked name="compartilhar-com-paciente">
-												<span class="slider round"></span>
-											</label>
-									</div>
+							<div class="form-radio d-flex">
+								<div class="custom-control custom-radio">
+									<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+									<label class="switch">
+										<input type="checkbox" checked name="compartilhar-com-paciente">
+										<span class="slider round"></span>
+									</label>
 								</div>
+							</div>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar documento">
 						</div>
-						</div>
 					</div>
-				</form>
-				<script>
-					$(document).ready(function () {
-						$('#form-attestations').on('submit', function (e) {
-							e.preventDefault()
+			</div>
+			</form>
+			<script>
+				$(document).ready(function () {
+					$('#form-attestations').on('submit', function (e) {
+						e.preventDefault()
 
-							$.ajax({
-								type: 'PUT',
-								url: '/medico-atendimento',
-								datatype: 'html',
-								contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-								data: $('#form-attestations').serialize(),
-								success: function (result) {
-									alertify.notify(result, 'success', 5)
-								},
-								error: function (xhr, status, error) {
-									alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
-								},
-							})
+						$.ajax({
+							type: 'PUT',
+							url: '/medico-atendimento',
+							datatype: 'html',
+							contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+							data: $('#form-attestations').serialize(),
+							success: function (result) {
+								alertify.notify(result, 'success', 5)
+							},
+							error: function (xhr, status, error) {
+								alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+							},
 						})
 					})
-				</script>
-			</div>
+				})
+			</script>
 		</div>
+	</div>
 	</div>
 
 	<div class="modal" id="anexos">
@@ -1028,20 +1040,20 @@
 					<input type="hidden" name="eventId" value="<%= event._id %>" />
 					<div class="row">
 						<div class="col-md-12">
-								<div action="/upload-target" class="dropzone dz-clickable" id="file_ads">
-									<div class="dz-message">ANEXAR IMAGEM DE BANNER / VIDEO</div>
+							<div action="/upload-target" class="dropzone dz-clickable" id="file_ads">
+								<div class="dz-message">ANEXAR IMAGEM DE BANNER / VIDEO</div>
 							</div>
 						</div>
 						<div class="col-md-12">
-							<div class=	"form-radio d-flex">
-									<div class="custom-control custom-radio">
-										<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
-										<label class="switch">
-												<input type="checkbox" checked name="compartilhar-com-paciente">
-												<span class="slider round"></span>
-											</label>
-									</div>
+							<div class="form-radio d-flex">
+								<div class="custom-control custom-radio">
+									<p for="compartilhar-com-paciente">Compartilhar com o paciente</p>
+									<label class="switch">
+										<input type="checkbox" checked name="compartilhar-com-paciente">
+										<span class="slider round"></span>
+									</label>
 								</div>
+							</div>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar Documento">
@@ -1107,9 +1119,219 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal prontuario" id="prontuario">
+		<div class="modal-box">
+			<div class="modal-title__finish">
+				<form id="form-end-attendance">
+					<input type="hidden" name="eventId" value="<%= event._id %>">
+					<input type="hidden" name="patientId" value="<%= patient._id %>">
+					<!-- <h3>Você quer terminar?</h3>
+						<p>Atendimento iniciado: <strong id="duration"></strong></p> -->
+					<div class="d-flex info-paciente">
+						<img alt="<%= patient.name %>"
+							src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+						<div class="d-flex flex-column">
+							<h3 class="name-paciente">Nome paciente<%= patient.name %></h3>
+							<span class="info-paciente">Info <%= event.patientInfo.patientAgreement %></span>
+						</div>
+					</div>
+					<div class="tempo-de-atendimento d-flex flex-column align-items-center">
+						<p>Tempo de atendimento</p>
+						<strong id="duration"></strong>
+					</div>
+					<div class="finalizar-atendimento d-flex justify-content-between">
+						<a class="btn btn-gradient" id="remarcarConsulta">Remarcar uma consulta (retorno)</a>
+						<button type="submit" class="btn btn-red">Finalizar serviço</button>
+					</div>
+					<!-- <div class="consulta-medica__item">
+							<figure class="atendimento__photo">
+								<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+							</figure>
+							<div class="atendimento__paciente">
+								<h3><%= patient.name %></h3>
+								<span><%= event.patientInfo.patientAgreement %></span>
+							</div>
+						</div>
+						<button type="	submit" class="btn btn-red">Finalizar serviço</button> -->
+				</form>
+				<script>
+					$(document).ready(function () {
+						const dateNow = '<%= attendanceNow.createdAt %>'
+						$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+						$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+						setInterval(function () {
+							$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+							$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+						}, 30 * 1000) // a cada 30s
+						$('#form-end-attendance').on('submit', function (e) {
+							e.preventDefault()
+							$.ajax({
+								type: 'PATCH',
+								url: '/medico-atendimento',
+								datatype: 'html',
+								contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+								data: $('#form-end-attendance').serialize(),
+								success: function (result) {
+									alertify.notify(result, 'success', 5)
+									setTimeout(function () {
+										window.location.href = '/atendimento/<%= attendanceNow._id %>'
+									}, 500)
+								},
+								error: function (xhr, status, error) {
+									alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+								},
+							})
+						})
+					})
+				</script>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal finish compartilharprontuario " id="compartilharprontuario">
+			<div class="modal-box">
+				<div class="modal-title__finish">
+					<form id="form-end-attendance">
+						<input type="hidden" name="eventId" value="<%= event._id %>">
+						<input type="hidden" name="patientId" value="<%= patient._id %>">
+						<!-- <h3>Você quer terminar?</h3>
+							<p>Atendimento iniciado: <strong id="duration"></strong></p> -->
+						<div class="d-flex info-paciente">
+							<img alt="<%= patient.name %>"
+								src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+							<div class="d-flex flex-column">
+								<h3 class="name-paciente">Compartilhar prontuário</h3>
+								<span class="info-paciente">Info <%= event.patientInfo.patientAgreement %></span>
+							</div>
+						</div>
+						<div class="tempo-de-atendimento d-flex flex-column align-items-center">
+							<p>Tempo de atendimento</p>
+							<strong id="duration"></strong>
+						</div>
+						<div class="finalizar-atendimento d-flex justify-content-between">
+							<a class="btn btn-gradient" id="remarcarConsulta">Remarcar uma consulta (retorno)</a>
+							<button type="submit" class="btn btn-red">Finalizar serviço</button>
+						</div>
+						<!-- <div class="consulta-medica__item">
+								<figure class="atendimento__photo">
+									<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+								</figure>
+								<div class="atendimento__paciente">
+									<h3><%= patient.name %></h3>
+									<span><%= event.patientInfo.patientAgreement %></span>
+								</div>
+							</div>
+							<button type="	submit" class="btn btn-red">Finalizar serviço</button> -->
+					</form>
+					<script>
+						$(document).ready(function () {
+							const dateNow = '<%= attendanceNow.createdAt %>'
+							$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+							$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+							setInterval(function () {
+								$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+								$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+							}, 30 * 1000) // a cada 30s
+							$('#form-end-attendance').on('submit', function (e) {
+								e.preventDefault()
+								$.ajax({
+									type: 'PATCH',
+									url: '/medico-atendimento',
+									datatype: 'html',
+									contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+									data: $('#form-end-attendance').serialize(),
+									success: function (result) {
+										alertify.notify(result, 'success', 5)
+										setTimeout(function () {
+											window.location.href = '/atendimento/<%= attendanceNow._id %>'
+										}, 500)
+									},
+									error: function (xhr, status, error) {
+										alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+									},
+								})
+							})
+						})
+					</script>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal finish popupaciente" id="popupaciente">
+				<div class="modal-box">
+					<div class="modal-title__finish">
+						<form id="form-end-attendance">
+							<input type="hidden" name="eventId" value="<%= event._id %>">
+							<input type="hidden" name="patientId" value="<%= patient._id %>">
+							<!-- <h3>Você quer terminar?</h3>
+								<p>Atendimento iniciado: <strong id="duration"></strong></p> -->
+							<div class="d-flex info-paciente">
+								<img alt="<%= patient.name %>"
+									src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+								<div class="d-flex flex-column">
+									<h3 class="name-paciente">Pop up paciente<%= patient.name %></h3>
+									<span class="info-paciente">Info <%= event.patientInfo.patientAgreement %></span>
+								</div>
+							</div>
+							<div class="tempo-de-atendimento d-flex flex-column align-items-center">
+								<p>Tempo de atendimento</p>
+								<strong id="duration"></strong>
+							</div>
+							<div class="finalizar-atendimento d-flex justify-content-between">
+								<a class="btn btn-gradient" id="remarcarConsulta">Remarcar uma consulta (retorno)</a>
+								<button type="submit" class="btn btn-red">Finalizar serviço</button>
+							</div>
+							<!-- <div class="consulta-medica__item">
+									<figure class="atendimento__photo">
+										<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+									</figure>
+									<div class="atendimento__paciente">
+										<h3><%= patient.name %></h3>
+										<span><%= event.patientInfo.patientAgreement %></span>
+									</div>
+								</div>
+								<button type="	submit" class="btn btn-red">Finalizar serviço</button> -->
+						</form>
+						<script>
+							$(document).ready(function () {
+								const dateNow = '<%= attendanceNow.createdAt %>'
+								$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+								$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+								setInterval(function () {
+									$("#time_from_now").html('Atendimento iniciado ' + moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+									$("#duration").html(moment(moment(dateNow, 'DD/MM/YYYY - h:mm:ss').format('LTS'), 'LTS').fromNow())
+								}, 30 * 1000) // a cada 30s
+								$('#form-end-attendance').on('submit', function (e) {
+									e.preventDefault()
+									$.ajax({
+										type: 'PATCH',
+										url: '/medico-atendimento',
+										datatype: 'html',
+										contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+										data: $('#form-end-attendance').serialize(),
+										success: function (result) {
+											alertify.notify(result, 'success', 5)
+											setTimeout(function () {
+												window.location.href = '/atendimento/<%= attendanceNow._id %>'
+											}, 500)
+										},
+										error: function (xhr, status, error) {
+											alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+										},
+									})
+								})
+							})
+						</script>
+					</div>
+				</div>
+			</div>
 </section>
 
 <%- include includes/footer.ejs %>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
