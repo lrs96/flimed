@@ -388,10 +388,10 @@
 
 .btn-red {
 	color: $white;
-	@include gradient($red-t, $red-b, horizontal);
+	@include gradient(#F56161, #F56161, horizontal);
 
 	&:hover {
-		@include gradient($red-b, $red-t, horizontal);
+		@include gradient(#F56161, #F56161, horizontal);
 	}
 }
 
@@ -1304,14 +1304,12 @@ section.box-login {
 		a.btn {
 			color: #fff;
 			&:hover {
-				color: #fff;
+				color: #fff !important;
 			}
 		}
 
-
 		.row-add-diagnosticos {
-			
-			margin: 15px 0;
+			margin: 20px 0;
 			.btn-red {
 				padding: 15px 20px;
 				text-align: center;
@@ -1321,6 +1319,7 @@ section.box-login {
 			}
 		}
 	}
+
 	#form-examsAndProcedures {
 		.col-md-6 {
 			ul {
