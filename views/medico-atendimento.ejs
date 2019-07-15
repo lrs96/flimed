@@ -280,10 +280,24 @@
 								<form id="form-end-attendance">
 									<input type="hidden" name="eventId" value="<%= event._id %>">
 									<input type="hidden" name="patientId" value="<%= patient._id %>">
-									<h3>Você quer terminar?</h3>
-									<p>Atendimento iniciado: <strong id="duration"></strong></p>
-									
-									<div class="consulta-medica__item">
+									<!-- <h3>Você quer terminar?</h3>
+									<p>Atendimento iniciado: <strong id="duration"></strong></p> -->
+									<div class="d-flex info-paciente">
+										<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
+										<div class="d-flex flex-column">
+											<h3 class="name-paciente">Nome paciente<%= patient.name %></h3>
+											<span class="info-paciente">Info <%= event.patientInfo.patientAgreement %></span>
+										</div>
+									</div>
+									<div class="tempo-de-atendimento d-flex flex-column align-items-center">
+										<p>Tempo de atendimento</p>
+										<strong id="duration"></strong>
+									</div>
+									<div class="finalizar-atendimento d-flex justify-content-between">
+										<a class="btn btn-gradient" id="remarcarConsulta">Remarcar uma consulta (retorno)</a>
+										<button type="submit" class="btn btn-red">Finalizar serviço</button>
+									</div>
+									<!-- <div class="consulta-medica__item">
 										<figure class="atendimento__photo">
 											<img alt="<%= patient.name %>" src="<% if(patient.profilePicture) { %>/profilePicture/<%= patient._id %><% } else { %>/views/img/hitchcock.jpg<% } %>">
 										</figure>
@@ -292,7 +306,7 @@
 											<span><%= event.patientInfo.patientAgreement %></span>
 										</div>
 									</div>
-									<button type="submit" class="btn btn-red">Finalizar serviço</button>
+									<button type="submit" class="btn btn-red">Finalizar serviço</button> -->
 								</form>
 								<script>
 									$(document).ready(function() {

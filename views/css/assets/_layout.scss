@@ -1630,3 +1630,36 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.modal.finish {
+	.modal-box {
+		form {
+			.info-paciente {
+				padding: 15px 30px;
+				background-color: rgba(65, 104, 136, 0.1);
+				align-items: center;
+				.d-flex.flex-column {
+					display: flex;
+					flex-direction: column;
+					color: #416888;
+					.name-paciente {
+						padding-bottom: 10px;
+					}
+				}
+			}
+			.tempo-de-atendimento {
+				p {
+					text-transform: uppercase;
+					font-size: 20px;
+					text-align: center;
+				}
+			}
+			.finalizar-atendimento  {
+				flex-wrap: nowrap;
+				a, button {
+					width: 47%;
+				}
+			}
+		}
+	}
+}
