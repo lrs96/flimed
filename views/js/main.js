@@ -262,19 +262,17 @@ romae = {
 				$("ul.menu a[href='/medico-contabilidade]").addClass("active")
 			} else if ($(".row").hasClass("medico-historico")) {
 				$("ul.menu a[href='/medico-historico]").addClass("active")
-			} else if ($(".row").hasClass("cliente-painel")) {
+			} else if ($(".box__panel").hasClass("cliente-painel")) {
 				$("ul.menu a[href='/cliente-painel]").addClass("active")
-			} else if ($(".row").hasClass("perfil-cliente")) {
+			} else if ($(".box__panel").hasClass("perfil-cliente")) {
 				$("ul.menu a[href='/cliente-perfil]").addClass("active")
-			} else if ($(".row").hasClass("cliente-historico")) {
+			} else if ($(".box__panel").hasClass("cliente-historico")) {
 				$("ul.menu a[href='/cliente-historico]").addClass("active")
-			} else if ($(".row").hasClass("cliente-perguntas")) {
+			} else if ($(".box__questions").hasClass("cliente-perguntas")) {
 				$("ul.menu a[href='/cliente-perguntas]").addClass("active")
-			} else if ($(".row").hasClass("cliente-horarios")) {
+			} else if ($(".ad-box").hasClass("cliente-horarios")) {
 				$("ul.menu a[href='/cliente-horarios]").addClass("active")
 			}
-
-
 		});
 	},
 	addMaisEspecialidade: () => {
