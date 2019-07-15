@@ -1435,7 +1435,11 @@ section.box-login {
 }
 
 .cliente-perguntas {
-	.atendimento-paciente {
+	.atendimento-paciente,
+	.col-md-12 {
+		padding-left: 0;
+		padding-right: 0;
+		
 		.row-perguntas {
 			padding-top: 30px;
 			.row {
