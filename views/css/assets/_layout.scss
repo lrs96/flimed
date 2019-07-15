@@ -46,7 +46,7 @@
 		min-height: 130px;
 		height: 130px;
 	}
-	
+
 
 	input[type="date"] {
 		&:before {
@@ -1325,6 +1325,7 @@ section.box-login {
 		}
 		a.btn {
 			color: #fff;
+			text-transform: normal;
 			&:hover {
 				color: #fff !important;
 			}
