@@ -706,6 +706,41 @@ Exclusive MENU
 			}
 		}
 	}
+
+	.modal {
+		.modal-box {
+			.today-list {
+				.today-list__item {
+					padding: 0 0 0 30px;
+					.infos {
+						.d-flex.flex-column {
+							padding-right: 5px;
+							p {
+								font-size: 12px;
+							}
+						}
+					}
+				}
+			}
+			form {
+				.row-add-diagnosticos {
+					.row {
+						flex-wrap: nowrap;
+						[class*="col"] {
+							min-width: 50%;
+						}
+					}
+				}
+			}
+			#form-examsAndProcedures  {
+				.col-md-6 {
+					ul {
+						margin-bottom: 20px;
+					}
+				}
+			}
+		}
+	}
 }
 
 @media (max-width: 991px) {
