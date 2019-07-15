@@ -1,6 +1,6 @@
 <%- include includes/header-cliente.ejs %>
 
-<section class="box__questions">
+<section class="box__questions cliente-perguntas">
 	<div class="container">
 		<div class="bg-white">
 			<h3>Perguntas feitas por você</h3>
@@ -37,6 +37,21 @@
 				<% } else { %>
 					<p>Você ainda não fez nenhuma pergunta</p>
 				<% } %>
+			</div>
+			<div class="col-md-12">
+				<div class="mosaic-item">
+					<h3>Indiciar um paciente(indique amigos)</h3>
+					<form action="" class="form">
+						<div class="row">
+							<div class="col-md-12">
+								<textarea name="fazer-uma-pergunta" id="fazer-uma-pergunta" placeholder="Faça uma pergunta" cols="30" rows="10"></textarea>
+							</div>
+							<div class="col-md-12">
+								<input type="submit" class="btn btn-gradient" value="Salvar alterações">
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>

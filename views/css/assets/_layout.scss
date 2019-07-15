@@ -1285,7 +1285,7 @@ section.box-login {
 .modal {
 	form {
 		input, select, textarea {
-			background-color: #ECEFF3;
+			background-color: #ECEFF3 !important;
 		}
 		input[type="submit"] {
 			letter-spacing: .5px;

@@ -410,22 +410,22 @@
 					<input type="hidden" name="formType" value="anamnesis" />
 					<div class="row">
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="Queixa principal e duração:"></textarea>
+							<textarea name="queixa" cols="30" rows="10" placeholder="Queixa principal e duração:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="História da moléstia atual:"></textarea>
+							<textarea name="molestia" cols="30" rows="10" placeholder="História da moléstia atual:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="Investigação dos diversos aparelhos:"></textarea>
+							<textarea name="investigacao" cols="30" rows="10" placeholder="Investigação dos diversos aparelhos:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="Medicações em uso:"></textarea>
+							<textarea name="medicacaoemuso" cols="30" rows="10" placeholder="Medicações em uso:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="Antecedentes:"></textarea>
+							<textarea name="antecedentes" cols="30" rows="10" placeholder="Antecedentes:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="Observações:"></textarea>
+							<textarea name="observacoes" cols="30" rows="10" placeholder="Observações:"></textarea>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar documento">
@@ -468,19 +468,19 @@
 					<input type="hidden" name="formType" value="Exame físico" />
 					<div class="row">
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="Exame neurológico:"></textarea>
+							<textarea name="exame-neurologico" cols="30" rows="10" placeholder="Exame neurológico:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="Exame físico geral:"></textarea>
+							<textarea name="exame-fisico" cols="30" rows="10" placeholder="Exame físico geral:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="Laboratoriais:"></textarea>
+							<textarea name="laboratoriais" cols="30" rows="10" placeholder="Laboratoriais:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="Imagem:"></textarea>
+							<textarea name="image-exame-fisico" cols="30" rows="10" placeholder="Imagem:"></textarea>
 						</div>
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="Observações:"></textarea>
+							<textarea name="observacoes-exame-fisico" cols="30" rows="10" placeholder="Observações:"></textarea>
 						</div>
 						<div class="col-md-12">
 							<div class=	"form-radio d-flex">
@@ -562,7 +562,7 @@
 							</div>
 						</div>
 						<div class="col-md-12">
-							<textarea name="biography" cols="30" rows="10" placeholder="Observações:"></textarea>
+							<textarea name="observacoes-diagnostico" cols="30" rows="10" placeholder="Observações:"></textarea>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar Documento">
@@ -660,8 +660,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-">
-								<a href="" id="addOrcamentoModal" class="btn btn-gradient m-top">+</a>
+						<div class="col-md-12 row-add">
+								<a href="" id="addOrcamentoModal" class="btn btn-gradient">+</a>
 							</div>
 						<div class="col-md-4 offset-md-8">
 							<input type="submit" class="btn btn-gradient" value="SALVAR">
@@ -717,15 +717,6 @@
 												<a class="nav-link active" id="pills-particular-tab" data-toggle="pill" href="#pills-particular" role="tab" aria-controls="pills-particular" aria-selected="true">Particular</a>
 											</li>
 									</ul>
-									<!-- <label for="">Modelo de Exames:</label>
-									<div class="select">
-										<select name="examsModel" id="">
-											<option selected disabled>Select model</option>
-										</select>
-									</div> -->
-								</div>
-								<div class="col-md-12 d-flex justify-content-center">
-									<a href="" class="btn btn-gradient m-top">+</a>
 								</div>
 							</div>
 						</div>
@@ -741,6 +732,9 @@
 									<input type="text" name="amount" placeholder="Quantidade">
 								</div>
 							</div>
+						</div>
+						<div class="col-md-12 row-add">
+							<a href="" id="addExamesEProcedimento" class="btn btn-gradient">+</a>
 						</div>
 						<div class="col-md-12">
 							<input type="submit" class="btn btn-gradient" value="Salvar documento">
@@ -796,8 +790,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-12">
-							<a id="addMedicamentoPrescricao" class="btn btn-radius">+</a>
+						<div class="col-md-12 row-add">
+							<a id="addMedicamentoPrescricao" class="btn btn-gradient btn-radius">+</a>
 						</div>
 						<div class="col-md-12">
 							<label class="option-radio">
@@ -862,8 +856,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-12">
-							<a id="addAtestadoModal" class="btn btn-radius">+</a>
+						<div class="col-md-12 row-add">
+							<a id="addAtestadoModal" class="btn btn-radius btn-gradient">+</a>
 						</div>
 						<div class="col-md-12">
 							<label for="">Atestado:</label>
@@ -871,7 +865,7 @@
 						</div>
 						
 						<div class="col-md-12">
-							<input type="submit" class="btn btn-gradient" value="SALVAR">
+							<input type="submit" class="btn btn-gradient" value="Salvar documento">
 						</div>
 						</div>
 					</div>
