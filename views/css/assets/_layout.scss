@@ -1805,6 +1805,8 @@ input:checked + .slider:before {
 					color: #fff;
 					border-radius: 8px;
 					.d-flex.img {
+						align-items: center;
+						padding-bottom: 10px;
 						.border {
 							background-color: #6F7B8B;
 							padding: 8px;
@@ -1812,6 +1814,8 @@ input:checked + .slider:before {
 						}
 						.data {
 							font-size: 14px;
+							margin-bottom: 0;
+							padding-left: 10px;
 						}
 					}
 					.title {
