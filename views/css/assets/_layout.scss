@@ -1295,9 +1295,18 @@ section.box-login {
 		.today-list__item {
 			padding: 0 30px;
 			color: #4F627D;
+			&::before {
+				content: "";
+				height: 100%;
+				width: 2px;
+				border-left: 2px dashed #416888;
+				position: absolute;
+				left: 0;
+				top: 15px;
+			}
 			p {
 				font-weight: 400;
-				font-size: 16px;
+				font-size: 14px;
 				color: #8897AA;
 			}
 			.content {
@@ -1305,9 +1314,11 @@ section.box-login {
 				.data {
 					font-weight: 600;
 					font-size: 2em;
+					color: #4F627D;
 				}
 				.doctor {
 					padding-left: 15px;
+					color: #4F627D;
 				}
 			}
 			.infos {
@@ -1321,6 +1332,7 @@ section.box-login {
 				}
 				a.btn {
 					display: table;
+					color: #fff;
 				}
 			}
 		}
