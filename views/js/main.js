@@ -259,19 +259,19 @@ romae = {
 			} else if ($("section").hasClass("medico-financeiro")) {
 				$("ul.menu a[href='/medico-financeiro']").addClass("active")
 			} else if ($(".row").hasClass("medico-contabilidade")) {
-				$("ul.menu a[href='/medico-contabilidade]").addClass("active")
+				$("ul.menu a[href='/medico-contabilidade']").addClass("active")
 			} else if ($(".row").hasClass("medico-historico")) {
-				$("ul.menu a[href='/medico-historico]").addClass("active")
+				$("ul.menu a[href='/medico-historico']").addClass("active")
 			} else if ($(".box__panel").hasClass("cliente-painel")) {
-				$("ul.menu a[href='/cliente-painel]").addClass("active")
+				$("ul.menu a[href='/cliente-painel']").addClass("active")
 			} else if ($(".box__panel").hasClass("perfil-cliente")) {
-				$("ul.menu a[href='/cliente-perfil]").addClass("active")
+				$("ul.menu a[href='/cliente-perfil']").addClass("active")
 			} else if ($(".box__panel").hasClass("cliente-historico")) {
-				$("ul.menu a[href='/cliente-historico]").addClass("active")
+				$("ul.menu a[href='/cliente-historico']").addClass("active")
 			} else if ($(".box__questions").hasClass("cliente-perguntas")) {
-				$("ul.menu a[href='/cliente-perguntas]").addClass("active")
+				$("ul.menu a[href='/cliente-perguntas']").addClass("active")
 			} else if ($(".ad-box").hasClass("cliente-horarios")) {
-				$("ul.menu a[href='/cliente-horarios]").addClass("active")
+				$("ul.menu a[href='/cliente-horarios']").addClass("active")
 			}
 		});
 	},
