@@ -1,32 +1,8 @@
 <%- include includes/header-cliente.ejs %>
 
-<section class="box__panel">
+<section class="box__panel perfil-cliente">
 	<div class="container">
 		<div class="row mosaic">
-			<div class="col-md-4">
-				<div class="mosaic-item tam">
-					<h3>Foto do perfil</h3>
-					
-					<div class="picture-profile">
-						<div class="picture-profile__content">
-							<figure class="picture-profile__fig">
-								<img alt="Dr. Guilherme Marques" src="/views/img/medico.jpg">
-								<div class="image-upload">
-									<label for="file_profile">
-										<img src="/views/img/cloud.png" alt="Icon Cloud" />
-									</label>
-
-									<input id="file_profile" type="file"/>
-								</div>
-							</figure>
-							
-							<p><strong>Tamanho: </strong>1</p>
-							<p><strong>Dimensão: </strong>100X100</p>
-							<p><strong>Formatos: </strong>JPG, PNG</p>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="col-md-12 title-perfil">
 				<div class="mosaic-item">
 					<h3>Informações</h3>
@@ -112,19 +88,22 @@
 										</div>
 								<div class="col-md-3 col-sm-12">
 									<div class="select">
-										<select name="genre">
+										<select name="estado-civil">
 											<option disabled>Sexo</option>
-											<option <% if(user.genre === 'Male') { %>selected<% } %>>Masculino</option>
-											<option <% if(user.genre === 'Female') { %>selected<% } %>>Femenino</option>
+											<option >Casado(a)</option>
+											<option >Solteiro(a)</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-md-3 col-sm-12">
 										<input type="text" id="vicios" name="vicios" placeholder="Vícios">
 									</div>
-									<div class="col-md-3 col-sm-12">
-											<input type="text" id="plano-de-saude" name="plano-de-saude" placeholder="Plano de saúde">
-										</div>
+								<div class="col-md-3 col-sm-12">
+										<input type="text" id="plano-de-saude" name="plano-de-saude" placeholder="Plano de saúde">
+									</div>
+								<div class="col-md-12">
+										<input type="submit" class="btn btn-gradient" value="Salvar alterações">
+									</div>
 						</div>
 					</form>
 					<script>
@@ -153,7 +132,7 @@
 					</script>
 				</div>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-12">
 				<div class="mosaic-item">
 					<h3>Indiciar um paciente(indique amigos)</h3>
 					<form action="" class="form">
