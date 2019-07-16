@@ -27,54 +27,36 @@
 				<div class="mosaic-item">
 					<div class="row">
 						<div class="col-md-4">
-						<h2 class="title-mosaic"><strong>Histórico</strong> de atendimento</h2>
+							<h2 class="title-mosaic"><strong>Histórico</strong> de atendimento</h2>
 						</div>
 						<div class="col-md-8">
 							<form action="/" method="GET" id="pesquisa" class="form">
-									<div class="form-group relative d-flex">
-										<input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
-										<div class="icons-search">
-											<a id="filterInput" href="#"><span><img src="/views/img/icone-form.png" alt="Icone form"></span></a>
-											<button type="submit"> <span><i class="fa fa-search"></i></span></button>
-										</div>
+								<div class="form-group relative d-flex">
+									<input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+									<div class="icons-search">
+										<a id="filterInput" href="#"><span><img src="/views/img/icone-form.png" alt="Icone form"></span></a>
+										<button type="submit"> <span><i class="fa fa-search"></i></span></button>
 									</div>
+								</div>
 							</form>
 						</div>
 					</div>
 					<div class="row paciente-item">
 						<div class="col-12 separator d-flex">
-								<div class="nome"> 
-									<p>Nome</p>
-								</div>
-							 <div class="atendimento">
-									<p>Tipo de atendimento</p>
-								</div>
-								<div class="data">
-									 <p>Data</p>
-								</div>
-							 <div class="horario">
-								<p>Horário</p>
-							 </div>
-							 <div class="action">
-								<p>Ação</p>
-							</div>
-							</div>
-						<div class="col-12 info d-flex">
 							<div class="nome">
-									<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
-									<p>Roberto Alves</p>
+								<p>Nome</p>
 							</div>
-							<div class="convenio">
-								<p>Particular</p>
+							<div class="atendimento">
+								<p>Tipo de atendimento</p>
 							</div>
 							<div class="data">
-								<p>13/02/2019</p>
+								<p>Data</p>
 							</div>
 							<div class="horario">
-								<p>08:00</p>
+								<p>Horário</p>
 							</div>
 							<div class="action">
-								<a class="ver-mais" id="#verMaisPaciente" data-fancybox="HistoricoPaciente" >Ver mais</a>
+								<p>Ação</p>
 							</div>
 						</div>
 						<div class="col-12 info d-flex">
@@ -92,13 +74,13 @@
 								<p>08:00</p>
 							</div>
 							<div class="action">
-								<a class="ver-mais" id="#verMaisPaciente" data-fancybox="HistoricoPaciente"  >Ver mais</a>
+								<a class="ver-mais" id="#verMaisPaciente" data-fancybox="paciente1">Ver mais</a>
 							</div>
 						</div>
 						<div class="col-12 info d-flex">
 							<div class="nome">
-									<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
-									<p>Roberto Alves</p>
+								<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+								<p>Roberto Alves</p>
 							</div>
 							<div class="convenio">
 								<p>Particular</p>
@@ -110,67 +92,88 @@
 								<p>08:00</p>
 							</div>
 							<div class="action">
-								<a class="ver-mais" id="#verMaisPaciente" data-fancybox="HistoricoPaciente" >Ver mais</a>
+								<a class="ver-mais" id="#verMaisPaciente" data-fancybox="paciente">Ver mais</a>
+							</div>
+						</div>
+						<div class="col-12 info d-flex">
+							<div class="nome">
+								<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+								<p>Roberto Alves</p>
+							</div>
+							<div class="convenio">
+								<p>Particular</p>
+							</div>
+							<div class="data">
+								<p>13/02/2019</p>
+							</div>
+							<div class="horario">
+								<p>08:00</p>
+							</div>
+							<div class="action">
+								<a class="ver-mais" id="#verMaisPaciente" data-fancybox="historicopaciente">Ver mais</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>	
-</section>
-
-		</div>
-	</div>	
-</section>
-<div class="modal popups" id="verMaisPaciente">
-		<div class="d-flex info-paciente">
-			<img alt="Paciente nome" src="/views/img/hitchcock.jpg">
-			<div class="d-flex flex-column">
-				<h3 class="name-paciente">Nome paciente</h3>
-				<span class="info-convenio">Info </span>
-			</div>
-		</div>
-		<div class="row tags">
-			<div class="col-md-3 d-flex flex-column align-items-center">
-				<p class="indice">Idade</p>
-				<p class="info idade">25 anos</p>
-			</div>
-			<div class="col-md-6 d-flex flex-column align-items-center">
-				<p class="indice">Atendimento</p>
-				<p class="info consulta">Primeira consulta</p>
-			</div>
-			<div class="col-md-3 d-flex flex-column align-items-center">
-				<p class="indice">Horário</p>
-				<p class="info horario">25 anos</p>
-			</div>
-			<div class="col-md-12 content">
-				<h3>Tags do paciente</h3>
-				<div class="tags-item">
-					<span>NÃO FUMANTE</span>
-					<span>HIPERTENSÃO</span>
-					<span>65 KG</span>
-					<span>CONSOME ÁLCOOL</span>
-					<span>1,70 METROS</span>
-					<span>DIABÉTICO</span>
-					<span>SANGUE B+</span>
-					<span>21 ANOS</span>
-				</div>
-			</div>
-		</div>
-		<form action="" class="form">
-			<div class="row">
-				<div class="col-md-4">
-					<a class="btn btn-blue">VER PRONTUÁRIO COMPLETO</a>
-				</div>
-				<div class="col-md-4">
-					<button class="btn btn-gradient" type="submit">INICIAR</button>
-				</div>
-				<div class="col-md-4">
-					<a class="btn btn-red">CANCELAR</a>
-				</div>
-			</div>
-		</form>
 	</div>
+</section>
 
+</div>
+</div>
+</section>
+<section class="modals">
+	<div class="modal popups" id="verMaisPaciente">
+		<div class="modal-box">
+			<div class="d-flex info-paciente">
+				<img alt="Paciente nome" src="/views/img/hitchcock.jpg">
+				<div class="d-flex flex-column">
+					<h3 class="name-paciente">Nome paciente</h3>
+					<span class="info-convenio">Info </span>
+				</div>
+			</div>
+			<div class="row tags">
+				<div class="col-md-3 d-flex flex-column align-items-center">
+					<p class="indice">Idade</p>
+					<p class="info idade">25 anos</p>
+				</div>
+				<div class="col-md-6 d-flex flex-column align-items-center">
+					<p class="indice">Atendimento</p>
+					<p class="info consulta">Primeira consulta</p>
+				</div>
+				<div class="col-md-3 d-flex flex-column align-items-center">
+					<p class="indice">Horário</p>
+					<p class="info horario">25 anos</p>
+				</div>
+				<div class="col-md-12 content">
+					<h3>Tags do paciente</h3>
+					<div class="tags-item">
+						<span>NÃO FUMANTE</span>
+						<span>HIPERTENSÃO</span>
+						<span>65 KG</span>
+						<span>CONSOME ÁLCOOL</span>
+						<span>1,70 METROS</span>
+						<span>DIABÉTICO</span>
+						<span>SANGUE B+</span>
+						<span>21 ANOS</span>
+					</div>
+				</div>
+			</div>
+			<form action="" class="form">
+				<div class="row">
+					<div class="col-md-4">
+						<a class="btn btn-blue">VER PRONTUÁRIO COMPLETO</a>
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-gradient" type="submit">INICIAR</button>
+					</div>
+					<div class="col-md-4">
+						<a class="btn btn-red">CANCELAR</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
 <%- include includes/footer.ejs %>
