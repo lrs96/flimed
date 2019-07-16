@@ -295,7 +295,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="mosaic-item">
-						<h1 class="tituloresumo">Balanço</h1>
+						<h1 class="tituloresumo"><strong>Produção</strong> médica</h1>
 						<canvas id="myChart" width="100" height="100"></canvas>
 						<canvas class="balance" id="balance"></canvas>
 					</div>
@@ -307,7 +307,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 <script>
-		var ctx = document.getElementById("balance").getContext('2d');
+		var ctx = document.getElementsByClassName("balance");
 		const myChart = new Chart(ctx, {
 			type='line',
 			data: {
@@ -323,7 +323,7 @@
 		})
 </script>
 
-<script>
+<!-- <script>
 	//Balanço Fincanceiro
     const labels = '<%= labels %>'
     const data = '<%= data %>'
@@ -365,7 +365,7 @@
 			}
 		}
 	});
-</script>
+</script> -->
 
 <script type="text/javascript">
 	//Receita X Convênio
