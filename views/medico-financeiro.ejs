@@ -297,7 +297,7 @@
 					<div class="mosaic-item">
 						<h1 class="tituloresumo">Balanço</h1>
 						<canvas id="myChart" width="100" height="100"></canvas>
-						<canvas id="Balance" width="100" height="100"></canvas>
+						<canvas class="balance" id="balance" width="100" height="100"></canvas>
 					</div>
 				</div>
 			</div>
@@ -307,7 +307,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 <script>
-		var ctx = document.getElementById("#Balance").getContext('2d');
+		var ctx = document.getElementById("balance").getContext('2d');
 		const myChart = new Chart(ctx, {
 			type='line',
 			data: {
