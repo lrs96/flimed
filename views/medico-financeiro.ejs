@@ -308,7 +308,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 <script>
 		var ctx = document.getElementsByClassName("balance");
-		const myChart = new Chart(ctx, {
+		console.log(ctx.value);
+		var myChart = new Chart(ctx, {
 			type='line',
 			data: {
 				labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
@@ -316,7 +317,8 @@
 					label: "Balanço financeiro",
 					data: [0, 5000, 10000, 15000, 20000, 25000],
 					borderWidth: 6,
-					borderColor: '#416888',
+					borderColor: 'rgba(65, 104, 136, 1)',
+					pointBackgroundColor: 'rgba(1, 233, 181, 1)',
 					backgroundColor: 'transparent',
 				}]
 			}
