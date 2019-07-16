@@ -1846,3 +1846,27 @@ input:checked + .slider:before {
 		}
 	}
 }
+
+.grafico-financeiro {
+	h2 {
+		color: #416888;
+	}
+	.producao {
+		justify-content: center;
+		padding-top: 30px;
+		.d-flex {
+			padding: 30px 15px;
+			color: #416888;
+			align-items: center;
+			p {
+				font-weight: bold;
+				margin-bottom: 0;
+				padding-bottom: 15px;
+			}
+			span {
+				font-size: 20px;
+				letter-spacing: .5px;
+			}
+		}
+	}
+}
