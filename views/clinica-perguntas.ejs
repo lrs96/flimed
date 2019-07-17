@@ -1,0 +1,77 @@
+
+<%- include includes/header-clinica.ejs %>
+
+<section class="box__panel clinica-perguntas">
+  <div class="container">
+    <div class="row mosaic">
+		<div class="atendimento-paciente perguntas-medico-paciente">
+			<div class="mosaic-item">
+				<div class="row">
+					<div class="col-md-4">
+					<h2 class="title-mosaic"><strong>Perguntas</strong> dos pacientes</h2>
+					</div>
+					<div class="col-md-8">
+						<form action="/" method="GET" id="pesquisa" class="form">
+								<div class="form-group relative d-flex">
+									<input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+									<div class="icons-search">
+										<a id="filterInput" href="#"><span><img src="/views/img/icone-form.png" alt="Icone form"></span></a>
+										<button type="submit"> <span><i class="fa fa-search"></i></span></button>
+									</div>
+								</div>
+						</form>
+					</div>
+				</div>
+				<div class="row name-perguntas">
+					<div class="col-md-3">
+						<p>Nome</p>
+					</div>
+					<div class="col-md-9">
+						<p>Pergunta</p>
+					</div>
+				</div>
+				<div class="row paciente-item">
+					<div class="col-md-12 d-flex justify-content-between">
+						<div class=" col-md-3 info-paciente d-flex">
+							<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+							<p class="name-paciente">Roberto Alves</p>
+						</div>
+						<div class="col-md-7 mensagem">
+							<p class="mensage">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+						</div>
+						<div class="respoder col-md-2">
+							<a class="btn-responde">Responder</a>
+						</div>
+					</div>
+					<div class="col-md-12 d-flex justify-content-between">
+						<div class=" col-md-3 info-paciente d-flex">
+							<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+							<p class="name-paciente">Roberto Alves</p>
+						</div>
+						<div class="col-md-7 mensagem">
+							<p class="mensage">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+						</div>
+						<div class="respoder col-md-2">
+							<a class="btn-responde">Responder</a>
+						</div>
+					</div>
+					<div class="col-md-12 d-flex justify-content-between">
+						<div class=" col-md-3 info-paciente d-flex">
+							<img src="/views/img/foto-paciente.png" alt="Imagem do paciente" class="img-responsive img-paciente">
+							<p class="name-paciente">Roberto Alves</p>
+						</div>
+						<div class="col-md-7 mensagem">
+							<p class="mensage">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+						</div>
+						<div class="respoder col-md-2">
+							<a class="btn-responde">Responder</a>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<%- include includes/footer.ejs %>

@@ -1,0 +1,71 @@
+<%- include includes/header-clinica.ejs %>
+
+<section class="box__panel cliente-historico">
+  <div class="container">
+    <div class="row mosaic">
+      <div class="col-md-12 atendimento-paciente contabilidade">
+        <div class="mosaic-item">
+          <div class="row">
+            <div class="col-md-4">
+              <h2 class="title-mosaic">Histórico</h2>
+            </div>
+            <div class="col-md-8">
+              <form action="/" method="GET" id="pesquisa" class="form">
+                <div class="form-group relative d-flex">
+                  <input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+                  <div class="icons-search">
+                    <a id="filterInput" href="#"><span><img src="/views/img/icone-form.png" alt="Icone form"></span></a>
+                    <button type="submit"> <span><i class="fa fa-search"></i></span></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="indices d-flex align-items-center">
+            <div class="nome item">
+              <p>Nome</p>
+            </div>
+            <div class="account item">
+              <p>Tipo de atendimento</p>
+            </div>
+            <div class="agency item">
+              <p>Data</p>
+            </div>
+            <div class="cargo item">
+              <p>Horário</p>
+            </div>
+            <div class="cargo item">
+              <p>Médico</p>
+            </div>
+            <div class="acao item">
+              <p>Ação</p>
+            </div>
+          </div>
+          <div class="info d-flex">
+            <div class="nome">
+              <p><span class="none">Nome:</span> Roberto Alves</p>
+            </div>
+            <div class="convenio cpf">
+              <p><span class="none">Tipo de atendimento: </span> Particular</p>
+            </div>
+            <div class="data">
+              <p><span class="none">Data:</span> 13/02/2019</p>
+            </div>
+            <div class="cargo">
+              <p><span class="none">Horário: </span> 08:00</p>
+            </div>
+            <div class="cargo">
+              <p><span class="none">Médico: </span>Dr Roberto</p>
+            </div>
+            <div class="action">
+              <span class="none">Ação:</span>
+              <a class="ver-mais" id="verHistoricoClinica">Ver mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include includes/footer.ejs %>

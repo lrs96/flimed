@@ -1,197 +1,538 @@
 <%- include includes/header-clinica.ejs %>
 
-<section class="box__panel">
-	<div class="container">
-		<div class="row mosaic">
-			<div class="col-md-4">
-				<div class="mosaic-item tam">
-					<h3>Foto do perfil</h3>
-
-					<div class="picture-profile">
-						<div class="picture-profile__content">
-							<figure class="picture-profile__fig">
-								<img alt="Dr. Guilherme Marques" src="/views/img/medico.jpg">
-								<div class="image-upload">
-									<label for="file_profile">
-										<img src="/views/img/cloud.png" alt="Icon Cloud" />
-									</label>
-
-									<input id="file_profile" type="file"/>
+<form class="form" id="form-profile">
+	<section class="box__panel clinica-perfil">
+		<div class="container">
+			<div class="row mosaic">
+				<div class="col-md-3">
+					<div class="mosaic-item cards">
+						<p><strong class="number">0</strong> Pacientes do Dia</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="mosaic-item cards">
+						<p><strong class="number">0</strong> Pacientes do Mês</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="mosaic-item cards">
+						<p><strong class="number">0</strong> Atendimento</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="mosaic-item cards">
+						<p><strong class="number">0</strong> Faltaram</p>
+					</div>
+				</div>
+				<div class="col-md-12 title-perfil">
+					<h2>Perfil</h2>
+					<div class="mosaic-item">
+						<h3>Informações</h3>
+						<form id="form-change-profile" class="form">
+							<div class="row">
+								<div class="col-md-3 col-sm-12">
+									<!-- para pegar os dados do usuário, faça como abaixo no campo "value" -->
+									<!-- em caso de dúvidas, consulte src/model/userModel.js para conferir os itens do perfil do usuário -->
+									<input type="text" name="name" value="<%= user.name %>" placeholder="Nome completo">
 								</div>
-							</figure>
+								<div class="col-md-3 col-sm-12">
+									<input type="email" name="email" placeholder="E-mail">
+								</div>
+								<div class="col-md-3 col-sm-12">
+									<input type="text" name="crm" placeholder="Número de registro">
+								</div>
+								<div class="col-md-3 col-sm-12">
+									<div class="foto-upload relative">
+										<label for="upload-image">
+											<span class="img">
+												<img src="/views/img/cloud.png" alt="Icon Cloud">
+											</span>
+											<span class="place">Foto de perfil</span>
+										</label>
 
-							<p><strong>Tamanho: </strong>1</p>
-							<p><strong>Dimensão: </strong>100X100</p>
-							<p><strong>Formatos: </strong>JPG, PNG</p>
+										<input type="file" id="upload-image" accept=".jpg, .jpeg, .png" onchange="this.form.submit();"
+											class="d-none">
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-12">
+									<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+									<script
+										src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+									<input type="text" id="input-phone" name="phone" class="phone" placeholder="Telefone">
+									<script>
+										jQuery("input.phone")
+											.mask("(99) 9999-9999?9")
+											.focusout(function (event) {
+												var target, phone, element;
+												target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+												phone = target.value.replace(/\D/g, '');
+												element = $(target);
+												element.unmask();
+												if (phone.length > 10) {
+													element.mask("(99) 99999-999?9");
+												} else {
+													element.mask("(99) 9999-9999?9");
+												}
+											})
+									</script>
+								</div>
+								<div class="col-md-3 col-sm-12">
+									<div class="select">
+										<select name="genre">
+											<option disabled>Gênero</option>
+											<option <% if(user.genre === 'Male') { %>selected<% } %>>Masculino</option>
+											<option <% if(user.genre === 'Female') { %>selected<% } %>>Femenino</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-12">
+									<input type="text" onfocus="(this.type='date')" onblur="(this.type='date')" id="date"
+										name="dataDeAniversario" placeholder="Data de aniversário">
+								</div>
+								<div class="col-md-3 col-sm-12">
+									<input type="text" name="cpf" placeholder="CPF">
+									<script>
+										jQuery("input[name='cpf']")
+											.mask("999.999.999-99")
+											.focusout(function (event) {
+												var target, phone, element;
+												target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+												phone = target.value.replace(/\D/g, '');
+												element = $(target);
+												element.unmask();
+												if (phone.length > 10) {
+													element.mask("999.999.999-99");
+												} else {
+													element.mask("999.999.999-99");
+												}
+											})
+									</script>
+								</div>
+							</div>
+						</form>
+						<script>
+							$(document).ready(function () {
+								$('#form-change-profile').on('submit', function (e) {
+									e.preventDefault()
+
+									$.ajax({
+										type: 'PUT',
+										url: '/changeProfile',
+										datatype: 'html',
+										contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+										data: $('#form-change-profile').serialize(),
+										success: function (result) {
+											alertify.notify(result, 'success', 5)
+											setTimeout(function () {
+												window.location.reload()
+											}, 500)
+										},
+										error: function (xhr, status, error) {
+											alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+										},
+									})
+								})
+							})
+						</script>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="mosaic-item">
+						<h3>Biografia</h3>
+						<form id="form-add-biography" class="form">
+							<div class="row">
+								<div class="col-md-12">
+									<textarea name="biography" cols="30" rows="10" placeholder="Escreva sobre sua biografia"></textarea>
+								</div>
+							</div>
+						</form>
+						<script>
+							$(document).ready(function () {
+								$('#form-add-biography').on('submit', function (e) {
+									e.preventDefault()
+
+									$.ajax({
+										type: 'POST',
+										url: '/add-biography',
+										datatype: 'html',
+										contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+										data: $('#form-add-biography').serialize(),
+										success: function (result) {
+											alertify.notify(result, 'success', 5)
+											setTimeout(function () {
+												window.location.reload()
+											}, 500)
+										},
+										error: function (xhr, status, error) {
+											alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+										}
+									})
+								})
+							})
+						</script>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="mosaic-item">
+						<h3>Locais de atendimento</h3>
+						<div class="row">
+							<div class="col-12 input-local-de-atendimento">
+								<input type="text" name="local-de-atendimento" placeholder="Endereço de atendimento">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 d-flex justify-content-center">
+								<a class="btn btn-radius btn-gradient" id="addLocalAtendimento">+</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="mosaic-item">
+						<!-- Lista de especialidades e form para remover especialidades -->
+						<% for(i = 0; i < user.speciality.length; i++) { %>
+						<div class="col-md-12">
+							<form id="remove-speciality-<%= i %>">
+								<div class="col-md-8">
+									<%= user.speciality[i] %>
+								</div>
+								<div class="col-md-4">
+									<input type="hidden" value="<%= i %>" name="position">
+									<button type="submit" class="btn btn-gradient">Remover</button>
+								</div>
+							</form>
+							<script>
+								$(document).ready(function () {
+									$('#remove-speciality-<%= i %>').on('submit', function (e) {
+										e.preventDefault()
+
+										$.ajax({
+											type: 'DELETE',
+											url: '/add-speciality',
+											datatype: 'html',
+											contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+											data: $('#remove-speciality-<%= i %>').serialize(),
+											success: function (result) {
+												alertify.notify(result, 'success', 5)
+												setTimeout(function () {
+													window.location.reload()
+												}, 500)
+											},
+											error: function (xhr, status, error) {
+												alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+											},
+										})
+									})
+								})
+							</script>
+						</div>
+						<% } %>
+						<form id="form-add-speciality" class="form">
+							<div class="row">
+								<div class="col-md-12">
+									<h3>Especialidades</h3>
+								</div>
+								<div class="col-md-12" id="input-especialidades">
+									<input type="text" name="especialidade" placeholder="Especialidade">
+								</div>
+								<div class="col-12 d-flex justify-content-center">
+									<a id="addEspecialidade" class="btn btn-radius btn-gradient">+</a>
+								</div>
+							</div>
+						</form>
+						<script>
+							$(document).ready(function () {
+								$('#form-add-speciality').on('submit', function (e) {
+									e.preventDefault()
+
+									$.ajax({
+										type: 'POST',
+										url: '/add-speciality',
+										datatype: 'html',
+										contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+										data: $('#form-add-speciality').serialize(),
+										success: function (result) {
+											alertify.notify(result, 'success', 5)
+											setTimeout(function () {
+												window.location.reload()
+											}, 500)
+										},
+										error: function (xhr, status, error) {
+											alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+										}
+									})
+								})
+							})
+						</script>
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<div class="mosaic-item">
+						<!-- Lista de prêmios e form para remover prêmios -->
+						<% for(i = 0; i < user.awards.length; i++) { %>
+						<div class="col-md-12">
+							<form id="remove-awards-<%= i %>">
+								<div class="col-md-8">
+									<%= user.awards[i] %>
+								</div>
+								<div class="col-md-4">
+									<input type="hidden" value="<%= i %>" name="position">
+									<button type="submit" class="btn btn-gradient">Remover</button>
+								</div>
+							</form>
+							<script>
+								$(document).ready(function () {
+									$('#remove-awards-<%= i %>').on('submit', function (e) {
+										e.preventDefault()
+
+										$.ajax({
+											type: 'DELETE',
+											url: '/add-award',
+											datatype: 'html',
+											contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+											data: $('#remove-awards-<%= i %>').serialize(),
+											success: function (result) {
+												alertify.notify(result, 'success', 5)
+												setTimeout(function () {
+													window.location.reload()
+												}, 500)
+											},
+											error: function (xhr, status, error) {
+												alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+											},
+										})
+									})
+								})
+							</script>
+						</div>
+						<% } %>
+						<form id="form-add-award" class="form">
+							<div class="row">
+								<div class="col-md-12">
+									<h3>Honras e prêmios</h3>
+								</div>
+								<div class="col-md-12" id="input-premios">
+									<input type="text" name="description" placeholder="Escreva sobre este prêmio">
+								</div>
+								<div class="col-12 d-flex justify-content-center">
+									<a id="addPremios" class="btn btn-radius btn-gradient">+</a>
+								</div>
+							</div>
+						</form>
+						<script>
+							$(document).ready(function () {
+								$('#form-add-award').on('submit', function (e) {
+									e.preventDefault()
+
+									$.ajax({
+										type: 'POST',
+										url: '/add-award',
+										datatype: 'html',
+										contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+										data: $('#form-add-award').serialize(),
+										success: function (result) {
+											alertify.notify(result, 'success', 5)
+											setTimeout(function () {
+												window.location.reload()
+											}, 500)
+										},
+										error: function (xhr, status, error) {
+											alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+										}
+									})
+								})
+							})
+						</script>
+					</div>
+				</div>
+				<div class="col-md-12 atendimento-paciente contabilidade">
+					<div class="mosaic-item">
+						<div class="row">
+							<div class="col-md-4">
+								<h2 class="title-mosaic">Usuários</h2>
+							</div>
+							<div class="col-md-8">
+								<form action="/" method="GET" id="pesquisa" class="form">
+									<div class="form-group relative d-flex">
+										<input type="text" id="pesquisa" placeholder="Faça uma pesquisa">
+										<div class="icons-search">
+											<a id="filterInput" href="#"><span><img src="/views/img/icone-form.png"
+														alt="Icone form"></span></a>
+											<button type="submit"> <span><i class="fa fa-search"></i></span></button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="indices d-flex align-items-center">
+							<div class="nome item">
+								<p>Nome</p>
+							</div>
+							<div class="account item">
+								<p>E-mail</p>
+							</div>
+							<div class="agency item">
+								<p>Tipo</p>
+							</div>
+							<div class="cargo item">
+								<p>Pessoa física</p>
+							</div>
+							<div class="cargo item">
+								<p>Criado em</p>
+							</div>
+							<div class="acao item">
+								<p>Ações</p>
+							</div>
+						</div>
+						<div class="info d-flex">
+							<div class="nome">
+								<p><span class="none">Nome:</span> Anderson</p>
+							</div>
+							<div class="convenio cpf">
+								<p><span class="none">E-mail: </span> teste@email.com</p>
+							</div>
+							<div class="data">
+								<p><span class="none">Tipo:</span> 02/02/2019</p>
+							</div>
+							<div class="cargo">
+								<p><span class="none">Pessoa física: </span> Administrador</p>
+							</div>
+							<div class="cargo">
+								<p><span class="none">Criado em: </span>06/12/2019 21:06</p>
+							</div>
+							<div class="action">
+								<span class="none">Ação:</span>
+								<a class="ver-mais" id="verHistoricoClinica">Editar</a>
+							</div>
+						</div>
+						<div class="info d-flex">
+							<div class="nome">
+								<p><span class="none">Nome:</span> Anderson</p>
+							</div>
+							<div class="convenio cpf">
+								<p><span class="none">E-mail: </span> teste@email.com</p>
+							</div>
+							<div class="data">
+								<p><span class="none">Tipo:</span> 02/02/2019</p>
+							</div>
+							<div class="cargo">
+								<p><span class="none">Pessoa física: </span> Administrador</p>
+							</div>
+							<div class="cargo">
+								<p><span class="none">Criado em: </span>06/12/2019 21:06</p>
+							</div>
+							<div class="action">
+								<span class="none">Ação:</span>
+								<a class="ver-mais" id="verHistoricoClinica">Editar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-xs-12">
+					<div class="mosaic-item">
+						<h3>Alterar senha</h3>
+						<form id="form-change-password" class="form">
+							<div class="row">
+								<div class="col-md-6">
+									<input type="password" name="currentPassword" placeholder="Senha Antiga">
+								</div>
+								<div class="col-md-6">
+									<input type="password" name="newPassword" placeholder="Nova senha">
+								</div>
+							</div>
+						</form>
+						<script>
+							$(document).ready(function () {
+								$('#form-change-password').on('submit', function (e) {
+									e.preventDefault()
+
+									$.ajax({
+										type: 'PUT',
+										url: '/changePassword',
+										datatype: 'html',
+										contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+										data: $('#form-change-password').serialize(),
+										success: function (result) {
+											alertify.notify(result, 'success', 5)
+											$('#form-change-password')[0].reset()
+										},
+										error: function (xhr, status, error) {
+											alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+										},
+									})
+								})
+							})
+						</script>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="mosaic-item">
+						<h3>Fotos e vídeos</h3>
+						<a href="#media" id="gallery_media" class="btn btn-gradient">ARRASTE AQUI FOTOS E VÍDEOS DO SEU LOCAL DE
+							ATENDIMENTO</a>
+					</div>
+				</div>
+				<div class="col-md-12 submit-box">
+					<button type="submit" class="btn btn-gradient">Salvar todas as alterações</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="modal" id="media" style="display: none;">
+		<div class="modal-box">
+			<div class="modal-title">
+				<span class="io-toggler" data-io="0">
+					<span class="io-options">
+						<span class="photos" id="btnGallery_photos">Enviar fotos</span>
+						<span class="videos" id="btnGallery_videos">Enviar Vídeos</span>
+					</span>
+					<span class="io-options ui-draggable ui-draggable-handle" style="display: none;">
+						<span class="photos" id="btnGallery_photos">Enviar fotos</span>
+						<span class="videos" id="btnGallery_videos">Enviar vídeos</span>
+					</span><span class="io-options ui-draggable ui-draggable-handle" style="display: none;">
+						<span class="photos" id="btnGallery_photos">Enviar fotos</span>
+						<span class="videos" id="btnGallery_videos">Enviar vídeos</span>
+					</span><span class="io-options ui-draggable ui-draggable-handle" style="display: none;">
+						<span class="photos" id="btnGallery_photos">Enviar fotos</span>
+						<span class="videos" id="btnGallery_videos">Enviar vídeos</span>
+					</span></span>
+			</div>
+			<div class="gallery-box">
+				<div class="form form-gallery gallery-box--photos active">
+					<div class="row">
+						<div class="col-md-12">
+							<form action="/upload-target" class="dropzone dz-clickable" id="file_ads">
+								<div class="dz-message">Selecione o arquivo do seu computador clicando aqui</div>
+							</form>
+						</div>
+						<div class="col-md-4 offset-md-8">
+							<input type="submit" class="btn btn-gradient" value="SALVAR">
+						</div>
+					</div>
+				</div>
+				<div class="form form-gallery gallery-box--videos">
+					<div class="row">
+						<div class="col-md-6">
+							<form action="" data-children-count="1">
+								<input type="text" name="" placeholder="URL Video">
+								<input type="submit" value="IMPORTAR URL DO VÍDEO" class="btn btn-gradient">
+							</form>
+						</div>
+						<div class="col-md-6">
+							<form action="/upload-target" class="dropzone dz-clickable" id="file_ads">
+								<div class="dz-message">Selecioe os arquivos do seu computador clicando aqui</div>
+							</form>
+						</div>
+						<div class="col-md-4 offset-md-8">
+							<input type="submit" class="btn btn-gradient" value="SALVAR">
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-8">
-				<div class="mosaic-item">
-					<h3>Mudar senha</h3>
-					<form action="" class="form">
-						<div class="row">
-							<div class="col-md-4">
-								<input type="password" name="" placeholder="Senha Antiga">
-							</div>
-							<div class="col-md-4">
-								<input type="password" name="" placeholder="Nova senha">
-							</div>
-							<div class="col-md-4">
-								<input type="password" name="" placeholder="Repita a nova senha">
-							</div>
-							<div class="col-md-12">
-								<input type="submit" class="btn btn-gradient" value="Mude a senha">
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="mosaic-item">
-					<h3>Informação básica</h3>
-
-					<form action="" class="form">
-						<div class="row">
-							<div class="col-md-6">
-								<input type="text" name="" placeholder="Nome da Clínica">
-							</div>
-							<div class="col-md-6">
-								<input type="text" name="" placeholder="Número de registro">
-							</div>
-							<div class="col-md-12">
-								<input type="text" name="" placeholder="Endereço">
-							</div>
-							<div class="col-md-6">
-								<input type="text" name="" placeholder="Complemento">
-							</div>
-							<div class="col-md-6">
-								<input type="text" name="" placeholder="CNPJ">
-							</div>
-							<div class="col-md-6">
-								<input type="tel" name="" placeholder="Celu">
-							</div>
-							<div class="col-md-6">
-								<input type="tel" name="" placeholder="Telefone comercial">
-							</div>
-							<div class="col-md-6">
-								<input type="email" name="" placeholder="E-mail">
-							</div>
-							<div class="col-md-6">
-								<input type="text" name="" placeholder="CEP">
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="mosaic-item">
-					<h3>Adicionar usuário</h3>
-					<form action="" class="form">
-						<div class="row">
-							<div class="col-md-4">
-								<div class="select">
-									<select name="" id="">
-										<option value="">Tipo de usuário</option>
-										<option value="">Tipo 1</option>
-										<option value="">Tipo 2</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<input type="email" name="" placeholder="E-mail">
-							</div>
-							<div class="col-md-4">
-								<input type="text" name="" placeholder="Nome">
-							</div>
-							<div class="col-md-4">
-								<div class="select">
-									<select name="" id="">
-										<option value="">Gênero</option>
-										<option value="">Masculino</option>
-										<option value="">Femenino</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<input type="password" name="" placeholder="Senha">
-							</div>
-							<div class="col-md-4">
-								<input type="password" name="" placeholder="Repita a senha">
-							</div>
-							<div class="col-md-4">
-								<input type="submit" class="btn btn-gradient" value="Adicionar usuário">
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="mosaic-item">
-					<form action="" class="form">
-						<div class="row">
-							<div class="col-md-9">
-								<h3>Especialidade</h3>
-							</div>
-							<div class="col-md-3">
-								<div class="select">
-									<select name="" id="">
-										<option value="">Especialidade 1</option>
-										<option value="">Especialidade 2</option>
-										<option value="">Especialidade 3</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<input type="text" name="" placeholder="Escreva sobre sua especialidade">
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="mosaic-item">
-					<form action="" class="form">
-						<h3>Exames</h3>
-						<div class="row">
-							<div class="col-md-12">
-								<input type="text" name="" placeholder="Nome do exame">
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="mosaic-item">
-					<h3>Sobre o Centro Médico</h3>
-					<form action="" class="form">
-						<div class="row">
-							<div class="col-md-12">
-								<textarea name="" id="" cols="30" rows="10" placeholder="Escreva sobre o Centro Médico"></textarea>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="mosaic-item">
-					<h3>Tipos de serviço</h3>
-					<form action="" class="form">
-						<div class="row">
-							<div class="col-md-12">
-								<textarea name="" id="" cols="30" rows="10" placeholder="Escreva os tipos de consultas, como exames, cirurgias e consultas"></textarea>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-
-			<div class="col-md-5 submit-box">
-				<input type="submit" class="btn btn-gradient" value="Salvar edições">
-			</div>
 		</div>
-	</div>	
-</section>
-
+		<button data-fancybox-close="" class="fancybox-close-small"></button>
+	</div>
+</form>
 <%- include includes/footer.ejs %>
