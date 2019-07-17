@@ -1854,6 +1854,7 @@ input:checked + .slider:before {
 	.producao {
 		justify-content: center;
 		padding-top: 30px;
+		display: flex;
 		.d-flex {
 			padding: 30px 15px;
 			color: #416888;
