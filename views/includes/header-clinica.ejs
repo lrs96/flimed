@@ -47,74 +47,61 @@
 			<header class="header-painel" id="header_painel">
 				<div class="inner">
 					<figure class="logo-painel">
-						<a href="#!"><img src="/views/img/logo-painel.png" alt="Logo Conexão Saúde"></a>
+						<a href="/clinica-painel"><img src="/views/img/logo-painel-cliente.svg" alt="Logo Flimed"></a>
 					</figure>
 
-					<div class="">
-						<div class="mask mask-inner" id="mask"></div>
-						<figure class="main-profile__fig" id="notification">
-							<img alt="Dr. Guilherme Marques" src="views/img/medico.jpg">
-							<div class="notification">1</div>
-						</figure>
-						<div class="notification-box">
-							<div class="notification-close" id="notification_close">x</div>
-							<h5>Notifications</h5>
-
-							<div class="notification-cart">
-								<figure class="notification-cart__fig">
-									<img src="img/logo-painel.png" alt="Logo Notification">
-								</figure>
-								<div class="notification-cart__content">
-									<h6>Notification 1</h6>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nisi, id fugiat ea earum facilis!</p>
-								</div>
-							</div>
-						</div>
-					</div>
 					<nav class="nav-vestical">
 						<ul class="menu row">
-							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
-								<a href="/clinica-painel">
-									<i class="sprite-painel__home"></i>
-									<span class="menu-tooltip">Inico</span>
+							<li class="menu-item col-6 col-sm-4 col-md-12">
+								<a href="/clinica-painel" class="menu-item__target">
+									<div class="inner">
+										<div class="sprite-painel">
+											<img src="/views/img/home.svg" alt="Voltar para o Painel">
+										</div>
+										<span class="menu-tooltip">Inicio</span>
+									</div>
 								</a>
 							</li>
-							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
-								<a href="/clinica-perfil">
-									<i class="sprite-painel__perfil"></i>
-									<span class="menu-tooltip">Profile</span>
+							<li class="menu-item col-6 col-sm-4 col-md-12">
+								<a href="/clinica-perfil" class="menu-item__target">
+									<div class="inner">
+										<div class="sprite-painel">
+											<img src="/views/img/icon-profile.svg" alt="Ir para o perfil">
+										</div>
+										<span class="menu-tooltip">Perfil</span>
+									</div>
 								</a>
 							</li>
-							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
-								<a href="/clinica-medicamentos">
-									<i class="sprite-painel__perfil"></i>
-									<span class="menu-tooltip">Profile</span>
+							<li class="menu-item col-6 col-sm-4 col-md-12">
+								<a href="/clinica-medicamentos" class="menu-item__target">
+									<div class="inner">
+										<div class="sprite-painel">
+											<img src="/views/img/calendar.svg" alt="Ir para o calendário">
+										</div>
+										<span class="menu-tooltip">Medicamentos</span>
+									</div>
 								</a>
 							</li>
-							<li class="menu-item col-6 col-sm-4 col-md-4 col-lg-12">
-								<a href="/logout">
-									<i class="sprite-painel__on"></i>
-									<span class="menu-tooltip">Logout</span>
+							<li class="menu-item col-6 col-sm-4 col-md-12">
+								<a href="/logout" class="menu-item__target">
+									<div class="inner">
+										<div class="sprite-painel">
+											<img src="/views/img/sair.png" alt="Fazer logout">
+										</div>
+										<span class="menu-tooltip">Sair</span>
+									</div>
 								</a>
 							</li>
 						</ul>
 					</nav>
 				</div>
+				<div class="btn-logout">
+					<a class="logout" href="/logout">Sair</a>
+				</div>
 			</header>
 			<section class="section-main__painel">
 			
 				<section class="box__resultsearch">
-					<div class="breadcrumbs">
-						<div class="container">
-							<p id="breadcrumbs">
-								<span>
-									<span>
-										<a href="https://www.romae.com.br/">Home</a> » <strong class="breadcrumb_last">Current Page Here</strong>
-									</span>
-								</span>
-							</p>                
-						</div>
-					</div>
 
 					<%- include msg-box.ejs %>
-					<%- include adbox.ejs %>
+					<!-- <%- include adbox.ejs %> -->
