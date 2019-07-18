@@ -1952,3 +1952,11 @@ input:checked + .slider:before {
 		}
 	}
 }
+
+.atendimento-paciente {
+	.btn {
+		&:hover {
+			color: #fff !important;
+		}
+	}
+}
