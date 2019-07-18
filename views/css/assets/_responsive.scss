@@ -756,7 +756,7 @@ Exclusive MENU
 	.medicoXpapciente {
 		.paciente-item {
 			.d-flex {
-				.info-paciente:last-child {
+				.info-paciente:nth-child(2) {
 					padding: 15px;
 				}
 			}
