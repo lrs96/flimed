@@ -319,49 +319,49 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script> -->
-<script>
-		var ctx = document.getElementsByClassName("line-chart");
-		const colorGreen = 'rgba(1, 233, 181, 1)';
-		var myChart = new Chart(ctx, {
-			type: 'line',
-			data: {
-				labels: ['Jan', 'Mar', 'Mai', 'Jul', 'Ago'],
-				datasets: [{
-					label: "Balanço financeiro",
-					data: [0, 5000 , 15000, 5000, 20000],
-					colorGreen,
-					borderWidth: 3,
-					borderColor: 'rgba(65, 104, 136, 1)',
-					pointBackgroundColor: 'rgba(1, 233, 181, 1)',
-					pointBorderColor: 'rgba(1, 233, 181, 1)',
-					backgroundColor: 'transparent',
-					pointHoverRadius: 10,
-					fill: false,
-				}]
-			},
-			options: {
-						scales: {
-							xAxes: [{
-								gridLines: {
-									color: "rgba(65, 104, 136, 0.4)",
-									borderDash: [1, 10],
-									borderWidth: 5,
-									borderDashOffset: 0.0,
-								}
-							}],
-							yAxes: [{
-								gridLines: {
-									color: "rgba(65, 104, 136, 0.2)",
+	<script>
+			var ctx = document.getElementsByClassName("line-chart");
+			const colorGreen = 'rgba(1, 233, 181, 1)';
+			var myChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: ['Jan', 'Mar', 'Mai', 'Jul', 'Ago'],
+					datasets: [{
+						label: "Balanço financeiro",
+						data: [0, 5000 , 15000, 5000, 20000],
+						colorGreen,
+						borderWidth: 3,
+						borderColor: 'rgba(65, 104, 136, 1)',
+						pointBackgroundColor: 'rgba(1, 233, 181, 1)',
+						pointBorderColor: 'rgba(1, 233, 181, 1)',
+						backgroundColor: 'transparent',
+						pointHoverRadius: 10,
+						fill: false,
+					}]
+				},
+				options: {
+					responsive: true,
+					scaleStartValue: 0,
+					scales: {
+						xAxes: [{
+							gridLines: {
+								color: "rgba(65, 104, 136, 0.4)",
+								borderDash: [10, 10],
+							}
+						}],
+						yAxes: [{
+							gridLines: {
+								color: "rgba(65, 104, 136, 0.2)",
+							},
+							ticks: {
+								min: 0,
+								stepSize: 5000
 								},
-								ticks: {
-									min: 0,
-									stepSize: 5000
-									},
-							}]
-						}
+						}]
 					}
-		})
-</script>
+				}
+			})
+	</script>
 
 <!-- <script>
 	//Balanço Fincanceiro
