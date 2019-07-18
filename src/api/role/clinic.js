@@ -147,7 +147,7 @@ module.exports = app => {
 
     const viewClinicProfile = (req, res) => {
         res.status(200).render('clinica-perfil', {
-            page: 'Painel',
+            page: 'Clínica Perfil',
             user: req.session.user,
             message: null
         })

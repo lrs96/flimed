@@ -428,7 +428,7 @@
 							</div>
 						</div>
 						<div class="row addContaBancaria">
-							<a href="#" class="btn btn-gradient" id="addContaBancaria">Adicionar um novo funcionário</a>
+							<a href="#" class="btn btn-gradient" id="#AdicionarPaciente" ata-toggle="modal" data-target="modalAdicionarPaciente">Adicionar um novo funcionário</a>
 					</div>
 					</div>
 				</div>
@@ -538,4 +538,68 @@
 		<button data-fancybox-close="" class="fancybox-close-small"></button>
 	</div>
 </form>
+
+
+<div class="modal fade" id="AdicionarPaciente" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarPacienteLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+	<div class="modal-content popups">
+		<div class="verpaciente">
+			<div class="d-flex info-paciente">
+				<img alt="Paciente nome" src="/views/img/hitchcock.jpg">
+				<div class="d-flex flex-column">
+					<h3 class="name-paciente">Nome paciente</h3>
+					<span class="info-convenio">Info </span>
+				</div>
+			</div>
+			<div class="row tags">
+				<div class="col-md-3 d-flex flex-column align-items-center">
+					<p class="indice">Idade</p>
+					<p class="info idade">25 anos</p>
+				</div>
+				<div class="col-md-6 d-flex flex-column align-items-center">
+					<p class="indice">Atendimento</p>
+					<p class="info consulta">Primeira consulta</p>
+				</div>
+				<div class="col-md-3 d-flex flex-column align-items-center">
+					<p class="indice">Horário</p>
+					<p class="info horario">25 anos</p>
+				</div>
+				<div class="col-md-12 content">
+					<h3>Tags do paciente</h3>
+					<div class="tags-item">
+						<span>NÃO FUMANTE</span>
+						<span>HIPERTENSÃO</span>
+						<span>65 KG</span>
+						<span>CONSOME ÁLCOOL</span>
+						<span>1,70 METROS</span>
+						<span>DIABÉTICO</span>
+						<span>SANGUE B+</span>
+						<span>21 ANOS</span>
+					</div>
+				</div>
+			</div>
+			<form action="" class="form">
+				<div class="row">
+					<div class="col-md-4">
+						<a class="btn btn-blue">VER PRONTUÁRIO COMPLETO</a>
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-gradient" type="submit">INICIAR</button>
+					</div>
+					<div class="col-md-4">
+						<a class="btn btn-red">CANCELAR</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
 <%- include includes/footer.ejs %>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
