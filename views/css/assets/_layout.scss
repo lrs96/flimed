@@ -1938,6 +1938,15 @@ input:checked + .slider:before {
 		max-width: 40vw;
 		.popups {
 			padding: 30px;
+			.tags {
+				.row {
+					.btn {
+						&:hover {
+							color: #fff;
+						}
+					}
+				}
+			}
 		}
 	}
 }
