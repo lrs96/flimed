@@ -1980,10 +1980,18 @@ input:checked + .slider:before {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
+					padding-bottom: 15px;
+					.label-70p {
+						width: 70px;
+					}
+					.label-90p {
+						width: 90px;
+					}
 					p {
 						margin-bottom: 0;
 						color: #8897AA;
 						font-size: 18px;
+						font-weight: 400;
 					}
 				}
 			}
