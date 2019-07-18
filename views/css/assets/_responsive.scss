@@ -802,6 +802,13 @@ Exclusive MENU
 			max-width: 80vw;
 			.popups {
 				padding: 30px;
+				form {
+					.row {
+						.col-md-4 {
+							margin-bottom: 15px;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -824,6 +831,7 @@ Exclusive MENU
 			max-width: 90vw;
 			.popups {
 				padding: 30px;
+				
 			}
 		}
 	}

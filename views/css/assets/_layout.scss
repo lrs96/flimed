@@ -1938,11 +1938,13 @@ input:checked + .slider:before {
 		max-width: 40vw;
 		.popups {
 			padding: 30px;
-			.tags {
+			form {
 				.row {
-					.btn {
-						&:hover {
-							color: #fff;
+					.col-md-4 {
+						.btn {
+							&:hover {
+								color: #fff;
+							}
 						}
 					}
 				}
