@@ -760,11 +760,12 @@ Exclusive MENU
 					[class*="col"] {
 						min-width: 50%;
 						.label-70p {
-							width: 60px;
+							width: 60px !important;
 						}
 						.label-90p {
-							width: 60px;
+							width: 60px !important;
 						}
+						
 						.foto-upload {
 							margin-bottom: 20px;
 							height: 60px;
