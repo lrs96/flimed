@@ -759,6 +759,12 @@ Exclusive MENU
 				form {
 					[class*="col"] {
 						min-width: 50%;
+						.label-70p {
+							width: 60px;
+						}
+						.label-90p {
+							width: 60px;
+						}
 					}
 				}
 			}
