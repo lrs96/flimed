@@ -280,10 +280,26 @@ module.exports = app => {
         .all(app.src.config.passport.authenticate())
         .get(clinic(app.src.api.role.clinic.viewClinicPanel))
 
-    app.route('/clinica-perfil')
+    app.route('/clinica-horarios')
+    .all(app.src.config.passport.authenticate())
+    .get(clinic(app.src.api.role.clinic.viewClinicHorarios))
+
+    app.route('/clinica-financeiro')
+    .all(app.src.config.passport.authenticate())
+    .get(clinic(app.src.api.role.clinic.viewClinicFinanceiro))
+
+    app.route('/clinica-contabilidade')
+    .all(app.src.config.passport.authenticate())
+    .get(clinic(app.src.api.role.clinic.viewClinicContabilidade))
+
+    app.route('/clinica-historico')
         .all(app.src.config.passport.authenticate())
-        .get(clinic(app.src.api.role.clinic.viewClinicProfile))
-    
+        .get(clinic(app.src.api.role.clinic.viewClinicHistorico))
+
+    app.route('/clinica-perguntas')
+    .all(app.src.config.passport.authenticate())
+    .get(clinic(app.src.api.role.clinic.viewClinicPerguntas))
+
     app.route('/clinica-lista-atendimento')
         .all(app.src.config.passport.authenticate())
         .get(clinic(app.src.api.role.clinic.viewClinicListAttendance))

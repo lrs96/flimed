@@ -1,0 +1,533 @@
+<%- include includes/header-clinica.ejs %>
+
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href='/views/js/fullcalendar-3.10.0/fullcalendar.min.css' rel='stylesheet' />
+    <link href='/views/js/fullcalendar-3.10.0/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <script src='/views/js/fullcalendar-3.10.0/lib/moment.min.js'></script>
+    <script src='/views/js/fullcalendar-3.10.0/lib/jquery.min.js'></script>
+    <script src='/views/js/fullcalendar-3.10.0/fullcalendar.min.js'></script>
+    <script src='/views/js/fullcalendar-3.10.0/locale/pt-br.js'></script>
+
+    <!-- CSS Alertify -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    
+    <script>
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay,listWeek'
+                },
+                defaultDate: Date(),
+                navLinks: true, // can click day/week names to navigate views
+                editable: false,
+                eventLimit: true, // allow "more" link when too many events
+                eventClick: function(event) {
+                    document.getElementById('id-event').value = event.id
+                    document.getElementById('id-event-delete').value = event.id
+                    $('#modal-event #modal-eventLabel').text(event.title + ' (' + event.type + ')') 
+                    $('#modal-event #start').text(event.start.format('DD/MM/YYYY - HH:mm'))    
+                    $('#modal-event #end').text(event.end.format('DD/MM/YYYY - HH:mm')) 
+                    if(event.patientInfo) {
+                        $('.patientInfo').show()
+                        $('#modal-event #patientAgreement').text(event.patientInfo.agreement) 
+                        $('#modal-event #patientRegisterBy').text(event.patientInfo.registerBy) 
+                        $('#modal-event #patientName').text(event.patientInfo.name)   
+                        $('#modal-event #patientGenre').text(event.patientInfo.genre) 
+                        $('#modal-event #patientEmail').text(event.patientInfo.email)  
+                        $('#modal-event #patientPhone').text(event.patientInfo.phone)  
+                        $('#modal-event #patientComment').text(event.patientInfo.comment)  
+                    } else {
+                        $('.patientInfo').hide()
+                    }   
+                    if(event.status === 'pendente') {
+                        $('.attendance').show()
+                    } else { 
+                        $('.attendance').hide()
+                        $('.attendance-done').hide()
+                    }
+                    console.log(event.attendance)
+                    if(event.attendance && event.status !== 'concluído') {
+                        $("#btn_concluir").html('Continuar consulta')
+                        $('.attendance-done').show()
+                        document.getElementById('attendance-done').value = event.id
+                        document.getElementById('attendance-done-patientId').value = event.patientInfo.id
+                    } else $('.attendance-done').hide()
+                    
+                    if(event.status === 'pendente' && event.type === 'presencial') {
+                        $('.viewHistoric').show()
+                        document.getElementById('viewHistoric-patientId').value = event.patientInfo.id
+                    } else $('.viewHistoric').hide()
+                    if(event.status === 'concluído' && event.type === 'presencial') {
+                        $('.viewAttendance').show()
+                        document.getElementById('viewAttendance').value = event.id
+                        document.getElementById('viewAttendance-patientId').value = event.patientInfo.id
+                    } else $('.viewAttendance').hide()
+                    if(event.status === 'concluído' || (event.type === 'telemedicina' && event.status === 'pendente')) {
+                        $('.delete-attendance').hide()
+                    } else { 
+                        $('.delete-attendance').show()
+                    }    
+                    if(event.type === 'presencial') {
+                        $('#modal-event #address').text(event.locationInfo.address)  
+                        $('#modal-event #city').text(event.locationInfo.city) 
+                        $('#modal-event #state').text(event.locationInfo.state) 
+                        $('#modal-event #number').text(event.locationInfo.number) 
+                        $('#modal-event #zipCode').text(event.locationInfo.zipCode) 
+                        $('.addressInfo').show()
+                    } else {
+                        $('.addressInfo').hide()
+                    }  
+                    $('#modal-event').modal('show')
+                    return false
+                },
+                events: [
+                    <% if(events.length) { %> 
+                        <% for(let i = 0; i < events.length; i++) { %>
+                            {
+                                id: '<%= events[i]._id %>',
+                                title: '<%= events[i].title %>',
+                                color: '<%= events[i].color %>',
+                                start: '<%= events[i].start %>',
+                                end: '<%= events[i].end %>',
+                                status: '<%= events[i].status %>',
+                                type: '<%= events[i].type %>',
+                                attendance: '<%= events[i].attendance %>',
+                                <% if(events[i]._idPatient) { %>
+                                    patientInfo: {
+                                        id: '<%= events[i]._idPatient %>',
+                                        agreement: '<%= events[i].patientInfo.patientAgreement %>',
+                                        registerBy: '<%= events[i].patientInfo.registerBy %>', 
+                                        name: '<%= events[i].patientInfo.patientName %>',
+                                        genre: '<%= events[i].patientInfo.patientGenre %>', 
+                                        email: '<%= events[i].patientInfo.patientEmail %>', 
+                                        phone: '<%= events[i].patientInfo.patientPhone %>',
+                                        comment: '<%= events[i].patientInfo.patientComment %>'
+                                    },
+                                <% } %>
+                                <% if(events[i].type === 'presencial') { %>
+                                    locationInfo: {
+                                        city: '<%= events[i].locationInfo.city %>',
+                                        state: '<%= events[i].locationInfo.state %>',
+                                        address: '<%= events[i].locationInfo.address %>',
+                                        number: '<%= events[i].locationInfo.number %>',
+                                        zipCode: '<%= events[i].locationInfo.zipCode %>'
+                                    }
+                                <% } %>
+                            },
+                        <% } %>
+                    <% } %>
+                ]
+            });
+        });
+    </script>
+    <style>
+    
+        #calendar {
+        }
+        .ad-box{
+                max-width: 1115px;
+        }
+        .modal-header{
+            
+            border-bottom: none;
+        }
+        .btn{
+        color:#fff;
+        }
+        .btn:hover{
+        color:#fff;
+        }
+                .fc-toolbar.fc-header-toolbar{
+    margin-bottom: 1em;
+    color: #fefeff;
+    padding: 10px;
+    background: linear-gradient(to right, #45c8e3 0%, #01e9b1 100%);
+        }
+        .fc-day-grid-event, .fc-h-event, .fc-event, .fc-start fc-end{
+        background: #1cdcc5;
+        border: solid 1px #1cdcc5;
+        padding: 5px;
+        text-align: center;
+        }
+        :focus{
+            outline: 0;
+        }
+        body{
+        margin: 0;
+    font-family: "Soin Sans Neue";
+    font-size: 16px;
+    font-weight: normal;
+    line-height: normal;
+    color: #212529;
+    text-align: left;
+    background-color: #fafaff;}
+        .fc-time{color:#fff;}.fc-title{color:#fff;}.fc-state-default {border: 1px solid;background: #ffffff;background-image: -moz-linear-gradient(top,#fff,#e6e6e6);background-image: -webkit-gradient(linear,0 0,0100%,from(#fff),to(#e6e6e6));background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);background-image: -o-linear-gradient(top,#fff,#e6e6e6);background-image: linear-gradient(to bottom,#fff,#ffffff);background-repeat: repeat-x;
+border-color: #e6e6e6 #e6e6e6 #bfbfbf;border-color: none;color: #333;text-shadow: 0 1px 1px rgba(255,255,255,.75);box-shadow: none;border: 0;
+    </style>
+
+    <%
+        let position = -1
+        for(let i = 0; i < events.length; i++) {
+            if(events[i].status === 'pendente') {
+                position = i
+                break
+            }
+        }
+    %>
+
+    <% if(position >= 0) { %>
+        <!-- fazer esse modal aparecer -->
+        <div class="modal fade" id="proximo-cliente" tabindex="-1" role="dialog" aria-labelledby="modal-adicionarHorarioLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-adicionarHorarioLabel">Adicionar horários</h5>
+                        <button type="button" class="fancybox-close-small" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <%= events[position] %>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-gradient">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+
+    <div class="container ad-box medico-horarios">
+        <div class="container">
+        <div class="box__panel-title">
+                <h3 class="titulohorario" >Escolha os horário de atendimento</h3>
+                <div class="form-filter fin-r">
+                <button  class="btn btn-dark" data-toggle="modal" data-target="#modal-adicionarHorario">
+        Adicionar horários</button>
+                </div>
+            </div>
+ <div class="row mt50">
+    <div class="col-md-12">
+    <div id='calendar'></div>
+    
+    <div class="modal fade" id="modal-adicionarHorario" tabindex="-1" role="dialog" aria-labelledby="modal-adicionarHorarioLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-adicionarHorarioLabel">Adicionar horários</h5>
+                    <button type="button" class="fancybox-close-small" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/medico-horarios" method="POST">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="date" class="col-form-label">Data</label>
+                                    <input class="form-control" name="date" id="date" type="date">
+                                </div>
+                            </div>
+                            <% for (var j = 0; j < 2; j++) { %>
+                            <div class="col-6">
+                                <label for="horaHorario<%= j %>" class="col-form-label"><% if(j === 0) { %>Horário inicial<% } else { %>Horário final<% } %></label>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <select class="form-control" name="horaHorario" id="horaHorario<%= j %>"
+                                                required>
+                                                <% for (var i = 0; i < 24; i++) { %>
+                                                <option value="<%= i %>">
+                                                    <%= ('0' + i).slice(-2) %>
+                                                </option>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        :
+                                        <div class="col">
+                                            <select class="form-control" name="minutoHorario" id="minutoHorario<%= j %>"
+                                                required>
+                                                <option value="0">00</option>
+                                                <option value="30">30</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="selectType" class="col-form-label">Tipo de atendimento</label>
+                                <select class="form-control" name="type" id="selectType">
+                                    <option selected disabled>Selecione o tipo de atendimento</option>
+                                    <option value="presencial">Presencial</option>
+                                    <option value="telemedicina">Telemedicina</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" id="showLocation" style="display: none">
+                            <div class="col-12">
+                                <label for="location" class="col-form-label">Local</label>
+                                <select class="form-control" name="location" id="location">
+                                    <option selected disabled>Selecione o local de atendimento</option>
+                                    <% for(let i = 0; i < user.location.length; i++) { %>
+                                        <% if(user.location[i].address && user.location[i].number && user.location[i].city && user.location[i].state) { %>
+                                            <option value="<%= user.location[i]._id %>"><%= user.location[i].address %>, <%= user.location[i].number %> (<%= user.location[i].city %>)</option>
+                                        <% } %>
+                                    <% } %>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-gradient">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-event" tabindex="-1" role="dialog" aria-labelledby="modal-eventLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-eventLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <dl class="dl-horizontal">
+                                <dt>Início</dt>
+                                <dd id="start"></dd>
+                            </dl>
+                        </div>
+                        <div class="col-6">
+                            <dl class="dl-horizontal">
+                                <dt>Fim</dt>
+                                <dd id="end"></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="patientInfo">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl class="dl-horizontal">
+                                    <dt>Paciente plano</dt>
+                                    <dd id="patientAgreement"></dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl class="dl-horizontal">
+                                    <dt>Paciente registrado por</dt>
+                                    <dd id="patientRegisterBy"></dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl class="dl-horizontal">
+                                    <dt>Nome do paciente</dt>
+                                    <dd id="patientName"></dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl class="dl-horizontal">
+                                    <dt>Gênero do paciente</dt>
+                                    <dd id="patientGenre"></dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl class="dl-horizontal">
+                                    <dt>Email do paciente</dt>
+                                    <dd id="patientEmail"></dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl class="dl-horizontal">
+                                    <dt>Telefone do paciente</dt>
+                                    <dd id="patientPhone"></dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-12">
+                                <dl class="dl-horizontal">
+                                    <dt>Comentários</dt>
+                                    <dd id="patientComment"></dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="addressInfo">
+                    <div class="row addressInfo">
+                        <div class="col-12">
+                            <dl class="dl-horizontal">
+                                <dt>Endereço</dt>
+                                <dd id="address"></dd>
+                            </dl>
+                        </div>
+                        <div class="col-3">
+                            <dl class="dl-horizontal">
+                                <dt>Cidade</dt>
+                                <dd id="city"></dd>
+                            </dl>
+                        </div>
+                        <div class="col-3">
+                            <dl class="dl-horizontal">
+                                <dt>Estado</dt>
+                                <dd id="state"></dd>
+                            </dl>
+                        </div>
+                        <div class="col-3">
+                            <dl class="dl-horizontal">
+                                <dt>Número</dt>
+                                <dd id="number"></dd>
+                            </dl>
+                        </div>
+                        <div class="col-3">
+                            <dl class="dl-horizontal">
+                                <dt>CEP</dt>
+                                <dd id="zipCode"></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="viewHistoric">
+                        <form>
+                            <button type="button" class="btn btn-secondary" onclick="historic2()">Ver histórico do paciente</button>
+                            <input type="hidden" name="patientId" id="viewHistoric-patientId" value="" />
+                        </form>
+                        <script>
+                            function historic2() {
+                                window.location.href = '/historico-paciente/' + document.getElementById("viewHistoric-patientId").value
+                            }
+                        </script>
+                    </div>
+                    <div class="viewAttendance">
+                        <form id="form-viewAttendance">
+                            <button type="button" class="btn btn-primary" onclick="historic()">Ver histórico do paciente</button>
+                            <input type="hidden" name="eventId" id="viewAttendance" value="" />
+                            <input type="hidden" name="patientId" id="viewAttendance-patientId" value="" />
+                            <button type="submit" class="btn btn-success">Ver prontuário</button>
+                        </form>
+                        <script>
+                            function historic() {
+                                window.location.href = '/historico-paciente/' + document.getElementById("viewAttendance-patientId").value
+                            }
+
+                            $(document).ready(function() {
+                                $('#form-viewAttendance').on('submit', function(e) {
+                                    e.preventDefault()
+
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/medico-atendimento-ver-atendimento',
+                                        datatype: 'html',
+                                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                        data: $('#form-viewAttendance').serialize(),
+                                        success: function(result) {          
+                                            window.location.href = '/atendimento/' + result.id
+                                        },
+                                        error: function(xhr, status, error) {
+                                            alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+                                        },
+                                    })
+                                })
+                            })
+                        </script>
+                    </div>
+                    <div class="attendance-done">
+                        <form id="concluir_consulta">
+                            <input type="hidden" name="eventId" id="attendance-done" value="" />
+                            <input type="hidden" name="patientId" id="attendance-done-patientId" value="" />
+                            <button type="submit" class="btn btn-success" id="btn_concluir">Concluir consulta</button>
+                        </form>
+                        <script>
+                            $(document).ready(function() {
+                                $('#concluir_consulta').on('submit', function(e) {
+                                    e.preventDefault()
+
+                                    $.ajax({
+                                        type: 'PATCH',
+                                        url: '/medico-atendimento',
+                                        datatype: 'html',
+                                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                        data: $('#concluir_consulta').serialize(),
+                                        success: function(result) {          
+                                            alertify.notify(result, 'success', 5)
+                                            setTimeout(function() { 
+                                                    window.location.reload()
+                                            }, 500)
+                                        },
+                                        error: function(xhr, status, error) {
+                                            alertify.notify(JSON.parse(xhr.responseText), 'error', 5)
+                                        },
+                                    })
+                                })
+                            })
+                        </script>
+                    </div>
+                    <div class="attendance">
+                        <form action="/medico-atendimento" method="GET">
+                            <input type="hidden" name="eventId" id="id-event" value="" />
+                            <button type="submit" class="btn btn-primary">Iniciar consulta</button>
+                        </form>
+                    </div>
+                    <div class="delete-attendance">
+                        <form action="/medico-horarios" method="POST">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <input type="hidden" name="eventId" id="id-event-delete" value="" />
+                            <button type="submit" class="btn btn-danger">Apagar horário</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <script>
+        $(document).ready(function() { 
+            $('#selectType').on('change', function() {
+                if($('#selectType option:selected').val() === 'presencial') {
+                    document.getElementById('showLocation').style.display = 'block'
+                } else if($('#selectType option:selected').val() === 'telemedicina') {
+                    document.getElementById('showLocation').style.display = 'none'
+                } else {
+                    document.getElementById('showLocation').style.display = 'none'                    
+                }
+            })
+        })
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <% if(message) { %>
+    <script>
+        const msg = JSON.parse('<%- message %>')
+        if (msg !== 'Sucesso!')
+            alertify.notify(msg, 'error', 5)
+        else
+            alertify.notify(msg, 'success', 5)
+    </script>
+    <% } %>
+<%- include includes/footer.ejs %>

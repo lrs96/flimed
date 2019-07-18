@@ -45,6 +45,47 @@ module.exports = app => {
         })
     }
 
+    const viewClinicPerguntas = (req, res) => {
+        res.status(200).render('clinica-perguntas',{
+            page: 'Perguntas',
+            user: req.session.user,
+            message: null
+        })
+    }
+
+    const viewClinicHistorico = (req, res) => {
+        res.status(200).render('clinica-historico',{
+            page: 'Histórico',
+            user: req.session.user,
+            message: null
+        })
+    }
+
+    const viewClinicContabilidade = (req, res) => {
+        res.status(200).render('clinica-contabilidade',{
+            page: 'Contabilidade',
+            user: req.session.user,
+            message: null
+        })
+    }
+
+    const viewClinicFinanceiro = (req, res) => {
+        res.status(200).render('clinica-financeiro',{
+            page: 'Financeiro',
+            user: req.session.user,
+            message: null
+        })
+    }
+
+    const viewClinicHorarios = (req, res) => {
+        res.status(200).render('clinica-horarios',{
+            page: 'Horários',
+            user: req.session.user,
+            message: null
+        })
+    }
+    
+
     const clinicRegister = async (req, res) => {
         const user = { ...req.body }
 
@@ -132,6 +173,11 @@ module.exports = app => {
     return { 
         viewClinicRegister,
         clinicRegister,
+        viewClinicHorarios,
+        viewClinicFinanceiro,
+        viewClinicContabilidade,
+        viewClinicHistorico,
+        viewClinicPerguntas,
         viewClinicPanel,
         viewClinicProfile,
         viewClinicListAttendance,
