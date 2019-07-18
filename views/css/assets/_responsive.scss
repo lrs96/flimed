@@ -753,7 +753,15 @@ Exclusive MENU
 }
 
 @media (max-width: 991px) {
-
+	.medicoXpapciente {
+		.paciente-item {
+			.d-flex {
+				.info-paciente:last-child {
+					padding: 15px;
+				}
+			}
+		}
+	}
 	.btn-logout {
 		display: none;
 	}
