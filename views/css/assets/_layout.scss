@@ -1923,6 +1923,11 @@ input:checked + .slider:before {
 	.alterar-senha {
 		margin-top: 40px;
 	}
+	.btn {
+		&:hover {
+			color: #fff !important;
+		}
+	}
 }
 
 [class*="-horarios"] {
