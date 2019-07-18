@@ -428,8 +428,9 @@
 							</div>
 						</div>
 						<div class="row addContaBancaria">
-							<a class="btn btn-gradient" href="#AdicionarPaciente" data-toggle="modal" data-target="#AdicionarPaciente">Adicionar um novo funcionário</a>
-					</div>
+							<a class="btn btn-gradient" href="#AdicionarPaciente" data-toggle="modal"
+								data-target="#AdicionarPaciente">Adicionar um novo funcionário</a>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 alterar-senha">
@@ -541,60 +542,125 @@
 
 
 <div class="modal fade" id="AdicionarPaciente" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarPacienteLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-	<div class="modal-content popups">
-		<div class="verpaciente">
-			<div class="d-flex info-paciente">
-				<img alt="Paciente nome" src="/views/img/hitchcock.jpg">
-				<div class="d-flex flex-column">
-					<h3 class="name-paciente">Nome paciente</h3>
-					<span class="info-convenio">Info </span>
-				</div>
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content popups">
+			<div class="verpaciente">
+				<h3>Informações</h3>
+				<form action="" class="form">
+					<div class="row">
+						<div class="col-md-3">
+							<input type="text" name="nome-completo" placeholder="Nome Completo">
+						</div>
+						<div class="col-md-3">
+							<input type="email" name="email" placeholder="E-mail">
+						</div>
+						<div class="col-md-3">
+							<div class="select">
+								<select name="genre">
+									<option disabled>Sexo</option>
+									<option value="M">Masculino</option>
+									<option value="F">Femenino</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="foto-upload relative">
+								<label for="upload-image">
+									<span class="img">
+										<img src="/views/img/cloud.png" alt="Icon Cloud">
+									</span>
+									<span class="place">Foto de perfil</span>
+								</label>
+								<input type="file" id="upload-image" accept=".jpg, .jpeg, .png" onchange="this.form.submit();"
+									class="d-none">
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="select">
+								<select name="person">
+									<option value="PF">Pessoa Física</option>
+									<option value="PJ">Pessoa Juridica</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<input type="text" name="tratamento" placeholder="Tratamento (dr, sr, sra)">
+						</div>
+						<div class="col-md-3">
+							<input type="text" name="especialidade" placeholder="Especialidade">
+						</div>
+						<div class="col-md-3">
+							<input type="text" name="tipo-de-usuario" placeholder="Tipo de usuário">
+						</div>
+					</div>
+					<div class="row">
+						<h3>Permissões de acesso</h3>
+						<div class="col-md-12">
+							<label class="switch">
+								Administrador
+								<input type="checkbox" checked name="compartilhar-com-paciente">
+								<span class="slider round"></span>
+							</label>
+							<label class="switch">
+								Acesso ao sistema
+								<input type="checkbox" checked name="compartilhar-com-paciente">
+								<span class="slider round"></span>
+							</label>
+							<label class="switch">
+								Agenda médica
+								<input type="checkbox" checked name="compartilhar-com-paciente">
+								<span class="slider round"></span>
+							</label>
+							<label class="switch">
+								Paciente
+								<input type="checkbox" checked name="compartilhar-com-paciente">
+								<span class="slider round"></span>
+							</label>
+							<label class="switch">
+								Gerenciar atendimentos
+								<input type="checkbox" checked name="compartilhar-com-paciente">
+								<span class="slider round"></span>
+							</label>
+							<label class="switch">
+								Informações financeiras
+								<input type="checkbox" checked name="compartilhar-com-paciente">
+								<span class="slider round"></span>
+							</label>
+							<label class="switch">
+								Alterar valor da consulta médica
+								<input type="checkbox" checked name="compartilhar-com-paciente">
+								<span class="slider round"></span>
+							</label>
+							<label class="switch">
+									Contabilidade
+								<input type="checkbox" checked name="compartilhar-com-paciente">
+								<span class="slider round"></span>
+							</label>
+							<label class="switch">
+									Configuração
+								<input type="checkbox" checked name="compartilhar-com-paciente">
+								<span class="slider round"></span>
+							</label>
+							<label class="switch">
+									Financeiro
+								<input type="checkbox" checked name="compartilhar-com-paciente">
+								<span class="slider round"></span>
+							</label>
+							<label class="switch">
+									Perfil
+								<input type="checkbox" checked name="compartilhar-com-paciente">
+								<span class="slider round"></span>
+							</label>
+							<div class="col-md-3">
+								<button class="btn btn-gradient" type="submit" id="submitUsuario">Adicionar</button>
+							</div>
+						</div>
+					</div>
+				</form>
 			</div>
-			<div class="row tags">
-				<div class="col-md-3 d-flex flex-column align-items-center">
-					<p class="indice">Idade</p>
-					<p class="info idade">25 anos</p>
-				</div>
-				<div class="col-md-6 d-flex flex-column align-items-center">
-					<p class="indice">Atendimento</p>
-					<p class="info consulta">Primeira consulta</p>
-				</div>
-				<div class="col-md-3 d-flex flex-column align-items-center">
-					<p class="indice">Horário</p>
-					<p class="info horario">25 anos</p>
-				</div>
-				<div class="col-md-12 content">
-					<h3>Tags do paciente</h3>
-					<div class="tags-item">
-						<span>NÃO FUMANTE</span>
-						<span>HIPERTENSÃO</span>
-						<span>65 KG</span>
-						<span>CONSOME ÁLCOOL</span>
-						<span>1,70 METROS</span>
-						<span>DIABÉTICO</span>
-						<span>SANGUE B+</span>
-						<span>21 ANOS</span>
-					</div>
-				</div>
-			</div>
-			<form action="" class="form">
-				<div class="row">
-					<div class="col-md-4">
-						<a class="btn btn-blue">VER PRONTUÁRIO COMPLETO</a>
-					</div>
-					<div class="col-md-4">
-						<button class="btn btn-gradient" type="submit">INICIAR</button>
-					</div>
-					<div class="col-md-4">
-						<a class="btn btn-red">CANCELAR</a>
-					</div>
-				</div>
-			</form>
 		</div>
 	</div>
-</div>
 </div>
 <%- include includes/footer.ejs %>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
