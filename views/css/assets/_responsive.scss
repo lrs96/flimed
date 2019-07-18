@@ -796,6 +796,15 @@ Exclusive MENU
 			margin: 15px 0;
 		}
 	} 
+	
+	.modal[role="dialog"] {
+		.modal-dialog {
+			max-width: 80vw;
+			.popups {
+				padding: 30px;
+			}
+		}
+	}
 }
 
 @media (max-width: 991px) and (min-width: 767px) {
@@ -808,7 +817,16 @@ Exclusive MENU
 @media (max-width: 600px) {
 }
 
+
 @media (max-width: 479px) {
+	.modal[role="dialog"] {
+		.modal-dialog {
+			max-width: 90vw;
+			.popups {
+				padding: 30px;
+			}
+		}
+	}
 
 }
 
