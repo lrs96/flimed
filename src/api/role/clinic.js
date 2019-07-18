@@ -77,12 +77,19 @@ module.exports = app => {
         })
     }
 
-    const viewClinicHorarios = (req, res) => {
-        res.status(200).render('clinica-horarios',{
-            page: 'Horários',
-            user: req.session.user,
-            message: null
-        })
+
+    const viewClinicHorarios = async (req, res) => {
+        await User.findOne({ _id: req.session.user._id }).then(async user => {
+            user.password = undefined
+            await Event.find({ _idDoctor: user._id }).then(events => {
+                res.status(200).render('clinica-horarios', {
+                    page: 'Horários',
+                    user,
+                    events,
+                    message: null
+                })
+            })
+        }).catch(_ => res.status(500).render('500'))
     }
     
 
