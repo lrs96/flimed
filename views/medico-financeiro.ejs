@@ -324,14 +324,14 @@
 		const colorGreen = 'rgba(1, 233, 181, 1)';
 		console.log(ctx.value);
 		var option =  {
-				scales: {
-					xAxes: [{
-						ticks: {
-							beginAtZero: true,
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero: true
+								}
+							}]
 						}
-					}]
-				}
-			}
+					}
 		var myChart = new Chart(ctx, {
 			type: 'line',
 			data: {
