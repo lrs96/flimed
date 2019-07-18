@@ -1965,3 +1965,21 @@ input:checked + .slider:before {
 		}
 	}
 }
+
+#AdicionarPaciente {
+	.modal-dialog {
+		max-width: 70vw;
+		.verpaciente {
+			h3 {
+				color: #416888;
+				margin-bottom: 0;
+				padding-bottom: 20px;
+			}	
+		}
+		.btn {
+			&:hover {
+				color: #fff !important
+			}
+		}
+	}
+}
