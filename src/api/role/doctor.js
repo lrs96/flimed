@@ -70,7 +70,7 @@ module.exports = app => {
 
     const viewDoctorHistory = (req, res) => {
         res.status(200).render('medico-historico',{
-            page: 'Histórico',
+            page: 'Médico Histórico',
             user: req.session.user,
             message: null
         })
@@ -243,7 +243,7 @@ module.exports = app => {
                         }   
                         
                         res.status(200).render('medico-financeiro', {
-                            page: 'Médico Financeiro',
+                            page: 'Financeiro',
                             user,
                             financialPlan,
                             financialProduct,
