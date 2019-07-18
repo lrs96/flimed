@@ -1871,3 +1871,39 @@ input:checked + .slider:before {
 		}
 	}
 }
+
+.clinica-contabilidade {
+	.row.mosaic {
+		.contabilidade {
+			h2 {
+				color: #416888;
+				padding-bottom: 30px;
+			}
+		}
+	}
+}
+
+.clinica-painel {
+	.row.mosaic {
+		.atendimento-paciente {
+			padding-bottom: 30px;
+		}
+		.medicoXpapciente {
+			.paciente-item {
+				.d-flex {
+					justify-content: flex-start;
+					.info-paciente:first-child {
+						.name-convenio {
+							font-weight: 400;
+						}
+					}
+					.horario-paciente {
+						display: flex;
+						justify-content: flex-end;
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}

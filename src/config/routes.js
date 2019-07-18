@@ -280,6 +280,10 @@ module.exports = app => {
         .all(app.src.config.passport.authenticate())
         .get(clinic(app.src.api.role.clinic.viewClinicPanel))
 
+    app.route('/clinica-perfil')
+    .all(app.src.config.passport.authenticate())
+    .get(clinic(app.src.api.role.clinic.viewClinicProfile))
+
     app.route('/clinica-horarios')
     .all(app.src.config.passport.authenticate())
     .get(clinic(app.src.api.role.clinic.viewClinicHorarios))
