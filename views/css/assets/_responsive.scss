@@ -752,6 +752,20 @@ Exclusive MENU
 	}
 }
 
+@media (max-width: 1100px) {
+	#AdicionarPaciente {
+		.modal-dialog { 
+			.verpaciente {
+				form {
+					[class*="col"] {
+						min-width: 50%;
+					}
+				}
+			}
+		}
+	}
+}
+
 @media (max-width: 991px) {
 	.medicoXpapciente {
 		.paciente-item {

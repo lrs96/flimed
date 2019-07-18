@@ -1975,6 +1975,14 @@ input:checked + .slider:before {
 				margin-bottom: 0;
 				padding-bottom: 20px;
 			}	
+			.foto-upload {
+				background-color: #f3f3f3 !important;
+				height: 65px;
+				.place {
+					font-size: 18px;
+					font-weight: 400;
+				}
+			}
 			.row.acessos {
 				[class*="col-md"] {
 					display: flex;
@@ -1999,6 +2007,9 @@ input:checked + .slider:before {
 		.btn {
 			&:hover {
 				color: #fff !important
+			}
+			&:focus {
+				box-shadow: none;
 			}
 		}
 	}
