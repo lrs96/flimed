@@ -322,22 +322,6 @@
 <script>
 		var ctx = document.getElementsByClassName("line-chart");
 		const colorGreen = 'rgba(1, 233, 181, 1)';
-		console.log(ctx.value);
-		var option =  {
-						scales: {
-							yAxes: [{
-								gridLines: {
-									color: "rgba(65, 104, 136, 1)",
-									borderDash: [3, 5],
-								},
-								scaleLabel: {
-									display: true,
-									labelString: "Speed in Miles per Hour",
-									fontColor: "green"
-								}
-							}]
-						}
-					}
 		var myChart = new Chart(ctx, {
 			type: 'line',
 			data: {
@@ -354,7 +338,16 @@
 					fill: false,
 				}]
 			},
-			options = option
+			options: {
+						scales: {
+							yAxes: [{
+								gridLines: {
+									color: "black",
+									borderDash: [3, 5],
+								}
+							}]
+						}
+					}
 		})
 </script>
 
