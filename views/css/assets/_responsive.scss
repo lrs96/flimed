@@ -459,7 +459,7 @@ Exclusive MENU
 	}
 	.form {
 		[class*="col"] {
-			min-width: 100%;
+			min-width: 100% !important;
 		}
 	}
 	form {
@@ -765,12 +765,17 @@ Exclusive MENU
 						.label-90p {
 							width: 60px;
 						}
+						.foto-upload {
+							margin-bottom: 20px;
+							height: 60px;
+						}
 					}
 				}
 			}
 		}
 	}
 }
+
 
 @media (max-width: 991px) {
 	.medicoXpapciente {
