@@ -1932,3 +1932,12 @@ input:checked + .slider:before {
 		padding: 10px 15px;
 	}
 }
+
+.modal[role="dialog"] {
+	.modal-dialog {
+		max-width: 40vw;
+		.popups {
+			padding: 30px;
+		}
+	}
+}
