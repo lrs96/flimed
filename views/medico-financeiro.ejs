@@ -295,6 +295,7 @@
 			<div class="row grafico-financeiro">
 				<div class="col-md-12">
 					<div class="mosaic-item">
+<<<<<<< HEAD
 						<h2 class="tituloresumo"><strong>Produção</strong> médica</h2>
 						<!-- <canvas id="myChart" width="100" height="100"></canvas> -->
 						<canvas class="line-chart"></canvas>
@@ -310,6 +311,11 @@
 									</div>
 							</div>
 						</div>
+=======
+						<h1 class="tituloresumo">Balanço</h1>
+						<canvas id="myChart" width="100" height="100"></canvas>
+						<canvas id="Balance" width="100" height="100"></canvas>
+>>>>>>> Atualização
 					</div>
 				</div>
 			</div>
@@ -318,6 +324,26 @@
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+<<<<<<< HEAD
+=======
+<script>
+		var ctx = document.getElementById("#Balance").getContext('2d');
+		const myChart = new Chart(ctx, {
+			type='line',
+			data: {
+				labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+				datasets: [{
+					label: "Balanço financeiro",
+					data: [0, 5000, 10000, 15000, 20000, 25000],
+					borderWidth: 6,
+					borderColor: '#416888',
+					backgroundColor: 'transparent',
+				}]
+			}
+		})
+</script>
+
+>>>>>>> Atualização
 <script>
 		var ctx = document.getElementsByClassName("line-chart");
 		const colorGreen = 'rgba(1, 233, 181, 1)';
