@@ -357,6 +357,9 @@
 								color: "rgba(65, 104, 136, 0.2)",
 							},
 							ticks: {
+								callback: function(value, index, values) {
+											return 'R$ ' + value + ' mil ';
+									},
 								min: 0,
 								stepSize: 5000,
 								fontColor: "rgba(65, 104, 136, 1)",
