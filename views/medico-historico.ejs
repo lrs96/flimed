@@ -74,7 +74,7 @@
 								<p>08:00</p>
 							</div>
 							<div class="action">
-								<a class="ver-mais" id="#verMaisPaciente" data-fancybox="paciente1">Ver mais</a>
+									<a class="ver-mais" id="#modalVerPaciente" data-toggle="modal" data-target="#modalVerPaciente">Ver mais</a>
 							</div>
 						</div>
 						<div class="col-12 info d-flex">
@@ -92,7 +92,7 @@
 								<p>08:00</p>
 							</div>
 							<div class="action">
-								<a class="ver-mais" id="#verMaisPaciente" data-fancybox="paciente">Ver mais</a>
+									<a class="ver-mais" id="#modalVerPaciente" data-toggle="modal" data-target="#modalVerPaciente">Ver mais</a>
 							</div>
 						</div>
 						<div class="col-12 info d-flex">
@@ -110,7 +110,7 @@
 								<p>08:00</p>
 							</div>
 							<div class="action">
-								<a class="ver-mais" id="#verpaciente" data-fancybox="verpaciente">Ver mais</a>
+								<a class="ver-mais" id="#modalVerPaciente" data-toggle="modal" data-target="#modalVerPaciente">Ver mais</a>
 							</div>
 						</div>
 					</div>
@@ -124,9 +124,10 @@
 </div>
 </section>
 <section class="modals">
-	<div class="modal verpaciente" id="verpaciente">
-		<div class="modal-box">
-			<div class="modal-title__finish">
+	<div class="modal fade" id="modalVerPaciente" tabindex="-1" role="dialog"
+		aria-labelledby="modalVerPacienteLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="verpaciente">
 				<div class="d-flex info-paciente">
 					<img alt="Paciente nome" src="/views/img/hitchcock.jpg">
 					<div class="d-flex flex-column">
