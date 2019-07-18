@@ -322,57 +322,56 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script> -->
-	<script>
-			var ctx = document.getElementsByClassName("line-chart");
-			const colorGreen = 'rgba(1, 233, 181, 1)';
-			var myChart = new Chart(ctx, {
-				type: 'line',
-				data: {
-					labels: ['Jan', 'Mar', 'Mai', 'Jul', 'Ago'],
-					datasets: [{
-						label: "Balanço financeiro",
-						data: [0, 5000 , 15000, 5000, 20000],
-						colorGreen,
-						borderWidth: 3,
-						lineTension: 0,
-						borderColor: 'rgba(65, 104, 136, 1)',
-						pointBackgroundColor: 'rgba(1, 233, 181, 1)',
-						pointBorderColor: 'rgba(1, 233, 181, 1)',
-						backgroundColor: 'transparent',
-						pointHoverRadius: 10,
-						fill: false,
-					}]
-				},
-				options: {
-					responsive: true,
-					scaleStartValue: 0,
-					scales: {
-						xAxes: [{
-							color: "tras",
-							gridLines: {
-								color: "rgba(65, 104, 136, 0.4)",
-								borderDash: [10, 10],
-							}
-						}],
-						yAxes: [{
-							gridLines: {
-								drawBorder: false,
-								color: "rgba(65, 104, 136, 0.2)",
-							},
-							ticks: {
-                callback: function(value, index, values) {
-                        return 'R$ ' + value + ' mil ';
-                   },
-								min: 0,
-								stepSize: 5000,
-								fontColor: "rgba(65, 104, 136, 1)",
-                fontSize: "22",
-								},
-						}]
-					}
-				}
-			})
-	</script>
+<script>
+  var ctx = document.getElementsByClassName("line-chart");
+  const colorGreen = 'rgba(1, 233, 181, 1)';
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Mar', 'Mai', 'Jul', 'Ago'],
+      datasets: [{
+        label: "Balanço financeiro",
+        data: [0, 5 , 15, 5, 20],
+        colorGreen,
+        borderWidth: 3,
+        lineTension: 0,
+        borderColor: 'rgba(65, 104, 136, 1)',
+        pointBackgroundColor: 'rgba(1, 233, 181, 1)',
+        pointBorderColor: 'rgba(1, 233, 181, 1)',
+        backgroundColor: 'transparent',
+        pointHoverRadius: 10,
+        fill: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      scaleStartValue: 0,
+      scales: {
+        xAxes: [{
+          gridLines: {
+            color: "rgba(65, 104, 136, 0.4)",
+            borderDash: [10, 10],
+          }
+        }],
+        yAxes: [{
+          gridLines: {
+            drawBorder: false,
+            color: "rgba(65, 104, 136, 0.2)",
+          },
+          ticks: {
+            callback: function(value, index, values) {
+                  return 'R$ ' + value + ' mil ';
+              },
+            min: 0,
+            stepSize: 5,
+            fontColor: "rgba(65, 104, 136, 1)",
+            fontSize: "22",
+            },
+        }]
+      }
+    }
+  })
+</script>
 
 <!-- Modal transferência  -->
 <div style="width: 70%; " class="modal" id="transferencia">
