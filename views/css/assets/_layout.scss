@@ -1916,3 +1916,11 @@ input:checked + .slider:before {
 		margin-top: 40px;
 	}
 }
+
+[class*="-horarios"] {
+	button[data-toggle="modal"] {
+		background-color: #01e9b1;
+		border-color: #01e9b1;
+		padding: 10px 15px;
+	}
+}
