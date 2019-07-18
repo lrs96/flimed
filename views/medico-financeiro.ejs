@@ -326,8 +326,14 @@
 		var option =  {
 						scales: {
 							yAxes: [{
-								ticks: {
-									beginAtZero: true
+								gridLines: {
+									color: "rgba(65, 104, 136, 1)",
+									borderDash: [3, 5],
+								},
+								scaleLabel: {
+									display: true,
+									labelString: "Speed in Miles per Hour",
+									fontColor: "green"
 								}
 							}]
 						}
