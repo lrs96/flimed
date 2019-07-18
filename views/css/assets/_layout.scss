@@ -1892,6 +1892,11 @@ input:checked + .slider:before {
 			.paciente-item {
 				.d-flex {
 					justify-content: flex-start;
+					.info-paciente {
+						.name-paciente {
+							padding: 0 20px;
+						}
+					}
 					.info-paciente:first-child {
 						.name-convenio {
 							font-weight: 400;
