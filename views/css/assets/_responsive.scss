@@ -802,6 +802,11 @@ Exclusive MENU
 			max-width: 80vw;
 			.popups {
 				padding: 30px;
+				.tags {
+					[class*="col-md"].d-flex {
+						margin: 15px 0;
+					}
+				}
 				form {
 					.row {
 						.col-md-4 {
