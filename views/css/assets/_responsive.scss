@@ -542,7 +542,12 @@ Exclusive MENU
 				}
 			}
 	}
+	.foto-upload.relative {
+		height: 60px;
+		margin-bottom: 20px;
+	}
 }
+
 
 @media (max-width: 768px) {
 		
@@ -765,7 +770,7 @@ Exclusive MENU
 						.label-90p {
 							width: 60px !important;
 						}
-						
+
 						.foto-upload {
 							margin-bottom: 20px;
 							height: 60px;
