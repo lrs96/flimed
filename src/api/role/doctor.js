@@ -243,7 +243,7 @@ module.exports = app => {
                         }   
                         
                         res.status(200).render('medico-financeiro', {
-                            page: 'Financeiro',
+                            page: 'Médico Financeiro',
                             user,
                             financialPlan,
                             financialProduct,
