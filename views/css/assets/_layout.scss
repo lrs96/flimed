@@ -2156,4 +2156,23 @@ input:checked + .slider:before {
 			}
 		}
 	}
+
+	.container {
+		.row {
+			.col-md-12 {
+				.d.flex {
+					position: absolute;
+					display: flex;
+					justify-content: center;
+					width: 100%;
+					top: 70px;
+				}
+				#calendar {
+					.fc-header-toolbar {
+						margin-bottom: 4em;
+					}
+				}
+			}
+		}
+	}
 }
