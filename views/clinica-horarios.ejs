@@ -29,6 +29,119 @@
     
     <script>
         $(document).ready(function () {
+            const calendar = $('#calendar');
+            var calendario = new FullCalendar.Calendar(calendar, {
+                header: {
+                    center: 'prev, title, next'
+                },
+                plugins: ['dayGrid', 'timeGrid'],
+                defaultView: 'agendaWeek',
+                defaultDate: Date(),
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesShort: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                navLinks: true, // can click day/week names to navigate views
+                editable: false,
+                eventLimit: true, // allow "more" link when too many events
+                eventClick: function(event) {
+                    document.getElementById('id-event').value = event.id
+                    document.getElementById('id-event-delete').value = event.id
+                    $('#modal-event #modal-eventLabel').text(event.title + ' (' + event.type + ')') 
+                    $('#modal-event #start').text(event.start.format('DD/MM/YYYY - HH:mm'))    
+                    $('#modal-event #end').text(event.end.format('DD/MM/YYYY - HH:mm')) 
+                    if(event.patientInfo) {
+                        $('.patientInfo').show()
+                        $('#modal-event #patientAgreement').text(event.patientInfo.agreement) 
+                        $('#modal-event #patientRegisterBy').text(event.patientInfo.registerBy) 
+                        $('#modal-event #patientName').text(event.patientInfo.name)   
+                        $('#modal-event #patientGenre').text(event.patientInfo.genre) 
+                        $('#modal-event #patientEmail').text(event.patientInfo.email)  
+                        $('#modal-event #patientPhone').text(event.patientInfo.phone)  
+                        $('#modal-event #patientComment').text(event.patientInfo.comment)  
+                    } else {
+                        $('.patientInfo').hide()
+                    }   
+                    if(event.status === 'pendente') {
+                        $('.attendance').show()
+                    } else { 
+                        $('.attendance').hide()
+                        $('.attendance-done').hide()
+                    }
+                    console.log(event.attendance)
+                    if(event.attendance && event.status !== 'concluído') {
+                        $("#btn_concluir").html('Continuar consulta')
+                        $('.attendance-done').show()
+                        document.getElementById('attendance-done').value = event.id
+                        document.getElementById('attendance-done-patientId').value = event.patientInfo.id
+                    } else $('.attendance-done').hide()
+                    
+                    if(event.status === 'pendente' && event.type === 'presencial') {
+                        $('.viewHistoric').show()
+                        document.getElementById('viewHistoric-patientId').value = event.patientInfo.id
+                    } else $('.viewHistoric').hide()
+                    if(event.status === 'concluído' && event.type === 'presencial') {
+                        $('.viewAttendance').show()
+                        document.getElementById('viewAttendance').value = event.id
+                        document.getElementById('viewAttendance-patientId').value = event.patientInfo.id
+                    } else $('.viewAttendance').hide()
+                    if(event.status === 'concluído' || (event.type === 'telemedicina' && event.status === 'pendente')) {
+                        $('.delete-attendance').hide()
+                    } else { 
+                        $('.delete-attendance').show()
+                    }    
+                    if(event.type === 'presencial') {
+                        $('#modal-event #address').text(event.locationInfo.address)  
+                        $('#modal-event #city').text(event.locationInfo.city) 
+                        $('#modal-event #state').text(event.locationInfo.state) 
+                        $('#modal-event #number').text(event.locationInfo.number) 
+                        $('#modal-event #zipCode').text(event.locationInfo.zipCode) 
+                        $('.addressInfo').show()
+                    } else {
+                        $('.addressInfo').hide()
+                    }  
+                    $('#modal-event').modal('show')
+                    return false
+                },
+                events: [
+                    <% if(events.length) { %> 
+                        <% for(let i = 0; i < events.length; i++) { %>
+                            {
+                                id: '<%= events[i]._id %>',
+                                title: '<%= events[i].title %>',
+                                color: '<%= events[i].color %>',
+                                start: '<%= events[i].start %>',
+                                end: '<%= events[i].end %>',
+                                status: '<%= events[i].status %>',
+                                type: '<%= events[i].type %>',
+                                attendance: '<%= events[i].attendance %>',
+                                <% if(events[i]._idPatient) { %>
+                                    patientInfo: {
+                                        id: '<%= events[i]._idPatient %>',
+                                        agreement: '<%= events[i].patientInfo.patientAgreement %>',
+                                        registerBy: '<%= events[i].patientInfo.registerBy %>', 
+                                        name: '<%= events[i].patientInfo.patientName %>',
+                                        genre: '<%= events[i].patientInfo.patientGenre %>', 
+                                        email: '<%= events[i].patientInfo.patientEmail %>', 
+                                        phone: '<%= events[i].patientInfo.patientPhone %>',
+                                        comment: '<%= events[i].patientInfo.patientComment %>'
+                                    },
+                                <% } %>
+                                <% if(events[i].type === 'presencial') { %>
+                                    locationInfo: {
+                                        city: '<%= events[i].locationInfo.city %>',
+                                        state: '<%= events[i].locationInfo.state %>',
+                                        address: '<%= events[i].locationInfo.address %>',
+                                        number: '<%= events[i].locationInfo.number %>',
+                                        zipCode: '<%= events[i].locationInfo.zipCode %>'
+                                    }
+                                <% } %>
+                            },
+                        <% } %>
+                    <% } %>
+                ]
+            });
+        })
+            calendario.render();
+
             $('#calendar').fullCalendar({
                 header: {
                     center: 'prev, title, next'
