@@ -272,7 +272,21 @@ romae = {
 				$("ul.menu a[href='/cliente-perguntas']").addClass("active")
 			} else if ($(".ad-box").hasClass("cliente-horarios")) {
 				$("ul.menu a[href='/cliente-horarios']").addClass("active")
-			}
+			} else if ($(".box__panel").hasClass("clinica-perfil")) {
+				$("ul.menu a[href='/clinica-perfil']").addClass("active")
+			} else if ($(".ad-box").hasClass("clinica-horarios")) {
+				$("ul.menu a[href='/clinica-horarios']").addClass("active")
+			} else if ($(".box__panel").hasClass("clinica-painel")) {
+				$("ul.menu a[href='/clinica-painel']").addClass("active")
+			} else if ($(".box__panel").hasClass("clinica-financeiro")) {
+				$("ul.menu a[href='/clinica-financeiro']").addClass("active")
+			} else if ($(".box__panel").hasClass("clinica-contabilidade")) {
+				$("ul.menu a[href='/clinica-contabilidade']").addClass("active")
+			} else if ($(".box__panel").hasClass("clinica-historico")) {
+				$("ul.menu a[href='/clinica-historico']").addClass("active")
+			} else if ($(".box__panel").hasClass("clinica-perguntas")) {
+				$("ul.menu a[href='/clinica-perguntas']").addClass("active")
+			} 
 		});
 	},
 	addMaisEspecialidade: () => {
