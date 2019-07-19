@@ -2035,15 +2035,15 @@ input:checked + .slider:before {
 
 	.fc-agenda-view {
 		table {
-			
+
 			thead {
 				.fc-widget-header {
 					border: none;
-					padding-bottom: 20px;
 					table {
 						thead {
 							.fc-widget-header {
-								border-right: 1px dashed #416888;
+								border-right: 1px dashed rgba(65, 104, 136, 0.2);
+								padding: 15px 0;
 							}
 						}
 					}
@@ -2057,6 +2057,23 @@ input:checked + .slider:before {
 			}
 
 			tbody {
+				tr {
+					td.fc-widget-content {
+						border-right: none;
+						border-left: none;
+						table {
+							tbody {
+								tr {
+									td {
+										padding-top: 10px;
+										padding-bottom: 10px;
+										border: 1px dashed rgba(65, 104, 136, 0.2);;
+									}
+								}
+							}
+						}
+					}
+				}
 				a.fc-time-grid-event {
 					background-color: #7EF2D9 !important;
 					border-color: #7EF2D9 !important;
