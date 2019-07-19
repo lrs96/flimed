@@ -2044,4 +2044,23 @@ input:checked + .slider:before {
 			}
 		}
 	}
+
+	.fc-header-toolbar {
+		.fc-center {
+			button {
+				background: #01e9b1 !important;
+				border-radius: 100%;
+				color: #fff;
+				padding: 6px;
+			}
+			h2 {
+				font-size: 1.2em;
+				color: #416888;
+			}
+		}
+		.fc-left,
+		.fc-right {
+			display: none;
+		}
+	}
 }
