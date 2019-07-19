@@ -22,9 +22,8 @@
         $(document).ready(function () {
             $('#calendar').fullCalendar({
                 header: {
-                    left: 'today',
                     center: 'prev, title, next',
-                    right: 'agendaWeek'
+                    bottom: '<button class="btn btn-dark" style="padding-top: 30px;" data-toggle="modal" data-target="#modal-adicionarHorario"> Selecionar data</button>'
                 },
                 defaultView: 'agendaWeek',
                 defaultDate: Date(),
@@ -103,9 +102,7 @@
         .fc-toolbar.fc-header-toolbar{
     margin-bottom: 1em;
     color: #fefeff;
-    padding: 10px;
-    background: linear-gradient(to right, #01e9b1 0%, #01e9b1 100%);
-
+    padding: 20px;
         }
         .fc-scroller, .fc-day-grid-container{
            height: 560px;
