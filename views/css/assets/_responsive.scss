@@ -852,6 +852,27 @@ Exclusive MENU
 	}
 }
 
+@media (max-width:900px ) {
+	
+	.medico-horarios {
+		.container:first-child {
+			position: relative;
+			.box__panel-title {
+				position: relative;
+			}
+		}
+	}
+	.clinica-horarios {
+		.container:first-child {
+			position: relative;
+			.box__panel-title {
+				position: relative;
+			}
+		}
+	}
+
+}
+
 @media (max-width: 991px) and (min-width: 767px) {
 	.col-res-7 {
 		flex: 0 0 60.666667% !important;
@@ -860,6 +881,34 @@ Exclusive MENU
 }
  
 @media (max-width: 600px) {
+	.medico-horarios {
+		.container:first-child {
+			.box__panel-title {
+				padding: 30px 0;
+				flex-direction: column;
+				h3 {
+					padding-bottom: 30px;
+				}
+				button {
+					margin: 0;
+				}
+			}
+		}
+	}
+	.clinica-horarios {
+		.container:first-child {
+			.box__panel-title {
+				padding: 30px 0;
+				flex-direction: column;
+				h3 {
+					padding-bottom: 30px;
+				}
+				button {
+					margin: 0;
+				}
+			}
+		}
+	}
 }
 
 
