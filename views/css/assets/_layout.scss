@@ -2067,7 +2067,8 @@ input:checked + .slider:before {
 									td {
 										padding-top: 10px;
 										padding-bottom: 10px;
-										border: 1px dashed rgba(65, 104, 136, 0.2);;
+										border: 1px dashed rgba(65, 104, 136, 0.2);
+										color: rgba(65, 104, 136, 0.4);
 									}
 								}
 							}
@@ -2097,6 +2098,7 @@ input:checked + .slider:before {
 				border-radius: 100%;
 				color: #fff;
 				padding: 6px;
+				box-shadow: 0 11px 33px -4px rgba(65,104,136,0.14);
 			}
 			h2 {
 				font-size: 1.2em;
