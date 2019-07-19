@@ -2156,11 +2156,10 @@ input:checked + .slider:before {
 			}
 		}
 	}
-
 	.container {
 		.row {
 			.col-md-12 {
-				.d.flex {
+				.d-flex {
 					position: absolute;
 					width: 100%;
 					top: 70px;
