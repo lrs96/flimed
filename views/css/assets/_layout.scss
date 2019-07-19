@@ -2037,6 +2037,8 @@ input:checked + .slider:before {
 		table {
 			thead {
 				.fc-widget-header {
+					border: none;
+					padding-bottom: 20px;
 					th {
 						border: none;
 					}
@@ -2045,11 +2047,16 @@ input:checked + .slider:before {
 					}
 				}
 			}
+
 			tbody {
 				a.fc-time-grid-event {
 					background-color: #7EF2D9 !important;
 					border-color: #7EF2D9 !important;
 					color: #fff;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					padding-top: 5px;
 				}
 			}
 		}
