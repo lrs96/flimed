@@ -2014,3 +2014,22 @@ input:checked + .slider:before {
 		}
 	}
 }
+
+#calendar {
+	.fc-body {
+		table {
+			td {
+				a {
+					background-color: #7EF2D9;
+					border-color: #7EF2D9;
+					padding-left: 10px;
+					color: #fff;
+					.fc-content {
+						display: flex;
+						flex-direction: column;
+					}
+				}
+			}
+		}
+	}
+}
