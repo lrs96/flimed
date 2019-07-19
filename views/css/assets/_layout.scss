@@ -2045,8 +2045,33 @@ input:checked + .slider:before {
 		}
 	}
 
+	.cliente-horarios {
+		.container:first-child {
+			position: relative;
+			.box__panel-title {
+				position: absolute;
+				width: 100%;
+				display: flex;
+				animation: c;
+				justify-content: space-between;
+				h2 {
+					margin-bottom: 0;
+				}
+				.form-filter.fin-r {
+					right: 0;
+					top: 0;
+					position: absolute;
+					z-index: 3
+				}
+			}
+		}
+	}
+
 	.fc-header-toolbar {
 		.fc-center {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			button {
 				background: #01e9b1 !important;
 				border-radius: 100%;
