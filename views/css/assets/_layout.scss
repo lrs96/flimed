@@ -2035,10 +2035,18 @@ input:checked + .slider:before {
 
 	.fc-agenda-view {
 		table {
+			
 			thead {
 				.fc-widget-header {
 					border: none;
 					padding-bottom: 20px;
+					table {
+						thead {
+							.fc-widget-header {
+								border-right: 1px dashed #416888;
+							}
+						}
+					}
 					th {
 						border: none;
 					}
