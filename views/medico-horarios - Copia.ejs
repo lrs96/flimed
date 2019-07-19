@@ -1,4 +1,4 @@
-<%- include includes/header-clinica.ejs %>
+<%- include includes/header-medico.ejs %>
 
     <meta charset='utf-8' />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -23,7 +23,7 @@
         $(document).ready(function () {
             $('#calendar').fullCalendar({
                 header: {
-                    center: 'prev, title, next'
+                    center: 'prev, title, next',
                 },
                 defaultView: 'agendaWeek',
                 defaultDate: Date(),
@@ -147,9 +147,10 @@
         color:#fff;
         }
                 .fc-toolbar.fc-header-toolbar{
+    margin-bottom: 1em;
     color: #fefeff;
     padding: 10px;
-    /* background: linear-gradient(to right, #01e9b1 0%, #01e9b1 100%); */
+    background: linear-gradient(to right, #01e9b1 0%, #01e9b1 100%);
         }
         .fc-day-grid-event, .fc-h-event, .fc-event, .fc-start fc-end{
         background: #01e9b1;
@@ -206,21 +207,17 @@ border-color: #e6e6e6 #e6e6e6 #bfbfbf;border-color: none;color: #333;text-shadow
         </div>
     <% } %>
 
-    <div class="container ad-box clinica-horarios">
+    <div class="container ad-box medico-horarios">
         <div class="container">
         <div class="box__panel-title">
-                <h3 class="titulohorario" ><strong>Calendário</strong> de horários</h3>
+                <h3 class="titulohorario" ><strong>Calendário</strong> de hoorários</h3>
                 <div class="form-filter fin-r">
                 <button  class="btn btn-dark" data-toggle="modal" data-target="#modal-adicionarHorario">
         Adicionar horários</button>
                 </div>
             </div>
- <div class="row">
+ <div class="row mt50">
     <div class="col-md-12">
-        <div class="d-flex justify-content-center">
-            <button class="btn btn-dark"> Selecionar data</button>
-        </div>
-
     <div id='calendar'></div>
     
     <div class="modal fade" id="modal-adicionarHorario" tabindex="-1" role="dialog" aria-labelledby="modal-adicionarHorarioLabel"
