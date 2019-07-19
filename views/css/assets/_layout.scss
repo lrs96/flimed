@@ -2037,9 +2037,19 @@ input:checked + .slider:before {
 		table {
 			thead {
 				.fc-widget-header {
-					a {
-						color: 		#416888 !important
+					th {
+						border: none;
 					}
+					a {
+						color:#416888 !important
+					}
+				}
+			}
+			tbody {
+				a.fc-time-grid-event {
+					background-color: #7EF2D9 !important;
+					border-color: #7EF2D9 !important;
+					color: #fff;
 				}
 			}
 		}
@@ -2075,6 +2085,7 @@ input:checked + .slider:before {
 			position: absolute;
 			width: 100%;
 			display: flex;
+			top: -15px;
 			align-items: center;
 			justify-content: space-between;
 			padding: 30px 15px 30px 0;
