@@ -2016,17 +2016,29 @@ input:checked + .slider:before {
 }
 
 #calendar {
-	.fc-body {
-		table {
+	.fc-month-view  {
+		.fc-body {
 			td {
 				.fc-day-grid-event {
-					background-color: #7EF2D9;
-					border-color: #7EF2D9;
+					background-color: #7EF2D9 !important;
+					border-color: #7EF2D9 !important;
 					padding: 15px !important;
 					color: #fff;
 					.fc-content {
 						display: flex;
 						flex-direction: column;
+					}
+				}
+			}
+		}
+	}
+
+	.fc-agenda-view {
+		table {
+			thead {
+				.fc-widget-header {
+					a[data-goto] {
+						color: 		#416888 !important
 					}
 				}
 			}
